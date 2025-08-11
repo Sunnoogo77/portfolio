@@ -26,6 +26,29 @@
         .scanlines { position: relative; }
         .scanlines:before { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient( to bottom, rgba(255,255,255,0.04), rgba(255,255,255,0.04) 1px, transparent 1px, transparent 3px ); pointer-events:none; }
         .glow { box-shadow: 0 0 30px rgba(34,211,238,0.25); }
+
+        /* Scrollbar personnalisée pour les sections posts et parcours */
+                    #posts .scrollable::-webkit-scrollbar,
+                    #parcours .scrollable::-webkit-scrollbar {
+                            width: 8px;
+                    }
+
+                    #posts .scrollable::-webkit-scrollbar-track,
+                    #parcours .scrollable::-webkit-scrollbar-track {
+                            background: transparent;
+                    }
+
+                    #posts .scrollable::-webkit-scrollbar-thumb,
+                    #parcours .scrollable::-webkit-scrollbar-thumb {
+                            background: rgba(255, 255, 255, 0.3);
+                            border-radius: 4px;
+                            transition: background 0.3s ease;
+                    }
+
+                    #posts .scrollable::-webkit-scrollbar-thumb:hover,
+                    #parcours .scrollable::-webkit-scrollbar-thumb:hover {
+                            background: rgba(255, 255, 255, 0.6);
+                    }
     </style>
     </head>
     <body class="min-h-screen bg-slate-950 text-slate-100 selection:bg-brand-500/30">
@@ -86,111 +109,119 @@
         <h2 class="text-2xl md:text-3xl font-bold">Parcours académique</h2>
         <p class="mt-3 text-slate-300">Un chemin entre rigueur scientifique, ouverture internationale et spécialisation en cybersécurité / cloud.</p>
 
-        <div class="relative mt-8 pl-6">
-        <span class="absolute left-0 top-0 h-full w-1 rounded bg-slate-800/60"></span>
+        
+        <div 
+            class="relative scrollable mt-8 pl-6"
+            style="max-height: 300px; overflow-y: auto;">
 
-        <!-- Prépa INP-HB -->
-        <div class="relative mb-8">
-            <span class="absolute -left-[9px] top-2 h-4 w-4 rounded-full bg-brand-500 shadow-[0_0_0_4px_rgba(6,182,212,0.25)]"></span>
-            <article class="rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
-            <div class="flex items-center justify-between gap-3">
-                <h3 class="text-lg font-semibold">INP‑HB (MPSI → MP*) — Prépa scientifique</h3>
-                <span class="text-xs px-2 py-1 rounded bg-slate-800 border border-slate-700">Rigueur & Persévérance</span>
-            </div>
-            <p class="mt-2 text-slate-300 text-sm">Maths/Physique avancées, discipline de travail, résilience. Arrivé du Burkina Faso, création d’un noyau d’amis — une vraie famille.</p>
-            <details class="mt-3">
-                <summary class="cursor-pointer text-brand-300 hover:underline">Détails</summary>
-                <ul class="mt-2 list-disc list-inside text-slate-300 text-sm">
-                <li>Approche analytique et tenue du cap face à la charge.</li>
-                <li>Culture scientifique solide pour la suite du cursus.</li>
-                </ul>
-            </details>
-            </article>
-        </div>
+            <!-- <span class="absolute left-0 top-0  h-full w-1 rounded bg-slate-800/60"></span> -->
 
-        <!-- EFREI Paris -->
-        <div class="relative mb-8">
-            <span class="absolute -left-[9px] top-2 h-4 w-4 rounded-full bg-brand-500 shadow-[0_0_0_4px_rgba(6,182,212,0.25)]"></span>
-            <article class="rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
-            <div class="flex items-center justify-between gap-3">
-                <h3 class="text-lg font-semibold">EFREI Paris — Ingénierie</h3>
-                <span class="text-xs px-2 py-1 rounded bg-slate-800 border border-slate-700">Spécialisation Cyber & Cloud</span>
-            </div>
-            <p class="mt-2 text-slate-300 text-sm">Accès via Euro Graduate Access. Découverte large (programmation, réseaux, BDD, embarqué, cybersécurité) puis choix assumé pour la Blue Team & le cloud.</p>
-            <details class="mt-3">
-                <summary class="cursor-pointer text-brand-300 hover:underline">Ce que j’y ai cultivé</summary>
-                <ul class="mt-2 list-disc list-inside text-slate-300 text-sm">
-                <li>Fondamentaux réseaux / sécurité (AD, Kerberos, SIEM).</li>
-                <li>Pratique cloud (AWS) et conteneurs (Kubernetes).</li>
-                </ul>
-            </details>
-            </article>
-        </div>
-
-        <!-- Semestre en Angleterre -->
-        <div class="relative mb-8">
-            <span class="absolute -left-[9px] top-2 h-4 w-4 rounded-full bg-brand-500 shadow-[0_0_0_4px_rgba(6,182,212,0.25)]"></span>
-            <article class="rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
-            <div class="flex items-center justify-between gap-3">
-                <h3 class="text-lg font-semibold">Semestre en Angleterre — Immersion</h3>
-                <span class="text-xs px-2 py-1 rounded bg-slate-800 border border-slate-700">Anglais & Projet web</span>
-            </div>
-            <p class="mt-2 text-slate-300 text-sm">Cours en anglais, basket, échanges internationaux. Réalisation d’un projet web avec un encadrement de qualité — boost d’envie et de confiance.</p>
-            <details class="mt-3">
-                <summary class="cursor-pointer text-brand-300 hover:underline">Moments clés</summary>
-                <ul class="mt-2 list-disc list-inside text-slate-300 text-sm">
-                <li>Progression linguistique (communication et technique).</li>
-                <li>Travail d’équipe multiculturel.</li>
-                </ul>
-            </details>
-            </article>
-        </div>
-
-        <!-- Stage au Ghana -->
-        <div class="relative mb-8">
-            <span class="absolute -left-[9px] top-2 h-4 w-4 rounded-full bg-brand-500 shadow-[0_0_0_4px_rgba(6,182,212,0.25)]"></span>
-            <article class="rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
-            <div class="flex items-center justify-between gap-3">
-                <h3 class="text-lg font-semibold">Ecobank (Accra, Ghana) — Stage</h3>
-                <span class="text-xs px-2 py-1 rounded bg-slate-800 border border-slate-700">Contexte bancaire</span>
-            </div>
-            <p class="mt-2 text-slate-300 text-sm">Au département epProcess (Technologies) : cas réels de sécurité & d’infrastructure, collaboration en environnement anglophone.</p>
-            <details class="mt-3">
-                <summary class="cursor-pointer text-brand-300 hover:underline">Apprentissages</summary>
-                <ul class="mt-2 list-disc list-inside text-slate-300 text-sm">
-                <li>Adaptabilité, vision globale du risque.</li>
-                <li>Communication avec équipes pluridisciplinaires.</li>
-                </ul>
-            </details>
-            </article>
-        </div>
-
-        <!-- Bonus: compétences & centres d'intérêt -->
-        <div class="relative mb-2">
-            <span class="absolute -left-[9px] top-2 h-4 w-4 rounded-full bg-brand-500 shadow-[0_0_0_4px_rgba(6,182,212,0.25)]"></span>
-            <article class="rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
-            <div class="grid gap-6 md:grid-cols-2">
-                <div>
-                <h4 class="font-semibold">Projets techniques & auto‑formation</h4>
-                <ul class="mt-2 flex flex-wrap gap-2 text-xs">
-                    <li class="px-2 py-1 rounded bg-slate-800 border border-slate-700">Wazuh</li>
-                    <li class="px-2 py-1 rounded bg-slate-800 border border-slate-700">Active Directory</li>
-                    <li class="px-2 py-1 rounded bg-slate-800 border border-slate-700">Kubernetes</li>
-                    <li class="px-2 py-1 rounded bg-slate-800 border border-slate-700">AWS</li>
-                    <li class="px-2 py-1 rounded bg-slate-800 border border-slate-700">WebHawk</li>
-                    <li class="px-2 py-1 rounded bg-slate-800 border border-slate-700">Password Cracker</li>
-                </ul>
+            <!-- Prépa INP-HB -->
+            <div class="relative mb-8">
+                
+                <span class="absolute -left-[9px] top-2 h-4 w-4 rounded-full bg-brand-500 shadow-[0_0_0_4px_rgba(6,182,212,0.25)]"></span>
+                <article class="rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
+                <div class="flex items-center justify-between gap-3">
+                    <h3 class="text-lg font-semibold">INP‑HB (MPSI → MP*) — Prépa scientifique</h3>
+                    <span class="text-xs px-2 py-1 rounded bg-slate-800 border border-slate-700">Rigueur & Persévérance</span>
                 </div>
-                <div>
-                <h4 class="font-semibold">Langues & intérêts</h4>
-                <ul class="mt-2 space-y-1 text-slate-300 text-sm">
-                    <li>Français & Anglais (TOEIC 935)</li>
-                    <li>Basketball, piano, engagements communautaires</li>
-                </ul>
-                </div>
+                <p class="mt-2 text-slate-300 text-sm">Maths/Physique avancées, discipline de travail, résilience. Arrivé du Burkina Faso, création d’un noyau d’amis — une vraie famille.</p>
+                <details class="mt-3">
+                    <summary class="cursor-pointer text-brand-300 hover:underline">Détails</summary>
+                    <ul class="mt-2 list-disc list-inside text-slate-300 text-sm">
+                    <li>Approche analytique et tenue du cap face à la charge.</li>
+                    <li>Culture scientifique solide pour la suite du cursus.</li>
+                    </ul>
+                </details>
+                </article>
             </div>
-            </article>
-        </div>
+
+            <!-- EFREI Paris -->
+            <div class="relative mb-8">
+                <span class="absolute -left-[9px] top-2 h-4 w-4 rounded-full bg-brand-500 shadow-[0_0_0_4px_rgba(6,182,212,0.25)]"></span>
+                <article class="rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
+                <div class="flex items-center justify-between gap-3">
+                    <h3 class="text-lg font-semibold">EFREI Paris — Ingénierie</h3>
+                    <span class="text-xs px-2 py-1 rounded bg-slate-800 border border-slate-700">Spécialisation Cyber & Cloud</span>
+                </div>
+                <p class="mt-2 text-slate-300 text-sm">Accès via Euro Graduate Access. Découverte large (programmation, réseaux, BDD, embarqué, cybersécurité) puis choix assumé pour la Blue Team & le cloud.</p>
+                <details class="mt-3">
+                    <summary class="cursor-pointer text-brand-300 hover:underline">Ce que j’y ai cultivé</summary>
+                    <ul class="mt-2 list-disc list-inside text-slate-300 text-sm">
+                    <li>Fondamentaux réseaux / sécurité (AD, Kerberos, SIEM).</li>
+                    <li>Pratique cloud (AWS) et conteneurs (Kubernetes).</li>
+                    </ul>
+                </details>
+                </article>
+            </div>
+
+            <span class="absolute left-0 top-0  h-full w-1 rounded bg-slate-800/60"></span>
+
+            <!-- Semestre en Angleterre -->
+            <div class="relative mb-8">
+                <span class="absolute -left-[9px] top-2 h-4 w-4 rounded-full bg-brand-500 shadow-[0_0_0_4px_rgba(6,182,212,0.25)]"></span>
+                <article class="rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
+                <div class="flex items-center justify-between gap-3">
+                    <h3 class="text-lg font-semibold">Semestre en Angleterre — Immersion</h3>
+                    <span class="text-xs px-2 py-1 rounded bg-slate-800 border border-slate-700">Anglais & Projet web</span>
+                </div>
+                <p class="mt-2 text-slate-300 text-sm">Cours en anglais, basket, échanges internationaux. Réalisation d’un projet web avec un encadrement de qualité — boost d’envie et de confiance.</p>
+                <details class="mt-3">
+                    <summary class="cursor-pointer text-brand-300 hover:underline">Moments clés</summary>
+                    <ul class="mt-2 list-disc list-inside text-slate-300 text-sm">
+                    <li>Progression linguistique (communication et technique).</li>
+                    <li>Travail d’équipe multiculturel.</li>
+                    </ul>
+                </details>
+                </article>
+            </div>
+
+            <!-- Stage au Ghana -->
+            <div class="relative mb-8">
+                <span class="absolute -left-[9px] top-2 h-4 w-4 rounded-full bg-brand-500 shadow-[0_0_0_4px_rgba(6,182,212,0.25)]"></span>
+                <article class="rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
+                <div class="flex items-center justify-between gap-3">
+                    <h3 class="text-lg font-semibold">Ecobank (Accra, Ghana) — Stage</h3>
+                    <span class="text-xs px-2 py-1 rounded bg-slate-800 border border-slate-700">Contexte bancaire</span>
+                </div>
+                <p class="mt-2 text-slate-300 text-sm">Au département epProcess (Technologies) : cas réels de sécurité & d’infrastructure, collaboration en environnement anglophone.</p>
+                <details class="mt-3">
+                    <summary class="cursor-pointer text-brand-300 hover:underline">Apprentissages</summary>
+                    <ul class="mt-2 list-disc list-inside text-slate-300 text-sm">
+                    <li>Adaptabilité, vision globale du risque.</li>
+                    <li>Communication avec équipes pluridisciplinaires.</li>
+                    </ul>
+                </details>
+                </article>
+            </div>
+
+            <!-- Bonus: compétences & centres d'intérêt -->
+            <div class="relative mb-2">
+                <span class="absolute -left-[9px] top-2 h-4 w-4 rounded-full bg-brand-500 shadow-[0_0_0_4px_rgba(6,182,212,0.25)]"></span>
+                <article class="rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
+                <div class="grid gap-6 md:grid-cols-2">
+                    <div>
+                    <h4 class="font-semibold">Projets techniques & auto‑formation</h4>
+                    <ul class="mt-2 flex flex-wrap gap-2 text-xs">
+                        <li class="px-2 py-1 rounded bg-slate-800 border border-slate-700">Wazuh</li>
+                        <li class="px-2 py-1 rounded bg-slate-800 border border-slate-700">Active Directory</li>
+                        <li class="px-2 py-1 rounded bg-slate-800 border border-slate-700">Kubernetes</li>
+                        <li class="px-2 py-1 rounded bg-slate-800 border border-slate-700">AWS</li>
+                        <li class="px-2 py-1 rounded bg-slate-800 border border-slate-700">WebHawk</li>
+                        <li class="px-2 py-1 rounded bg-slate-800 border border-slate-700">Password Cracker</li>
+                    </ul>
+                    </div>
+                    <div>
+                    <h4 class="font-semibold">Langues & intérêts</h4>
+                    <ul class="mt-2 space-y-1 text-slate-300 text-sm">
+                        <li>Français & Anglais (TOEIC 935)</li>
+                        <li>Basketball, piano, engagements communautaires</li>
+                    </ul>
+                    </div>
+                </div>
+                </article>
+            </div>
+            
         </div>
     </section>
 
@@ -244,51 +275,36 @@
         <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
             <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7309903230824534042" height="400" width="100%" frameborder="0" allowfullscreen="" title="Post LinkedIn 2"></iframe>
             <a href="https://www.linkedin.com/posts/sunnoogo-caleb-tapsoba-130584292_cybersaezcuritaez-hackingaezthique-daezveloppementsaezcurisaez-activity-7309903230824534042-xh9M?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEbrf7QBErHgeqC6eJlTtq4QeR5f-8hv4HE" target="_blank" rel="noopener" class="block mt-2 text-brand-300 hover:underline text-sm">Voir sur LinkedIn</a>
-        </div>
-
-    </section> -->
+        </div-->
 
     <section id="posts" class="mx-auto max-w-6xl px-6 py-14 border-t border-slate-800/60">
         <h2 class="text-2xl md:text-3xl font-bold">Publications</h2>
-        <p class="mt-3 text-slate-300">Intégrer ici des publications LinkedIn (embed d’un post spécifique) ou un widget d’agrégation.</p>
-        <!-- Exemple d’embed d’un post LinkedIn : remplacez data-url -->
-        <!-- <div class="mt-6">
-        <script src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
-        <div class="mt-2">
-            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:XXXXXXXXXXXX" height="400" width="100%" frameborder="0" allowfullscreen="" title="Post LinkedIn"></iframe>
-        </div>
-        </div> -->
-        
-        <div class="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <!-- <p class="mt-3 text-slate-300">Intégrer ici des publications LinkedIn (embed d’un post spécifique) ou un widget d’agrégation.</p> -->
+        <div 
+            class="scrollable mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3"
+            style="max-height: 600px; overflow-y: auto; padding-right: 8px;">
             <!-- Post 1 -->
             <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
                 <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7325488499107782658?collapsed=1" height="250" width="100%" frameborder="0" allowfullscreen="" title="Post intégré"></iframe>
                 <a href="https://www.linkedin.com/posts/sunnoogo-caleb-tapsoba-130584292_efreiparis-inclusion-handicap-activity-7325761399022837760-VeYh?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEbrf7QBErHgeqC6eJlTtq4QeR5f-8hv4HE" target="_blank" rel="noopener" class="block mt-2 text-brand-300 hover:underline text-sm">Voir sur LinkedIn</a>
             </div>
             <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
-                <!-- <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7309903230824534042" height="400" width="100%" frameborder="0" allowfullscreen="" title="Post LinkedIn 2"></iframe> -->
                 <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7304682390390517760?collapsed=1" height="250" width="100%" frameborder="0" allowfullscreen="" title="Post intégré"></iframe>
                 <a href="https://www.linkedin.com/posts/sunnoogo-caleb-tapsoba-130584292_cybersaezcuritaez-hash-saezcuritaezinformatique-activity-7304818364290387968-odLX?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEbrf7QBErHgeqC6eJlTtq4QeR5f-8hv4HE" target="_blank" rel="noopener" class="block mt-2 text-brand-300 hover:underline text-sm">Voir sur LinkedIn</a>
             </div>
             <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
-                <!-- <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7309903230824534042" height="400" width="100%" frameborder="0" allowfullscreen="" title="Post LinkedIn 2"></iframe> -->
                 <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7310270014714961920?collapsed=1" height="250" width="100%" frameborder="0" allowfullscreen="" title="Post intégré"></iframe>
                 <a href="https://www.linkedin.com/posts/sunnoogo-caleb-tapsoba-130584292_wannacry-moveit-cybersaezcuritaez-activity-7312428487728857089-_Ner?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEbrf7QBErHgeqC6eJlTtq4QeR5f-8hv4HE" target="_blank" rel="noopener" class="block mt-2 text-brand-300 hover:underline text-sm">Voir sur LinkedIn</a>
             </div>
-                <!-- Exemple Post 3 -->
             <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
-                <!-- <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:EXEMPLEPOSTID" height="400" width="100%" frameborder="0" allowfullscreen="" title="Post LinkedIn Exemple"></iframe> -->
                 <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7309903229415227392?collapsed=1" height="250" width="100%" frameborder="0" allowfullscreen="" title="Post intégré"></iframe>
                 <a href="https://www.linkedin.com/posts/sunnoogo-caleb-tapsoba-130584292_cybersaezcuritaez-hackingaezthique-daezveloppementsaezcurisaez-activity-7309903230824534042-xh9M?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEbrf7QBErHgeqC6eJlTtq4QeR5f-8hv4HE" target="_blank" rel="noopener" class="block mt-2 text-brand-300 hover:underline text-sm">Voir sur LinkedIn</a>
-                <!-- <p class="mt-1 text-xs text-slate-400">Remplacez EXEMPLEPOSTID et LIEN_DU_POST_EXEMPLE par l’ID et le lien de votre post.</p> -->
             </div>
             <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
-                <!-- <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7309903230824534042" height="400" width="100%" frameborder="0" allowfullscreen="" title="Post LinkedIn 2"></iframe> -->
                 <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7304265430678851584?collapsed=1" height="250" width="100%" frameborder="0" allowfullscreen="" title="Post intégré"></iframe>
                 <a href="https://www.linkedin.com/posts/sunnoogo-caleb-tapsoba-130584292_cybersecurity-networking-pentesting-activity-7307362629025452032-2aM4?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEbrf7QBErHgeqC6eJlTtq4QeR5f-8hv4HE" target="_blank" rel="noopener" class="block mt-2 text-brand-300 hover:underline text-sm">Voir sur LinkedIn</a>
             </div>
             <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
-                <!-- <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7309903230824534042" height="400" width="100%" frameborder="0" allowfullscreen="" title="Post LinkedIn 2"></iframe> -->
                 <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7304265430678851584?collapsed=1" height="250" width="100%" frameborder="0" allowfullscreen="" title="Post intégré"></iframe>
                 <a href="https://www.linkedin.com/posts/sunnoogo-caleb-tapsoba-130584292_cybersecurity-networking-pentesting-activity-7307362629025452032-2aM4?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEbrf7QBErHgeqC6eJlTtq4QeR5f-8hv4HE" target="_blank" rel="noopener" class="block mt-2 text-brand-300 hover:underline text-sm">Voir sur LinkedIn</a>
             </div>
@@ -314,7 +330,7 @@
             <ul class="mt-3 space-y-2 text-slate-300">
             <li>GitHub : <a class="text-brand-300 hover:underline" href="https://github.com/Sunnoogo77" target="_blank" rel="noreferrer">@Sunnoogo77</a></li>
             <li>LinkedIn : <a class="text-brand-300 hover:underline" href="https://www.linkedin.com/in/sunnoogo-caleb-tapsoba-130584292/" target="_blank" rel="noreferrer">sunnoogo‑caleb‑tapsoba</a></li>
-            <li>Email : <span class="text-slate-400">(ajouter)</span></li>
+            
             </ul>
         </div>
         </div>
