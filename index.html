@@ -1,242 +1,383 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sunnoogo — Blue Team Portfolio</title>
-  <meta name="description" content="Portfolio cybersécurité (Blue Team) : objectifs, projets passés, en cours et à venir." />
-  <!-- Tailwind Play CDN (rapide pour démarrer). Pour un site pro long terme, migrer vers une build Tailwind/Vite. -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            brand: {
-              50: '#ecfeff', 100: '#cffafe', 200: '#a5f3fc', 300: '#67e8f9',
-              400: '#22d3ee', 500: '#06b6d4', 600: '#0891b2', 700: '#0e7490', 800: '#155e75', 900: '#164e63'
+    <!DOCTYPE html>
+    <html lang="fr">
+    <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sunnoogo — Blue Team Portfolio</title>
+    <meta name="description" content="Portfolio cybersécurité (Blue Team) : objectifs, projets passés, en cours et à venir." />
+    <!-- Tailwind Play CDN (rapide pour démarrer). Pour un site pro long terme, migrer vers une build Tailwind/Vite. -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+        theme: {
+            extend: {
+            colors: {
+                brand: {
+                50: '#ecfeff', 100: '#cffafe', 200: '#a5f3fc', 300: '#67e8f9',
+                400: '#22d3ee', 500: '#06b6d4', 600: '#0891b2', 700: '#0e7490', 800: '#155e75', 900: '#164e63'
+                }
             }
-          }
+            }
         }
-      }
-    }
-  </script>
-  <style>
-    /* Effet scanline léger pour vibe SOC */
-    .scanlines { position: relative; }
-    .scanlines:before { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient( to bottom, rgba(255,255,255,0.04), rgba(255,255,255,0.04) 1px, transparent 1px, transparent 3px ); pointer-events:none; }
-    .glow { box-shadow: 0 0 30px rgba(34,211,238,0.25); }
-  </style>
-</head>
-<body class="min-h-screen bg-slate-950 text-slate-100 selection:bg-brand-500/30">
-  <!-- HEADER / HERO -->
-  <header class="scanlines relative overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-b from-slate-900 via-slate-950 to-slate-950"></div>
-    <div class="relative mx-auto max-w-6xl px-6 py-16 lg:py-24">
-      <div class="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+        }
+    </script>
+    <style>
+        /* Effet scanline léger pour vibe SOC */
+        .scanlines { position: relative; }
+        .scanlines:before { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient( to bottom, rgba(255,255,255,0.04), rgba(255,255,255,0.04) 1px, transparent 1px, transparent 3px ); pointer-events:none; }
+        .glow { box-shadow: 0 0 30px rgba(34,211,238,0.25); }
+    </style>
+    </head>
+    <body class="min-h-screen bg-slate-950 text-slate-100 selection:bg-brand-500/30">
+    <!-- HEADER / HERO -->
+    <header class="scanlines relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-slate-900 via-slate-950 to-slate-950"></div>
+        <div class="relative mx-auto max-w-6xl px-6 py-10 lg:py-24">
+        <div class="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+            <div>
+            <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight">
+                <span class="text-brand-300">Sunnoogo</span> — Blue Team Portfolio
+            </h1>
+            <p class="mt-4 max-w-2xl text-slate-300">
+                Ingénierie cybersécurité & cloud · SOC / Blue Team · Détection, réponse, et durcissement.
+            </p>
+            <div class="mt-6 flex flex-wrap gap-3">
+                <a href="#projets" class="glow inline-flex items-center gap-2 rounded-xl bg-brand-600 px-4 py-2 font-semibold hover:bg-brand-500 transition">
+                Explorer les projets
+                </a>
+                <a href="#parcours" class="inline-flex items-center gap-2 rounded-xl border border-slate-700/70 px-4 py-2 font-semibold hover:border-brand-500 transition">
+                Parcours académique
+                </a>
+                <a href="#contact" class="inline-flex items-center gap-2 rounded-xl border border-slate-700/70 px-4 py-2 font-semibold hover:border-brand-500 transition">
+                Me contacter
+                </a>
+            </div>
+            </div>
+            <div class="mt-10 lg:mt-0">
+            <img src="img/CALEB_TAPSOBA.jpg" alt="Sunnoogo avatar" class="w-80 h-65 rounded-full border-4 border-brand-500 mx-auto glow bg-slate-900/70 object-cover" />
+            </div>
+        </div>
+        </div>
+    </header>
+
+    <!-- ABOUT / OBJECTIFS -->
+    <section id="about" class="mx-auto max-w-6xl px-6 py-14">
+        <div class="grid gap-8 md:grid-cols-3">
+        <div class="md:col-span-2">
+            <h2 class="text-2xl md:text-3xl font-bold">À propos</h2>
+            <p class="mt-3 text-slate-300">
+            Je suis passionné par la défense des systèmes d'information : détection d'incidents, analyse de logs, chasse aux menaces,
+            et sécurisation d'infrastructures (Windows/AD, Cloud, Kubernetes). Ce site référence mes objectifs et mes projets (passés, en cours, à venir).
+            </p>
+        </div>
         <div>
-          <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight">
-            <span class="text-brand-300">Sunnoogo</span> — Blue Team Portfolio
-          </h1>
-          <p class="mt-4 max-w-2xl text-slate-300">
-            Ingénierie cybersécurité & cloud · SOC / Blue Team · Détection, réponse, et durcissement.
-          </p>
-          <div class="mt-6 flex flex-wrap gap-3">
-            <a href="#projets" class="glow inline-flex items-center gap-2 rounded-xl bg-brand-600 px-4 py-2 font-semibold hover:bg-brand-500 transition">
-              Explorer les projets
-            </a>
-            <a href="#contact" class="inline-flex items-center gap-2 rounded-xl border border-slate-700/70 px-4 py-2 font-semibold hover:border-brand-500 transition">
-              Me contacter
-            </a>
-          </div>
+            <h3 class="text-xl font-semibold">Objectifs 2025–2026</h3>
+            <ul class="mt-3 space-y-2 text-slate-300 list-disc list-inside">
+            <li>Alternance SOC / Blue Team</li>
+            <li>Consolider AD / SIEM / EDR</li>
+            <li>Automatiser la détection/réponse</li>
+            </ul>
         </div>
-        <div class="mt-10 lg:mt-0">
-          <div class="relative rounded-2xl border border-slate-800 bg-slate-900/50 p-6 glow">
-            <pre class="text-xs md:text-sm text-brand-200 overflow-x-auto"><code>// Live status
-{
-  "focus": "SOC Analyst · Blue Team",
-  "now": "Apprentissage continu & projets lab",
-  "stack": ["Wazuh", "AD/Kerberos", "K8s", "AWS"]
-}</code></pre>
-          </div>
         </div>
-      </div>
-    </div>
-  </header>
+    </section>
 
-  <!-- ABOUT / OBJECTIFS -->
-  <section id="about" class="mx-auto max-w-6xl px-6 py-14">
-    <div class="grid gap-8 md:grid-cols-3">
-      <div class="md:col-span-2">
-        <h2 class="text-2xl md:text-3xl font-bold">À propos</h2>
-        <p class="mt-3 text-slate-300">
-          Je suis passionné par la défense des systèmes d'information : détection d'incidents, analyse de logs, chasse aux menaces,
-          et sécurisation d'infrastructures (Windows/AD, Cloud, Kubernetes). Ce site référence mes objectifs et mes projets (passés, en cours, à venir).
-        </p>
-      </div>
-      <div>
-        <h3 class="text-xl font-semibold">Objectifs 2025–2026</h3>
-        <ul class="mt-3 space-y-2 text-slate-300 list-disc list-inside">
-          <li>Alternance SOC / Blue Team</li>
-          <li>Consolider AD / SIEM / EDR</li>
-          <li>Automatiser la détection/réponse</li>
-        </ul>
-      </div>
-    </div>
-  </section>
+    <!-- PROJETS -->
+    <section id="parcours" class="mx-auto max-w-6xl px-6 py-14 border-t border-slate-800/60">
+        <h2 class="text-2xl md:text-3xl font-bold">Parcours académique</h2>
+        <p class="mt-3 text-slate-300">Un chemin entre rigueur scientifique, ouverture internationale et spécialisation en cybersécurité / cloud.</p>
 
-  <!-- PROJETS -->
-  <section id="projets" class="mx-auto max-w-6xl px-6 py-14 border-t border-slate-800/60">
-    <div class="flex items-end justify-between gap-4">
-      <h2 class="text-2xl md:text-3xl font-bold">Projets</h2>
-      <div class="text-sm text-slate-400">Filtrer :
-        <select id="filter" class="ml-2 rounded-md bg-slate-900 border border-slate-700 px-2 py-1">
-          <option value="all">Tous</option>
-          <option value="past">Passés</option>
-          <option value="current">En cours</option>
-          <option value="future">À venir</option>
-        </select>
-      </div>
-    </div>
-    <div id="projectsGrid" class="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"></div>
-  </section>
+        <div class="relative mt-8 pl-6">
+        <span class="absolute left-0 top-0 h-full w-1 rounded bg-slate-800/60"></span>
 
-  <!-- POSTS LINKEDIN (manuels ou widget tiers) -->
-  <section id="posts" class="mx-auto max-w-6xl px-6 py-14 border-t border-slate-800/60">
-    <h2 class="text-2xl md:text-3xl font-bold">Publications</h2>
-    <p class="mt-3 text-slate-300">Intégrer ici des publications LinkedIn (embed d’un post spécifique) ou un widget d’agrégation.</p>
-    <!-- Exemple d’embed d’un post LinkedIn : remplacez data-url -->
-    <!-- <div class="mt-6">
-      <script src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
-      <div class="mt-2">
-        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:XXXXXXXXXXXX" height="400" width="100%" frameborder="0" allowfullscreen="" title="Post LinkedIn"></iframe>
-      </div>
-    </div> -->
-    <div class="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        <!-- Post 1 -->
-        <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
-            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7317501961153445888" height="400" width="100%" frameborder="0" allowfullscreen="" title="Post LinkedIn 1"></iframe>
+        <!-- Prépa INP-HB -->
+        <div class="relative mb-8">
+            <span class="absolute -left-[9px] top-2 h-4 w-4 rounded-full bg-brand-500 shadow-[0_0_0_4px_rgba(6,182,212,0.25)]"></span>
+            <article class="rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
+            <div class="flex items-center justify-between gap-3">
+                <h3 class="text-lg font-semibold">INP‑HB (MPSI → MP*) — Prépa scientifique</h3>
+                <span class="text-xs px-2 py-1 rounded bg-slate-800 border border-slate-700">Rigueur & Persévérance</span>
+            </div>
+            <p class="mt-2 text-slate-300 text-sm">Maths/Physique avancées, discipline de travail, résilience. Arrivé du Burkina Faso, création d’un noyau d’amis — une vraie famille.</p>
+            <details class="mt-3">
+                <summary class="cursor-pointer text-brand-300 hover:underline">Détails</summary>
+                <ul class="mt-2 list-disc list-inside text-slate-300 text-sm">
+                <li>Approche analytique et tenue du cap face à la charge.</li>
+                <li>Culture scientifique solide pour la suite du cursus.</li>
+                </ul>
+            </details>
+            </article>
+        </div>
+
+        <!-- EFREI Paris -->
+        <div class="relative mb-8">
+            <span class="absolute -left-[9px] top-2 h-4 w-4 rounded-full bg-brand-500 shadow-[0_0_0_4px_rgba(6,182,212,0.25)]"></span>
+            <article class="rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
+            <div class="flex items-center justify-between gap-3">
+                <h3 class="text-lg font-semibold">EFREI Paris — Ingénierie</h3>
+                <span class="text-xs px-2 py-1 rounded bg-slate-800 border border-slate-700">Spécialisation Cyber & Cloud</span>
+            </div>
+            <p class="mt-2 text-slate-300 text-sm">Accès via Euro Graduate Access. Découverte large (programmation, réseaux, BDD, embarqué, cybersécurité) puis choix assumé pour la Blue Team & le cloud.</p>
+            <details class="mt-3">
+                <summary class="cursor-pointer text-brand-300 hover:underline">Ce que j’y ai cultivé</summary>
+                <ul class="mt-2 list-disc list-inside text-slate-300 text-sm">
+                <li>Fondamentaux réseaux / sécurité (AD, Kerberos, SIEM).</li>
+                <li>Pratique cloud (AWS) et conteneurs (Kubernetes).</li>
+                </ul>
+            </details>
+            </article>
+        </div>
+
+        <!-- Semestre en Angleterre -->
+        <div class="relative mb-8">
+            <span class="absolute -left-[9px] top-2 h-4 w-4 rounded-full bg-brand-500 shadow-[0_0_0_4px_rgba(6,182,212,0.25)]"></span>
+            <article class="rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
+            <div class="flex items-center justify-between gap-3">
+                <h3 class="text-lg font-semibold">Semestre en Angleterre — Immersion</h3>
+                <span class="text-xs px-2 py-1 rounded bg-slate-800 border border-slate-700">Anglais & Projet web</span>
+            </div>
+            <p class="mt-2 text-slate-300 text-sm">Cours en anglais, basket, échanges internationaux. Réalisation d’un projet web avec un encadrement de qualité — boost d’envie et de confiance.</p>
+            <details class="mt-3">
+                <summary class="cursor-pointer text-brand-300 hover:underline">Moments clés</summary>
+                <ul class="mt-2 list-disc list-inside text-slate-300 text-sm">
+                <li>Progression linguistique (communication et technique).</li>
+                <li>Travail d’équipe multiculturel.</li>
+                </ul>
+            </details>
+            </article>
+        </div>
+
+        <!-- Stage au Ghana -->
+        <div class="relative mb-8">
+            <span class="absolute -left-[9px] top-2 h-4 w-4 rounded-full bg-brand-500 shadow-[0_0_0_4px_rgba(6,182,212,0.25)]"></span>
+            <article class="rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
+            <div class="flex items-center justify-between gap-3">
+                <h3 class="text-lg font-semibold">Ecobank (Accra, Ghana) — Stage</h3>
+                <span class="text-xs px-2 py-1 rounded bg-slate-800 border border-slate-700">Contexte bancaire</span>
+            </div>
+            <p class="mt-2 text-slate-300 text-sm">Au département epProcess (Technologies) : cas réels de sécurité & d’infrastructure, collaboration en environnement anglophone.</p>
+            <details class="mt-3">
+                <summary class="cursor-pointer text-brand-300 hover:underline">Apprentissages</summary>
+                <ul class="mt-2 list-disc list-inside text-slate-300 text-sm">
+                <li>Adaptabilité, vision globale du risque.</li>
+                <li>Communication avec équipes pluridisciplinaires.</li>
+                </ul>
+            </details>
+            </article>
+        </div>
+
+        <!-- Bonus: compétences & centres d'intérêt -->
+        <div class="relative mb-2">
+            <span class="absolute -left-[9px] top-2 h-4 w-4 rounded-full bg-brand-500 shadow-[0_0_0_4px_rgba(6,182,212,0.25)]"></span>
+            <article class="rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
+            <div class="grid gap-6 md:grid-cols-2">
+                <div>
+                <h4 class="font-semibold">Projets techniques & auto‑formation</h4>
+                <ul class="mt-2 flex flex-wrap gap-2 text-xs">
+                    <li class="px-2 py-1 rounded bg-slate-800 border border-slate-700">Wazuh</li>
+                    <li class="px-2 py-1 rounded bg-slate-800 border border-slate-700">Active Directory</li>
+                    <li class="px-2 py-1 rounded bg-slate-800 border border-slate-700">Kubernetes</li>
+                    <li class="px-2 py-1 rounded bg-slate-800 border border-slate-700">AWS</li>
+                    <li class="px-2 py-1 rounded bg-slate-800 border border-slate-700">WebHawk</li>
+                    <li class="px-2 py-1 rounded bg-slate-800 border border-slate-700">Password Cracker</li>
+                </ul>
+                </div>
+                <div>
+                <h4 class="font-semibold">Langues & intérêts</h4>
+                <ul class="mt-2 space-y-1 text-slate-300 text-sm">
+                    <li>Français & Anglais (TOEIC 935)</li>
+                    <li>Basketball, piano, engagements communautaires</li>
+                </ul>
+                </div>
+            </div>
+            </article>
+        </div>
+        </div>
+    </section>
+
+    <section id="projets" class="mx-auto max-w-6xl px-6 py-14 border-t border-slate-800/60">
+        <div class="flex items-end justify-between gap-4">
+        <h2 class="text-2xl md:text-3xl font-bold">Projets</h2>
+        <div class="text-sm text-slate-400">Filtrer :
+            <select id="filter" class="ml-2 rounded-md bg-slate-900 border border-slate-700 px-2 py-1">
+            <option value="all">Tous</option>
+            <option value="past">Passés</option>
+            <option value="current">En cours</option>
+            <option value="future">À venir</option>
+            </select>
+        </div>
+        </div>
+        <div id="projectsGrid" class="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"></div>
+    </section>
+
+    <!-- POSTS LINKEDIN (manuels ou widget tiers) -->
+    <!-- rgrgr: -->
+    <!-- <section id="posts" class="mx-auto max-w-6xl px-6 py-14 border-t border-slate-800/60">
+        <h2 class="text-2xl md:text-3xl font-bold">Publications</h2>
+        <p class="mt-3 text-slate-300">Intégrer ici des publications LinkedIn (embed d’un post spécifique) ou un widget d’agrégation.</p> -->
+        <!-- Exemple d’embed d’un post LinkedIn : remplacez data-url -->
+        <!-- <div class="mt-6">
+        <script src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+        <div class="mt-2">
+            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:XXXXXXXXXXXX" height="400" width="100%" frameborder="0" allowfullscreen="" title="Post LinkedIn"></iframe>
+        </div>
+        </div> -->
+        <!-- <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
+            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7309903230824534042" height="400" width="100%" frameborder="0" allowfullscreen="" title="Post LinkedIn 2"></iframe>
             <a href="https://www.linkedin.com/posts/sunnoogo-caleb-tapsoba-130584292_cybersecurity-powershell-python-activity-7317501961153445888-G6Hl?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEbrf7QBErHgeqC6eJlTtq4QeR5f-8hv4HE" target="_blank" rel="noopener" class="block mt-2 text-brand-300 hover:underline text-sm">Voir sur LinkedIn</a>
         </div>
-        <!-- Post 2 -->
         <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
-            <iframe src="https://www.linkedin.com/posts/sunnoogo-caleb-tapsoba-130584292_cybersaezcuritaez-hackingaezthique-daezveloppementsaezcurisaez-activity-7309903230824534042-xh9M?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEbrf7QBErHgeqC6eJlTtq4QeR5f-8hv4HE" height="400" width="100%" frameborder="0" allowfullscreen="" title="Post LinkedIn 2"></iframe>
+            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7310270014714961920?collapsed=1" height="542" width="504" frameborder="0" allowfullscreen="" title="Post intégré"></iframe>
+            <a href="https://www.linkedin.com/posts/sunnoogo-caleb-tapsoba-130584292_wannacry-moveit-cybersaezcuritaez-activity-7312428487728857089-_Ner?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEbrf7QBErHgeqC6eJlTtq4QeR5f-8hv4HE" target="_blank" rel="noopener" class="block mt-2 text-brand-300 hover:underline text-sm">Voir sur LinkedIn</a>
+        </div>
+        <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
+            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7309903230824534042" height="400" width="100%" frameborder="0" allowfullscreen="" title="Post LinkedIn 2"></iframe>
             <a href="https://www.linkedin.com/posts/sunnoogo-caleb-tapsoba-130584292_cybersaezcuritaez-hackingaezthique-daezveloppementsaezcurisaez-activity-7309903230824534042-xh9M?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEbrf7QBErHgeqC6eJlTtq4QeR5f-8hv4HE" target="_blank" rel="noopener" class="block mt-2 text-brand-300 hover:underline text-sm">Voir sur LinkedIn</a>
         </div>
-        <!-- Exemple Post 3 -->
         <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
-            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:EXEMPLEPOSTID" height="400" width="100%" frameborder="0" allowfullscreen="" title="Post LinkedIn Exemple"></iframe>
-            <a href="https://www.linkedin.com/posts/LIEN_DU_POST_EXEMPLE" target="_blank" rel="noopener" class="block mt-2 text-brand-300 hover:underline text-sm">Voir sur LinkedIn</a>
-            <p class="mt-1 text-xs text-slate-400">Remplacez EXEMPLEPOSTID et LIEN_DU_POST_EXEMPLE par l’ID et le lien de votre post.</p>
+            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7309903230824534042" height="400" width="100%" frameborder="0" allowfullscreen="" title="Post LinkedIn 2"></iframe>
+            <a href="https://www.linkedin.com/posts/sunnoogo-caleb-tapsoba-130584292_cybersaezcuritaez-hackingaezthique-daezveloppementsaezcurisaez-activity-7309903230824534042-xh9M?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEbrf7QBErHgeqC6eJlTtq4QeR5f-8hv4HE" target="_blank" rel="noopener" class="block mt-2 text-brand-300 hover:underline text-sm">Voir sur LinkedIn</a>
         </div>
-    </div>
-  </section>
+        <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
+            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7309903230824534042" height="400" width="100%" frameborder="0" allowfullscreen="" title="Post LinkedIn 2"></iframe>
+            <a href="https://www.linkedin.com/posts/sunnoogo-caleb-tapsoba-130584292_cybersaezcuritaez-hackingaezthique-daezveloppementsaezcurisaez-activity-7309903230824534042-xh9M?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEbrf7QBErHgeqC6eJlTtq4QeR5f-8hv4HE" target="_blank" rel="noopener" class="block mt-2 text-brand-300 hover:underline text-sm">Voir sur LinkedIn</a>
+        </div>
+        <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
+            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7309903230824534042" height="400" width="100%" frameborder="0" allowfullscreen="" title="Post LinkedIn 2"></iframe>
+            <a href="https://www.linkedin.com/posts/sunnoogo-caleb-tapsoba-130584292_cybersaezcuritaez-hackingaezthique-daezveloppementsaezcurisaez-activity-7309903230824534042-xh9M?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEbrf7QBErHgeqC6eJlTtq4QeR5f-8hv4HE" target="_blank" rel="noopener" class="block mt-2 text-brand-300 hover:underline text-sm">Voir sur LinkedIn</a>
+        </div>
 
-  <!-- CONTACT -->
-  <section id="contact" class="mx-auto max-w-6xl px-6 py-14 border-t border-slate-800/60">
-    <h2 class="text-2xl md:text-3xl font-bold">Contact</h2>
-    <div class="mt-4 grid gap-6 md:grid-cols-2">
-      <form class="rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
-        <label class="block text-sm text-slate-400">Nom</label>
-        <input class="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2" placeholder="Votre nom" />
-        <label class="mt-4 block text-sm text-slate-400">Email</label>
-        <input type="email" class="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2" placeholder="vous@mail.com" />
-        <label class="mt-4 block text-sm text-slate-400">Message</label>
-        <textarea class="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2" rows="5" placeholder="Votre message..."></textarea>
-        <button type="button" class="mt-6 inline-flex items-center rounded-lg bg-brand-600 px-4 py-2 font-semibold hover:bg-brand-500">Envoyer</button>
-        <p class="mt-3 text-xs text-slate-400">Astuce : pour un vrai envoi, brancher Formspree/Netlify Forms/Vercel functions.</p>
-      </form>
-      <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
-        <h3 class="font-semibold">Réseaux</h3>
-        <ul class="mt-3 space-y-2 text-slate-300">
-          <li>GitHub : <a class="text-brand-300 hover:underline" href="https://github.com/Sunnoogo77" target="_blank" rel="noreferrer">@Sunnoogo77</a></li>
-          <li>LinkedIn : <span class="text-slate-400">(ajouter l’URL du profil)</span></li>
-          <li>Email : <span class="text-slate-400">(ajouter)</span></li>
-        </ul>
-      </div>
-    </div>
-  </section>
+    </section> -->
 
-  <footer class="border-t border-slate-800/60">
-    <div class="mx-auto max-w-6xl px-6 py-8 text-sm text-slate-400">
-      © <span id="year"></span> Sunnoogo — Fait avec Tailwind. Déployé gratuitement sur GitHub Pages.
-    </div>
-  </footer>
+    <section id="posts" class="mx-auto max-w-6xl px-6 py-14 border-t border-slate-800/60">
+        <h2 class="text-2xl md:text-3xl font-bold">Publications</h2>
+        <p class="mt-3 text-slate-300">Intégrer ici des publications LinkedIn (embed d’un post spécifique) ou un widget d’agrégation.</p>
+        <!-- Exemple d’embed d’un post LinkedIn : remplacez data-url -->
+        <!-- <div class="mt-6">
+        <script src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+        <div class="mt-2">
+            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:XXXXXXXXXXXX" height="400" width="100%" frameborder="0" allowfullscreen="" title="Post LinkedIn"></iframe>
+        </div>
+        </div> -->
+        <div class="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <!-- Post 1 -->
+        <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
+            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7309903230824534042" height="400" width="100%" frameborder="0" allowfullscreen="" title="Post LinkedIn 2"></iframe>
+            <a href="https://www.linkedin.com/posts/sunnoogo-caleb-tapsoba-130584292_cybersecurity-powershell-python-activity-7317501961153445888-G6Hl?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEbrf7QBErHgeqC6eJlTtq4QeR5f-8hv4HE" target="_blank" rel="noopener" class="block mt-2 text-brand-300 hover:underline text-sm">Voir sur LinkedIn</a>
+        </div>
+        <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
+            <!-- <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7309903230824534042" height="400" width="100%" frameborder="0" allowfullscreen="" title="Post LinkedIn 2"></iframe> -->
+            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7310270014714961920?collapsed=1" height="542" width="504" frameborder="0" allowfullscreen="" title="Post intégré"></iframe>
+            <a href="https://www.linkedin.com/posts/sunnoogo-caleb-tapsoba-130584292_wannacry-moveit-cybersaezcuritaez-activity-7312428487728857089-_Ner?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEbrf7QBErHgeqC6eJlTtq4QeR5f-8hv4HE" target="_blank" rel="noopener" class="block mt-2 text-brand-300 hover:underline text-sm">Voir sur LinkedIn</a>
+        </div>
+            <!-- Exemple Post 3 -->
+            <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
+                <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:EXEMPLEPOSTID" height="400" width="100%" frameborder="0" allowfullscreen="" title="Post LinkedIn Exemple"></iframe>
+                <a href="https://www.linkedin.com/posts/LIEN_DU_POST_EXEMPLE" target="_blank" rel="noopener" class="block mt-2 text-brand-300 hover:underline text-sm">Voir sur LinkedIn</a>
+                <p class="mt-1 text-xs text-slate-400">Remplacez EXEMPLEPOSTID et LIEN_DU_POST_EXEMPLE par l’ID et le lien de votre post.</p>
+            </div>
+        </div>
+    </section>
 
-  <!-- DONNÉES PROJETS : modifiez ce JSON pour mettre à jour le site sans toucher au HTML -->
-  <script>
-    const projects = [
-      {
-        title: "HIDS 2.0",
-        status: "current", // past | current | future
-        tags: ["Blue Team", "Python", "Flask", "EDR-like"],
-        desc: "HIDS Python avec API, monitoring fichiers/IP, alertes email.",
-        link: "https://github.com/Sunnoogo77/HIDS2.0"
-      },
-      {
-        title: "Active Directory Lab",
-        status: "past",
-        tags: ["AD", "Kerberos", "GPO", "Hardening"],
-        desc: "Lab d’entreprise : DC, RBAC, GPO sécu, audits et journaux.",
-        link: "#"
-      },
-      {
-        title: "WebHawk",
-        status: "past",
-        tags: ["Scanner", "Web", "Blue Team"],
-        desc: "Scanner web & détection de vulnérabilités, rapports JSON/HTML.",
-        link: "#"
-      },
-      {
-        title: "SOC Playbook Pack",
-        status: "future",
-        tags: ["SIEM", "Use cases", "MITRE"],
-        desc: "Pack de playbooks (MISP/OTX), corrélations et runbooks d’escalade.",
-        link: "#"
-      }
-    ];
+    <!-- CONTACT -->
+    <section id="contact" class="mx-auto max-w-6xl px-6 py-14 border-t border-slate-800/60">
+        <h2 class="text-2xl md:text-3xl font-bold">Contact</h2>
+        <div class="mt-4 grid gap-6 md:grid-cols-2">
+        <form class="rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
+            <label class="block text-sm text-slate-400">Nom</label>
+            <input class="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2" placeholder="Votre nom" />
+            <label class="mt-4 block text-sm text-slate-400">Email</label>
+            <input type="email" class="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2" placeholder="vous@mail.com" />
+            <label class="mt-4 block text-sm text-slate-400">Message</label>
+            <textarea class="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2" rows="5" placeholder="Votre message..."></textarea>
+            <button type="button" class="mt-6 inline-flex items-center rounded-lg bg-brand-600 px-4 py-2 font-semibold hover:bg-brand-500">Envoyer</button>
+            <p class="mt-3 text-xs text-slate-400">Astuce : pour un vrai envoi, brancher Formspree/Netlify Forms/Vercel functions.</p>
+        </form>
+        <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
+            <h3 class="font-semibold">Réseaux</h3>
+            <ul class="mt-3 space-y-2 text-slate-300">
+            <li>GitHub : <a class="text-brand-300 hover:underline" href="https://github.com/Sunnoogo77" target="_blank" rel="noreferrer">@Sunnoogo77</a></li>
+            <li>LinkedIn : <a class="text-brand-300 hover:underline" href="https://www.linkedin.com/in/sunnoogo-caleb-tapsoba-130584292/" target="_blank" rel="noreferrer">sunnoogo‑caleb‑tapsoba</a></li>
+            <li>Email : <span class="text-slate-400">(ajouter)</span></li>
+            </ul>
+        </div>
+        </div>
+    </section>
 
-    function renderCards(filter = 'all') {
-      const grid = document.getElementById('projectsGrid');
-      grid.innerHTML = '';
-      projects.filter(p => filter === 'all' || p.status === filter).forEach(p => {
-        const card = document.createElement('article');
-        card.className = 'rounded-2xl border border-slate-800 bg-slate-900/60 p-5 hover:border-brand-500 transition';
-        card.innerHTML = `
-          <div class="flex items-center justify-between">
-            <h3 class="text-lg font-semibold">${p.title}</h3>
-            <span class="text-xs px-2 py-1 rounded bg-slate-800 border border-slate-700">${p.status}</span>
-          </div>
-          <p class="mt-2 text-slate-300 text-sm">${p.desc}</p>
-          <div class="mt-3 flex flex-wrap gap-2">${p.tags.map(t => `<span class='text-xs px-2 py-1 rounded bg-slate-800 border border-slate-700'>${t}</span>`).join('')}</div>
-          <a class="mt-4 inline-block text-brand-300 hover:underline" href="${p.link}" target="_blank" rel="noreferrer">Voir le projet →</a>
-        `;
-        grid.appendChild(card);
-      });
-    }
+    <footer class="border-t border-slate-800/60">
+        <div class="mx-auto max-w-6xl px-6 py-8 text-sm text-slate-400">
+        © <span id="year"></span> Sunnoogo — Fait avec Tailwind. Déployé gratuitement sur GitHub Pages.
+        </div>
+    </footer>
 
-    document.getElementById('filter').addEventListener('change', (e) => {
-      renderCards(e.target.value);
-    });
+    <!-- DONNÉES PROJETS : modifiez ce JSON pour mettre à jour le site sans toucher au HTML -->
+    <script>
+        const projects = [
+        {
+            title: "HIDS 2.0",
+            status: "current", // past | current | future
+            tags: ["Blue Team", "Python", "Flask", "EDR-like"],
+            desc: "HIDS Python avec API, monitoring fichiers/IP, alertes email.",
+            link: "https://github.com/Sunnoogo77/HIDS2.0"
+        },
+        {
+            title: "Active Directory Lab",
+            status: "past",
+            tags: ["AD", "Kerberos", "GPO", "Hardening"],
+            desc: "Lab d’entreprise : DC, RBAC, GPO sécu, audits et journaux.",
+            link: "#"
+        },
+        {
+            title: "WebHawk",
+            status: "past",
+            tags: ["Scanner", "Web", "Blue Team"],
+            desc: "Scanner web & détection de vulnérabilités, rapports JSON/HTML.",
+            link: "#"
+        },
+        {
+            title: "SOC Playbook Pack",
+            status: "future",
+            tags: ["SIEM", "Use cases", "MITRE"],
+            desc: "Pack de playbooks (MISP/OTX), corrélations et runbooks d’escalade.",
+            link: "#"
+        }
+        ];
 
-    document.getElementById('year').textContent = new Date().getFullYear();
-    renderCards();
-  </script>
+        function renderCards(filter = 'all') {
+        const grid = document.getElementById('projectsGrid');
+        grid.innerHTML = '';
+        projects.filter(p => filter === 'all' || p.status === filter).forEach(p => {
+            const card = document.createElement('article');
+            card.className = 'rounded-2xl border border-slate-800 bg-slate-900/60 p-5 hover:border-brand-500 transition';
+            card.innerHTML = `
+            <div class="flex items-center justify-between">
+                <h3 class="text-lg font-semibold">${p.title}</h3>
+                <span class="text-xs px-2 py-1 rounded bg-slate-800 border border-slate-700">${p.status}</span>
+            </div>
+            <p class="mt-2 text-slate-300 text-sm">${p.desc}</p>
+            <div class="mt-3 flex flex-wrap gap-2">${p.tags.map(t => `<span class='text-xs px-2 py-1 rounded bg-slate-800 border border-slate-700'>${t}</span>`).join('')}</div>
+            <a class="mt-4 inline-block text-brand-300 hover:underline" href="${p.link}" target="_blank" rel="noreferrer">Voir le projet →</a>
+            `;
+            grid.appendChild(card);
+        });
+        }
 
-  <!--
-  =======================
-  DÉPLOIEMENT (résumé) 
-  1) Créez un dépôt GitHub (ex: portfolio) et ajoutez ce fichier index.html à la racine.
-  2) Activez GitHub Pages (Settings > Pages > Deploy from a branch > main / root).
-  3) L’URL publique sera du type https://<votre_user>.github.io/portfolio/
-  4) Pour mettre à jour : modifiez le tableau "projects" ci-dessus et poussez sur main.
-  Astuce : plus tard, migrer vers une stack Vite/Tailwind, ou Next.js/Astro si besoin.
-  =======================
-  -->
-</body>
-</html>
-<!--
-  Ce code HTML est un portfolio simple pour un analyste SOC / Blue Team.
-  Il utilise Tailwind CSS pour le style et inclut des sections pour les projets, publications et contact.
-  Les projets sont gérés via un tableau JSON pour faciliter la mise à jour sans toucher au HTML.
-  -->
+        document.getElementById('filter').addEventListener('change', (e) => {
+        renderCards(e.target.value);
+        });
+
+        document.getElementById('year').textContent = new Date().getFullYear();
+        renderCards();
+    </script>
+
+    <!--
+    =======================
+    DÉPLOIEMENT (résumé) 
+    1) Créez un dépôt GitHub (ex: portfolio) et ajoutez ce fichier index.html à la racine.
+    2) Activez GitHub Pages (Settings > Pages > Deploy from a branch > main / root).
+    3) L’URL publique sera du type https://<votre_user>.github.io/portfolio/
+    4) Pour mettre à jour : modifiez le tableau "projects" ci-dessus et poussez sur main.
+    Astuce : plus tard, migrer vers une stack Vite/Tailwind, ou Next.js/Astro si besoin.
+    =======================
+    -->
+    </body>
+    </html>
