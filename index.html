@@ -29,24 +29,28 @@
 
         /* Scrollbar personnalisée pour les sections posts et parcours */
         #posts .scrollable::-webkit-scrollbar,
-        #parcours .scrollable::-webkit-scrollbar {
+        #parcours .scrollable::-webkit-scrollbar,
+        #projets .scrollable::-webkit-scrollbar {
                 width: 5px;
         }
 
         #posts .scrollable::-webkit-scrollbar-track,
-        #parcours .scrollable::-webkit-scrollbar-track {
+        #parcours .scrollable::-webkit-scrollbar-track,
+        #projets .scrollable::-webkit-scrollbar-track {
                 background: transparent;
         }
 
         #posts .scrollable::-webkit-scrollbar-thumb,
-        #parcours .scrollable::-webkit-scrollbar-thumb {
+        #parcours .scrollable::-webkit-scrollbar-thumb,
+        #projets .scrollable::-webkit-scrollbar-thumb {
                 background: rgba(255, 255, 255, 0.3);
                 border-radius: 4px;
                 transition: background 0.3s ease;
         }
 
         #posts .scrollable::-webkit-scrollbar-thumb:hover,
-        #parcours .scrollable::-webkit-scrollbar-thumb:hover {
+        #parcours .scrollable::-webkit-scrollbar-thumb:hover,
+        #projets .scrollable::-webkit-scrollbar-thumb:hover {
                 background: rgba(255, 255, 255, 0.6);
         }
     </style>
@@ -104,7 +108,7 @@
         </div>
     </section>
 
-    <!-- PROJETS -->
+    
     <section id="parcours" class="mx-auto max-w-6xl px-6 py-14 border-t border-slate-800/60">
         <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-8">
             <h2 class="text-2xl md:text-3xl font-bold">Parcours académique</h2>
@@ -224,19 +228,21 @@
             </div>
         </div>
     </section>
+    <!-- PROJETS -->
+        <!-- <section id="parcours" class="mx-auto max-w-6xl px-6 py-14 border-t border-slate-800/60"></section> -->
     <section id="projets" class="mx-auto max-w-6xl px-6 py-14 border-t border-slate-800/60">
         <div class="flex items-end justify-between gap-4">
-        <h2 class="text-2xl md:text-3xl font-bold">Projets</h2>
-        <div class="text-sm text-slate-400">Filtrer :
-            <select id="filter" class="ml-2 rounded-md bg-slate-900 border border-slate-700 px-2 py-1">
-            <option value="all">Tous</option>
-            <option value="past">Passés</option>
-            <option value="current">En cours</option>
-            <option value="future">À venir</option>
-            </select>
+            <h2 class="text-2xl md:text-3xl font-bold">Projets</h2>
+            <div class="text-sm text-slate-400">Filtrer :
+                <select id="filter" class="ml-2 rounded-md bg-slate-900 border border-slate-700 px-2 py-1">
+                <option value="all">Tous</option>
+                <option value="past">Passés</option>
+                <option value="current">En cours</option>
+                <option value="future">À venir</option>
+                </select>
+            </div>
         </div>
-        </div>
-        <div id="projectsGrid" class="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"></div>
+        <div id="projectsGrid" class="scrollable mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"  style="max-height: 600px; overflow-y: auto; padding-right: 8px;"></div>
     </section>
 
     <!-- POSTS LINKEDIN (manuels ou widget tiers) -->
@@ -344,34 +350,111 @@
     <!-- DONNÉES PROJETS : modifiez ce JSON pour mettre à jour le site sans toucher au HTML -->
     <script>
         const projects = [
-        {
-            title: "HIDS 2.0",
-            status: "current", // past | current | future
-            tags: ["Blue Team", "Python", "Flask", "EDR-like"],
-            desc: "HIDS Python avec API, monitoring fichiers/IP, alertes email.",
-            link: "https://github.com/Sunnoogo77/HIDS2.0"
-        },
-        {
-            title: "Active Directory Lab",
-            status: "past",
-            tags: ["AD", "Kerberos", "GPO", "Hardening"],
-            desc: "Lab d’entreprise : DC, RBAC, GPO sécu, audits et journaux.",
-            link: "#"
-        },
-        {
-            title: "WebHawk",
-            status: "past",
-            tags: ["Scanner", "Web", "Blue Team"],
-            desc: "Scanner web & détection de vulnérabilités, rapports JSON/HTML.",
-            link: "#"
-        },
-        {
-            title: "SOC Playbook Pack",
-            status: "future",
-            tags: ["SIEM", "Use cases", "MITRE"],
-            desc: "Pack de playbooks (MISP/OTX), corrélations et runbooks d’escalade.",
-            link: "#"
-        }
+            {
+                title: "HIDS 2.0",
+                status: "current", // past | current | future
+                tags: ["Blue Team", "Python", "Flask", "EDR-like"],
+                desc: "HIDS Python avec API, monitoring fichiers/IP, alertes email.",
+                link: "https://github.com/Sunnoogo77/HIDS2.0"
+            },
+            {
+                title: "Active Directory Lab",
+                status: "past",
+                tags: ["AD", "Kerberos", "GPO", "Hardening"],
+                desc: "Lab d’entreprise : DC, RBAC, GPO sécu, audits et journaux.",
+                link: "#"
+            },
+            {
+                title: "WebHawk",
+                status: "past",
+                tags: ["Scanner", "Web", "Blue Team"],
+                desc: "Scanner web & détection de vulnérabilités, rapports JSON/HTML.",
+                link: "#"
+            },
+            {
+                title: "SOC Playbook Pack",
+                status: "future",
+                tags: ["SIEM", "Use cases", "MITRE"],
+                desc: "Pack de playbooks (MISP/OTX), corrélations et runbooks d’escalade.",
+                link: "#"
+            },
+            {
+                title: "WebHawk",
+                status: "past",
+                tags: ["Python","Scanner","Web","Docker","Education","Blue Team"],
+                desc: "Scanner éducatif de vulnérabilités web (SQLi, XSS, LFI, IDOR, CSRF, SSRF, RCE), rapports JSON, modes CLI/Interactif, conteneurisé.",
+                link: "https://github.com/Sunnoogo77/WebHawk"
+            },
+            {
+                title: "HIDS (Host-Based IDS)",
+                status: "current",
+                tags: ["PowerShell","Windows","HIDS","Blue Team"],
+                desc: "Détection sur hôte en PowerShell : surveille activités et patterns suspects, configuration & artefacts Blue Team.",
+                link: "https://github.com/Sunnoogo77/HIDS"
+            },
+            {
+                title: "ASTSU – Advanced Security Testing & Scanning Utility",
+                status: "past",
+                tags: ["Python","Réseau","Scanner","Docker"],
+                desc: "Scan ports TCP/UDP, fingerprint OS, mode furtif, découverte d’hôtes. Image Docker & alias CLI faciles.",
+                link: "https://github.com/Sunnoogo77/ASTSU"
+            },
+            {
+                title: "VaultRoom",
+                status: "current",
+                tags: ["Flask","Python","TLS","Chat","Web"],
+                desc: "Plateforme de communication sécurisée : auth, discussions privées, TLS/SSL, archi prête pour Socket.IO.",
+                link: "https://github.com/Sunnoogo77/VaultRoom"
+            },
+            {
+                title: "MFA – Multi-Factor Authentication",
+                status: "past",
+                tags: ["Node.js","Express","React","2FA","Passport","Speakeasy"],
+                desc: "Système d’authentification multi-facteurs (password + TOTP). Backend Express/Passport, frontend React.",
+                link: "https://github.com/Sunnoogo77/MFA"
+            },
+            {
+                title: "Packet Sniffing (Scapy + Supabase)",
+                status: "past",
+                tags: ["Python","Scapy","Supabase","PostgreSQL","Réseau","Monitoring"],
+                desc: "Capture et analyse de paquets en temps réel, stockage cloud Supabase, schémas SQL et API prévus.",
+                link: "https://github.com/Sunnoogo77/Packet_Sniffing"
+            },
+            {
+                title: "Mini Cryptographie Web",
+                status: "past",
+                tags: ["Python","Flask","React","Crypto","Web"],
+                desc: "Chiffrement/déchiffrement de textes et fichiers, démo de force brute, backend Flask + frontend React.",
+                link: "https://github.com/Sunnoogo77/file-text-encryptor"
+            },
+            {
+                title: "Password Cracking (outil + rapport)",
+                status: "past",
+                tags: ["Python","PyQt5","Passwords","Education"],
+                desc: "Outil de craquage (brute force, dictionnaire, masque, hybride) avec GUI PyQt5 et rapport de sensibilisation.",
+                link: "https://github.com/Sunnoogo77/Password-Cracking"
+            },
+            {
+                title: "Cybersécurité vs Sécurité de l’Information",
+                status: "past",
+                tags: ["Education","Infosec","Rédaction"],
+                desc: "Comparatif pédagogique avec ressources & supports pour publication LinkedIn.",
+                link: "https://github.com/Sunnoogo77/Cybersecurity_Infosec"
+            },
+            {
+                title: "Wazuh x Sysmon – Lab Blue Team",
+                status: "past",
+                tags: ["Wazuh","Sysmon","Windows","Blue Team","Lab"],
+                desc: "Guide de mise en place Sysmon + scénarios de simulation (ransomware behaviors) pour générer des alertes dans Wazuh.",
+                link: "https://github.com/Sunnoogo77/test-for-wazuh"
+            },
+            {
+                title: "Portfolio (site)",
+                status: "current",
+                tags: ["HTML","GitHub Pages","UI"],
+                desc: "Site personnel Blue Team : sections À propos, Objectifs, Projets, Parcours, Publications & Contact.",
+                link: "https://github.com/Sunnoogo77/portfolio"
+            }
         ];
 
         function renderCards(filter = 'all') {
