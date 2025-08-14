@@ -108,126 +108,180 @@
         </div>
     </section>
 
-    
     <section id="parcours" class="mx-auto max-w-6xl px-6 py-14 border-t border-slate-800/60">
         <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-8">
             <h2 class="text-2xl md:text-3xl font-bold">Parcours académique</h2>
-            <p class="mt-3 text-slate-300">Un chemin entre rigueur scientifique, ouverture internationale et spécialisation en cybersécurité / cloud.</p>
+            <p class="mt-3 text-slate-300">
+            Un chemin entre rigueur scientifique, ouverture internationale et spécialisation en cybersécurité / cloud.
+            </p>
 
-            <div 
-                class="relative scrollable mt-8 pl-6"
-                style="max-height: 300px; overflow-y: auto;">
+            <div class="relative scrollable mt-8 pl-6" style="max-height: 300px; overflow-y: auto;">
+            <!-- <span class="absolute left-0 top-0 h-full w-1 rounded bg-slate-800/60"></span> -->
 
-                <!-- <span class="absolute left-0 top-0  h-full w-1 rounded bg-slate-800/60"></span> -->
-
-                <!-- Prépa INP-HB -->
-                <div class="relative mb-8">
-                    <span class="absolute -left-[9px] top-2 h-4 w-4 rounded-full bg-brand-500 shadow-[0_0_0_4px_rgba(6,182,212,0.25)]"></span>
-                    <article class="rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
-                    <div class="flex items-center justify-between gap-3">
-                        <h3 class="text-lg font-semibold">INP‑HB (MPSI → MP*) — Prépa scientifique</h3>
-                        <span class="text-xs px-2 py-1 rounded bg-slate-800 border border-slate-700">Rigueur & Persévérance</span>
+            <!-- Prépa INP-HB -->
+            <div class="relative mb-8">
+                <span class="absolute -left-[9px] top-2 h-4 w-4 rounded-full bg-brand-500 shadow-[0_0_0_4px_rgba(6,182,212,0.25)]"></span>
+                <article class="rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
+                <!-- Ligne du haut : titre/badge à gauche, logos/drapeau à droite -->
+                <div class="flex items-start justify-between gap-3">
+                    <div class="min-w-0">
+                    <div class="flex items-center gap-3">
+                        <h3 class="text-lg font-semibold">INP-HB (MPSI → MP*) — Prépa scientifique</h3>
+                        <span class="text-xs px-2 py-1 rounded bg-slate-800 border border-slate-700">Rigueur &amp; Persévérance</span>
                     </div>
-                    <p class="mt-2 text-slate-300 text-sm">Maths/Physique avancées, discipline de travail, résilience. Arrivé du Burkina Faso, création d’un noyau d’amis — une vraie famille.</p>
-                    <details class="mt-3">
-                        <summary class="cursor-pointer text-brand-300 hover:underline">Détails</summary>
-                        <ul class="mt-2 list-disc list-inside text-slate-300 text-sm">
-                        <li>Approche analytique et tenue du cap face à la charge.</li>
-                        <li>Culture scientifique solide pour la suite du cursus.</li>
-                        </ul>
-                    </details>
-                    </article>
+                    </div>
+                    <div class="flex items-center gap-5 shrink-0">
+                    <!-- Logo établissement -->
+                    <img src="img/logos/inphb.png" alt="INP-HB" class="h-10 w-auto object-contain opacity-90 hover:opacity-100 transition"
+                        onerror="this.style.display='none'">
+                    <!-- Drapeau pays -->
+                    <img src="img/flags/ci.png" alt="Côte d’Ivoire" class="h-6 w-10 rounded-sm ring-1 ring-slate-700"
+                        onerror="this.style.display='none'">
+                    </div>
                 </div>
 
-                <!-- EFREI Paris -->
-                <div class="relative mb-8">
-                    <span class="absolute -left-[9px] top-2 h-4 w-4 rounded-full bg-brand-500 shadow-[0_0_0_4px_rgba(6,182,212,0.25)]"></span>
-                    <article class="rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
-                    <div class="flex items-center justify-between gap-3">
+                <p class="mt-2 text-slate-300 text-sm">
+                    Maths/Physique avancées, discipline de travail, résilience. Arrivé du Burkina Faso, création d’un noyau d’amis — une vraie famille.
+                </p>
+                <details class="mt-3">
+                    <summary class="cursor-pointer text-brand-300 hover:underline">Détails</summary>
+                    <ul class="mt-2 list-disc list-inside text-slate-300 text-sm">
+                    <li>Approche analytique et tenue du cap face à la charge.</li>
+                    <li>Culture scientifique solide pour la suite du cursus.</li>
+                    </ul>
+                </details>
+                </article>
+            </div>
+
+            <!-- EFREI Paris -->
+            <div class="relative mb-8">
+                <span class="absolute -left-[9px] top-2 h-4 w-4 rounded-full bg-brand-500 shadow-[0_0_0_4px_rgba(6,182,212,0.25)]"></span>
+                <article class="rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
+                <div class="flex items-start justify-between gap-3">
+                    <div class="min-w-0">
+                    <div class="flex items-center gap-3">
                         <h3 class="text-lg font-semibold">EFREI Paris — Ingénierie</h3>
-                        <span class="text-xs px-2 py-1 rounded bg-slate-800 border border-slate-700">Spécialisation Cyber & Cloud</span>
+                        <span class="text-xs px-2 py-1 rounded bg-slate-800 border border-slate-700">Spécialisation Cyber &amp; Cloud</span>
                     </div>
-                    <p class="mt-2 text-slate-300 text-sm">Accès via Euro Graduate Access. Découverte large (programmation, réseaux, BDD, embarqué, cybersécurité) puis choix assumé pour la Blue Team & le cloud.</p>
-                    <details class="mt-3">
-                        <summary class="cursor-pointer text-brand-300 hover:underline">Ce que j’y ai cultivé</summary>
-                        <ul class="mt-2 list-disc list-inside text-slate-300 text-sm">
-                        <li>Fondamentaux réseaux / sécurité (AD, Kerberos, SIEM).</li>
-                        <li>Pratique cloud (AWS) et conteneurs (Kubernetes).</li>
-                        </ul>
-                    </details>
-                    </article>
+                    </div>
+                    <div class="flex items-center gap-5 shrink-0">
+                    <img src="img/logos/efrei.png" alt="EFREI Paris" class="h-6 w-auto object-contain opacity-90 hover:opacity-100 transition"
+                        onerror="this.style.display='none'">
+                    <img src="img/flags/fr.png" alt="France" class="h-6 w-10 rounded-sm ring-1 ring-slate-700"
+                        onerror="this.style.display='none'">
+                    </div>
                 </div>
 
-                <!-- <span class="absolute left-0 top-0  h-full w-1 rounded bg-slate-800/60"></span> -->
+                <p class="mt-2 text-slate-300 text-sm">
+                    Accès via Euro Graduate Access. Découverte large (programmation, réseaux, BDD, embarqué, cybersécurité) puis choix assumé pour la Blue Team &amp; le cloud.
+                </p>
+                <details class="mt-3">
+                    <summary class="cursor-pointer text-brand-300 hover:underline">Ce que j’y ai cultivé</summary>
+                    <ul class="mt-2 list-disc list-inside text-slate-300 text-sm">
+                    <li>Fondamentaux réseaux / sécurité (AD, Kerberos, SIEM).</li>
+                    <li>Pratique cloud (AWS) et conteneurs (Kubernetes).</li>
+                    </ul>
+                </details>
+                </article>
+            </div>
 
-                <!-- Semestre en Angleterre -->
-                <div class="relative mb-8">
-                    <span class="absolute -left-[9px] top-2 h-4 w-4 rounded-full bg-brand-500 shadow-[0_0_0_4px_rgba(6,182,212,0.25)]"></span>
-                    <article class="rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
-                    <div class="flex items-center justify-between gap-3">
+            <!-- Semestre en Angleterre -->
+            <div class="relative mb-8">
+                <span class="absolute -left-[9px] top-2 h-4 w-4 rounded-full bg-brand-500 shadow-[0_0_0_4px_rgba(6,182,212,0.25)]"></span>
+                <article class="rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
+                <div class="flex items-start justify-between gap-3">
+                    <div class="min-w-0">
+                    <div class="flex items-center gap-3">
                         <h3 class="text-lg font-semibold">Semestre en Angleterre — Immersion</h3>
-                        <span class="text-xs px-2 py-1 rounded bg-slate-800 border border-slate-700">Anglais & Projet web</span>
+                        <span class="text-xs px-2 py-1 rounded bg-slate-800 border border-slate-700">Anglais &amp; Projet web</span>
                     </div>
-                    <p class="mt-2 text-slate-300 text-sm">Cours en anglais, basket, échanges internationaux. Réalisation d’un projet web avec un encadrement de qualité — boost d’envie et de confiance.</p>
-                    <details class="mt-3">
-                        <summary class="cursor-pointer text-brand-300 hover:underline">Moments clés</summary>
-                        <ul class="mt-2 list-disc list-inside text-slate-300 text-sm">
-                        <li>Progression linguistique (communication et technique).</li>
-                        <li>Travail d’équipe multiculturel.</li>
-                        </ul>
-                    </details>
-                    </article>
+                    </div>
+                    <div class="flex items-center gap-5 shrink-0">
+                    <!-- Si tu as le logo de l’université d’accueil, mets-le ici -->
+                    <img src="img/logos/Staffordshire_University_Logo.svg.png" alt="Université (UK)" class="h-6 w-auto object-contain opacity-90 hover:opacity-100 transition"
+                        onerror="this.style.display='none'">
+                    <img src="img/flags/england.png" alt="Royaume-Uni" class="h-6 w-10 rounded-sm ring-1 ring-slate-700"
+                        onerror="this.style.display='none'">
+                    </div>
                 </div>
 
-                <!-- Stage au Ghana -->
-                <div class="relative mb-8">
-                    <span class="absolute -left-[9px] top-2 h-4 w-4 rounded-full bg-brand-500 shadow-[0_0_0_4px_rgba(6,182,212,0.25)]"></span>
-                    <article class="rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
-                    <div class="flex items-center justify-between gap-3">
+                <p class="mt-2 text-slate-300 text-sm">
+                    Cours en anglais, basket, échanges internationaux. Projet web avec un encadrement de qualité — boost d’envie et de confiance.
+                </p>
+                <details class="mt-3">
+                    <summary class="cursor-pointer text-brand-300 hover:underline">Moments clés</summary>
+                    <ul class="mt-2 list-disc list-inside text-slate-300 text-sm">
+                    <li>Progression linguistique (communication et technique).</li>
+                    <li>Travail d’équipe multiculturel.</li>
+                    </ul>
+                </details>
+                </article>
+            </div>
+
+            <!-- Stage au Ghana -->
+            <div class="relative mb-8">
+                <span class="absolute -left-[9px] top-2 h-4 w-4 rounded-full bg-brand-500 shadow-[0_0_0_4px_rgba(6,182,212,0.25)]"></span>
+                <article class="rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
+                <div class="flex items-start justify-between gap-3">
+                    <div class="min-w-0">
+                    <div class="flex items-center gap-3">
                         <h3 class="text-lg font-semibold">Ecobank (Accra, Ghana) — Stage</h3>
                         <span class="text-xs px-2 py-1 rounded bg-slate-800 border border-slate-700">Contexte bancaire</span>
                     </div>
-                    <p class="mt-2 text-slate-300 text-sm">Au département epProcess (Technologies) : cas réels de sécurité & d’infrastructure, collaboration en environnement anglophone.</p>
-                    <details class="mt-3">
-                        <summary class="cursor-pointer text-brand-300 hover:underline">Apprentissages</summary>
-                        <ul class="mt-2 list-disc list-inside text-slate-300 text-sm">
-                        <li>Adaptabilité, vision globale du risque.</li>
-                        <li>Communication avec équipes pluridisciplinaires.</li>
-                        </ul>
-                    </details>
-                    </article>
+                    </div>
+                    <div class="flex items-center gap-5 shrink-0">
+                    <img src="img/logos/ecobank1.png" alt="Ecobank" class="h-10 w-20 object-contain opacity-90 hover:opacity-100 transition"
+                        onerror="this.style.display='none'">
+                    <img src="img/flags/gh.png" alt="Ghana" class="h-6 w-10 rounded-sm ring-1 ring-slate-700"
+                        onerror="this.style.display='none'">
+                    </div>
                 </div>
 
-                <!-- Bonus: compétences & centres d'intérêt -->
-                <div class="relative mb-2">
-                    <span class="absolute -left-[9px] top-2 h-4 w-4 rounded-full bg-brand-500 shadow-[0_0_0_4px_rgba(6,182,212,0.25)]"></span>
-                    <article class="rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
-                    <div class="grid gap-6 md:grid-cols-2">
-                        <div>
-                        <h4 class="font-semibold">Projets techniques & auto‑formation</h4>
-                        <ul class="mt-2 flex flex-wrap gap-2 text-xs">
-                            <li class="px-2 py-1 rounded bg-slate-800 border border-slate-700">Wazuh</li>
-                            <li class="px-2 py-1 rounded bg-slate-800 border border-slate-700">Active Directory</li>
-                            <li class="px-2 py-1 rounded bg-slate-800 border border-slate-700">Kubernetes</li>
-                            <li class="px-2 py-1 rounded bg-slate-800 border border-slate-700">AWS</li>
-                            <li class="px-2 py-1 rounded bg-slate-800 border border-slate-700">WebHawk</li>
-                            <li class="px-2 py-1 rounded bg-slate-800 border border-slate-700">Password Cracker</li>
-                        </ul>
-                        </div>
-                        <div>
-                        <h4 class="font-semibold">Langues & intérêts</h4>
-                        <ul class="mt-2 space-y-1 text-slate-300 text-sm">
-                            <li>Français & Anglais (TOEIC 935)</li>
-                            <li>Basketball, piano, engagements communautaires</li>
-                        </ul>
-                        </div>
+                <p class="mt-2 text-slate-300 text-sm">
+                    Au département epProcess (Technologies) : cas réels de sécurité &amp; d’infrastructure, collaboration en environnement anglophone.
+                </p>
+                <details class="mt-3">
+                    <summary class="cursor-pointer text-brand-300 hover:underline">Apprentissages</summary>
+                    <ul class="mt-2 list-disc list-inside text-slate-300 text-sm">
+                    <li>Adaptabilité, vision globale du risque.</li>
+                    <li>Communication avec équipes pluridisciplinaires.</li>
+                    </ul>
+                </details>
+                </article>
+            </div>
+
+            <!-- Bonus: compétences & centres d'intérêt -->
+            <div class="relative mb-2">
+                <span class="absolute -left-[9px] top-2 h-4 w-4 rounded-full bg-brand-500 shadow-[0_0_0_4px_rgba(6,182,212,0.25)]"></span>
+                <article class="rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
+                <div class="grid gap-6 md:grid-cols-2">
+                    <div>
+                    <h4 class="font-semibold">Projets techniques &amp; auto-formation</h4>
+                    <ul class="mt-2 flex flex-wrap gap-2 text-xs">
+                        <li class="px-2 py-1 rounded bg-slate-800 border border-slate-700">Wazuh</li>
+                        <li class="px-2 py-1 rounded bg-slate-800 border border-slate-700">Active Directory</li>
+                        <li class="px-2 py-1 rounded bg-slate-800 border border-slate-700">Kubernetes</li>
+                        <li class="px-2 py-1 rounded bg-slate-800 border border-slate-700">AWS</li>
+                        <li class="px-2 py-1 rounded bg-slate-800 border border-slate-700">WebHawk</li>
+                        <li class="px-2 py-1 rounded bg-slate-800 border border-slate-700">Password Cracker</li>
+                    </ul>
                     </div>
-                    </article>
+                    <div>
+                    <h4 class="font-semibold">Langues &amp; intérêts</h4>
+                    <ul class="mt-2 space-y-1 text-slate-300 text-sm">
+                        <li>Français &amp; Anglais (TOEIC 935)</li>
+                        <li>Basketball, piano, engagements communautaires</li>
+                    </ul>
+                    </div>
                 </div>
-                
+                </article>
+            </div>
+
             </div>
         </div>
     </section>
+
+
     <!-- PROJETS -->
         <!-- <section id="parcours" class="mx-auto max-w-6xl px-6 py-14 border-t border-slate-800/60"></section> -->
     <section id="projets" class="mx-auto max-w-6xl px-6 py-14 border-t border-slate-800/60">
@@ -242,45 +296,8 @@
                 </select>
             </div>
         </div>
-        <div id="projectsGrid" class="scrollable mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"  style="max-height: 600px; overflow-y: auto; padding-right: 8px;"></div>
+        <div id="projectsGrid" class="scrollable mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"  style="max-height: 470px; overflow-y: auto; padding-right: 8px;"></div>
     </section>
-
-    <!-- POSTS LINKEDIN (manuels ou widget tiers) -->
-    <!-- rgrgr: -->
-    <!-- <section id="posts" class="mx-auto max-w-6xl px-6 py-14 border-t border-slate-800/60">
-        <h2 class="text-2xl md:text-3xl font-bold">Publications</h2>
-        <p class="mt-3 text-slate-300">Intégrer ici des publications LinkedIn (embed d’un post spécifique) ou un widget d’agrégation.</p> -->
-        <!-- Exemple d’embed d’un post LinkedIn : remplacez data-url -->
-        <!-- <div class="mt-6">
-        <script src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
-        <div class="mt-2">
-            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:XXXXXXXXXXXX" height="400" width="100%" frameborder="0" allowfullscreen="" title="Post LinkedIn"></iframe>
-        </div>
-        </div> -->
-        <!-- <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
-            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7309903230824534042" height="400" width="100%" frameborder="0" allowfullscreen="" title="Post LinkedIn 2"></iframe>
-            <a href="https://www.linkedin.com/posts/sunnoogo-caleb-tapsoba-130584292_cybersecurity-powershell-python-activity-7317501961153445888-G6Hl?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEbrf7QBErHgeqC6eJlTtq4QeR5f-8hv4HE" target="_blank" rel="noopener" class="block mt-2 text-brand-300 hover:underline text-sm">Voir sur LinkedIn</a>
-        </div>
-        <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
-            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7310270014714961920?collapsed=1" height="542" width="504" frameborder="0" allowfullscreen="" title="Post intégré"></iframe>
-            <a href="https://www.linkedin.com/posts/sunnoogo-caleb-tapsoba-130584292_wannacry-moveit-cybersaezcuritaez-activity-7312428487728857089-_Ner?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEbrf7QBErHgeqC6eJlTtq4QeR5f-8hv4HE" target="_blank" rel="noopener" class="block mt-2 text-brand-300 hover:underline text-sm">Voir sur LinkedIn</a>
-        </div>
-        <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
-            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7309903230824534042" height="400" width="100%" frameborder="0" allowfullscreen="" title="Post LinkedIn 2"></iframe>
-            <a href="https://www.linkedin.com/posts/sunnoogo-caleb-tapsoba-130584292_cybersaezcuritaez-hackingaezthique-daezveloppementsaezcurisaez-activity-7309903230824534042-xh9M?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEbrf7QBErHgeqC6eJlTtq4QeR5f-8hv4HE" target="_blank" rel="noopener" class="block mt-2 text-brand-300 hover:underline text-sm">Voir sur LinkedIn</a>
-        </div>
-        <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
-            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7309903230824534042" height="400" width="100%" frameborder="0" allowfullscreen="" title="Post LinkedIn 2"></iframe>
-            <a href="https://www.linkedin.com/posts/sunnoogo-caleb-tapsoba-130584292_cybersaezcuritaez-hackingaezthique-daezveloppementsaezcurisaez-activity-7309903230824534042-xh9M?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEbrf7QBErHgeqC6eJlTtq4QeR5f-8hv4HE" target="_blank" rel="noopener" class="block mt-2 text-brand-300 hover:underline text-sm">Voir sur LinkedIn</a>
-        </div>
-        <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
-            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7309903230824534042" height="400" width="100%" frameborder="0" allowfullscreen="" title="Post LinkedIn 2"></iframe>
-            <a href="https://www.linkedin.com/posts/sunnoogo-caleb-tapsoba-130584292_cybersaezcuritaez-hackingaezthique-daezveloppementsaezcurisaez-activity-7309903230824534042-xh9M?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEbrf7QBErHgeqC6eJlTtq4QeR5f-8hv4HE" target="_blank" rel="noopener" class="block mt-2 text-brand-300 hover:underline text-sm">Voir sur LinkedIn</a>
-        </div>
-        <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
-            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7309903230824534042" height="400" width="100%" frameborder="0" allowfullscreen="" title="Post LinkedIn 2"></iframe>
-            <a href="https://www.linkedin.com/posts/sunnoogo-caleb-tapsoba-130584292_cybersaezcuritaez-hackingaezthique-daezveloppementsaezcurisaez-activity-7309903230824534042-xh9M?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEbrf7QBErHgeqC6eJlTtq4QeR5f-8hv4HE" target="_blank" rel="noopener" class="block mt-2 text-brand-300 hover:underline text-sm">Voir sur LinkedIn</a>
-        </div-->
 
     <section id="posts" class="mx-auto max-w-6xl px-6 py-14 border-t border-slate-800/60">
         <h2 class="text-2xl md:text-3xl font-bold">Publications</h2>
@@ -320,30 +337,30 @@
     <section id="contact" class="mx-auto max-w-6xl px-6 py-14 border-t border-slate-800/60">
         <h2 class="text-2xl md:text-3xl font-bold">Contact</h2>
         <div class="mt-4 grid gap-6 md:grid-cols-2">
-        <form class="rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
-            <label class="block text-sm text-slate-400">Nom</label>
-            <input class="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2" placeholder="Votre nom" />
-            <label class="mt-4 block text-sm text-slate-400">Email</label>
-            <input type="email" class="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2" placeholder="vous@mail.com" />
-            <label class="mt-4 block text-sm text-slate-400">Message</label>
-            <textarea class="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2" rows="5" placeholder="Votre message..."></textarea>
-            <button type="button" class="mt-6 inline-flex items-center rounded-lg bg-brand-600 px-4 py-2 font-semibold hover:bg-brand-500">Envoyer</button>
-            <p class="mt-3 text-xs text-slate-400">Astuce : pour un vrai envoi, brancher Formspree/Netlify Forms/Vercel functions.</p>
-        </form>
-        <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
-            <h3 class="font-semibold">Réseaux</h3>
-            <ul class="mt-3 space-y-2 text-slate-300">
-            <li>GitHub : <a class="text-brand-300 hover:underline" href="https://github.com/Sunnoogo77" target="_blank" rel="noreferrer">@Sunnoogo77</a></li>
-            <li>LinkedIn : <a class="text-brand-300 hover:underline" href="https://www.linkedin.com/in/sunnoogo-caleb-tapsoba-130584292/" target="_blank" rel="noreferrer">sunnoogo‑caleb‑tapsoba</a></li>
-            
-            </ul>
-        </div>
+            <form class="rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
+                <label class="block text-sm text-slate-400">Nom</label>
+                <input class="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2" placeholder="Votre nom" />
+                <label class="mt-4 block text-sm text-slate-400">Email</label>
+                <input type="email" class="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2" placeholder="vous@mail.com" />
+                <label class="mt-4 block text-sm text-slate-400">Message</label>
+                <textarea class="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2" rows="5" placeholder="Votre message..."></textarea>
+                <button type="button" class="mt-6 inline-flex items-center rounded-lg bg-brand-600 px-4 py-2 font-semibold hover:bg-brand-500">Envoyer</button>
+                <!-- <p class="mt-3 text-xs text-slate-400">Astuce : pour un vrai envoi, brancher Formspree/Netlify Forms/Vercel functions.</p> -->
+            </form>
+            <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
+                <h3 class="font-semibold">Réseaux</h3>
+                <ul class="mt-3 space-y-2 text-slate-300">
+                <li>GitHub : <a class="text-brand-300 hover:underline" href="https://github.com/Sunnoogo77" target="_blank" rel="noreferrer">@Sunnoogo77</a></li>
+                <li>LinkedIn : <a class="text-brand-300 hover:underline" href="https://www.linkedin.com/in/sunnoogo-caleb-tapsoba-130584292/" target="_blank" rel="noreferrer">sunnoogo‑caleb‑tapsoba</a></li>
+                
+                </ul>
+            </div>
         </div>
     </section>
 
     <footer class="border-t border-slate-800/60">
         <div class="mx-auto max-w-6xl px-6 py-8 text-sm text-slate-400">
-        © <span id="year"></span> PORTFOLIO.
+        © <span id="year"></span> PORTFOLIO.  - Tous droits réservés
         </div>
     </footer>
 
@@ -484,15 +501,6 @@
         renderCards();
     </script>
 
-    <!--
-    =======================
-    DÉPLOIEMENT (résumé) 
-    1) Créez un dépôt GitHub (ex: portfolio) et ajoutez ce fichier index.html à la racine.
-    2) Activez GitHub Pages (Settings > Pages > Deploy from a branch > main / root).
-    3) L’URL publique sera du type https://<votre_user>.github.io/portfolio/
-    4) Pour mettre à jour : modifiez le tableau "projects" ci-dessus et poussez sur main.
-    Astuce : plus tard, migrer vers une stack Vite/Tailwind, ou Next.js/Astro si besoin.
-    =======================
-    -->
+    
     </body>
     </html>
