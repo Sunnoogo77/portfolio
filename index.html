@@ -355,7 +355,6 @@
             <h2 class="text-2xl md:text-3xl font-bold">Projets</h2>
             <div class="text-sm text-slate-400">Filtrer :
                 <select id="filter" class="ml-2 rounded-md bg-slate-900 border border-slate-700 px-2 py-1">
-                <option value="all">Tous</option>
                 <option value="past">Passés</option>
                 <option value="current">En cours</option>
                 <option value="future">À venir</option>
@@ -572,7 +571,38 @@
                 tags: ["AWS", "CloudTrail", "Secrets Manager", "CloudWatch", "Monitoring", "Blue Team"],
                 desc: "Mise en place d’un système de monitoring en temps réel des accès aux secrets AWS, avec CloudTrail, CloudWatch, SNS, et notifications d’alerte en cas d’accès sensible.",
                 link: "https://github.com/Sunnoogo77/aws-secret-access-monitoring"
-            }
+            },
+            {
+                title: "Sécurisation d’Azure Active Directory (AER)",
+                status: "future",
+                tags: ["Azure", "Active Directory", "IAM", "Hybrid Cloud", "Blue Team", "Microsoft Entra"],
+                desc: "Déploiement et configuration d’un environnement Azure Active Directory sécurisé avec gestion hybride, MFA, groupes, unités d’administration et connecteur Entra ID.",
+                link: "https://github.com/Sunnoogo77/azure-aer-ad-hybrid-security"
+            },
+            {
+                title: "Déploiement d’un Simulateur de Phishing pour formation interne",
+                status: "future",
+                tags: ["Phishing", "Cyber Awareness", "Social Engineering", "Blue Team", "Docker", "Security Training"],
+                desc: "Mise en place d’un simulateur de campagnes de phishing interne pour sensibiliser les utilisateurs, analyser les clics, et renforcer les réflexes de cybersécurité dans l’entreprise.",
+                link: "https://github.com/Sunnoogo77/phishing-awareness-simulator"
+            },
+            {
+                title: "Déploiement sécurisé d’un système de ticketing IT",
+                status: "future",
+                tags: ["GLPI", "ITSM", "Ticketing", "Helpdesk", "Infrastructure", "Blue Team"],
+                desc: "Installation et sécurisation complète de GLPI pour la gestion des incidents et des demandes IT, avec authentification, gestion des droits, sauvegardes et intégration possible à un annuaire LDAP.",
+                link: "https://github.com/Sunnoogo77/glpi-secure-ticketing"
+            },
+            {
+                title: "Déploiement d’un SIEM avec Splunk pour la détection d'incidents",
+                status: "future",
+                tags: ["Splunk", "SIEM", "Log Analysis", "Security Monitoring", "Blue Team", "SOC"],
+                desc: "Installation de Splunk dans un lab sécurisé, collecte de logs systèmes et réseau, détection d’incidents via des alertes, tableaux de bord, et cas d’usage Blue Team typiques.",
+                link: "https://github.com/Sunnoogo77/splunk-blue-team-lab"
+            },
+
+
+
 
 
 
@@ -586,31 +616,75 @@
             // }
         ];
 
-        function renderCards(filter = 'all') {
+        // function renderCards(filter = 'all') {
+        //     const grid = document.getElementById('projectsGrid');
+        //     grid.innerHTML = '';
+        //     projects.filter(p => filter === 'all' || p.status === filter).forEach(p => {
+        //         const card = document.createElement('article');
+        //         card.className = 'rounded-2xl border border-slate-800 bg-slate-900/60 p-5 hover:border-brand-500 transition';
+        //         card.innerHTML = `
+        //         <div class="flex items-center justify-between">
+        //             <h3 class="text-lg font-semibold">${p.title}</h3>
+        //             <span class="text-xs px-2 py-1 rounded bg-slate-800 border border-slate-700">${p.status}</span>
+        //         </div>
+        //         <p class="mt-2 text-slate-300 text-sm">${p.desc}</p>
+        //         <div class="mt-3 flex flex-wrap gap-2">${p.tags.map(t => `<span class='text-xs px-2 py-1 rounded bg-slate-800 border border-slate-700'>${t}</span>`).join('')}</div>
+        //         <a class="mt-4 inline-block text-brand-300 hover:underline" href="${p.link}" target="_blank" rel="noreferrer">Voir le projet →</a>
+        //         `;
+        //         grid.appendChild(card);
+        //     });
+        // }
+
+        // document.getElementById('filter').addEventListener('change', (e) => {
+        // renderCards(e.target.value);
+        // });
+
+        // document.getElementById('year').textContent = new Date().getFullYear();
+        // renderCards();
+        function renderCards(filter = 'past') {
         const grid = document.getElementById('projectsGrid');
         grid.innerHTML = '';
-        projects.filter(p => filter === 'all' || p.status === filter).forEach(p => {
+
+        const statusLabel = { past: 'Passé', current: 'En cours', future: 'Future' };
+
+        projects
+        .filter(p => p.status === filter)
+        .forEach(p => {
             const card = document.createElement('article');
             card.className = 'rounded-2xl border border-slate-800 bg-slate-900/60 p-5 hover:border-brand-500 transition';
             card.innerHTML = `
             <div class="flex items-center justify-between">
                 <h3 class="text-lg font-semibold">${p.title}</h3>
-                <span class="text-xs px-2 py-1 rounded bg-slate-800 border border-slate-700">${p.status}</span>
+                <span class="text-xs px-2 py-1 rounded bg-slate-800 border border-slate-700">
+                ${statusLabel[p.status] ?? p.status}
+                </span>
             </div>
             <p class="mt-2 text-slate-300 text-sm">${p.desc}</p>
-            <div class="mt-3 flex flex-wrap gap-2">${p.tags.map(t => `<span class='text-xs px-2 py-1 rounded bg-slate-800 border border-slate-700'>${t}</span>`).join('')}</div>
-            <a class="mt-4 inline-block text-brand-300 hover:underline" href="${p.link}" target="_blank" rel="noreferrer">Voir le projet →</a>
+            <div class="mt-3 flex flex-wrap gap-2">
+                ${p.tags.map(t => `<span class='text-xs px-2 py-1 rounded bg-slate-800 border border-slate-700'>${t}</span>`).join('')}
+            </div>
+            <a class="mt-4 inline-block text-brand-300 hover:underline" href="${p.link}" target="_blank" rel="noreferrer">
+                Voir le projet →
+            </a>
             `;
             grid.appendChild(card);
         });
+
+        if (!grid.childElementCount) {
+        grid.innerHTML = `<p class="text-slate-400 text-sm">Aucun projet pour ce filtre.</p>`;
         }
+    }
 
-        document.getElementById('filter').addEventListener('change', (e) => {
+    // Filtre au changement
+    document.getElementById('filter').addEventListener('change', (e) => {
         renderCards(e.target.value);
-        });
+    });
 
-        document.getElementById('year').textContent = new Date().getFullYear();
-        renderCards();
+    // Valeur par défaut et rendu initial
+    document.getElementById('filter').value = 'past';
+    document.getElementById('year').textContent = new Date().getFullYear();
+    renderCards('past');
+
     </script>
 
     
