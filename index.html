@@ -68,7 +68,7 @@
     </head>
     <body class="min-h-screen bg-slate-950 text-slate-100 selection:bg-brand-500/30">
     <!-- HEADER / HERO -->
-    <header class="scanlines relative overflow-hidden">
+    <!-- <header class="scanlines relative overflow-hidden">
         <div class="absolute inset-0 bg-gradient-to-b from-slate-900 via-slate-950 to-slate-950"></div>
         <div class="relative mx-auto max-w-6xl px-6 py-1 lg:py-10">
             <div class="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
@@ -96,39 +96,75 @@
                 </div>
             </div>
         </div>
+    </header> -->
+    <header class="scanlines relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-slate-900 via-slate-950 to-slate-950"></div>
+            <div class="relative mx-auto max-w-7xl  py-1 lg:py-10">
+                <div class="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between mb-10 px-6">
+                    <div>
+                        <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight">
+                        <span class="text-brand-300">Sunnoogo</span> — Portfolio Cybersécurité
+                        </h1>
+
+                        <!-- Sous-titre optimisé, sans forcer "Blue Team" -->
+                        <p class="mt-4 max-w-3xl text-slate-300">
+                            Élève-ingénieur EFREI (Ingé 3) — cybersécurité. Recherche d’alternance en cybersécurité (défense des SI, investigation, automatisation, sécurité cloud).
+                        </p>
+
+                        <!-- Badge de dispo avec légère animation -->
+                        <div class="mt-3">
+                            <span class="inline-flex items-center gap-2 rounded-full border border-brand-500/30 bg-brand-500/10 px-5 ml-20 mt-5 mb-5 py-1 text-brand-200">
+                                <span class="h-2 w-2 rounded-full bg-brand-300 animate-pulse"></span>
+                                Disponible pour alternance — dès maintenant (début des cours : novembre)
+                            </span>
+                        </div>
+
+                        <div class="mt-10 flex flex-wrap gap-3">
+                            <a href="#projets" class="glow inline-flex items-center gap-2 rounded-xl bg-brand-600 px-4 py-2 font-semibold hover:bg-brand-500 transition">
+                                Explorer les projets
+                            </a>
+                            <a href="#parcours" class="inline-flex items-center gap-2 rounded-xl border border-slate-700/70 px-4 py-2 font-semibold hover:border-brand-500 transition">
+                                Parcours académique
+                            </a>
+                            <a href="#contact" class="inline-flex items-center gap-2 rounded-xl border border-slate-700/70 px-4 py-2 font-semibold hover:border-brand-500 transition">
+                                Me contacter
+                            </a>
+                        </div>
+                    </div>
+
+                <div class="mt-10 lg:mt-0">
+                    <img src="img/CALEB_TAPSOBA.jpg" alt="Sunnoogo avatar"
+                        class="w-80 h-65 rounded-full border-4 border-brand-500 mx-auto glow bg-slate-900/70 object-cover" />
+                </div>
+            </div>
+        </div>
     </header>
 
+
     <!-- ABOUT / OBJECTIFS -->
-    <section id="about" class="mx-auto max-w-6xl px-4 py-10 pt-0 pb-15">
-        <div class="grid gap-8 md:grid-cols-3">
-            <!-- Bloc À propos -->
-            <div class="md:col-span-2 rounded-2xl  bg-transparent p-5">
-                <h2 class="text-2xl md:text-3xl font-bold">À propos</h2>
+    <section id="about" class="mx-auto max-w-7xl px-4 py-10 pt-5 pb-15">
+        <!-- Cache le contenu compact quand <details> est ouvert -->
+        <style>
+            #about details[open] summary .compact { display: none; }
+            /* (optionnel) cache le chevron par défaut du summary */
+            #about summary::-webkit-details-marker { display: none; }
+        </style>
 
-                <!-- Toggle sans JS : résumé ↔ texte complet -->
-                <details class="group mt-3">
-                    <!-- SUMMARY doit être premier -->
-                    <summary class="cursor-pointer select-none">
-                    <!-- Lien Voir plus / Réduire -->
-                    <span class="mt-2 inline-block text-brand-300 hover:underline group-open:hidden">Voir plus…</span>
-                    <span class="mt-2 hidden group-open:inline-block text-brand-300 hover:underline">Réduire</span>
+        <details id="aboutDetails" class="group">
+            <!-- SUMMARY = titre + bouton + VUE COMPACTE -->
+            <summary class="list-none cursor-pointer select-none">
+                <div class="flex items-center justify-between">
+                    <h2 class="text-2xl md:text-3xl font-bold">À propos</h2>
+                    <span class="inline-flex items-center gap-2 rounded-xl border border-slate-700/70 px-4 py-2 font-semibold hover:border-brand-500 transition">
+                    <span class="group-open:hidden">Voir plus</span>
+                    <span class="hidden group-open:inline">Réduire</span>
+                    </span>
+                </div>
 
-                    <!-- Carte courte visible quand fermé -->
-                    <div class="rounded-xl border border-brand-500/20 bg-slate-900/60 p-4 group-open:hidden">
-                        <p class="text-brand-100" style="text-align: justify;">
-                        Étudiant en dernière année du cycle ingénieur à l’EFREI Paris, spécialité Cybersécurité &amp; Cloud,
-                        je me destine à devenir un expert reconnu dans la protection des données, des infrastructures et des systèmes d’information.
-                        </p>
-                    </div>
-                    </summary>
-
-                    <!-- Contenu long avec transition (sans scrollbar) -->
-                    <div
-                    class="rounded-xl scrollable border border-brand-500/20 bg-slate-900/60  p-4
-                            max-h-0 opacity-0 overflow-hidden
-                            transition-[max-height,opacity,margin] duration-300 ease-out
-                            group-open:mt-3 group-open:max-h-[2000px] group-open:opacity-100"
-                            style="max-height: 200px; overflow-y: auto;">
+                <!-- VUE COMPACTE (visible par défaut, masquée quand ouvert par le CSS ci-dessus) -->
+                <div class="compact mt-4 grid gap-8 md:grid-cols-3">
+                    <!-- À propos : 2 premiers paragraphes -->
+                    <div class="md:col-span-2 rounded-2xl border border-brand-500/20 bg-slate-900/60 p-5">
                         <p class="text-brand-100" style="text-align: justify;">
                             Étudiant en dernière année du cycle ingénieur à l’EFREI Paris, spécialité Cybersécurité &amp; Cloud,
                             je me destine à devenir un expert reconnu dans la protection des données, des infrastructures et des systèmes d’information.
@@ -138,39 +174,107 @@
                             à travers mes cours, mes projets académiques et mes initiatives personnelles. Mon intérêt se porte particulièrement sur la Blue Team,
                             la défense proactive et la création d’outils capables de bloquer, détecter et contrer les menaces.
                         </p>
-                        <p class="mt-3 text-brand-100" style="text-align: justify;">
-                            Mon parcours académique est marqué par une diversité culturelle et géographique : originaire du Burkina Faso, j’ai étudié en Côte d’Ivoire,
-                            en France, en Angleterre et effectué un stage au Ghana. Ces expériences m’ont permis de maîtriser le français et l’anglais, de travailler
-                            dans des environnements variés et d’élargir ma vision des enjeux de la sécurité numérique à l’échelle internationale.
-                        </p>
-                        <p class="mt-3 text-brand-100" style="text-align: justify;">
-                            Toujours curieux et motivé, je ne me limite pas à un seul rôle : SOC, réseau, intégration de solutions… Chaque expérience est un point
-                            d’ancrage vers mon objectif. Je m’appuie sur des projets concrets : scanners réseau, analyse de vulnérabilités web, HIDS/EDR,
-                            chiffrement et authentification renforcée.
-                        </p>
-                        <p class="mt-3 text-brand-100" style="text-align: justify;">
-                            En dehors du technique, je cultive des passions qui nourrissent mes qualités professionnelles : basketball (esprit d’équipe, réactivité),
-                            piano (rigueur, créativité). Ces disciplines m’apprennent à rester persévérant, concentré et inventif.
-                        </p>
-                        <p class="mt-3 text-brand-100" style="text-align: justify;">
-                            Mon ambition : devenir un acteur clé de la cybersécurité, capable d’anticiper, de prévenir et de neutraliser les menaces,
-                            tout en contribuant à l’innovation et à la résilience des SI.
-                        </p>
                     </div>
-                </details>
+
+                    <!-- Objectif : Alternance (résumé) -->
+                    <div class="mt-2">
+                        <h3 class="text-xl font-semibold">Objectifs 2025–2026</h3>
+                        <article class="mt-4 rounded-2xl border border-brand-500/25 bg-brand-500/10 p-4">
+                            <div class="flex items-start justify-between gap-3">
+                                <h4 class="font-semibold">Alternance en cybersécurité</h4>
+                                <span class="text-xs px-2 py-1 rounded bg-slate-800 border border-slate-700">Priorité</span>
+                            </div>
+                            <p class="mt-2 text-brand-100 text-sm" style="text-align: justify;">
+                            Disponible <strong>dès maintenant</strong> (préférence <strong>octobre</strong>). Début des cours : <strong>novembre</strong>.
+                            </p>
+                        </article>
+                    </div>
+                </div>
+            </summary>
+
+            <!-- VUE DÉPLOYÉE (visible uniquement quand ouvert) -->
+            <div class="mt-4 grid gap-8 md:grid-cols-3 transition-[opacity,transform] duration-300 ease-out">
+            <!-- À propos : texte complet -->
+            <div class="md:col-span-2 rounded-2xl border border-brand-500/20 bg-slate-900/60 p-5">
+                <p class="text-brand-100" style="text-align: justify;">
+                Étudiant en dernière année du cycle ingénieur à l’EFREI Paris, spécialité Cybersécurité &amp; Cloud,
+                je me destine à devenir un expert reconnu dans la protection des données, des infrastructures et des systèmes d’information.
+                </p>
+                <p class="mt-3 text-brand-100" style="text-align: justify;">
+                Passionné par les nouvelles technologies, j’ai découvert la cybersécurité en août 2024 et, depuis, je n’ai cessé d’apprendre
+                à travers mes cours, mes projets académiques et mes initiatives personnelles. Mon intérêt se porte particulièrement sur la Blue Team,
+                la défense proactive et la création d’outils capables de bloquer, détecter et contrer les menaces.
+                </p>
+                <p class="mt-3 text-brand-100" style="text-align: justify;">
+                Mon parcours académique est marqué par une diversité culturelle et géographique : originaire du Burkina Faso, j’ai étudié en Côte d’Ivoire,
+                en France, en Angleterre et effectué un stage au Ghana. Ces expériences m’ont permis de maîtriser le français et l’anglais, de travailler
+                dans des environnements variés et d’élargir ma vision des enjeux de la sécurité numérique à l’échelle internationale.
+                </p>
+                <p class="mt-3 text-brand-100" style="text-align: justify;">
+                Toujours curieux et motivé, je ne me limite pas à un seul rôle : SOC, réseau, intégration de solutions… Chaque expérience est un point
+                d’ancrage vers mon objectif. Je m’appuie sur des projets concrets : scanners réseau, analyse de vulnérabilités web, HIDS/EDR,
+                chiffrement et authentification renforcée.
+                </p>
+                <p class="mt-3 text-brand-100" style="text-align: justify;">
+                En dehors du technique, je cultive des passions qui nourrissent mes qualités professionnelles : basketball (esprit d’équipe, réactivité),
+                piano (rigueur, créativité). Ces disciplines m’apprennent à rester persévérant, concentré et inventif.
+                </p>
+                <p class="mt-3 text-brand-100" style="text-align: justify;">
+                Mon ambition : devenir un acteur clé de la cybersécurité, capable d’anticiper, de prévenir et de neutraliser les menaces,
+                tout en contribuant à l’innovation et à la résilience des SI.
+                </p>
             </div>
 
-            <!-- Objectifs -->
-            <div class="mt-20">
+            <!-- Objectifs : Alternance + Consolidation -->
+            <div class="mt-2">
                 <h3 class="text-xl font-semibold">Objectifs 2025–2026</h3>
-                <ul class="mt-3 space-y-2 text-slate-300 list-disc list-inside">
-                    <li>Alternance SOC / Blue Team</li>
-                    <li>Consolider AD / SIEM / EDR</li>
-                    <li>Automatiser la détection/réponse</li>
-                </ul>
-            </div>    
-        </div>
+
+                <!-- Alternance (complet) -->
+                <article class="mt-4 rounded-2xl border border-brand-500/25 bg-brand-500/10 p-4">
+                <div class="flex items-start justify-between gap-3">
+                    <h4 class="font-semibold">Alternance en cybersécurité</h4>
+                    <span class="text-xs px-2 py-1 rounded bg-slate-800 border border-slate-700">Priorité</span>
+                </div>
+                <p class="mt-2 text-brand-100 text-sm" style="text-align: justify;">
+                    Disponible <strong>dès maintenant</strong> (préférence <strong>octobre</strong>). Début des cours : <strong>novembre</strong>.
+                    Calendrier d’alternance fourni sur demande.
+                </p>
+                </article>
+
+                <!-- Consolidation -->
+                <article class="mt-4 rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
+                <h4 class="font-semibold">Consolider les fondamentaux</h4>
+                <p class="mt-2 text-slate-300 text-sm" style="text-align: justify;">
+                    Approfondir réseau, Active Directory, Linux/Bash, scripting (Python), SIEM/EDR, investigation (logs/malware/forensics).
+                    Automatisation de la détection &amp; réponse (SOAR), CI/CD des règles SIEM.
+                </p>
+                <div class="mt-3 flex flex-wrap gap-2">
+                    <span class="text-xs px-2 py-1 rounded bg-slate-800 border border-slate-700">Réseau</span>
+                    <span class="text-xs px-2 py-1 rounded bg-slate-800 border border-slate-700">Active Directory</span>
+                    <span class="text-xs px-2 py-1 rounded bg-slate-800 border border-slate-700">Linux/Bash</span>
+                    <span class="text-xs px-2 py-1 rounded bg-slate-800 border border-slate-700">Python</span>
+                    <span class="text-xs px-2 py-1 rounded bg-slate-800 border border-slate-700">SIEM/EDR</span>
+                    <span class="text-xs px-2 py-1 rounded bg-slate-800 border border-slate-700">SOAR</span>
+                </div>
+                </article>
+            </div>
+            </div>
+        </details>
+
+        <!-- Scroll au sommet quand on ouvre -->
+        <script>
+            (function () {
+            const details = document.getElementById('aboutDetails');
+            const section = document.getElementById('about');
+            details.addEventListener('toggle', () => {
+                if (details.open) {
+                section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+            })();
+        </script>
     </section>
+
 
 
 
@@ -391,10 +495,10 @@
                 <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7304265430678851584?collapsed=1" height="250" width="100%" frameborder="0" allowfullscreen="" title="Post intégré"></iframe>
                 <a href="https://www.linkedin.com/posts/sunnoogo-caleb-tapsoba-130584292_cybersecurity-networking-pentesting-activity-7307362629025452032-2aM4?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEbrf7QBErHgeqC6eJlTtq4QeR5f-8hv4HE" target="_blank" rel="noopener" class="block mt-2 text-brand-300 hover:underline text-sm">Voir sur LinkedIn</a>
             </div>
-            <div class="scrollable rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
+            <!-- <div class="scrollable rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
                 <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7304265430678851584?collapsed=1" height="250" width="100%" frameborder="0" allowfullscreen="" title="Post intégré"></iframe>
                 <a href="https://www.linkedin.com/posts/sunnoogo-caleb-tapsoba-130584292_cybersecurity-networking-pentesting-activity-7307362629025452032-2aM4?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEbrf7QBErHgeqC6eJlTtq4QeR5f-8hv4HE" target="_blank" rel="noopener" class="block mt-2 text-brand-300 hover:underline text-sm">Voir sur LinkedIn</a>
-            </div>
+            </div> -->
         </div>
     </section>
 
