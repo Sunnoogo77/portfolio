@@ -108,14 +108,19 @@
 
                         <!-- Sous-titre optimisé, sans forcer "Blue Team" -->
                         <p class="mt-4 max-w-3xl text-slate-300">
-                            Élève-ingénieur EFREI (Ingé 3) — cybersécurité. Recherche d’alternance en cybersécurité (défense des SI, investigation, automatisation, sécurité cloud).
+                            Étudiant en Ingé2 à l’EFREI Paris, en spécialisation Cybersécurité & Cloud.
+                            Passionné par la Blue Team, la sécurisation des infrastructures, la surveillance SOC et la protection des environnements Cloud & SI.
                         </p>
 
                         <!-- Badge de dispo avec légère animation -->
                         <div class="mt-3">
-                            <span class="inline-flex items-center gap-2 rounded-full border border-brand-500/30 bg-brand-500/10 px-5 ml-20 mt-5 mb-5 py-1 text-brand-200">
+                            <span class="inline-flex items-center gap-2 rounded-full border border-brand-500/30 bg-brand-500/10 px-5 ml-20 mt-5 mb-2 py-1 text-brand-200">
                                 <span class="h-2 w-2 rounded-full bg-brand-300 animate-pulse"></span>
-                                Disponible pour alternance — dès maintenant (début des cours : novembre)
+                                Priorité : Alternance en cybersécurité — dès maintenant (cours : novembre)
+                            </span>
+                            <span class="inline-flex items-center gap-2 rounded-full border border-brand-500/30 bg-brand-500/10 px-5 ml-20 mt-1 mb-5 py-1 text-brand-200">
+                                <span class="h-2 w-2 rounded-full bg-brand-300 animate-pulse"></span>
+                                Option académique : Stage de fin d’études possible — mars 2026
                             </span>
                         </div>
 
@@ -174,6 +179,11 @@
                             à travers mes cours, mes projets académiques et mes initiatives personnelles. Mon intérêt se porte particulièrement sur la Blue Team,
                             la défense proactive et la création d’outils capables de bloquer, détecter et contrer les menaces.
                         </p>
+                        <p class="mt-3 text-brand-100" style="text-align: justify;">
+                            Mon parcours académique est marqué par une diversité culturelle et géographique : originaire du Burkina Faso, j’ai étudié en Côte d’Ivoire,
+                            en France, en Angleterre et effectué un stage au Ghana. Ces expériences m’ont permis de maîtriser le français et l’anglais, de travailler
+                            dans des environnements variés et d’élargir ma vision des enjeux de la sécurité numérique à l’échelle internationale.
+                        </p>
                     </div>
 
                     <!-- Objectif : Alternance (résumé) -->
@@ -188,6 +198,13 @@
                             Disponible <strong>dès maintenant</strong> (préférence <strong>octobre</strong>). Début des cours : <strong>novembre</strong>.
                             </p>
                         </article>
+                        <article class="mt-4 rounded-2xl border border-blue-400/25 bg-blue-400/10 p-4">
+                            <h4 class="font-semibold">Stage de fin d’études</h4>
+                            <p class="mt-2 text-blue-100 text-sm" style="text-align: justify;">
+                                Si aucune alternance n’est conclue, je réaliserai un <strong>stage de fin d’études obligatoire</strong> 
+                                à partir de <strong>mars 2026</strong>, conformément à mon parcours académique.
+                            </p>
+                            </article>
                     </div>
                 </div>
             </summary>
@@ -240,6 +257,13 @@
                     Calendrier d’alternance fourni sur demande.
                 </p>
                 </article>
+                <article class="mt-4 rounded-2xl border border-blue-400/25 bg-blue-400/10 p-4">
+                    <h4 class="font-semibold">Stage de fin d’études</h4>
+                    <p class="mt-2 text-blue-100 text-sm" style="text-align: justify;">
+                        Si aucune alternance n’est conclue, je réaliserai un <strong>stage de fin d’études obligatoire</strong> 
+                        à partir de <strong>mars 2026</strong>, conformément à mon parcours académique.
+                    </p>
+                </article>
 
                 <!-- Consolidation -->
                 <article class="mt-4 rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
@@ -275,9 +299,22 @@
         </script>
     </section>
 
+    <!-- PROJETS -->
+    <section id="projets" class="mx-auto max-w-6xl px-6 py-14 border-t border-slate-800/60">
+        <div class="flex items-end justify-between gap-4">
+            <h2 class="text-2xl md:text-3xl font-bold">Projets</h2>
+            <div class="text-sm text-slate-400">Filtrer :
+                <select id="filter" class="ml-2 rounded-md bg-slate-900 border border-slate-700 px-2 py-1">
+                <option value="past">Passés</option>
+                <option value="current">En cours</option>
+                <option value="future">À venir</option>
+                </select>
+            </div>
+        </div>
+        <div id="projectsGrid" class="scrollable mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"  style="max-height: 470px; overflow-y: auto; padding-right: 8px;"></div>
+    </section>
 
-
-
+    <!-- PARCOURS ACADÉMIQUE -->
     <section id="parcours" class="mx-auto max-w-6xl px-6 py-14 border-t border-slate-800/60">
         <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-8">
             <h2 class="text-2xl md:text-3xl font-bold">Parcours académique</h2>
@@ -451,22 +488,6 @@
         </div>
     </section>
 
-
-    <!-- PROJETS -->
-    
-    <section id="projets" class="mx-auto max-w-6xl px-6 py-14 border-t border-slate-800/60">
-        <div class="flex items-end justify-between gap-4">
-            <h2 class="text-2xl md:text-3xl font-bold">Projets</h2>
-            <div class="text-sm text-slate-400">Filtrer :
-                <select id="filter" class="ml-2 rounded-md bg-slate-900 border border-slate-700 px-2 py-1">
-                <option value="past">Passés</option>
-                <option value="current">En cours</option>
-                <option value="future">À venir</option>
-                </select>
-            </div>
-        </div>
-        <div id="projectsGrid" class="scrollable mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"  style="max-height: 470px; overflow-y: auto; padding-right: 8px;"></div>
-    </section>
 
     <section id="posts" class="mx-auto max-w-6xl px-6 py-14 border-t border-slate-800/60">
         <h2 class="text-2xl md:text-3xl font-bold">Publications</h2>
