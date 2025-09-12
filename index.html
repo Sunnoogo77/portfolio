@@ -1,6 +1,7 @@
-    <!DOCTYPE html>
-    <html lang="fr">
-    <head>
+<!-- 
+<!DOCTYPE html>
+<html lang="fr">
+<head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Sunnoogo — Blue Team Portfolio</title>
@@ -9,10 +10,35 @@
     <link rel="icon" href="img/logos/head/favicon-16.png" sizes="16x16" type="image/png">
     <link rel="apple-touch-icon" href="img/logos/head/apple-touch-icon.png">
     <link rel="manifest" href="img/logos/head/site.webmanifest">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uW/j+5/g35c1tB4h3fC6A3dF95M94qJ3/hX2fP5g4rL7rE1b25I+zK25c5g5E6zG25e25E6w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <meta name="theme-color" content="#0e7490">
 
     <meta name="description" content="Portfolio cybersécurité (Blue Team) : objectifs, projets passés, en cours et à venir." />
-    <!-- Tailwind Play CDN (rapide pour démarrer). Pour un site pro long terme, migrer vers une build Tailwind/Vite. -->
+    <script src="https://cdn.tailwindcss.com"></script> -->
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sunnoogo — Blue Team Portfolio</title>
+    <link rel="icon" href="img/logos/head/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="img/logos/head/favicon-32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="img/logos/head/favicon-16.png" sizes="16x16" type="image/png">
+    <link rel="apple-touch-icon" href="img/logos/head/apple-touch-icon.png">
+    <link rel="manifest" href="img/logos/head/site.webmanifest">
+    
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-pbVkNf3nU6K1VhXkAoSPaF+9U2b2wTr3+H0pVj2IQxF1tUuhzIUlR3QkP0EZQOZz5qgqG7BBf6x9Y9Ygl7z8Jw==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
+    <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
+    <!--Import materialize.css-->
+    <!-- <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css" integrity="sha256-vK3UTo/8wHbaUn+dTQD0X6dzidqc5l7gczvH+Bnowwk=" crossorigin="anonymous" />
+    <meta name="theme-color" content="#0e7490">
+
+    <meta name="description" content="Portfolio cybersécurité (Blue Team) : objectifs, projets passés, en cours et à venir." />
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -64,8 +90,46 @@
         #about .scrollable::-webkit-scrollbar-thumb:hover {
                 background: rgba(255, 255, 255, 0.6);
         }
+
+        /* Styles spécifiques pour la section contact */
+        .contact-card {
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-item:hover .social-icon {
+            transform: scale(1.1);
+        }
+        
+        .github-bg {
+            background: linear-gradient(135deg, rgba(36, 41, 46, 0.8), rgba(36, 41, 46, 0.4));
+        }
+        
+        .linkedin-bg {
+            background: linear-gradient(135deg, rgba(10, 102, 194, 0.8), rgba(10, 102, 194, 0.4));
+        }
+        
+        .input-field:focus {
+            border-color: #22d3ee;
+            box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.3);
+        }
     </style>
-    </head>
+</head>
     <body class="min-h-screen bg-slate-950 text-slate-100 selection:bg-brand-500/30">
     <!-- HEADER / HERO -->
     <!-- <header class="scanlines relative overflow-hidden">
@@ -300,7 +364,7 @@
     </section>
 
     <!-- PROJETS -->
-    <section id="projets" class="mx-auto max-w-6xl px-6 py-14 border-t border-slate-800/60">
+    <section id="projets" class="mx-auto max-w-7xl px-6 py-14 border-t border-slate-800/60">
         <div class="flex items-end justify-between gap-4">
             <h2 class="text-2xl md:text-3xl font-bold">Projets</h2>
             <div class="text-sm text-slate-400">Filtrer :
@@ -315,175 +379,174 @@
     </section>
 
     <!-- PARCOURS ACADÉMIQUE -->
-    <section id="parcours" class="mx-auto max-w-6xl px-6 py-14 border-t border-slate-800/60">
-        <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-8">
+    <section id="parcours" class="mx-auto max-w-7xl px-6 py-14 border-t border-slate-800/60">
+        <div class="rounded-2xl p-8">
             <h2 class="text-2xl md:text-3xl font-bold">Parcours académique</h2>
             <p class="mt-3 text-slate-300">
             Un chemin entre rigueur scientifique, ouverture internationale et spécialisation en cybersécurité / cloud.
             </p>
 
-            <div class="relative scrollable mt-8 pl-6" style="max-height: 300px; overflow-y: auto;">
+            <div class="relative scrollable mt-8 pl-6" style="max-height: 325px; overflow-y: auto;">
             <!-- <span class="absolute left-0 top-0 h-full w-1 rounded bg-slate-800/60"></span> -->
 
             <!-- Prépa INP-HB -->
-            <div class="relative mb-8">
-                <span class="absolute -left-[9px] top-2 h-4 w-4 rounded-full bg-brand-500 shadow-[0_0_0_4px_rgba(6,182,212,0.25)]"></span>
-                <article class="rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
-                <!-- Ligne du haut : titre/badge à gauche, logos/drapeau à droite -->
-                <div class="flex items-start justify-between gap-3">
-                    <div class="min-w-0">
-                    <div class="flex items-center gap-3">
-                        <h3 class="text-lg font-semibold">INP-HB (MPSI → MP*) — Prépa scientifique</h3>
-                        <span class="text-xs px-2 py-1 rounded bg-slate-800 border border-slate-700">Rigueur &amp; Persévérance</span>
+                <div class="relative mb-8">
+                    <span class="absolute -left-[9px] top-2 h-4 w-4 rounded-full bg-brand-500 shadow-[0_0_0_4px_rgba(6,182,212,0.25)]"></span>
+                    <article class="rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
+                    <!-- Ligne du haut : titre/badge à gauche, logos/drapeau à droite -->
+                    <div class="flex items-start justify-between gap-3">
+                        <div class="min-w-0">
+                        <div class="flex items-center gap-3">
+                            <h3 class="text-lg font-semibold">INP-HB (MPSI → MP*) — Prépa scientifique</h3>
+                            <span class="text-xs px-2 py-1 rounded bg-slate-800 border border-slate-700">Rigueur &amp; Persévérance</span>
+                        </div>
+                        </div>
+                        <div class="flex items-center gap-5 shrink-0">
+                        <!-- Logo établissement -->
+                        <img src="img/logos/inphb.png" alt="INP-HB" class="h-10 w-auto object-contain opacity-90 hover:opacity-100 transition"
+                            onerror="this.style.display='none'">
+                        <!-- Drapeau pays -->
+                        <img src="img/flags/ci.png" alt="Côte d’Ivoire" class="h-6 w-10 rounded-sm ring-1 ring-slate-700"
+                            onerror="this.style.display='none'">
+                        </div>
                     </div>
-                    </div>
-                    <div class="flex items-center gap-5 shrink-0">
-                    <!-- Logo établissement -->
-                    <img src="img/logos/inphb.png" alt="INP-HB" class="h-10 w-auto object-contain opacity-90 hover:opacity-100 transition"
-                        onerror="this.style.display='none'">
-                    <!-- Drapeau pays -->
-                    <img src="img/flags/ci.png" alt="Côte d’Ivoire" class="h-6 w-10 rounded-sm ring-1 ring-slate-700"
-                        onerror="this.style.display='none'">
-                    </div>
+
+                    <p class="mt-2 text-slate-300 text-sm">
+                        Maths/Physique avancées, discipline de travail, résilience. Arrivé du Burkina Faso, création d’un noyau d’amis — une vraie famille.
+                    </p>
+                    <details class="mt-3">
+                        <summary class="cursor-pointer text-brand-300 hover:underline">Détails</summary>
+                        <ul class="mt-2 list-disc list-inside text-slate-300 text-sm">
+                        <li>Approche analytique et tenue du cap face à la charge.</li>
+                        <li>Culture scientifique solide pour la suite du cursus.</li>
+                        </ul>
+                    </details>
+                    </article>
                 </div>
 
-                <p class="mt-2 text-slate-300 text-sm">
-                    Maths/Physique avancées, discipline de travail, résilience. Arrivé du Burkina Faso, création d’un noyau d’amis — une vraie famille.
-                </p>
-                <details class="mt-3">
-                    <summary class="cursor-pointer text-brand-300 hover:underline">Détails</summary>
-                    <ul class="mt-2 list-disc list-inside text-slate-300 text-sm">
-                    <li>Approche analytique et tenue du cap face à la charge.</li>
-                    <li>Culture scientifique solide pour la suite du cursus.</li>
-                    </ul>
-                </details>
-                </article>
-            </div>
+                <!-- EFREI Paris -->
+                <div class="relative mb-8">
+                    <span class="absolute -left-[9px] top-2 h-4 w-4 rounded-full bg-brand-500 shadow-[0_0_0_4px_rgba(6,182,212,0.25)]"></span>
+                    <article class="rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
+                    <div class="flex items-start justify-between gap-3">
+                        <div class="min-w-0">
+                        <div class="flex items-center gap-3">
+                            <h3 class="text-lg font-semibold">EFREI Paris — Ingénierie</h3>
+                            <span class="text-xs px-2 py-1 rounded bg-slate-800 border border-slate-700">Spécialisation Cyber &amp; Cloud</span>
+                        </div>
+                        </div>
+                        <div class="flex items-center gap-5 shrink-0">
+                        <img src="img/logos/efrei.png" alt="EFREI Paris" class="h-6 w-auto object-contain opacity-90 hover:opacity-100 transition"
+                            onerror="this.style.display='none'">
+                        <img src="img/flags/fr.png" alt="France" class="h-6 w-10 rounded-sm ring-1 ring-slate-700"
+                            onerror="this.style.display='none'">
+                        </div>
+                    </div>
 
-            <!-- EFREI Paris -->
-            <div class="relative mb-8">
-                <span class="absolute -left-[9px] top-2 h-4 w-4 rounded-full bg-brand-500 shadow-[0_0_0_4px_rgba(6,182,212,0.25)]"></span>
-                <article class="rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
-                <div class="flex items-start justify-between gap-3">
-                    <div class="min-w-0">
-                    <div class="flex items-center gap-3">
-                        <h3 class="text-lg font-semibold">EFREI Paris — Ingénierie</h3>
-                        <span class="text-xs px-2 py-1 rounded bg-slate-800 border border-slate-700">Spécialisation Cyber &amp; Cloud</span>
-                    </div>
-                    </div>
-                    <div class="flex items-center gap-5 shrink-0">
-                    <img src="img/logos/efrei.png" alt="EFREI Paris" class="h-6 w-auto object-contain opacity-90 hover:opacity-100 transition"
-                        onerror="this.style.display='none'">
-                    <img src="img/flags/fr.png" alt="France" class="h-6 w-10 rounded-sm ring-1 ring-slate-700"
-                        onerror="this.style.display='none'">
-                    </div>
+                    <p class="mt-2 text-slate-300 text-sm">
+                        Accès via Euro Graduate Access. Découverte large (programmation, réseaux, BDD, embarqué, cybersécurité) puis choix assumé pour la Blue Team &amp; le cloud.
+                    </p>
+                    <details class="mt-3">
+                        <summary class="cursor-pointer text-brand-300 hover:underline">Ce que j’y ai cultivé</summary>
+                        <ul class="mt-2 list-disc list-inside text-slate-300 text-sm">
+                        <li>Fondamentaux réseaux / sécurité (AD, Kerberos, SIEM).</li>
+                        <li>Pratique cloud (AWS) et conteneurs (Kubernetes).</li>
+                        </ul>
+                    </details>
+                    </article>
                 </div>
 
-                <p class="mt-2 text-slate-300 text-sm">
-                    Accès via Euro Graduate Access. Découverte large (programmation, réseaux, BDD, embarqué, cybersécurité) puis choix assumé pour la Blue Team &amp; le cloud.
-                </p>
-                <details class="mt-3">
-                    <summary class="cursor-pointer text-brand-300 hover:underline">Ce que j’y ai cultivé</summary>
-                    <ul class="mt-2 list-disc list-inside text-slate-300 text-sm">
-                    <li>Fondamentaux réseaux / sécurité (AD, Kerberos, SIEM).</li>
-                    <li>Pratique cloud (AWS) et conteneurs (Kubernetes).</li>
-                    </ul>
-                </details>
-                </article>
-            </div>
+                <!-- Semestre en Angleterre -->
+                <div class="relative mb-8">
+                    <span class="absolute -left-[9px] top-2 h-4 w-4 rounded-full bg-brand-500 shadow-[0_0_0_4px_rgba(6,182,212,0.25)]"></span>
+                    <article class="rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
+                    <div class="flex items-start justify-between gap-3">
+                        <div class="min-w-0">
+                        <div class="flex items-center gap-3">
+                            <h3 class="text-lg font-semibold">Semestre en Angleterre — Immersion</h3>
+                            <span class="text-xs px-2 py-1 rounded bg-slate-800 border border-slate-700">Anglais &amp; Projet web</span>
+                        </div>
+                        </div>
+                        <div class="flex items-center gap-5 shrink-0">
+                        
+                        <img src="img/logos/Staffordshire_University_Logo.svg.png" alt="Université (UK)" class="h-6 w-auto object-contain opacity-90 hover:opacity-100 transition"
+                            onerror="this.style.display='none'">
+                        <img src="img/flags/england.png" alt="Royaume-Uni" class="h-6 w-10 rounded-sm ring-1 ring-slate-700"
+                            onerror="this.style.display='none'">
+                        </div>
+                    </div>
 
-            <!-- Semestre en Angleterre -->
-            <div class="relative mb-8">
-                <span class="absolute -left-[9px] top-2 h-4 w-4 rounded-full bg-brand-500 shadow-[0_0_0_4px_rgba(6,182,212,0.25)]"></span>
-                <article class="rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
-                <div class="flex items-start justify-between gap-3">
-                    <div class="min-w-0">
-                    <div class="flex items-center gap-3">
-                        <h3 class="text-lg font-semibold">Semestre en Angleterre — Immersion</h3>
-                        <span class="text-xs px-2 py-1 rounded bg-slate-800 border border-slate-700">Anglais &amp; Projet web</span>
-                    </div>
-                    </div>
-                    <div class="flex items-center gap-5 shrink-0">
-                    
-                    <img src="img/logos/Staffordshire_University_Logo.svg.png" alt="Université (UK)" class="h-6 w-auto object-contain opacity-90 hover:opacity-100 transition"
-                        onerror="this.style.display='none'">
-                    <img src="img/flags/england.png" alt="Royaume-Uni" class="h-6 w-10 rounded-sm ring-1 ring-slate-700"
-                        onerror="this.style.display='none'">
-                    </div>
+                    <p class="mt-2 text-slate-300 text-sm">
+                        Cours en anglais, basket, échanges internationaux. Projet web avec un encadrement de qualité — boost d’envie et de confiance.
+                    </p>
+                    <details class="mt-3">
+                        <summary class="cursor-pointer text-brand-300 hover:underline">Moments clés</summary>
+                        <ul class="mt-2 list-disc list-inside text-slate-300 text-sm">
+                        <li>Progression linguistique (communication et technique).</li>
+                        <li>Travail d’équipe multiculturel.</li>
+                        </ul>
+                    </details>
+                    </article>
                 </div>
 
-                <p class="mt-2 text-slate-300 text-sm">
-                    Cours en anglais, basket, échanges internationaux. Projet web avec un encadrement de qualité — boost d’envie et de confiance.
-                </p>
-                <details class="mt-3">
-                    <summary class="cursor-pointer text-brand-300 hover:underline">Moments clés</summary>
-                    <ul class="mt-2 list-disc list-inside text-slate-300 text-sm">
-                    <li>Progression linguistique (communication et technique).</li>
-                    <li>Travail d’équipe multiculturel.</li>
-                    </ul>
-                </details>
-                </article>
-            </div>
+                <!-- Stage au Ghana -->
+                <div class="relative mb-8">
+                    <span class="absolute -left-[9px] top-2 h-4 w-4 rounded-full bg-brand-500 shadow-[0_0_0_4px_rgba(6,182,212,0.25)]"></span>
+                    <article class="rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
+                    <div class="flex items-start justify-between gap-3">
+                        <div class="min-w-0">
+                        <div class="flex items-center gap-3">
+                            <h3 class="text-lg font-semibold">Ecobank (Accra, Ghana) — Stage</h3>
+                            <span class="text-xs px-2 py-1 rounded bg-slate-800 border border-slate-700">Contexte bancaire</span>
+                        </div>
+                        </div>
+                        <div class="flex items-center gap-5 shrink-0">
+                        <img src="img/logos/ecobank1.png" alt="Ecobank" class="h-10 w-20 object-contain opacity-90 hover:opacity-100 transition"
+                            onerror="this.style.display='none'">
+                        <img src="img/flags/gh.png" alt="Ghana" class="h-6 w-10 rounded-sm ring-1 ring-slate-700"
+                            onerror="this.style.display='none'">
+                        </div>
+                    </div>
 
-            <!-- Stage au Ghana -->
-            <div class="relative mb-8">
-                <span class="absolute -left-[9px] top-2 h-4 w-4 rounded-full bg-brand-500 shadow-[0_0_0_4px_rgba(6,182,212,0.25)]"></span>
-                <article class="rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
-                <div class="flex items-start justify-between gap-3">
-                    <div class="min-w-0">
-                    <div class="flex items-center gap-3">
-                        <h3 class="text-lg font-semibold">Ecobank (Accra, Ghana) — Stage</h3>
-                        <span class="text-xs px-2 py-1 rounded bg-slate-800 border border-slate-700">Contexte bancaire</span>
-                    </div>
-                    </div>
-                    <div class="flex items-center gap-5 shrink-0">
-                    <img src="img/logos/ecobank1.png" alt="Ecobank" class="h-10 w-20 object-contain opacity-90 hover:opacity-100 transition"
-                        onerror="this.style.display='none'">
-                    <img src="img/flags/gh.png" alt="Ghana" class="h-6 w-10 rounded-sm ring-1 ring-slate-700"
-                        onerror="this.style.display='none'">
-                    </div>
+                    <p class="mt-2 text-slate-300 text-sm">
+                        Au département epProcess (Technologies) : cas réels de sécurité &amp; d’infrastructure, collaboration en environnement anglophone.
+                    </p>
+                    <details class="mt-3">
+                        <summary class="cursor-pointer text-brand-300 hover:underline">Apprentissages</summary>
+                        <ul class="mt-2 list-disc list-inside text-slate-300 text-sm">
+                        <li>Adaptabilité, vision globale du risque.</li>
+                        <li>Communication avec équipes pluridisciplinaires.</li>
+                        </ul>
+                    </details>
+                    </article>
                 </div>
 
-                <p class="mt-2 text-slate-300 text-sm">
-                    Au département epProcess (Technologies) : cas réels de sécurité &amp; d’infrastructure, collaboration en environnement anglophone.
-                </p>
-                <details class="mt-3">
-                    <summary class="cursor-pointer text-brand-300 hover:underline">Apprentissages</summary>
-                    <ul class="mt-2 list-disc list-inside text-slate-300 text-sm">
-                    <li>Adaptabilité, vision globale du risque.</li>
-                    <li>Communication avec équipes pluridisciplinaires.</li>
-                    </ul>
-                </details>
-                </article>
-            </div>
-
-            <!-- Bonus: compétences & centres d'intérêt -->
-            <div class="relative mb-2">
-                <span class="absolute -left-[9px] top-2 h-4 w-4 rounded-full bg-brand-500 shadow-[0_0_0_4px_rgba(6,182,212,0.25)]"></span>
-                <article class="rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
-                <div class="grid gap-6 md:grid-cols-2">
-                    <div>
-                    <h4 class="font-semibold">Projets techniques &amp; auto-formation</h4>
-                    <ul class="mt-2 flex flex-wrap gap-2 text-xs">
-                        <li class="px-2 py-1 rounded bg-slate-800 border border-slate-700">Wazuh</li>
-                        <li class="px-2 py-1 rounded bg-slate-800 border border-slate-700">Active Directory</li>
-                        <li class="px-2 py-1 rounded bg-slate-800 border border-slate-700">Kubernetes</li>
-                        <li class="px-2 py-1 rounded bg-slate-800 border border-slate-700">AWS</li>
-                        <li class="px-2 py-1 rounded bg-slate-800 border border-slate-700">WebHawk</li>
-                        <li class="px-2 py-1 rounded bg-slate-800 border border-slate-700">Password Cracker</li>
-                    </ul>
+                <!-- Bonus: compétences & centres d'intérêt -->
+                <div class="relative mb-2">
+                    <span class="absolute -left-[9px] top-2 h-4 w-4 rounded-full bg-brand-500 shadow-[0_0_0_4px_rgba(6,182,212,0.25)]"></span>
+                    <article class="rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
+                    <div class="grid gap-6 md:grid-cols-2">
+                        <div>
+                        <h4 class="font-semibold">Projets techniques &amp; auto-formation</h4>
+                        <ul class="mt-2 flex flex-wrap gap-2 text-xs">
+                            <li class="px-2 py-1 rounded bg-slate-800 border border-slate-700">Wazuh</li>
+                            <li class="px-2 py-1 rounded bg-slate-800 border border-slate-700">Active Directory</li>
+                            <li class="px-2 py-1 rounded bg-slate-800 border border-slate-700">Kubernetes</li>
+                            <li class="px-2 py-1 rounded bg-slate-800 border border-slate-700">AWS</li>
+                            <li class="px-2 py-1 rounded bg-slate-800 border border-slate-700">WebHawk</li>
+                            <li class="px-2 py-1 rounded bg-slate-800 border border-slate-700">Password Cracker</li>
+                        </ul>
+                        </div>
+                        <div>
+                        <h4 class="font-semibold">Langues &amp; intérêts</h4>
+                        <ul class="mt-2 space-y-1 text-slate-300 text-sm">
+                            <li>Français &amp; Anglais (TOEIC 935)</li>
+                            <li>Basketball, piano, engagements communautaires</li>
+                        </ul>
+                        </div>
                     </div>
-                    <div>
-                    <h4 class="font-semibold">Langues &amp; intérêts</h4>
-                    <ul class="mt-2 space-y-1 text-slate-300 text-sm">
-                        <li>Français &amp; Anglais (TOEIC 935)</li>
-                        <li>Basketball, piano, engagements communautaires</li>
-                    </ul>
-                    </div>
+                    </article>
                 </div>
-                </article>
-            </div>
-
             </div>
         </div>
     </section>
@@ -524,26 +587,112 @@
     </section>
 
     <!-- CONTACT -->
-    <section id="contact" class="mx-auto max-w-6xl px-6 py-14 border-t border-slate-800/60">
+    <!-- <section id="contact" class="mx-auto max-w-6xl px-6 py-14 border-t border-slate-800/60">
         <h2 class="text-2xl md:text-3xl font-bold">Contact</h2>
         <div class="mt-4 grid gap-6 md:grid-cols-2">
-            <form class="rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
+            <form action="https://formspree.io/f/mblablky" method="POST" class="rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
                 <label class="block text-sm text-slate-400">Nom</label>
-                <input class="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2" placeholder="Votre nom" />
+                <input name="name" class="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2" placeholder="Votre nom" />
+
                 <label class="mt-4 block text-sm text-slate-400">Email</label>
-                <input type="email" class="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2" placeholder="vous@mail.com" />
+                <input type="email" name="email" class="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2" placeholder="vous@mail.com" />
+
                 <label class="mt-4 block text-sm text-slate-400">Message</label>
-                <textarea class="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2" rows="5" placeholder="Votre message..."></textarea>
-                <button type="button" class="mt-6 inline-flex items-center rounded-lg bg-brand-600 px-4 py-2 font-semibold hover:bg-brand-500">Envoyer</button>
-                <!-- <p class="mt-3 text-xs text-slate-400">Astuce : pour un vrai envoi, brancher Formspree/Netlify Forms/Vercel functions.</p> -->
+                <textarea name="message" class="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2" rows="5" placeholder="Votre message..."></textarea>
+
+                <button type="submit" class="mt-6 inline-flex items-center rounded-lg bg-brand-600 px-4 py-2 font-semibold hover:bg-brand-500">Envoyer</button>
             </form>
             <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
                 <h3 class="font-semibold">Réseaux</h3>
                 <ul class="mt-3 space-y-2 text-slate-300">
-                <li>GitHub : <a class="text-brand-300 hover:underline" href="https://github.com/Sunnoogo77" target="_blank" rel="noreferrer">@Sunnoogo77</a></li>
-                <li>LinkedIn : <a class="text-brand-300 hover:underline" href="https://www.linkedin.com/in/sunnoogo-caleb-tapsoba-130584292/" target="_blank" rel="noreferrer">sunnoogo‑caleb‑tapsoba</a></li>
-                
+                    <li>
+                        <a class="text-brand-300 hover:underline flex items-center gap-2" href="https://github.com/Sunnoogo77" target="_blank" rel="noreferrer">
+                            <i class="fa-brands fa-github fa-lg"></i> 
+                            GitHub : @Sunnoogo77
+                        </a>
+                    </li>
+                    <li>
+                        <a class="text-brand-300 hover:underline flex items-center gap-2" href="https://www.linkedin.com/in/sunnoogo-caleb-tapsoba-130584292/" target="_blank" rel="noreferrer">
+                            <i class="fa-brands fa-linkedin fa-lg"></i> 
+                            LinkedIn : sunnoogo‑caleb‑tapsoba
+                        </a>
+                    </li>
                 </ul>
+            </div>
+        </div>
+    </section> -->
+    <section id="contact" class="mx-auto max-w-7xl px-6 py-14 border-t border-slate-800/60 ">
+        <h2 class="text-2xl md:text-3xl font-bold text-brand-400 mb-2">Contact</h2>
+        <p class="text-slate-400 mb-8">N'hésitez pas à me contacter pour discuter de cybersécurité ou d'opportunités</p>
+        
+        <div class="mt-4 grid gap-8 md:grid-cols-2">
+            <form action="https://formspree.io/f/mblablky" method="POST" class="rounded-2xl border border-slate-800 bg-slate-900/60 p-6 contact-card">
+                <div class="flex items-center gap-2 mb-6">
+                    <i class="fas fa-paper-plane text-brand-400"></i>
+                    <h3 class="font-semibold text-lg">Envoyez un message</h3>
+                </div>
+                
+                <label class="block text-sm text-slate-400">Nom</label>
+                <input name="name" class="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 input-field focus:outline-none focus:ring-2 focus:ring-brand-600" placeholder="Votre nom" />
+
+                <label class="mt-4 block text-sm text-slate-400">Email</label>
+                <input type="email" name="email" class="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 input-field focus:outline-none focus:ring-2 focus:ring-brand-600" placeholder="vous@mail.com" />
+
+                <label class="mt-4 block text-sm text-slate-400">Message</label>
+                <textarea name="message" class="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 input-field focus:outline-none focus:ring-2 focus:ring-brand-600" rows="5" placeholder="Votre message..."></textarea>
+
+                <button type="submit" class="mt-6 inline-flex items-center rounded-lg bg-brand-600 px-4 py-2 font-semibold hover:bg-brand-500 transition-colors">
+                    <i class="fas fa-paper-plane mr-2"></i> Envoyer
+                </button>
+            </form>
+            
+            <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-6 contact-card">
+                <div class="flex items-center gap-2 mb-6">
+                    <i class="fas fa-share-nodes text-brand-400"></i>
+                    <h3 class="font-semibold text-lg">Réseaux sociaux</h3>
+                </div>
+                
+                <div class="space-y-4">
+                    <a href="https://github.com/Sunnoogo77" target="_blank" rel="noreferrer" class="social-item flex items-center p-3 rounded-xl bg-slate-800/30 hover:bg-slate-800/50 transition-all">
+                        <div class="social-icon github-bg mr-4">
+                            <i class="fab fa-github fa-lg text-white"></i>
+                        </div>
+                        <div>
+                            <div class="font-medium">GitHub</div>
+                            <div class="text-sm text-slate-400">@Sunnoogo77</div>
+                        </div>
+                    </a>
+                    
+                    <a href="https://www.linkedin.com/in/sunnoogo-caleb-tapsoba-130584292/" target="_blank" rel="noreferrer" class="social-item flex items-center p-3 rounded-xl bg-slate-800/30 hover:bg-slate-800/50 transition-all">
+                        <div class="social-icon linkedin-bg mr-4">
+                            <i class="fab fa-linkedin-in fa-lg text-white"></i>
+                        </div>
+                        <div>
+                            <div class="font-medium">LinkedIn</div>
+                            <div class="text-sm text-slate-400">sunnoogo-caleb-tapsoba</div>
+                        </div>
+                    </a>
+                    
+                    <a href="https://x.com/Sunnoogo77" target="_blank" rel="noreferrer" class="social-item flex items-center p-3 rounded-xl bg-slate-800/30 hover:bg-slate-800/50 transition-all">
+                        <div class="social-icon mr-4" style="background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.4));">
+                            <i class="fab fa-x-twitter fa-lg text-white"></i>
+                        </div>
+                        <div>
+                            <div class="font-medium">X (ex-Twitter)</div>
+                            <div class="text-sm text-slate-400">@Sunnoogo77</div>
+                        </div>
+                    </a>
+
+                    <a href="" target="_blank" rel="noreferrer" class="social-item flex items-center p-3 rounded-xl bg-slate-800/30 hover:bg-slate-800/50 transition-all">
+                        <div class="social-icon mr-4" style="background: linear-gradient(135deg, rgba(225, 48, 108, 0.8), rgba(225, 48, 108, 0.4));">
+                            <i class="fab fa-instagram fa-lg text-white"></i>
+                        </div>
+                        <div>
+                            <div class="font-medium">Instagram</div>
+                            <div class="text-sm text-slate-400">@sunnoogo77</div>
+                        </div>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
