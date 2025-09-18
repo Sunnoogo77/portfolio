@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sunnoogo — Blue Team Portfolio</title>
+    <link rel="icon" href="img/logos/head/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="img/logos/head/favicon-32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="img/logos/head/favicon-16.png" sizes="16x16" type="image/png">
+    <link rel="apple-touch-icon" href="img/logos/head/apple-touch-icon.png">
+    <link rel="manifest" href="img/logos/head/site.webmanifest">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-pbVkNf3nU6K1VhXkAoSPaF+9U2b2wTr3+H0pVj2IQxF1tUuhzIUlR3QkP0EZQOZz5qgqG7BBf6x9Y9Ygl7z8Jw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <meta name="theme-color" content="#0e7490">
+    <meta name="description" content="Portfolio cybersécurité (Blue Team) : objectifs, projets passés, en cours et à venir." />
+</head>
+
+<body class="min-h-screen">
+
+    <header class="scanlines relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-slate-900 via-slate-950 to-slate-950"></div>
+    <div class="relative mx-auto max-w-7xl py-1 lg:py-10">
+        <div class="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between mb-10 px-6">
+            <div>
+                <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight">
+                    <span class="text-brand-300">Sunnoogo</span> — Portfolio Cybersécurité
+                </h1>
+                <p class="mt-4 max-w-3xl text-slate-300">
+                    Étudiant en Ingé3 à l’EFREI Paris, en spécialisation Cybersécurité & Cloud. Passionné par la Blue Team, la sécurisation des infrastructures, la surveillance SOC et la protection des environnements Cloud & SI.
+                </p>
+                <div class="mt-3">
+                    <span class="inline-flex items-center gap-2 rounded-full border border-brand-500/30 bg-brand-500/10 px-5 ml-20 mt-5 mb-2 py-1 text-brand-200">
+                        <span class="h-2 w-2 rounded-full bg-brand-300 animate-pulse"></span> Priorité : Alternance en cybersécurité — dès maintenant (cours : novembre)
+                    </span>
+                    <span class="inline-flex items-center gap-2 rounded-full border border-brand-500/30 bg-brand-500/10 px-5 ml-20 mt-1 mb-5 py-1 text-brand-200">
+                        <span class="h-2 w-2 rounded-full bg-brand-300 animate-pulse"></span> Option académique : Stage de fin d’études possible — mars 2026
+                    </span>
+                </div>
+                <div class="mt-10 flex flex-wrap gap-3">
+                    <a href="#projets" class="glow inline-flex items-center gap-2 rounded-xl bg-brand-600 px-4 py-2 font-semibold hover:bg-brand-500 transition">
+                        Explorer les projets
+                    </a>
+                    <a href="#parcours" class="inline-flex items-center gap-2 rounded-xl border border-slate-700/70 px-4 py-2 font-semibold hover:border-brand-500 transition">
+                        Parcours académique
+                    </a>
+                    <a href="#contact" class="inline-flex items-center gap-2 rounded-xl border border-slate-700/70 px-4 py-2 font-semibold hover:border-brand-500 transition">
+                        Me contacter
+                    </a>
+                </div>
+            </div>
+            <div class="mt-10 lg:mt-0">
+                <img src="img/CALEB_TAPSOBA.jpg" alt="Sunnoogo avatar" class="w-80 h-65 rounded-full border-4 border-brand-500 mx-auto glow bg-slate-900/70 object-cover" />
+            </div>
+        </div>
+        <button id="theme-toggle" type="button" class="absolute top-4 right-6 text-slate-400 hover:text-brand-300 focus:outline-none transition-colors">
+            <svg id="theme-icon-light" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
+            <svg id="theme-icon-dark" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+            </svg>
+        </button>
+    </div>
+</header>
+
+    <section id="about" class="mx-auto max-w-7xl px-4 py-10 pt-5 pb-15">
+        <details id="aboutDetails" class="group">
+            <summary class="list-none cursor-pointer select-none">
+                <div class="flex items-center justify-between">
+                    <h2 class="text-2xl md:text-3xl font-bold">À propos</h2>
+                    <span class="inline-flex items-center gap-2 rounded-xl border border-slate-700/70 px-4 py-2 font-semibold hover:border-brand-500 transition">
+                    <span class="group-open:hidden">Voir plus</span>
+                    <span class="hidden group-open:inline">Réduire</span>
+                    </span>
+                </div>
+                <div class="compact mt-4 grid gap-8 md:grid-cols-3">
+                    <div class="md:col-span-2 rounded-2xl border border-brand-500/20 bg-slate-900/60 p-5">
+                        <p class="text-brand-100" style="text-align: justify;">
+                            Étudiant en dernière année du cycle ingénieur à l’EFREI Paris, spécialité Cybersécurité &amp; Cloud, je me destine à devenir un expert reconnu dans la protection des données, des infrastructures et des systèmes d’information.
+                        </p>
+                        <p class="mt-3 text-brand-100" style="text-align: justify;">
+                            Passionné par les nouvelles technologies, j’ai découvert la cybersécurité en août 2024 et, depuis, je n’ai cessé d’apprendre à travers mes cours, mes projets académiques et mes initiatives personnelles. Mon intérêt se porte particulièrement sur la Blue Team, la défense proactive et la création d’outils capables de bloquer, détecter et contrer les menaces.
+                        </p>
+                        <p class="mt-3 text-brand-100" style="text-align: justify;">
+                            Mon parcours académique est marqué par une diversité culturelle et géographique : originaire du Burkina Faso, j’ai étudié en Côte d’Ivoire, en France, en Angleterre et effectué un stage au Ghana. Ces expériences m’ont permis de maîtriser le français et l’anglais, de travailler dans des environnements variés et d’élargir ma vision des enjeux de la sécurité numérique à l’échelle internationale.
+                        </p>
+                    </div>
+                    <div class="mt-2">
+                        <h3 class="text-xl font-semibold">Objectifs 2025–2026</h3>
+                        <article class="mt-4 rounded-2xl border border-brand-500/25 bg-brand-500/10 p-4">
+                            <div class="flex items-start justify-between gap-3">
+                                <h4 class="font-semibold">Alternance en cybersécurité</h4>
+                                <span class="text-xs px-2 py-1 rounded bg-slate-800 border border-slate-700">Priorité</span>
+                            </div>
+                            <p class="mt-2 text-brand-100 text-sm" style="text-align: justify;">
+                                Disponible <strong>dès maintenant</strong> (préférence <strong>octobre</strong>). Début des cours : <strong>novembre</strong>.
+                            </p>
+                        </article>
+                        <article class="mt-4 rounded-2xl border border-blue-400/25 bg-blue-400/10 p-4">
+                            <h4 class="font-semibold">Stage de fin d’études</h4>
+                            <p class="mt-2 text-blue-100 text-sm" style="text-align: justify;">
+                                Si aucune alternance n’est conclue, je réaliserai un <strong>stage de fin d’études obligatoire</strong> à partir de <strong>mars 2026</strong>, conformément à mon parcours académique.
+                            </p>
+                        </article>
+                    </div>
+                </div>
+            </summary>
+            <div class="mt-4 grid gap-8 md:grid-cols-3 transition-[opacity,transform] duration-300 ease-out">
+                <div class="md:col-span-2 rounded-2xl border border-brand-500/20 bg-slate-900/60 p-5">
+                    <p class="text-brand-100" style="text-align: justify;">
+                    Étudiant en dernière année du cycle ingénieur à l’EFREI Paris, spécialité Cybersécurité &amp; Cloud, je me destine à devenir un expert reconnu dans la protection des données, des infrastructures et des systèmes d’information.
+                    </p>
+                    <p class="mt-3 text-brand-100" style="text-align: justify;">
+                    Passionné par les nouvelles technologies, j’ai découvert la cybersécurité en août 2024 et, depuis, je n’ai cessé d’apprendre à travers mes cours, mes projets académiques et mes initiatives personnelles. Mon intérêt se porte particulièrement sur la Blue Team, la défense proactive et la création d’outils capables de bloquer, détecter et contrer les menaces.
+                    </p>
+                    <p class="mt-3 text-brand-100" style="text-align: justify;">
+                    Mon parcours académique est marqué par une diversité culturelle et géographique : originaire du Burkina Faso, j’ai étudié en Côte d’Ivoire, en France, en Angleterre et effectué un stage au Ghana. Ces expériences m’ont permis de maîtriser le français et l’anglais, de travailler dans des environnements variés et d’élargir ma vision des enjeux de la sécurité numérique à l’échelle internationale.
+                    </p>
+                    <p class="mt-3 text-brand-100" style="text-align: justify;">
+                    Toujours curieux et motivé, je ne me limite pas à un seul rôle : SOC, réseau, intégration de solutions… Chaque expérience est un point d’ancrage vers mon objectif. Je m’appuie sur des projets concrets : scanners réseau, analyse de vulnérabilités web, HIDS/EDR, chiffrement et authentification renforcée.
+                    </p>
+                    <p class="mt-3 text-brand-100" style="text-align: justify;">
+                    En dehors du technique, je cultive des passions qui nourrissent mes qualités professionnelles : basketball (esprit d’équipe, réactivité), piano (rigueur, créativité). Ces disciplines m’apprennent à rester persévérant, concentré et inventif.
+                    </p>
+                    <p class="mt-3 text-brand-100" style="text-align: justify;">
+                    Mon ambition : devenir un acteur clé de la cybersécurité, capable d’anticiper, de prévenir et de neutraliser les menaces, tout en contribuant à l’innovation et à la résilience des SI.
+                    </p>
+                </div>
+                <div class="mt-2">
+                    <h3 class="text-xl font-semibold">Objectifs 2025–2026</h3>
+                    <article class="mt-4 rounded-2xl border border-brand-500/25 bg-brand-500/10 p-4">
+                        <div class="flex items-start justify-between gap-3">
+                            <h4 class="font-semibold">Alternance en cybersécurité</h4>
+                            <span class="text-xs px-2 py-1 rounded bg-slate-800 border border-slate-700">Priorité</span>
+                        </div>
+                        <p class="mt-2 text-brand-100 text-sm" style="text-align: justify;">
+                            Disponible <strong>dès maintenant</strong> (préférence <strong>octobre</strong>). Début des cours : <strong>novembre</strong>. Calendrier d’alternance fourni sur demande.
+                        </p>
+                    </article>
+                    <article class="mt-4 rounded-2xl border border-blue-400/25 bg-blue-400/10 p-4">
+                        <h4 class="font-semibold">Stage de fin d’études</h4>
+                        <p class="mt-2 text-blue-100 text-sm" style="text-align: justify;">
+                            Si aucune alternance n’est conclue, je réaliserai un <strong>stage de fin d’études obligatoire</strong> à partir de <strong>mars 2026</strong>, conformément à mon parcours académique.
+                        </p>
+                    </article>
+                    <article class="mt-4 rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
+                        <h4 class="font-semibold">Consolider les fondamentaux</h4>
+                        <p class="mt-2 text-slate-300 text-sm" style="text-align: justify;">
+                            Approfondir réseau, Active Directory, Linux/Bash, scripting (Python), SIEM/EDR, investigation (logs/malware/forensics). Automatisation de la détection &amp; réponse (SOAR), CI/CD des règles SIEM.
+                        </p>
+                        <div class="mt-3 flex flex-wrap gap-2">
+                            <span class="text-xs px-2 py-1 rounded bg-slate-800 border border-slate-700">Réseau</span>
+                            <span class="text-xs px-2 py-1 rounded bg-slate-800 border border-slate-700">Active Directory</span>
+                            <span class="text-xs px-2 py-1 rounded bg-slate-800 border border-slate-700">Linux/Bash</span>
+                            <span class="text-xs px-2 py-1 rounded bg-slate-800 border border-slate-700">Python</span>
+                            <span class="text-xs px-2 py-1 rounded bg-slate-800 border border-slate-700">SIEM/EDR</span>
+                            <span class="text-xs px-2 py-1 rounded bg-slate-800 border border-slate-700">SOAR</span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </details>
+    </section>
+
+    <section id="projets" class="mx-auto max-w-7xl px-6 py-14 border-t border-slate-800/60">
+        <div class="flex items-end justify-between gap-4">
+            <h2 class="text-2xl md:text-3xl font-bold">Projets</h2>
+            <div class="text-sm text-slate-400">Filtrer :
+                <select id="filter" class="ml-2 rounded-md bg-slate-900 border border-slate-700 px-2 py-1">
+                <option value="past">Passés</option>
+                <option value="current">En cours</option>
+                <option value="future">À venir</option>
+                </select>
+            </div>
+        </div>
+        <div id="projectsGrid" class="scrollable mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3" style="max-height: 470px; overflow-y: auto; padding-right: 8px;"></div>
+    </section>
+
+    <section id="parcours" class="mx-auto max-w-7xl px-6 py-14 border-t border-slate-800/60">
+        <div class="rounded-2xl p-8 ">
+            <h2 class="text-3xl md:text-4xl font-extrabold text-white ">Parcours académique</h2>
+
+            <div class="relative mt-12 overflow-y-auto scrollbar-thin scrollbar-transparent scrollable" style="max-height: 500px;">
+            
+            <div class="grid grid-cols-12 mb-16 group">
+                <div class="col-span-12 md:col-span-4 flex items-center justify-center relative">
+                    <div class="flex flex-col items-center">
+                        <span class="text-lg font-semibold text-brand-400">2021–2023</span>
+                        <div class="h-20 w-1 bg-slate-700/60 transition-colors duration-300 group-hover:bg-brand-500 rounded-full my-4"></div>
+                        <div class="absolute -bottom-0 left-1/2 transform -translate-x-1/2 h-4 w-4 rounded-full bg-brand-500 shadow-[0_0_15px_4px_rgba(6,182,212,0.6)] animate-pulse-slow"></div>
+                    </div>
+                </div>
+                <div class="col-span-12 md:col-span-8 pr-0 md:pr-6">
+                    <article class="relative w-full rounded-2xl border border-slate-700 bg-slate-900/50 p-6 transition-all duration-300 ease-in-out group-hover:border-brand-500 group-hover:shadow-lg group-hover:shadow-brand-500/10">
+                        <div class="flex items-start justify-between gap-4 flex-wrap">
+                            <div class="flex-1 min-w-[200px]">
+                                <h3 class="text-xl font-bold text-white">INP-HB (MPSI → MP*) — Prépa scientifique</h3>
+                                <span class="text-sm font-light text-slate-400 px-3 py-1 rounded-full bg-slate-800 border border-slate-700 mt-2 inline-block">Rigueur & Persévérance</span>
+                            </div>
+                            <div class="flex items-center gap-4 shrink-0">
+                                <img src="img/logos/inphb.png" alt="INP-HB" class="h-10 w-auto object-contain transition group-hover:scale-105">
+                                <img src="img/flags/ci.png" alt="Côte d’Ivoire" class="h-6 w-10 rounded-sm ring-1 ring-slate-700">
+                            </div>
+                        </div>
+                        
+                        <p class="mt-4 text-slate-300 text-sm">Deux années intensives en mathématiques, physique et informatique, avec une forte préparation aux concours scientifiques.</p>
+                        
+                        <div id="details-inphb" class="hidden mt-4 pt-4 border-t border-slate-700 text-slate-300 text-sm">
+                            <h4 class="font-bold text-lg text-white mb-2">Détails</h4>
+                            <ul class="list-disc list-inside space-y-1">
+                                <li>MPSI (Mathématiques, Physique et Sciences de l’Ingénieur).</li>
+                                <li>MP* (Mathématiques, Physique & Informatique) — filière d’excellence.</li>
+                                <li>Rigueur académique, esprit analytique et persévérance.</li>
+                            </ul>
+                        </div>
+                        
+                        <button onclick="toggleDetails('details-inphb')" class="mt-4 text-brand-400 font-semibold hover:text-brand-300 transition-colors">
+                            En savoir plus →
+                        </button>
+                    </article>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-12 mb-16 group">
+                <div class="col-span-12 md:col-span-4 flex items-center justify-center relative">
+                    <div class="flex flex-col items-center">
+                        <span class="text-lg font-semibold text-brand-400">Jan–Mai 2024</span>
+                        <div class="h-20 w-1 bg-slate-700/60 transition-colors duration-300 group-hover:bg-brand-500 rounded-full my-4"></div>
+                        <div class="absolute -bottom-0 left-1/2 transform -translate-x-1/2 h-4 w-4 rounded-full bg-brand-500 shadow-[0_0_15px_4px_rgba(6,182,212,0.6)] animate-pulse-slow"></div>
+                    </div>
+                </div>
+                <div class="col-span-12 md:col-span-8 pr-0 md:pr-6">
+                <article class="relative w-full rounded-2xl border border-slate-700 bg-slate-900/50 p-6 transition-all duration-300 ease-in-out group-hover:border-brand-500 group-hover:shadow-lg group-hover:shadow-brand-500/10">
+                    <div class="flex items-start justify-between gap-4 flex-wrap">
+                        <div class="flex-1 min-w-[200px]">
+                            <h3 class="text-xl font-bold text-white">Staffordshire University (UK) — Semestre d’échange</h3>
+                            <span class="text-sm font-light text-slate-400 px-3 py-1 rounded-full bg-slate-800 border border-slate-700 mt-2 inline-block">Immersion linguistique</span>
+                        </div>
+                        <div class="flex items-center gap-4 shrink-0">
+                            <img src="img/logos/Staffordshire_University_Logo.svg.png" alt="Staffordshire University" class="h-8 w-auto object-contain transition group-hover:scale-105">
+                            <img src="img/flags/england.png" alt="Angleterre" class="h-6 w-10 rounded-sm ring-1 ring-slate-700">
+                        </div>
+                    </div>
+
+                    <p class="mt-4 text-slate-300 text-sm">Semestre en Angleterre (Stoke-on-Trent) : cours en anglais, vie étudiante, projet web encadré, ouverture culturelle et basket.</p>
+
+                    <div id="details-staffordshire" class="hidden mt-4 pt-4 border-t border-slate-700 text-slate-300 text-sm">
+                        <h4 class="font-bold text-lg text-white mb-2">Moments clés</h4>
+                        <ul class="list-disc list-inside space-y-1">
+                            <li>Amélioration significative de l’anglais technique et académique.</li>
+                            <li>Projet web en équipe, avec encadrement pédagogique rapproché.</li>
+                            <li>Expérience multiculturelle enrichissante.</li>
+                        </ul>
+                    </div>
+                    
+                    <button onclick="toggleDetails('details-staffordshire')" class="mt-4 text-brand-400 font-semibold hover:text-brand-300 transition-colors">
+                        En savoir plus →
+                    </button>
+                </article>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-12 mb-16 group">
+                <div class="col-span-12 md:col-span-4 flex items-center justify-center relative">
+                <div class="flex flex-col items-center">
+                    <span class="text-lg font-semibold text-brand-400">2023–Présent</span>
+                    <div class="h-20 w-1 bg-slate-700/60 transition-colors duration-300 group-hover:bg-brand-500 rounded-full my-4"></div>
+                    <div class="absolute -bottom-0 left-1/2 transform -translate-x-1/2 h-4 w-4 rounded-full bg-brand-500 shadow-[0_0_15px_4px_rgba(6,182,212,0.6)] animate-pulse-slow"></div>
+                </div>
+                </div>
+                <div class="col-span-12 md:col-span-8 pr-0 md:pr-6">
+                <article class="relative w-full rounded-2xl border border-slate-700 bg-slate-900/50 p-6 transition-all duration-300 ease-in-out group-hover:border-brand-500 group-hover:shadow-lg group-hover:shadow-brand-500/10">
+                    <div class="flex items-start justify-between gap-4 flex-wrap">
+                        <div class="flex-1 min-w-[200px]">
+                            <h3 class="text-xl font-bold text-white">EFREI Paris — Ingénierie</h3>
+                            <span class="text-sm font-light text-slate-400 px-3 py-1 rounded-full bg-slate-800 border border-slate-700 mt-2 inline-block">Spécialisation Cyber & Cloud</span>
+                        </div>
+                        <div class="flex items-center gap-4 shrink-0">
+                            <img src="img/logos/efrei.png" alt="EFREI Paris" class="h-8 w-auto object-contain transition group-hover:scale-105">
+                            <img src="img/flags/fr.png" alt="France" class="h-6 w-10 rounded-sm ring-1 ring-slate-700">
+                        </div>
+                    </div>
+
+                    <p class="mt-4 text-slate-300 text-sm">Formation d’ingénieur en informatique, puis spécialisation en Cybersécurité & Cloud à partir du Master.</p>
+
+                    <div id="details-efrei" class="hidden mt-4 pt-4 border-t border-slate-700 text-slate-300 text-sm">
+                        <h4 class="font-bold text-lg text-white mb-2">Ce que j’y ai cultivé</h4>
+                        <ul class="list-disc list-inside space-y-1">
+                            <li>L3 : programmation, graphes, optimisation, machine learning, réseaux, bases de données, UML.</li>
+                            <li>Master 1 : sécurité réseau, IAM/Active Directory, cloud (AWS), Kubernetes, SIEM & EDR.</li>
+                            <li>Projets concrets de cybersécurité (investigation, durcissement, réponse aux incidents).</li>
+                        </ul>
+                    </div>
+                    
+                    <button onclick="toggleDetails('details-efrei')" class="mt-4 text-brand-400 font-semibold hover:text-brand-300 transition-colors">
+                        En savoir plus →
+                    </button>
+                </article>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-12 mb-16 group">
+                <div class="col-span-12 md:col-span-4 flex items-center justify-center relative">
+                <div class="flex flex-col items-center">
+                    <span class="text-lg font-semibold text-brand-400">Déc 2024–Mai 2025</span>
+                    <div class="h-20 w-1 bg-slate-700/60 transition-colors duration-300 group-hover:bg-brand-500 rounded-full my-4"></div>
+                    <div class="absolute -bottom-0 left-1/2 transform -translate-x-1/2 h-4 w-4 rounded-full bg-brand-500 shadow-[0_0_15px_4px_rgba(6,182,212,0.6)] animate-pulse-slow"></div>
+                </div>
+                </div>
+                <div class="col-span-12 md:col-span-8 pr-0 md:pr-6">
+                <article class="relative w-full rounded-2xl border border-slate-700 bg-slate-900/50 p-6 transition-all duration-300 ease-in-out group-hover:border-brand-500 group-hover:shadow-lg group-hover:shadow-brand-500/10">
+                    <div class="flex items-start justify-between gap-4 flex-wrap">
+                        <div class="flex-1 min-w-[200px]">
+                            <h3 class="text-xl font-bold text-white">Ecobank (Accra, Ghana) — Stage</h3>
+                            <span class="text-sm font-light text-slate-400 px-3 py-1 rounded-full bg-slate-800 border border-slate-700 mt-2 inline-block">Rotation en 5 équipes</span>
+                        </div>
+                        <div class="flex items-center gap-4 shrink-0">
+                            <img src="img/logos/ecobank1.png" alt="Ecobank" class="h-10 w-20 object-contain transition group-hover:scale-105">
+                            <img src="img/flags/gh.png" alt="Ghana" class="h-6 w-10 rounded-sm ring-1 ring-slate-700">
+                        </div>
+                    </div>
+
+                    <p class="mt-4 text-slate-300 text-sm">Stage de 6 mois au département eProcess (Technologies) avec immersion dans plusieurs équipes cybersécurité.</p>
+
+                    <div id="details-ecobank" class="hidden mt-4 pt-4 border-t border-slate-700 text-slate-300 text-sm">
+                        <h4 class="font-bold text-lg text-white mb-2">Équipes & missions</h4>
+                        <ul class="list-disc list-inside space-y-1">
+                            <li><strong>IT Security Team :</strong> Endpoint security & patch management (Intune, Defender, MFA, vulnérabilité scoring).</li>
+                            <li><strong>SOC Team</strong> : Supervision avec Microsoft Sentinel, analyse et corrélation de logs.</li>
+                            <li><strong>BSA Team</strong> : Gouvernance & conformité, politiques de sécurité, gap assessment.</li>
+                            <li><strong>Engineering Team</strong> : Architecture réseau (GNS3), sécurité web (OWASP Top 10), EDR (Security Onion).</li>
+                            <li><strong>CERT Team</strong> : Threat hunting, malware analysis, reporting d'incidents.</li>
+                        </ul>
+                    </div>
+                    
+                    <button onclick="toggleDetails('details-ecobank')" class="mt-4 text-brand-400 font-semibold hover:text-brand-300 transition-colors">
+                        En savoir plus →
+                    </button>
+                </article>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-12 mb-16 group">
+                <div class="col-span-12 md:col-span-4 flex items-center justify-center relative">
+                <div class="flex flex-col items-center">
+                    <span class="text-lg font-semibold text-brand-400">+</span>
+                    <div class="h-20 w-1 bg-slate-700/60 transition-colors duration-300 group-hover:bg-brand-500 rounded-full my-4"></div>
+                    <div class="absolute -bottom-0 left-1/2 transform -translate-x-1/2 h-4 w-4 rounded-full bg-brand-500 shadow-[0_0_15px_4px_rgba(6,182,212,0.6)] animate-pulse-slow"></div>
+                </div>
+                </div>
+                <div class="col-span-12 md:col-span-8 pr-0 md:pr-6">
+                <article class="relative w-full rounded-2xl border border-slate-700 bg-slate-900/50 p-6 transition-all duration-300 ease-in-out group-hover:border-brand-500 group-hover:shadow-lg group-hover:shadow-brand-500/10">
+                    <div class="grid gap-6 md:grid-cols-2">
+                        <div>
+                            <h4 class="font-bold text-lg text-white">Projets techniques & auto-formation</h4>
+                            <ul class="mt-2 flex flex-wrap gap-2 text-xs">
+                                <li class="px-3 py-1 rounded-full bg-slate-800 border border-slate-700 text-slate-300">Wazuh</li>
+                                <li class="px-3 py-1 rounded-full bg-slate-800 border border-slate-700 text-slate-300">Active Directory</li>
+                                <li class="px-3 py-1 rounded-full bg-slate-800 border border-slate-700 text-slate-300">Kubernetes</li>
+                                <li class="px-3 py-1 rounded-full bg-slate-800 border border-slate-700 text-slate-300">AWS</li>
+                                <li class="px-3 py-1 rounded-full bg-slate-800 border border-slate-700 text-slate-300">WebHawk</li>
+                                <li class="px-3 py-1 rounded-full bg-slate-800 border border-slate-700 text-slate-300">Password Cracker</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg text-white">Langues & Intérêts</h4>
+                            <ul class="mt-2 space-y-1 text-slate-300 text-sm">
+                                <li class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-brand-500" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm-1-8a1 1 0 11-2 0 1 1 0 012 0zm3-2a1 1 0 11-2 0 1 1 0 012 0zm-3 4a1 1 0 11-2 0 1 1 0 012 0zm3 2a1 1 0 11-2 0 1 1 0 012 0z" clip-rule="evenodd" /></svg>Français & Anglais (TOEIC 935)</li>
+                                <li class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-brand-500" viewBox="0 0 20 20" fill="currentColor"><path d="M10 2a8 8 0 100 16A8 8 0 0010 2zm-1 8a1 1 0 112 0 1 1 0 01-2 0zm2-4a1 1 0 11-2 0 1 1 0 012 0zm0 8a1 1 0 11-2 0 1 1 0 012 0z"/></svg>Basketball, piano, engagements communautaires</li>
+                            </ul>
+                        </div>
+                    </div>
+                </article>
+                </div>
+            </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="mx-auto max-w-7xl px-6 py-14 border-t border-slate-800/60 ">
+        <h2 class="text-2xl md:text-3xl font-bold text-brand-400 mb-2">Contact</h2>
+        <p class="text-slate-400 mb-8">N'hésitez pas à me contacter pour discuter de cybersécurité ou d'opportunités</p>
+
+        <div class="mt-4 grid gap-8 md:grid-cols-2">
+            <form action="https://formspree.io/f/mblablky" method="POST" class="rounded-2xl border border-slate-800 bg-slate-900/60 p-6 contact-card">
+                <div class="flex items-center gap-2 mb-6">
+                    <i class="fas fa-paper-plane text-brand-400"></i>
+                    <h3 class="font-semibold text-lg">Envoyez un message</h3>
+                </div>
+
+                <label for="name" class="block text-sm text-slate-400">Nom</label>
+                <input type="text" id="name" name="name" class="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 input-field focus:outline-none focus:ring-2 focus:ring-brand-600" placeholder="Votre nom" required />
+
+                <label for="email" class="mt-4 block text-sm text-slate-400">Email</label>
+                <input type="email" id="email" name="email" class="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 input-field focus:outline-none focus:ring-2 focus:ring-brand-600" placeholder="vous@mail.com" required />
+
+                <label for="message" class="mt-4 block text-sm text-slate-400">Message</label>
+                <textarea id="message" name="message" class="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 input-field focus:outline-none focus:ring-2 focus:ring-brand-600" rows="5" placeholder="Votre message..." required></textarea>
+
+                <button type="submit" class="mt-6 inline-flex items-center rounded-lg bg-brand-600 px-4 py-2 font-semibold hover:bg-brand-500 transition-colors">
+                    <i class="fas fa-paper-plane mr-2"></i> Envoyer
+                </button>
+            </form>
+
+            <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-6 contact-card">
+                <div class="flex items-center gap-2 mt-10 mb-5">
+                    <i class="fas fa-share-nodes text-brand-400"></i>
+                    <h1 class="font-semibold text-lg">Réseaux sociaux</h1>
+                </div>
+
+                <div class="space-y-4">
+                    <a href="https://github.com/Sunnoogo77" target="_blank" rel="noreferrer" class="social-item flex items-center p-3 rounded-xl bg-slate-800/30 hover:bg-slate-800/50 transition-all">
+                        <div class="social-icon github-bg mr-4">
+                            <i class="fab fa-github fa-lg text-white"></i>
+                        </div>
+                        <div>
+                            <div class="font-medium">GitHub</div>
+                            <div class="text-sm text-slate-400">@Sunnoogo77</div>
+                        </div>
+                    </a>
+
+                    <a href="https://www.linkedin.com/in/sunnoogo-caleb-tapsoba-130584292/" target="_blank" rel="noreferrer" class="social-item flex items-center p-3 rounded-xl bg-slate-800/30 hover:bg-slate-800/50 transition-all">
+                        <div class="social-icon linkedin-bg mr-4">
+                            <i class="fab fa-linkedin-in fa-lg text-white"></i>
+                        </div>
+                        <div>
+                            <div class="font-medium">LinkedIn</div>
+                            <div class="text-sm text-slate-400">sunnoogo-caleb-tapsoba</div>
+                        </div>
+                    </a>
+
+                    <a href="https://x.com/SunnoogoCal" target="_blank" rel="noreferrer" class="social-item flex items-center p-3 rounded-xl bg-slate-800/30 hover:bg-slate-800/50 transition-all">
+                        <div class="social-icon twitter-bg mr-4">
+                            <i class="fab fa-x-twitter fa-lg text-white"></i>
+                        </div>
+                        <div>
+                            <div class="font-medium">X (ex-Twitter)</div>
+                            <div class="text-sm text-slate-400">@SunnoogoCal</div>
+                        </div>
+                    </a>
+
+                    <a href="https://www.instagram.com/sunnoogo_caleb/" target="_blank" rel="noreferrer" class="social-item flex items-center p-3 rounded-xl bg-slate-800/30 hover:bg-slate-800/50 transition-all">
+                        <div class="social-icon instagram-bg mr-4">
+                            <i class="fab fa-instagram fa-lg text-white"></i>
+                        </div>
+                        <div>
+                            <div class="font-medium">Instagram</div>
+                            <div class="text-sm text-slate-400">@Sunn_77</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="mx-auto max-w-7xl px-6 py-6 text-center text-sm text-slate-500 border-t border-slate-800/60">
+        <p>&copy; 2025 Caleb Tapsoba - Tous droits réservés.</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+    
+</body>
+</html>

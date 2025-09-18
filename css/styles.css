@@ -1,0 +1,140 @@
+/* Custom Tailwind Configuration - A mettre idéalement dans un fichier de configuration Tailwind,
+   mais pour cet exercice, on peut le laisser ici pour la démonstration.
+   Si vous compilez votre CSS avec un build step (npm run build), vous devez le mettre dans tailwind.config.js */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.dark body {
+    /* Styles pour le mode sombre (par défaut) */
+    background-color: #020617; /* bg-slate-950 */
+    color: #f1f5f9; /* text-slate-100 */
+}
+
+.light body {
+    /* Styles pour le mode clair */
+    background-color: #f1f5f9; /* bg-slate-100 */
+    color: #1e293b; /* text-slate-800 */
+}
+
+/* Vous pouvez continuer à surcharger les classes Tailwind pour le mode clair.
+   Exemple : */
+.light header {
+    background: linear-gradient(to bottom, #f8fafc, #f1f5f9, #f1f5f9);
+}
+
+.light .text-brand-300 {
+    color: #155e75; /* text-brand-800 en mode clair */
+}
+
+.light .border-slate-700 {
+    border-color: #cbd5e1; /* border-slate-300 en mode clair */
+}
+
+/* Ajoutez d'autres surcharges de classes ici pour le mode clair si nécessaire */
+.light .bg-slate-900\/60 {
+    background-color: rgba(226, 232, 240, 0.6); /* bg-slate-200/60 */
+}
+
+/* Styles pour le bouton */
+.light #theme-toggle {
+    background-color: #cbd5e1; /* bg-slate-300 */
+    color: #0e7490; /* text-brand-700 */
+    border-color: #94a3b8; /* border-slate-400 */
+}
+
+
+/* Styles du scrollbar personnalisée pour les sections posts, parcours, etc. */
+.scrollable::-webkit-scrollbar {
+    width: 5px;
+}
+.scrollable::-webkit-scrollbar-track {
+    background: transparent;
+}
+.dark .scrollable::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    transition: background 0.3s ease;
+}
+.light .scrollable::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    transition: background 0.3s ease;
+}
+.dark .scrollable::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.6);
+}
+.light .scrollable::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.6);
+}
+
+/* Effet scanline léger pour vibe SOC */
+.scanlines {
+    position: relative;
+}
+.scanlines:before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient( to bottom, rgba(255,255,255,0.04), rgba(255,255,255,0.04) 1px, transparent 1px, transparent 3px );
+    pointer-events: none;
+}
+.glow {
+    box-shadow: 0 0 30px rgba(34,211,238,0.25);
+}
+
+/* Styles spécifiques pour la section contact */
+.contact-card {
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.social-icon {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+.social-item:hover .social-icon {
+    transform: scale(1.1);
+}
+.github-bg {
+    background: linear-gradient(135deg, rgba(238, 240, 242, 0.8), rgba(115, 119, 122, 0.4));
+}
+.linkedin-bg {
+    background: linear-gradient(135deg, rgba(10, 102, 194, 0.8), rgba(10, 102, 194, 0.4));
+}
+
+.input-field:focus {
+    border-color: #22d3ee;
+    box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.3);
+}
+
+/* Styles spécifiques pour le dropdown */
+.dropdown-menu {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.dropdown-menu.hidden {
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
+}
+.dropdown-menu.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Styles pour le <details> de la section À propos */
+#about details[open] summary .compact {
+    display: none;
+}
+#about summary::-webkit-details-marker {
+    display: none;
+}
