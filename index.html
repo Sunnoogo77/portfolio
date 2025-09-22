@@ -142,6 +142,9 @@
                             <a href="#parcours" class="inline-flex items-center gap-2 rounded-xl border border-slate-700/70 px-4 py-2 font-semibold hover:border-brand-500 transition">
                                 Parcours académique
                             </a>
+                            <a href="#certifications" class="inline-flex items-center gap-2 rounded-xl border border-slate-700/70 px-4 py-2 font-semibold hover:border-brand-500 transition">
+                                Licences & Certifications
+                            </a>
                             <a href="#contact" class="inline-flex items-center gap-2 rounded-xl border border-slate-700/70 px-4 py-2 font-semibold hover:border-brand-500 transition">
                                 Me contacter
                             </a>
@@ -150,7 +153,7 @@
 
                 <div class="mt-10 lg:mt-0">
                     <img src="img/CALEB_TAPSOBA.jpg" alt="Sunnoogo avatar"
-                        class="w-80 h-65 rounded-full border-4 border-brand-500 mx-auto glow bg-slate-900/70 object-cover" />
+                        class="w-90 h-65 rounded-full border-4 border-brand-500 mx-auto glow bg-slate-900/70 object-cover" />
                 </div>
             </div>
         </div>
@@ -528,8 +531,44 @@
         </div>
     </section>
 
+    <!-- CERTIFICATIONS -->
+
+    <section id="certifications" class="mx-auto max-w-7xl px-6 py-14 border-t border-slate-800/60 scrollable">
+        <div class="rounded-2xl p-8">
+            <h2 class="text-3xl md:text-4xl font-extrabold text-white">Certifications</h2>
+
+            <!-- Filtres -->
+            <div class="flex gap-3 mt-6 mb-10">
+                <button onclick="filterCerts('obtained')" data-filter="obtained"
+                        class="cert-filter-btn px-4 py-2 rounded-full border border-slate-700 text-slate-300 hover:bg-brand-500/20 transition-colors">
+                    Obtenues
+                </button>
+                <button onclick="filterCerts('in-progress')" data-filter="in-progress"
+                        class="cert-filter-btn px-4 py-2 rounded-full border border-slate-700 text-slate-300 hover:bg-brand-500/20 transition-colors">
+                    En préparation
+                </button>
+                <button onclick="filterCerts('future')" data-filter="future"
+                        class="cert-filter-btn px-4 py-2 rounded-full border border-slate-700 text-slate-300 hover:bg-brand-500/20 transition-colors">
+                    Objectifs
+                </button>
+                
+                <button onclick="filterCerts('all')" data-filter="all"
+                        class="cert-filter-btn px-4 py-2 rounded-full border border-slate-700 text-slate-300 hover:bg-brand-500/20 transition-colors">
+                    Toutes
+                </button>
+            </div>
+
+            <!-- Cartes -->
+            <div id="certifications-container" class="relative mt-12 overflow-y-auto scrollbar-thin scrollbar-transparent grid grid-cols-1 md:grid-cols-2 gap-8 " style="max-height: 500px;">
+            <!-- Injecté par JS -->
+            </div>
+    </div>
+    </section>
+
+    
 
 
+    <!-- PUBLICATIONS -->
     <section id="posts" class="mx-auto max-w-6xl px-6 py-14 border-t border-slate-800/60">
         <h2 class="text-2xl md:text-3xl font-bold">Publications</h2>
         
@@ -896,6 +935,250 @@
         }
         }
     }
+
+    // DONNÉES CERTIFICATIONS : modifiez ce JSON pour mettre à jour le site sans toucher au HTML
+    const certifications = [
+        {
+            titre: "Cisco Introduction to Cybersecurity",
+            statut: "obtained",
+            periode: "2022",
+            badge: "img/certifications/cisco.jpg",
+            description: "Introduction aux concepts clés de la cybersécurité, aux menaces et aux bases de la défense des systèmes.",
+            tags: ["Cybersecurity", "Awareness", "Cisco"],
+            details: [
+            "Découverte des menaces actuelles",
+            "Principes de défense de base",
+            "Sensibilisation aux enjeux de sécurité"
+            ],
+            lien: "docs/certifs/cisco-intro.pdf"
+        },
+        {
+            titre: "Cisco Cybersecurity Essentials",
+            statut: "obtained",
+            periode: "2023",
+            badge: "img/certifications/cisco.jpg",
+            description: "Certification sur les fondamentaux de la cybersécurité, architecture réseau et protection des systèmes.",
+            tags: ["Réseau", "Sécurité", "Fundamentals"],
+            details: [
+            "Architecture et principes de sécurité réseau",
+            "Sécurité des systèmes d’exploitation",
+            "Gestion des menaces"
+            ],
+            lien: "docs/certifs/cisco-essentials.pdf"
+        },
+        {
+            titre: "Microsoft AZ-900 — Azure Fundamentals",
+            statut: "in-progress",
+            periode: "2025",
+            badge: "img/certifications/az-900.png",
+            description: "Notions fondamentales d’Azure : concepts du cloud, sécurité et conformité.",
+            tags: ["Azure", "Cloud", "Fundamentals"],
+            details: [
+            "Concepts de base du cloud computing",
+            "Sécurité et conformité dans Azure",
+            "Services principaux d’Azure"
+            ],
+            lien: "#"
+        },
+        {
+            titre: "Microsoft AZ-800 — Windows Server Hybrid Core",
+            statut: "in-progress",
+            periode: "2025",
+            badge: "img/certifications/az-800.jpg",
+            description: "Administration Windows Server hybride, Active Directory et gestion des identités.",
+            tags: ["Active Directory", "Windows Server", "Hybrid Cloud"],
+            details: [
+            "Gestion des identités et accès",
+            "Services Windows Server hybrides",
+            "Sécurité et monitoring"
+            ],
+            lien: "#"
+        },
+        {
+            titre: "Microsoft SC-900 — Security, Compliance & Identity",
+            statut: "in-progress",
+            periode: "2025",
+            badge: "img/certifications/sc-900.png",
+            description: "Principes fondamentaux de sécurité, conformité et identité Microsoft.",
+            tags: ["Security", "Compliance", "Identity"],
+            details: [
+            "Concepts de sécurité et conformité",
+            "Gestion des identités dans Microsoft",
+            "Principes Zero Trust"
+            ],
+            lien: "#"
+        },
+        {
+            titre: "CompTIA Security+",
+            statut: "future",
+            periode: "2026",
+            badge: "img/certifications/security-plus.png",
+            description: "Certification globale en cybersécurité couvrant menaces, attaques et défenses.",
+            tags: ["Security", "Network", "Threats"],
+            details: [
+            "Cryptographie et sécurité réseau",
+            "Gestion des menaces",
+            "Analyse et réponse aux incidents"
+            ],
+            lien: "#"
+        },
+        {
+            titre: "Microsoft SC-200 — Security Operations Analyst",
+            statut: "future",
+            periode: "2026",
+            badge: "img/certifications/sc-200.png",
+            description: "Spécialisation sur la détection, l’investigation et la réponse aux incidents avec Microsoft Sentinel & Defender.",
+            tags: ["SOC", "Sentinel", "Incident Response"],
+            details: [
+            "Configuration de Microsoft Sentinel",
+            "Analyse et corrélation de logs",
+            "Réponse aux incidents avancée"
+            ],
+            lien: "#"
+        },
+        {
+            titre: "TOEIC – Test of English for International Communication",
+            statut: "obtained",
+            statutLabel: "Obtenue",
+            periode: "2024",
+            badge: "img/certifications/toeic.png",
+            description: "Certification internationale validant les compétences en anglais (Listening & Reading).",
+            tags: ["English", "Listening", "Reading", "ESL"],
+            details: [
+                "Listening : 490 / 495",
+                "Reading : 445 / 495",
+                "Total : 935 / 990"
+            ],
+            lien: "docs/certifs/toeic-2024.pdf"
+            }
+
+    ];
+
+
+    
+    // --- Libellés & état ---
+    const CERT_STATUS_LABEL = {
+        "obtained": "Obtenue",
+        "in-progress": "En préparation",
+        "future": "Objectif"
+    };
+
+    let currentFilter = "obtained";
+
+    // --- Rendu des cartes ---
+    function renderCertifications() {
+        const container = document.getElementById("certifications-container");
+        container.innerHTML = "";
+
+        const filtered = certifications.filter(c =>
+            currentFilter === "all" ? true : c.statut === currentFilter
+        );
+
+        if (filtered.length === 0) {
+            container.innerHTML = `
+            <p class="text-slate-400 text-sm">Aucune certification pour ce filtre.</p>
+            `;
+        } else {
+            filtered.forEach((cert, index) => {
+            const detailsId = `cert-details-${index}`;
+
+            const meta = [
+                CERT_STATUS_LABEL[cert.statut] || "",
+                cert.periode ? cert.periode : ""
+            ].filter(Boolean).join(" • ");
+
+            container.innerHTML += `
+                <article class="relative w-full rounded-2xl border border-slate-700 bg-slate-900/50 p-6 transition group hover:border-brand-500 hover:shadow-lg hover:shadow-brand-500/10">
+                <div class="flex items-start justify-between gap-4 flex-wrap">
+                    <div class="flex-1 min-w-[200px]">
+                    <h3 class="text-xl font-bold text-white">${escapeHtml(cert.titre)}</h3>
+                    <p class="text-xs text-slate-400 mt-1">${escapeHtml(meta)}</p>
+                    </div>
+                    <div class="flex items-center gap-4 shrink-0">
+                    <img src="${escapeAttr(cert.badge || 'img/badges/placeholder.png')}"
+                        alt="${escapeAttr(cert.titre)}"
+                        class="h-12 w-12 object-contain transition group-hover:scale-105">
+                    </div>
+                </div>
+
+                <p class="mt-4 text-slate-300 text-sm">${escapeHtml(cert.description || "")}</p>
+
+                <div class="mt-3 flex flex-wrap gap-2">
+                    ${(cert.tags || []).map(tag =>
+                    `<span class="px-3 py-1 rounded-full bg-slate-800 border border-slate-700 text-slate-300 text-xs">${escapeHtml(tag)}</span>`
+                    ).join("")}
+                </div>
+
+                <div id="${detailsId}" class="hidden mt-4 pt-4 border-t border-slate-700 text-slate-300 text-sm">
+                    ${(cert.details && cert.details.length)
+                    ? `<h4 class="font-bold text-lg text-white mb-2">Détails</h4>
+                        <ul class="list-disc list-inside space-y-1">
+                        ${cert.details.map(d => `<li>${escapeHtml(d)}</li>`).join("")}
+                        </ul>`
+                    : ""
+                    }
+                    ${cert.lien && cert.lien !== "#"
+                    ? `<a href="${escapeAttr(cert.lien)}" target="_blank" rel="noreferrer"
+                        class="mt-3 inline-block text-brand-400 hover:text-brand-300 font-semibold">Voir le certificat →</a>`
+                    : ""
+                    }
+                </div>
+
+                <button onclick="toggleDetails('${detailsId}')"
+                        class="mt-4 text-brand-400 font-semibold hover:text-brand-300 transition-colors">
+                    En savoir plus →
+                </button>
+                </article>
+            `;
+            });
+        }
+
+        updateActiveFilterButtons();
+    }
+
+    // --- Filtrage ---
+    function filterCerts(type) {
+        currentFilter = type;
+        renderCertifications();
+    }
+
+    // --- Style du bouton actif ---
+    function updateActiveFilterButtons() {
+        document.querySelectorAll("#certifications .cert-filter-btn").forEach(btn => {
+            const isActive = btn.dataset.filter === currentFilter;
+            btn.classList.toggle("bg-brand-500/30", isActive);
+            btn.classList.toggle("text-brand-200", isActive);
+            btn.classList.toggle("border-brand-500", isActive);
+        });
+    }
+
+    // --- Toggle "En savoir plus" ---
+    function toggleDetails(id) {
+        const el = document.getElementById(id);
+        if (!el) return;
+        el.classList.toggle("hidden");
+    }
+
+    // --- Sécurité minimale XSS si données dynamiques ---
+    function escapeHtml(str) {
+        return String(str)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#39;");
+    }
+    function escapeAttr(str) {
+        return escapeHtml(str);
+    }
+
+    // --- Init ---
+    document.addEventListener("DOMContentLoaded", () => {
+    // Par défaut : "Toutes" actif
+        renderCertifications();
+    });
+
+
 
     
     </script>
