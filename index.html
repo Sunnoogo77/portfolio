@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -14,7 +14,7 @@
 
     <meta name="theme-color" content="#0e7490">
 
-    <meta name="description" content="Portfolio cybersécurité (Blue Team) : objectifs, projets passés, en cours et à venir." />
+    <meta name="description" content="Cybersecurity portfolio (Blue Team): current goals, past, ongoing and future projects." />
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -31,12 +31,175 @@
         }
     </script>
     <style>
-        /* Effet scanline léger pour vibe SOC */
+        /* Light scanline effect for SOC vibe */
         .scanlines { position: relative; }
         .scanlines:before { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient( to bottom, rgba(255,255,255,0.04), rgba(255,255,255,0.04) 1px, transparent 1px, transparent 3px ); pointer-events:none; }
         .glow { box-shadow: 0 0 30px rgba(34,211,238,0.25); }
 
-        /* Scrollbar personnalisée pour les sections posts et parcours */
+        /* Theme handling */
+        body.theme-dark {
+            background-color: #020617;
+            color: #f8fafc;
+            color-scheme: dark;
+        }
+
+        body.theme-light {
+            background-color: #e8f0f8;
+            color: #0b1f33;
+            color-scheme: light;
+        }
+
+        body.theme-light main,
+        body.theme-light section {
+            background-color: transparent;
+        }
+
+        body.theme-light strong {
+            color: #0b1f33;
+        }
+
+        body.theme-light a {
+            color: #0e7490;
+        }
+
+        body.theme-light a:hover {
+            color: #0a5f78;
+        }
+
+        body.theme-light .hero-gradient {
+            background: linear-gradient(180deg, rgba(148, 197, 233, 0.35) 0%, rgba(205, 228, 247, 0.82) 48%, #e8f0f8 100%);
+        }
+
+        body.theme-light .bg-brand-500\/10 { background-color: rgba(14, 116, 144, 0.14); }
+        body.theme-light .bg-blue-400\/10 { background-color: rgba(59, 130, 246, 0.14); }
+        body.theme-light .bg-slate-900 { background-color: #dbe7f2; }
+        body.theme-light .bg-slate-900\/20 { background-color: rgba(219, 231, 242, 0.2); }
+        body.theme-light .bg-slate-900\/25 { background-color: rgba(219, 231, 242, 0.25); }
+        body.theme-light .bg-slate-900\/40 { background-color: rgba(219, 231, 242, 0.4); }
+        body.theme-light .bg-slate-800\/20 { background-color: rgba(203, 213, 225, 0.2); }
+
+        body.theme-light .border-brand-500\/30 { border-color: rgba(14, 116, 144, 0.38); }
+        body.theme-light .border-brand-500\/25 { border-color: rgba(14, 116, 144, 0.32); }
+        body.theme-light .border-blue-400\/25 { border-color: rgba(59, 130, 246, 0.32); }
+        body.theme-light .border-slate-700\/40 { border-color: rgba(148, 163, 184, 0.4); }
+
+        body.theme-light .text-brand-100,
+        body.theme-light .text-brand-200 { color: #0a3d57; }
+        body.theme-light .text-brand-300 { color: #0e7490; }
+        body.theme-light .text-brand-400 { color: #0d4f73; }
+        body.theme-light .text-blue-100,
+        body.theme-light .text-blue-200 { color: #1d4ed8; }
+        body.theme-light .text-slate-300 { color: #1b2f45; }
+        body.theme-light .text-slate-400 { color: #253b53; }
+        body.theme-light .text-slate-500 { color: #2f4a66; }
+        body.theme-light .text-slate-600 { color: #365372; }
+
+        body.theme-light .theme-toggle-button i { color: #0a4164; }
+        body.theme-dark .theme-toggle-button i { color: #f8fafc; }
+
+        .theme-toggle-icon {
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .theme-toggle-button:hover .theme-toggle-icon {
+            transform: rotate(-15deg);
+        }
+
+        .language-toggle-button {
+            letter-spacing: 0.08em;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .language-toggle-button:focus-visible {
+            outline: none;
+        }
+
+        body.theme-dark .language-toggle-button {
+            border-color: rgba(148, 163, 184, 0.45);
+            background-color: rgba(15, 23, 42, 0.55);
+            color: #e2f7ff;
+        }
+
+        body.theme-dark .language-toggle-button:hover {
+            border-color: #22d3ee;
+            color: #38e1ff;
+        }
+
+        body.theme-light .language-toggle-button {
+            border-color: #c3d2e5;
+            background-color: #dbe7f2;
+            color: #0b2740;
+        }
+
+        body.theme-light .language-toggle-button:hover {
+            border-color: #0e7490;
+            color: #0e7490;
+        }
+
+        body.theme-light .bg-slate-950 { background-color: #e8f0f8; }
+        body.theme-light .bg-slate-900\/70 { background-color: rgba(210, 222, 235, 0.78); }
+        body.theme-light .bg-slate-900\/60 { background-color: rgba(210, 222, 235, 0.66); }
+        body.theme-light .bg-slate-900\/50 { background-color: rgba(210, 222, 235, 0.55); }
+        body.theme-light .bg-slate-900\/40 { background-color: rgba(210, 222, 235, 0.44); }
+        body.theme-light .bg-slate-900\/30 { background-color: rgba(210, 222, 235, 0.32); }
+        body.theme-light .bg-slate-900 { background-color: #dbe7f2; }
+        body.theme-light .bg-slate-800\/60 { background-color: rgba(189, 203, 219, 0.62); }
+        body.theme-light .bg-slate-800\/50 { background-color: rgba(189, 203, 219, 0.52); }
+        body.theme-light .bg-slate-800\/40 { background-color: rgba(189, 203, 219, 0.4); }
+        body.theme-light .bg-slate-800\/30 { background-color: rgba(189, 203, 219, 0.3); }
+        body.theme-light .bg-slate-800 { background-color: #c7d4e4; }
+
+        body.theme-light .text-slate-100,
+        body.theme-light .text-slate-200,
+        body.theme-light .text-white {
+            color: #061b33;
+        }
+        body.theme-light .text-slate-300 { color: #1b2f45; }
+        body.theme-light .text-slate-400 { color: #253b53; }
+        body.theme-light .text-slate-500 { color: #2f4a66; }
+
+        body.theme-light .text-brand-100,
+        body.theme-light .text-brand-200 {
+            color: #0a3d57;
+        }
+
+        body.theme-light .border-slate-700\/70,
+        body.theme-light .border-slate-700\/60,
+        body.theme-light .border-slate-700 {
+            border-color: #b5c5d8;
+        }
+
+        body.theme-light .border-slate-800\/60,
+        body.theme-light .border-slate-800\/70,
+        body.theme-light .border-slate-800 {
+            border-color: #b0c2d8;
+        }
+
+        body.theme-light .contact-card {
+            border-color: rgba(15, 23, 42, 0.12);
+            box-shadow: none;
+        }
+
+        body.theme-light .theme-toggle-button {
+            border-color: #cbd5e1;
+            background-color: #e2e8f0;
+            color: #0f172a;
+        }
+
+        body.theme-light .theme-toggle-button:hover {
+            background-color: #cbd5e1;
+            color: #0e7490;
+        }
+
+        body.theme-light .scrollable::-webkit-scrollbar-thumb {
+            background: rgba(15, 23, 42, 0.3);
+        }
+
+        body.theme-light .scrollable::-webkit-scrollbar-thumb:hover {
+            background: rgba(15, 23, 42, 0.6);
+        }
+
+        /* Custom scrollbar for posts and journey sections */
         #posts .scrollable::-webkit-scrollbar,
         #parcours .scrollable::-webkit-scrollbar,
         #projets .scrollable::-webkit-scrollbar,
@@ -67,7 +230,7 @@
                 background: rgba(255, 255, 255, 0.6);
         }
 
-        /* Styles spécifiques pour la section contact */
+        /* Specific styles for the contact section */
         .contact-card {
             transition: all 0.3s ease;
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -106,47 +269,58 @@
         }
     </style>
 </head>
-    <body class="min-h-screen bg-slate-950 text-slate-100 selection:bg-brand-500/30">
+    <body class="theme-dark min-h-screen bg-slate-950 text-slate-100 selection:bg-brand-500/30">
 
     <header class="scanlines relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-b from-slate-900 via-slate-950 to-slate-950"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-slate-900 via-slate-950 to-slate-950 hero-gradient"></div>
             <div class="relative mx-auto max-w-7xl  py-1 lg:py-10">
                 <div class="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between mb-10 px-6">
                     <div>
-                        <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight">
-                        <span class="text-brand-300">Sunnoogo</span> — Portfolio Cybersécurité
-                        </h1>
+                        <div class="flex flex-wrap items-start justify-between gap-4">
+                            <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight" data-i18n-key="hero.title">
+                                <span class="text-brand-300">Sunnoogo</span> — Cybersecurity Portfolio
+                            </h1>
+                            <div class="flex items-center gap-3">
+                                <a href="index-fr.html" class="language-toggle-button inline-flex h-11 px-4 shrink-0 items-center justify-center rounded-full border border-slate-700/70 bg-slate-900/60 text-sm font-semibold uppercase tracking-wide text-slate-200 transition hover:border-brand-400 hover:text-brand-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950" aria-label="View the portfolio in French">
+                                    FR
+                                </a>
+                                <button id="theme-toggle" type="button" aria-pressed="true" aria-label="Switch to light mode" class="theme-toggle-button relative inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-slate-700/70 bg-slate-900/60 text-slate-200 transition hover:border-brand-400 hover:text-brand-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950">
+                                    <span class="sr-only" data-i18n-key="controls.themeToggleLabel">Switch to light mode</span>
+                                    <i class="fa-solid fa-moon theme-toggle-icon text-lg text-brand-400" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                        </div>
 
-                        <!-- Sous-titre optimisé, sans forcer "Blue Team" -->
-                        <p class="mt-4 max-w-3xl text-slate-300">
-                            Étudiant en Ingé3 à l’EFREI Paris, en spécialisation Cybersécurité & Cloud.
-                            Passionné par la Blue Team, la sécurisation des infrastructures, la surveillance SOC et la protection des environnements Cloud & SI.
+                        <!-- Optimised subtitle without forcing "Blue Team" wording -->
+                        <p class="mt-4 max-w-3xl text-slate-300" data-i18n-key="hero.teaser">
+                            Final-year engineering student at EFREI Paris, specialising in Cybersecurity & Cloud.
+                            Passionate about Blue Team defence, infrastructure hardening, SOC monitoring and protecting cloud & information systems.
                         </p>
 
-                        <!-- Badge de dispo avec légère animation -->
+                        <!-- Availability badges with subtle animation -->
                         <div class="mt-3">
-                            <span class="inline-flex items-center gap-2 rounded-full border border-brand-500/30 bg-brand-500/10 px-5 ml-20 mt-5 mb-2 py-1 text-brand-200">
+                            <span class="inline-flex items-center gap-2 rounded-full border border-brand-500/30 bg-brand-500/10 px-5 ml-20 mt-5 mb-2 py-1 text-brand-200" data-i18n-key="hero.badgeAvailability">
                                 <span class="h-2 w-2 rounded-full bg-brand-300 animate-pulse"></span>
-                                Priorité : Alternance en cybersécurité — dès maintenant (cours : novembre)
+                                Priority: Cybersecurity apprenticeship — available now (classes resume in November)
                             </span>
-                            <span class="inline-flex items-center gap-2 rounded-full border border-brand-500/30 bg-brand-500/10 px-5 ml-20 mt-1 mb-5 py-1 text-brand-200">
+                            <span class="inline-flex items-center gap-2 rounded-full border border-brand-500/30 bg-brand-500/10 px-5 ml-20 mt-1 mb-5 py-1 text-brand-200" data-i18n-key="hero.badgeInternship">
                                 <span class="h-2 w-2 rounded-full bg-brand-300 animate-pulse"></span>
-                                Option académique : Stage de fin d’études possible — mars 2026
+                                Academic option: Final-year internship possible — March 2026
                             </span>
                         </div>
 
                         <div class="mt-10 flex flex-wrap gap-3">
-                            <a href="#projets" class="glow inline-flex items-center gap-2 rounded-xl bg-brand-600 px-4 py-2 font-semibold hover:bg-brand-500 transition">
-                                Explorer les projets
+                            <a href="#projets" class="glow inline-flex items-center gap-2 rounded-xl bg-brand-600 px-4 py-2 font-semibold hover:bg-brand-500 transition" data-i18n-key="hero.cta.projects">
+                                Explore the projects
                             </a>
-                            <a href="#parcours" class="inline-flex items-center gap-2 rounded-xl border border-slate-700/70 px-4 py-2 font-semibold hover:border-brand-500 transition">
-                                Parcours académique
+                            <a href="#parcours" class="inline-flex items-center gap-2 rounded-xl border border-slate-700/70 px-4 py-2 font-semibold hover:border-brand-500 transition" data-i18n-key="hero.cta.path">
+                                Academic journey
                             </a>
-                            <a href="#certifications" class="inline-flex items-center gap-2 rounded-xl border border-slate-700/70 px-4 py-2 font-semibold hover:border-brand-500 transition">
-                                Licences & Certifications
+                            <a href="#certifications" class="inline-flex items-center gap-2 rounded-xl border border-slate-700/70 px-4 py-2 font-semibold hover:border-brand-500 transition" data-i18n-key="hero.cta.licenses">
+                                Licenses & Certifications
                             </a>
-                            <a href="#contact" class="inline-flex items-center gap-2 rounded-xl border border-slate-700/70 px-4 py-2 font-semibold hover:border-brand-500 transition">
-                                Me contacter
+                            <a href="#contact" class="inline-flex items-center gap-2 rounded-xl border border-slate-700/70 px-4 py-2 font-semibold hover:border-brand-500 transition" data-i18n-key="hero.cta.contact">
+                                Contact me
                             </a>
                         </div>
                     </div>
@@ -165,7 +339,7 @@
         <!-- Cache le contenu compact quand <details> est ouvert -->
         <style>
             #about details[open] summary .compact { display: none; }
-            /* (optionnel) cache le chevron par défaut du summary */
+            /* Optional: hide the default summary chevron */
             #about summary::-webkit-details-marker { display: none; }
         </style>
 
@@ -173,133 +347,118 @@
             <!-- SUMMARY = titre + bouton + VUE COMPACTE -->
             <summary class="list-none cursor-pointer select-none">
                 <div class="flex items-center justify-between">
-                    <h2 class="text-2xl md:text-3xl font-bold">À propos</h2>
+                    <h2 class="text-2xl md:text-3xl font-bold" data-i18n-key="about.heading">About</h2>
                     <span class="inline-flex items-center gap-2 rounded-xl border border-slate-700/70 px-4 py-2 font-semibold hover:border-brand-500 transition">
-                    <span class="group-open:hidden">Voir plus</span>
-                    <span class="hidden group-open:inline">Réduire</span>
+                    <span class="group-open:hidden" data-i18n-key="about.actions.expand">See more</span>
+                    <span class="hidden group-open:inline" data-i18n-key="about.actions.collapse">Collapse</span>
                     </span>
                 </div>
 
-                <!-- VUE COMPACTE (visible par défaut, masquée quand ouvert par le CSS ci-dessus) -->
+                <!-- COMPACT VIEW (visible by default, hidden when open via CSS above) -->
                 <div class="compact mt-4 grid gap-8 md:grid-cols-3">
-                    <!-- À propos : 2 premiers paragraphes -->
+                    <!-- About: first two paragraphs -->
                     <div class="md:col-span-2 rounded-2xl border border-brand-500/20 bg-slate-900/60 p-5">
-                        <p class="text-brand-100" style="text-align: justify;">
-                            Étudiant en dernière année du cycle ingénieur à l’EFREI Paris, spécialité Cybersécurité &amp; Cloud,
-                            je me destine à devenir un expert reconnu dans la protection des données, des infrastructures et des systèmes d’information.
+                        <p class="text-brand-100" style="text-align: justify;" data-i18n-key="about.summary.p1">
+                            Final-year engineering student at EFREI Paris, specialising in Cybersecurity &amp; Cloud. I aim to become a recognised expert in protecting data, infrastructure and information systems.
                         </p>
-                        <p class="mt-3 text-brand-100" style="text-align: justify;">
-                            Passionné par les nouvelles technologies, j’ai découvert la cybersécurité en août 2024 et, depuis, je n’ai cessé d’apprendre
-                            à travers mes cours, mes projets académiques et mes initiatives personnelles. Mon intérêt se porte particulièrement sur la Blue Team,
-                            la défense proactive et la création d’outils capables de bloquer, détecter et contrer les menaces.
+                        <p class="mt-3 text-brand-100" style="text-align: justify;" data-i18n-key="about.summary.p2">
+                            Passionate about new technologies, I discovered cybersecurity in August 2024 and have been learning constantly through classes, academic projects and personal initiatives. I focus on Blue Team defensive work and building tools that block, detect and counter threats.
                         </p>
-                        <p class="mt-3 text-brand-100" style="text-align: justify;">
-                            Mon parcours académique est marqué par une diversité culturelle et géographique : originaire du Burkina Faso, j’ai étudié en Côte d’Ivoire,
-                            en France, en Angleterre et effectué un stage au Ghana. Ces expériences m’ont permis de maîtriser le français et l’anglais, de travailler
-                            dans des environnements variés et d’élargir ma vision des enjeux de la sécurité numérique à l’échelle internationale.
+                        <p class="mt-3 text-brand-100" style="text-align: justify;" data-i18n-key="about.summary.p3">
+                            My academic journey spans Burkina Faso, Côte d’Ivoire, France, England and an internship in Ghana. These experiences strengthened my French and English, taught me to work in diverse environments and broadened my view of global cybersecurity challenges.
                         </p>
                     </div>
 
-                    <!-- Objectif : Alternance (résumé) -->
+                    <!-- Apprenticeship goal (summary) -->
                     <div class="mt-2">
-                        <h3 class="text-xl font-semibold">Objectifs 2025–2026</h3>
+                        <h3 class="text-xl font-semibold" data-i18n-key="objectives.heading">Goals 2025–2026</h3>
                         <article class="mt-4 rounded-2xl border border-brand-500/25 bg-brand-500/10 p-4">
                             <div class="flex items-start justify-between gap-3">
-                                <h4 class="font-semibold">Alternance en cybersécurité</h4>
-                                <span class="text-xs px-2 py-1 rounded bg-slate-800 border border-slate-700">Priorité</span>
+                                <h4 class="font-semibold" data-i18n-key="objectives.apprenticeship.title">Cybersecurity apprenticeship</h4>
+                                <span class="text-xs px-2 py-1 rounded bg-slate-800 border border-slate-700" data-i18n-key="objectives.apprenticeship.priority">Priority</span>
                             </div>
-                            <p class="mt-2 text-brand-100 text-sm" style="text-align: justify;">
-                            Disponible <strong>dès maintenant</strong> (préférence <strong>octobre</strong>). Début des cours : <strong>novembre</strong>.
+                            <p class="mt-2 text-brand-100 text-sm" style="text-align: justify;" data-i18n-key="objectives.apprenticeship.summary">
+                            Available <strong>now</strong> (ideal <strong>October</strong> start). Classes resume in <strong>November</strong>.
                             </p>
                         </article>
                         <article class="mt-4 rounded-2xl border border-blue-400/25 bg-blue-400/10 p-4">
-                            <h4 class="font-semibold">Stage de fin d’études</h4>
-                            <p class="mt-2 text-blue-100 text-sm" style="text-align: justify;">
-                                Si aucune alternance n’est conclue, je réaliserai un <strong>stage de fin d’études obligatoire</strong> 
-                                à partir de <strong>mars 2026</strong>, conformément à mon parcours académique.
+                            <h4 class="font-semibold" data-i18n-key="objectives.internship.title">Final-year internship</h4>
+                            <p class="mt-2 text-blue-100 text-sm" style="text-align: justify;" data-i18n-key="objectives.internship.summary">
+                                If no apprenticeship is finalised, I will complete the <strong>mandatory final-year internship</strong> starting <strong>March 2026</strong>, in line with my academic path.
                             </p>
                             </article>
                     </div>
                 </div>
             </summary>
 
-            <!-- VUE DÉPLOYÉE (visible uniquement quand ouvert) -->
+            <!-- EXPANDED VIEW (visible only when open) -->
             <div class="mt-4 grid gap-8 md:grid-cols-3 transition-[opacity,transform] duration-300 ease-out">
-            <!-- À propos : texte complet -->
+            <!-- About: expanded text -->
             <div class="md:col-span-2 rounded-2xl border border-brand-500/20 bg-slate-900/60 p-5">
-                <p class="text-brand-100" style="text-align: justify;">
-                Étudiant en dernière année du cycle ingénieur à l’EFREI Paris, spécialité Cybersécurité &amp; Cloud,
-                je me destine à devenir un expert reconnu dans la protection des données, des infrastructures et des systèmes d’information.
+                <p class="text-brand-100" style="text-align: justify;" data-i18n-key="about.full.p1">
+                Final-year engineering student at EFREI Paris, specialising in Cybersecurity &amp; Cloud. I aim to become a recognised expert in protecting data, infrastructure and information systems.
                 </p>
-                <p class="mt-3 text-brand-100" style="text-align: justify;">
-                Passionné par les nouvelles technologies, j’ai découvert la cybersécurité en août 2024 et, depuis, je n’ai cessé d’apprendre
-                à travers mes cours, mes projets académiques et mes initiatives personnelles. Mon intérêt se porte particulièrement sur la Blue Team,
-                la défense proactive et la création d’outils capables de bloquer, détecter et contrer les menaces.
+                <p class="mt-3 text-brand-100" style="text-align: justify;" data-i18n-key="about.full.p2">
+                Passionate about new technologies, I discovered cybersecurity in August 2024 and have been learning continuously through coursework, academic projects and personal initiatives. I am particularly focused on the Blue Team, proactive defence and building tools that block, detect and counter threats.
                 </p>
-                <p class="mt-3 text-brand-100" style="text-align: justify;">
-                Mon parcours académique est marqué par une diversité culturelle et géographique : originaire du Burkina Faso, j’ai étudié en Côte d’Ivoire,
-                en France, en Angleterre et effectué un stage au Ghana. Ces expériences m’ont permis de maîtriser le français et l’anglais, de travailler
-                dans des environnements variés et d’élargir ma vision des enjeux de la sécurité numérique à l’échelle internationale.
+                <p class="mt-3 text-brand-100" style="text-align: justify;" data-i18n-key="about.full.p3">
+                My academic path spans Burkina Faso, Côte d’Ivoire, France, England and an internship in Ghana. It strengthened my French and English skills, exposed me to varied environments and broadened my perspective on global cybersecurity challenges.
                 </p>
-                <p class="mt-3 text-brand-100" style="text-align: justify;">
-                Toujours curieux et motivé, je ne me limite pas à un seul rôle : SOC, réseau, intégration de solutions… Chaque expérience est un point
-                d’ancrage vers mon objectif. Je m’appuie sur des projets concrets : scanners réseau, analyse de vulnérabilités web, HIDS/EDR,
-                chiffrement et authentification renforcée.
+                <p class="mt-3 text-brand-100" style="text-align: justify;" data-i18n-key="about.full.p4">
+                Curious and motivated, I do not restrict myself to one role—SOC, networking, solution integration. Each experience anchors me closer to my goal. I rely on tangible projects: network scanners, web vulnerability analysis, HIDS/EDR, strengthened encryption and authentication.
                 </p>
-                <p class="mt-3 text-brand-100" style="text-align: justify;">
-                En dehors du technique, je cultive des passions qui nourrissent mes qualités professionnelles : basketball (esprit d’équipe, réactivité),
-                piano (rigueur, créativité). Ces disciplines m’apprennent à rester persévérant, concentré et inventif.
+                <p class="mt-3 text-brand-100" style="text-align: justify;" data-i18n-key="about.full.p5">
+                Outside the technical scope, I cultivate passions that sharpen my professional qualities: basketball (team spirit, responsiveness) and piano (rigour, creativity). They teach me to stay persistent, focused and inventive.
                 </p>
-                <p class="mt-3 text-brand-100" style="text-align: justify;">
-                Mon ambition : devenir un acteur clé de la cybersécurité, capable d’anticiper, de prévenir et de neutraliser les menaces,
-                tout en contribuant à l’innovation et à la résilience des SI.
+                <p class="mt-3 text-brand-100" style="text-align: justify;" data-i18n-key="about.full.p6">
+                My ambition is to become a key player in cybersecurity—able to anticipate, prevent and neutralise threats while contributing to innovation and resilience across information systems.
                 </p>
             </div>
 
             <!-- Objectifs : Alternance + Consolidation -->
             <div class="mt-2">
-                <h3 class="text-xl font-semibold">Objectifs 2025–2026</h3>
+                <h3 class="text-xl font-semibold">Goals 2025–2026</h3>
 
-                <!-- Alternance (complet) -->
+                <!-- Apprenticeship (full details) -->
                 <article class="mt-4 rounded-2xl border border-brand-500/25 bg-brand-500/10 p-4">
                 <div class="flex items-start justify-between gap-3">
-                    <h4 class="font-semibold">Alternance en cybersécurité</h4>
-                    <span class="text-xs px-2 py-1 rounded bg-slate-800 border border-slate-700">Priorité</span>
+                    <h4 class="font-semibold">Cybersecurity apprenticeship</h4>
+                    <span class="text-xs px-2 py-1 rounded bg-slate-800 border border-slate-700">Priority</span>
                 </div>
                 <p class="mt-2 text-brand-100 text-sm" style="text-align: justify;">
-                    Disponible <strong>dès maintenant</strong> (préférence <strong>octobre</strong>). Début des cours : <strong>novembre</strong>.
-                    Calendrier d’alternance fourni sur demande.
+                    Available <strong>immediately</strong> (preferred <strong>October</strong> start). Classes resume in <strong>November</strong>.
+                    Apprenticeship schedule available on request.
                 </p>
                 </article>
                 <article class="mt-4 rounded-2xl border border-blue-400/25 bg-blue-400/10 p-4">
-                    <h4 class="font-semibold">Stage de fin d’études</h4>
+                    <h4 class="font-semibold">Final-year internship</h4>
                     <p class="mt-2 text-blue-100 text-sm" style="text-align: justify;">
-                        Si aucune alternance n’est conclue, je réaliserai un <strong>stage de fin d’études obligatoire</strong> 
-                        à partir de <strong>mars 2026</strong>, conformément à mon parcours académique.
+                        If no apprenticeship is concluded, I will complete the <strong>mandatory final-year internship</strong> 
+                        starting in <strong>March 2026</strong>, in line with my academic programme.
                     </p>
                 </article>
 
                 <!-- Consolidation -->
-                <article class="mt-4 rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
-                <h4 class="font-semibold">Consolider les fondamentaux</h4>
-                <p class="mt-2 text-slate-300 text-sm" style="text-align: justify;">
-                    Approfondir réseau, Active Directory, Linux/Bash, scripting (Python), SIEM/EDR, investigation (logs/malware/forensics).
-                    Automatisation de la détection &amp; réponse (SOAR), CI/CD des règles SIEM.
+                <article class="mt-4 rounded-2xl border border-slate-800 bg-slate-900/60 p-4" data-i18n-key="objectives.consolidation.article">
+                <h4 class="font-semibold" data-i18n-key="objectives.consolidation.title">Strengthen the fundamentals</h4>
+                <p class="mt-2 text-slate-300 text-sm" style="text-align: justify;" data-i18n-key="objectives.consolidation.description">
+                    Deepen networking, Active Directory, Linux/Bash, scripting (Python), SIEM/EDR and investigations (logs/malware/forensics).
+                    Automate detection &amp; response (SOAR) and build CI/CD pipelines for SIEM rules.
                 </p>
                 <div class="mt-3 flex flex-wrap gap-2">
-                    <span class="text-xs px-2 py-1 rounded bg-slate-800 border border-slate-700">Réseau</span>
-                    <span class="text-xs px-2 py-1 rounded bg-slate-800 border border-slate-700">Active Directory</span>
-                    <span class="text-xs px-2 py-1 rounded bg-slate-800 border border-slate-700">Linux/Bash</span>
-                    <span class="text-xs px-2 py-1 rounded bg-slate-800 border border-slate-700">Python</span>
-                    <span class="text-xs px-2 py-1 rounded bg-slate-800 border border-slate-700">SIEM/EDR</span>
-                    <span class="text-xs px-2 py-1 rounded bg-slate-800 border border-slate-700">SOAR</span>
+                    <span class="text-xs px-2 py-1 rounded bg-slate-800 border border-slate-700" data-i18n-key="objectives.consolidation.tag.network">Networking</span>
+                    <span class="text-xs px-2 py-1 rounded bg-slate-800 border border-slate-700" data-i18n-key="objectives.consolidation.tag.ad">Active Directory</span>
+                    <span class="text-xs px-2 py-1 rounded bg-slate-800 border border-slate-700" data-i18n-key="objectives.consolidation.tag.linux">Linux/Bash</span>
+                    <span class="text-xs px-2 py-1 rounded bg-slate-800 border border-slate-700" data-i18n-key="objectives.consolidation.tag.python">Python</span>
+                    <span class="text-xs px-2 py-1 rounded bg-slate-800 border border-slate-700" data-i18n-key="objectives.consolidation.tag.siem">SIEM/EDR</span>
+                    <span class="text-xs px-2 py-1 rounded bg-slate-800 border border-slate-700" data-i18n-key="objectives.consolidation.tag.soar">SOAR</span>
                 </div>
                 </article>
             </div>
             </div>
         </details>
 
-        <!-- Scroll au sommet quand on ouvre -->
+        <!-- Scroll back to top when opening -->
         <script>
             (function () {
             const details = document.getElementById('aboutDetails');
@@ -313,25 +472,25 @@
         </script>
     </section>
 
-    <!-- PROJETS -->
-    <section id="projets" class="mx-auto max-w-7xl px-6 py-14 border-t border-slate-800/60">
+    <!-- PROJECTS -->
+    <section id="projets" class="mx-auto max-w-7xl px-6 py-14 border-t border-slate-800/60" data-i18n-section="projects">
         <div class="flex items-end justify-between gap-4">
-            <h2 class="text-2xl md:text-3xl font-bold">Projets</h2>
-            <div class="text-sm text-slate-400">Filtrer :
+            <h2 class="text-2xl md:text-3xl font-bold" data-i18n-key="projects.heading">Projects</h2>
+            <div class="text-sm text-slate-400" data-i18n-key="projects.filter.label">Filtrer :
                 <select id="filter" class="ml-2 rounded-md bg-slate-900 border border-slate-700 px-2 py-1">
-                <option value="past">Passés</option>
-                <option value="current">En cours</option>
-                <option value="future">À venir</option>
+                <option value="past" data-i18n-key="projects.filter.past">Past</option>
+                <option value="current" data-i18n-key="projects.filter.current">En cours</option>
+                <option value="future" data-i18n-key="projects.filter.future">Upcoming</option>
                 </select>
             </div>
         </div>
         <div id="projectsGrid" class="scrollable mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"  style="max-height: 470px; overflow-y: auto; padding-right: 8px;"></div>
     </section>
 
-    <!-- PARCOURS ACADÉMIQUE -->
+    <!-- ACADEMIC JOURNEY -->
     <section id="parcours" class="mx-auto max-w-7xl px-6 py-14 border-t border-slate-800/60">
         <div class="rounded-2xl p-8 ">
-            <h2 class="text-3xl md:text-4xl font-extrabold text-white ">Parcours académique</h2>
+            <h2 class="text-3xl md:text-4xl font-extrabold text-white ">Academic journey</h2>
 
             <div class="relative mt-12 overflow-y-auto scrollbar-thin scrollbar-transparent scrollable" style="max-height: 500px;">
             
@@ -344,11 +503,11 @@
                     </div>
                 </div>
                 <div class="col-span-12 md:col-span-8 pr-0 md:pr-6">
-                    <article class="relative w-full rounded-2xl border border-slate-700 bg-slate-900/50 p-6 transition-all duration-300 ease-in-out group-hover:border-brand-500 group-hover:shadow-lg group-hover:shadow-brand-500/10">
+                    <article class="relative w-full rounded-2xl border border-slate-700 bg-slate-900/50 p-6 transition-all duration-300 ease-in-out group-hover:border-brand-500 group-hover:shadow-lg group-hover:shadow-brand-500/10" data-i18n-key="timeline.inphb">
                         <div class="flex items-start justify-between gap-4 flex-wrap">
                             <div class="flex-1 min-w-[200px]">
-                                <h3 class="text-xl font-bold text-white">INP-HB (MPSI → MP*) — Prépa scientifique</h3>
-                                <span class="text-sm font-light text-slate-400 px-3 py-1 rounded-full bg-slate-800 border border-slate-700 mt-2 inline-block">Rigueur & Persévérance</span>
+                                <h3 class="text-xl font-bold text-white">INP-HB (MPSI → MP*) — Preparatory classes</h3>
+                                <span class="text-sm font-light text-slate-400 px-3 py-1 rounded-full bg-slate-800 border border-slate-700 mt-2 inline-block">Discipline & perseverance</span>
                             </div>
                             <div class="flex items-center gap-4 shrink-0">
                                 <img src="img/logos/inphb.png" alt="INP-HB" class="h-10 w-auto object-contain transition group-hover:scale-105">
@@ -356,19 +515,19 @@
                             </div>
                         </div>
                         
-                        <p class="mt-4 text-slate-300 text-sm">Deux années intensives en mathématiques, physique et informatique, avec une forte préparation aux concours scientifiques.</p>
+                        <p class="mt-4 text-slate-300 text-sm">Two intensive years in mathematics, physics and computer science with rigorous preparation for national competitive exams.</p>
                         
                         <div id="details-inphb" class="hidden mt-4 pt-4 border-t border-slate-700 text-slate-300 text-sm">
-                            <h4 class="font-bold text-lg text-white mb-2">Détails</h4>
+                            <h4 class="font-bold text-lg text-white mb-2">Highlights</h4>
                             <ul class="list-disc list-inside space-y-1">
-                                <li>MPSI (Mathématiques, Physique et Sciences de l’Ingénieur).</li>
-                                <li>MP* (Mathématiques, Physique & Informatique) — filière d’excellence.</li>
-                                <li>Rigueur académique, esprit analytique et persévérance.</li>
+                                <li>MPSI (Mathematics, Physics and Engineering Sciences).</li>
+                                <li>MP* (Advanced Mathematics, Physics & Computer Science) — selective track.</li>
+                                <li>Academic rigour, analytical mindset and perseverance.</li>
                             </ul>
                         </div>
                         
                         <button onclick="toggleDetails('details-inphb')" class="mt-4 text-brand-400 font-semibold hover:text-brand-300 transition-colors">
-                            En savoir plus →
+                            Learn more →
                         </button>
                     </article>
                 </div>
@@ -383,11 +542,11 @@
                     </div>
                 </div>
                 <div class="col-span-12 md:col-span-8 pr-0 md:pr-6">
-                <article class="relative w-full rounded-2xl border border-slate-700 bg-slate-900/50 p-6 transition-all duration-300 ease-in-out group-hover:border-brand-500 group-hover:shadow-lg group-hover:shadow-brand-500/10">
+                <article data-i18n-key="timeline.staffordshire" class="relative w-full rounded-2xl border border-slate-700 bg-slate-900/50 p-6 transition-all duration-300 ease-in-out group-hover:border-brand-500 group-hover:shadow-lg group-hover:shadow-brand-500/10">
                     <div class="flex items-start justify-between gap-4 flex-wrap">
                         <div class="flex-1 min-w-[200px]">
-                            <h3 class="text-xl font-bold text-white">Staffordshire University (UK) — Semestre d’échange</h3>
-                            <span class="text-sm font-light text-slate-400 px-3 py-1 rounded-full bg-slate-800 border border-slate-700 mt-2 inline-block">Immersion linguistique</span>
+                            <h3 class="text-xl font-bold text-white">Staffordshire University (UK) — Exchange semester</h3>
+                            <span class="text-sm font-light text-slate-400 px-3 py-1 rounded-full bg-slate-800 border border-slate-700 mt-2 inline-block">Language immersion</span>
                         </div>
                         <div class="flex items-center gap-4 shrink-0">
                             <img src="img/logos/Staffordshire_University_Logo.svg.png" alt="Staffordshire University" class="h-8 w-auto object-contain transition group-hover:scale-105">
@@ -395,19 +554,19 @@
                         </div>
                     </div>
 
-                    <p class="mt-4 text-slate-300 text-sm">Semestre en Angleterre (Stoke-on-Trent) : cours en anglais, vie étudiante, projet web encadré, ouverture culturelle et basket.</p>
+                    <p class="mt-4 text-slate-300 text-sm">Semester in England (Stoke-on-Trent): courses in English, student life, mentored web project, cultural exposure and basketball.</p>
 
                     <div id="details-staffordshire" class="hidden mt-4 pt-4 border-t border-slate-700 text-slate-300 text-sm">
-                        <h4 class="font-bold text-lg text-white mb-2">Moments clés</h4>
+                        <h4 class="font-bold text-lg text-white mb-2">Key takeaways</h4>
                         <ul class="list-disc list-inside space-y-1">
-                            <li>Amélioration significative de l’anglais technique et académique.</li>
-                            <li>Projet web en équipe, avec encadrement pédagogique rapproché.</li>
-                            <li>Expérience multiculturelle enrichissante.</li>
+                            <li>Significant progress in technical and academic English.</li>
+                            <li>Team web project with close academic mentoring.</li>
+                            <li>Enriching multicultural experience.</li>
                         </ul>
                     </div>
                     
                     <button onclick="toggleDetails('details-staffordshire')" class="mt-4 text-brand-400 font-semibold hover:text-brand-300 transition-colors">
-                        En savoir plus →
+                        Learn more →
                     </button>
                 </article>
                 </div>
@@ -416,17 +575,17 @@
             <div class="grid grid-cols-12 mb-16 group">
                 <div class="col-span-12 md:col-span-4 flex items-center justify-center relative">
                 <div class="flex flex-col items-center">
-                    <span class="text-lg font-semibold text-brand-400">2023–Présent</span>
+                    <span class="text-lg font-semibold text-brand-400">2023–Present</span>
                     <div class="h-20 w-1 bg-slate-700/60 transition-colors duration-300 group-hover:bg-brand-500 rounded-full my-4"></div>
                     <div class="absolute -bottom-0 left-1/2 transform -translate-x-1/2 h-4 w-4 rounded-full bg-brand-500 shadow-[0_0_15px_4px_rgba(6,182,212,0.6)] animate-pulse-slow"></div>
                 </div>
                 </div>
                 <div class="col-span-12 md:col-span-8 pr-0 md:pr-6">
-                <article class="relative w-full rounded-2xl border border-slate-700 bg-slate-900/50 p-6 transition-all duration-300 ease-in-out group-hover:border-brand-500 group-hover:shadow-lg group-hover:shadow-brand-500/10">
+                <article data-i18n-key="timeline.efrei" class="relative w-full rounded-2xl border border-slate-700 bg-slate-900/50 p-6 transition-all duration-300 ease-in-out group-hover:border-brand-500 group-hover:shadow-lg group-hover:shadow-brand-500/10">
                     <div class="flex items-start justify-between gap-4 flex-wrap">
                         <div class="flex-1 min-w-[200px]">
-                            <h3 class="text-xl font-bold text-white">EFREI Paris — Ingénierie</h3>
-                            <span class="text-sm font-light text-slate-400 px-3 py-1 rounded-full bg-slate-800 border border-slate-700 mt-2 inline-block">Spécialisation Cyber & Cloud</span>
+                            <h3 class="text-xl font-bold text-white">EFREI Paris — Engineering</h3>
+                            <span class="text-sm font-light text-slate-400 px-3 py-1 rounded-full bg-slate-800 border border-slate-700 mt-2 inline-block">Cyber & Cloud specialisation</span>
                         </div>
                         <div class="flex items-center gap-4 shrink-0">
                             <img src="img/logos/efrei.png" alt="EFREI Paris" class="h-8 w-auto object-contain transition group-hover:scale-105">
@@ -434,19 +593,19 @@
                         </div>
                     </div>
 
-                    <p class="mt-4 text-slate-300 text-sm">Formation d’ingénieur en informatique, puis spécialisation en Cybersécurité & Cloud à partir du Master.</p>
+                    <p class="mt-4 text-slate-300 text-sm">Computer engineering programme followed by a Cybersecurity & Cloud specialisation at master level.</p>
 
                     <div id="details-efrei" class="hidden mt-4 pt-4 border-t border-slate-700 text-slate-300 text-sm">
-                        <h4 class="font-bold text-lg text-white mb-2">Ce que j’y ai cultivé</h4>
+                        <h4 class="font-bold text-lg text-white mb-2">What I developed</h4>
                         <ul class="list-disc list-inside space-y-1">
-                            <li>L3 : programmation, graphes, optimisation, machine learning, réseaux, bases de données, UML.</li>
-                            <li>Master 1 : sécurité réseau, IAM/Active Directory, cloud (AWS), Kubernetes, SIEM & EDR.</li>
-                            <li>Projets concrets de cybersécurité (investigation, durcissement, réponse aux incidents).</li>
+                            <li>Year 3: programming, graphs, optimisation, machine learning, networking, databases, UML.</li>
+                            <li>Master 1: network security, IAM/Active Directory, cloud (AWS), Kubernetes, SIEM & EDR.</li>
+                            <li>Hands-on cybersecurity projects (investigation, hardening, incident response).</li>
                         </ul>
                     </div>
                     
                     <button onclick="toggleDetails('details-efrei')" class="mt-4 text-brand-400 font-semibold hover:text-brand-300 transition-colors">
-                        En savoir plus →
+                        Learn more →
                     </button>
                 </article>
                 </div>
@@ -455,17 +614,17 @@
             <div class="grid grid-cols-12 mb-16 group">
                 <div class="col-span-12 md:col-span-4 flex items-center justify-center relative">
                 <div class="flex flex-col items-center">
-                    <span class="text-lg font-semibold text-brand-400">Déc 2024–Mai 2025</span>
+                    <span class="text-lg font-semibold text-brand-400">Dec 2024–May 2025</span>
                     <div class="h-20 w-1 bg-slate-700/60 transition-colors duration-300 group-hover:bg-brand-500 rounded-full my-4"></div>
                     <div class="absolute -bottom-0 left-1/2 transform -translate-x-1/2 h-4 w-4 rounded-full bg-brand-500 shadow-[0_0_15px_4px_rgba(6,182,212,0.6)] animate-pulse-slow"></div>
                 </div>
                 </div>
                 <div class="col-span-12 md:col-span-8 pr-0 md:pr-6">
-                <article class="relative w-full rounded-2xl border border-slate-700 bg-slate-900/50 p-6 transition-all duration-300 ease-in-out group-hover:border-brand-500 group-hover:shadow-lg group-hover:shadow-brand-500/10">
+                <article data-i18n-key="timeline.ecobank" class="relative w-full rounded-2xl border border-slate-700 bg-slate-900/50 p-6 transition-all duration-300 ease-in-out group-hover:border-brand-500 group-hover:shadow-lg group-hover:shadow-brand-500/10">
                     <div class="flex items-start justify-between gap-4 flex-wrap">
                         <div class="flex-1 min-w-[200px]">
-                            <h3 class="text-xl font-bold text-white">Ecobank (Accra, Ghana) — Stage</h3>
-                            <span class="text-sm font-light text-slate-400 px-3 py-1 rounded-full bg-slate-800 border border-slate-700 mt-2 inline-block">Rotation en 5 équipes</span>
+                            <h3 class="text-xl font-bold text-white">Ecobank (Accra, Ghana) — Internship</h3>
+                            <span class="text-sm font-light text-slate-400 px-3 py-1 rounded-full bg-slate-800 border border-slate-700 mt-2 inline-block">Rotation across 5 teams</span>
                         </div>
                         <div class="flex items-center gap-4 shrink-0">
                             <img src="img/logos/ecobank1.png" alt="Ecobank" class="h-10 w-20 object-contain transition group-hover:scale-105">
@@ -473,21 +632,21 @@
                         </div>
                     </div>
 
-                    <p class="mt-4 text-slate-300 text-sm">Stage de 6 mois au département eProcess (Technologies) avec immersion dans plusieurs équipes cybersécurité.</p>
+                    <p class="mt-4 text-slate-300 text-sm">Six-month internship within the eProcess (Technology) department with immersion across several cybersecurity teams.</p>
 
                     <div id="details-ecobank" class="hidden mt-4 pt-4 border-t border-slate-700 text-slate-300 text-sm">
-                        <h4 class="font-bold text-lg text-white mb-2">Équipes & missions</h4>
+                        <h4 class="font-bold text-lg text-white mb-2">Teams & missions</h4>
                         <ul class="list-disc list-inside space-y-1">
-                            <li><strong>IT Security Team :</strong> Endpoint security & patch management (Intune, Defender, MFA, vulnérabilité scoring).</li>
-                            <li><strong>SOC Team</strong> : Supervision avec Microsoft Sentinel, analyse et corrélation de logs.</li>
-                            <li><strong>BSA Team</strong> : Gouvernance & conformité, politiques de sécurité, gap assessment.</li>
-                            <li><strong>Engineering Team</strong> : Architecture réseau (GNS3), sécurité web (OWASP Top 10), EDR (Security Onion).</li>
-                            <li><strong>CERT Team</strong> : Threat hunting, malware analysis, reporting d'incidents.</li>
+                            <li><strong>IT Security Team:</strong> Endpoint security & patch management (Intune, Defender, MFA, vulnerability scoring).</li>
+                            <li><strong>SOC Team:</strong> Monitoring with Microsoft Sentinel, log analysis and correlation.</li>
+                            <li><strong>BSA Team:</strong> Governance & compliance, security policies, gap assessments.</li>
+                            <li><strong>Engineering Team:</strong> Network architecture (GNS3), web security (OWASP Top 10), EDR (Security Onion).</li>
+                            <li><strong>CERT Team:</strong> Threat hunting, malware analysis, incident reporting.</li>
                         </ul>
                     </div>
                     
                     <button onclick="toggleDetails('details-ecobank')" class="mt-4 text-brand-400 font-semibold hover:text-brand-300 transition-colors">
-                        En savoir plus →
+                        Learn more →
                     </button>
                 </article>
                 </div>
@@ -502,10 +661,10 @@
                 </div>
                 </div>
                 <div class="col-span-12 md:col-span-8 pr-0 md:pr-6">
-                <article class="relative w-full rounded-2xl border border-slate-700 bg-slate-900/50 p-6 transition-all duration-300 ease-in-out group-hover:border-brand-500 group-hover:shadow-lg group-hover:shadow-brand-500/10">
+                <article data-i18n-key="timeline.plus" class="relative w-full rounded-2xl border border-slate-700 bg-slate-900/50 p-6 transition-all duration-300 ease-in-out group-hover:border-brand-500 group-hover:shadow-lg group-hover:shadow-brand-500/10">
                     <div class="grid gap-6 md:grid-cols-2">
                         <div>
-                            <h4 class="font-bold text-lg text-white">Projets techniques & auto-formation</h4>
+                            <h4 class="font-bold text-lg text-white">Technical projects & self-study</h4>
                             <ul class="mt-2 flex flex-wrap gap-2 text-xs">
                                 <li class="px-3 py-1 rounded-full bg-slate-800 border border-slate-700 text-slate-300">Wazuh</li>
                                 <li class="px-3 py-1 rounded-full bg-slate-800 border border-slate-700 text-slate-300">Active Directory</li>
@@ -516,10 +675,10 @@
                             </ul>
                         </div>
                         <div>
-                            <h4 class="font-bold text-lg text-white">Langues & Intérêts</h4>
+                            <h4 class="font-bold text-lg text-white">Languages & interests</h4>
                             <ul class="mt-2 space-y-1 text-slate-300 text-sm">
-                                <li class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-brand-500" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm-1-8a1 1 0 11-2 0 1 1 0 012 0zm3-2a1 1 0 11-2 0 1 1 0 012 0zm-3 4a1 1 0 11-2 0 1 1 0 012 0zm3 2a1 1 0 11-2 0 1 1 0 012 0z" clip-rule="evenodd" /></svg>Français & Anglais (TOEIC 935)</li>
-                                <li class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-brand-500" viewBox="0 0 20 20" fill="currentColor"><path d="M10 2a8 8 0 100 16A8 8 0 0010 2zm-1 8a1 1 0 112 0 1 1 0 01-2 0zm2-4a1 1 0 11-2 0 1 1 0 012 0zm0 8a1 1 0 11-2 0 1 1 0 012 0z"/></svg>Basketball, piano, engagements communautaires</li>
+                                <li class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-brand-500" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm-1-8a1 1 0 11-2 0 1 1 0 012 0zm3-2a1 1 0 11-2 0 1 1 0 012 0zm-3 4a1 1 0 11-2 0 1 1 0 012 0zm3 2a1 1 0 11-2 0 1 1 0 012 0z" clip-rule="evenodd" /></svg>French & English (TOEIC 935)</li>
+                                <li class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-brand-500" viewBox="0 0 20 20" fill="currentColor"><path d="M10 2a8 8 0 100 16A8 8 0 0010 2zm-1 8a1 1 0 112 0 1 1 0 01-2 0zm2-4a1 1 0 11-2 0 1 1 0 012 0zm0 8a1 1 0 11-2 0 1 1 0 012 0z"/></svg>Basketball, piano, community involvement</li>
                             </ul>
                         </div>
                     </div>
@@ -541,26 +700,26 @@
             <div class="flex gap-3 mt-6 mb-10">
                 <button onclick="filterCerts('obtained')" data-filter="obtained"
                         class="cert-filter-btn px-4 py-2 rounded-full border border-slate-700 text-slate-300 hover:bg-brand-500/20 transition-colors">
-                    Obtenues
+                    Earned
                 </button>
                 <button onclick="filterCerts('in-progress')" data-filter="in-progress"
                         class="cert-filter-btn px-4 py-2 rounded-full border border-slate-700 text-slate-300 hover:bg-brand-500/20 transition-colors">
-                    En préparation
+                    In progress
                 </button>
                 <button onclick="filterCerts('future')" data-filter="future"
                         class="cert-filter-btn px-4 py-2 rounded-full border border-slate-700 text-slate-300 hover:bg-brand-500/20 transition-colors">
-                    Objectifs
+                    Targets
                 </button>
                 
                 <button onclick="filterCerts('all')" data-filter="all"
                         class="cert-filter-btn px-4 py-2 rounded-full border border-slate-700 text-slate-300 hover:bg-brand-500/20 transition-colors">
-                    Toutes
+                    All
                 </button>
             </div>
 
             <!-- Cartes -->
             <div id="certifications-container" class="relative mt-12 overflow-y-auto scrollbar-thin scrollbar-transparent grid grid-cols-1 md:grid-cols-2 gap-8 " style="max-height: 500px;">
-            <!-- Injecté par JS -->
+            <!-- Injected via JS -->
             </div>
     </div>
     </section>
@@ -568,7 +727,7 @@
     
 
 
-    <!-- PUBLICATIONS -->
+    <!-- PUBLIC POSTS -->
     <section id="posts" class="mx-auto max-w-6xl px-6 py-14 border-t border-slate-800/60">
         <h2 class="text-2xl md:text-3xl font-bold">Publications</h2>
         
@@ -577,91 +736,56 @@
             style="max-height: 350px; overflow-y: auto; padding-right: 8px;">
             
             <div class="scrollable rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
-                <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7325488499107782658?collapsed=1" height="275" width="100%" frameborder="0" allowfullscreen="" title="Post intégré"></iframe>
-                <a href="https://www.linkedin.com/posts/sunnoogo-caleb-tapsoba-130584292_efreiparis-inclusion-handicap-activity-7325761399022837760-VeYh?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEbrf7QBErHgeqC6eJlTtq4QeR5f-8hv4HE" target="_blank" rel="noopener" class="block mt-2 text-brand-300 hover:underline text-sm">Voir sur LinkedIn</a>
+                <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7325488499107782658?collapsed=1" height="275" width="100%" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>
+                <a href="https://www.linkedin.com/posts/sunnoogo-caleb-tapsoba-130584292_efreiparis-inclusion-handicap-activity-7325761399022837760-VeYh?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEbrf7QBErHgeqC6eJlTtq4QeR5f-8hv4HE" target="_blank" rel="noopener" class="block mt-2 text-brand-300 hover:underline text-sm">View on LinkedIn</a>
             </div>
             <div class="scrollable rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
-                <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7304682390390517760?collapsed=1" height="275" width="100%" frameborder="0" allowfullscreen="" title="Post intégré"></iframe>
-                <a href="https://www.linkedin.com/posts/sunnoogo-caleb-tapsoba-130584292_cybersaezcuritaez-hash-saezcuritaezinformatique-activity-7304818364290387968-odLX?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEbrf7QBErHgeqC6eJlTtq4QeR5f-8hv4HE" target="_blank" rel="noopener" class="block mt-2 text-brand-300 hover:underline text-sm">Voir sur LinkedIn</a>
+                <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7304682390390517760?collapsed=1" height="275" width="100%" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>
+                <a href="https://www.linkedin.com/posts/sunnoogo-caleb-tapsoba-130584292_cybersaezcuritaez-hash-saezcuritaezinformatique-activity-7304818364290387968-odLX?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEbrf7QBErHgeqC6eJlTtq4QeR5f-8hv4HE" target="_blank" rel="noopener" class="block mt-2 text-brand-300 hover:underline text-sm">View on LinkedIn</a>
             </div>
             <div class="scrollable rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
-                <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7310270014714961920?collapsed=1" height="275" width="100%" frameborder="0" allowfullscreen="" title="Post intégré"></iframe>
-                <a href="https://www.linkedin.com/posts/sunnoogo-caleb-tapsoba-130584292_wannacry-moveit-cybersaezcuritaez-activity-7312428487728857089-_Ner?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEbrf7QBErHgeqC6eJlTtq4QeR5f-8hv4HE" target="_blank" rel="noopener" class="block mt-2 text-brand-300 hover:underline text-sm">Voir sur LinkedIn</a>
+                <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7310270014714961920?collapsed=1" height="275" width="100%" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>
+                <a href="https://www.linkedin.com/posts/sunnoogo-caleb-tapsoba-130584292_wannacry-moveit-cybersaezcuritaez-activity-7312428487728857089-_Ner?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEbrf7QBErHgeqC6eJlTtq4QeR5f-8hv4HE" target="_blank" rel="noopener" class="block mt-2 text-brand-300 hover:underline text-sm">View on LinkedIn</a>
             </div>
             <div class="scrollable rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
-                <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7309903229415227392?collapsed=1" height="275" width="100%" frameborder="0" allowfullscreen="" title="Post intégré"></iframe>
-                <a href="https://www.linkedin.com/posts/sunnoogo-caleb-tapsoba-130584292_cybersaezcuritaez-hackingaezthique-daezveloppementsaezcurisaez-activity-7309903230824534042-xh9M?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEbrf7QBErHgeqC6eJlTtq4QeR5f-8hv4HE" target="_blank" rel="noopener" class="block mt-2 text-brand-300 hover:underline text-sm">Voir sur LinkedIn</a>
+                <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7309903229415227392?collapsed=1" height="275" width="100%" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>
+                <a href="https://www.linkedin.com/posts/sunnoogo-caleb-tapsoba-130584292_cybersaezcuritaez-hackingaezthique-daezveloppementsaezcurisaez-activity-7309903230824534042-xh9M?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEbrf7QBErHgeqC6eJlTtq4QeR5f-8hv4HE" target="_blank" rel="noopener" class="block mt-2 text-brand-300 hover:underline text-sm">View on LinkedIn</a>
             </div>
             <div class="scrollable rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
-                <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7304265430678851584?collapsed=1" height="275" width="100%" frameborder="0" allowfullscreen="" title="Post intégré"></iframe>
-                <a href="https://www.linkedin.com/posts/sunnoogo-caleb-tapsoba-130584292_cybersecurity-networking-pentesting-activity-7307362629025452032-2aM4?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEbrf7QBErHgeqC6eJlTtq4QeR5f-8hv4HE" target="_blank" rel="noopener" class="block mt-2 text-brand-300 hover:underline text-sm">Voir sur LinkedIn</a>
+                <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7304265430678851584?collapsed=1" height="275" width="100%" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>
+                <a href="https://www.linkedin.com/posts/sunnoogo-caleb-tapsoba-130584292_cybersecurity-networking-pentesting-activity-7307362629025452032-2aM4?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEbrf7QBErHgeqC6eJlTtq4QeR5f-8hv4HE" target="_blank" rel="noopener" class="block mt-2 text-brand-300 hover:underline text-sm">View on LinkedIn</a>
             </div>
     </section>
 
-    <!-- CONTACT -->
-    <!-- <section id="contact" class="mx-auto max-w-6xl px-6 py-14 border-t border-slate-800/60">
-        <h2 class="text-2xl md:text-3xl font-bold">Contact</h2>
-        <div class="mt-4 grid gap-6 md:grid-cols-2">
-            <form action="https://formspree.io/f/mblablky" method="POST" class="rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
-                <label class="block text-sm text-slate-400">Nom</label>
-                <input name="name" class="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2" placeholder="Votre nom" />
-
-                <label class="mt-4 block text-sm text-slate-400">Email</label>
-                <input type="email" name="email" class="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2" placeholder="vous@mail.com" />
-
-                <label class="mt-4 block text-sm text-slate-400">Message</label>
-                <textarea name="message" class="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2" rows="5" placeholder="Votre message..."></textarea>
-
-                <button type="submit" class="mt-6 inline-flex items-center rounded-lg bg-brand-600 px-4 py-2 font-semibold hover:bg-brand-500">Envoyer</button>
-            </form>
-            <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
-                <h3 class="font-semibold">Réseaux</h3>
-                <ul class="mt-3 space-y-2 text-slate-300">
-                    <li>
-                        <a class="text-brand-300 hover:underline flex items-center gap-2" href="https://github.com/Sunnoogo77" target="_blank" rel="noreferrer">
-                            <i class="fa-brands fa-github fa-lg"></i> 
-                            GitHub : @Sunnoogo77
-                        </a>
-                    </li>
-                    <li>
-                        <a class="text-brand-300 hover:underline flex items-center gap-2" href="https://www.linkedin.com/in/sunnoogo-caleb-tapsoba-130584292/" target="_blank" rel="noreferrer">
-                            <i class="fa-brands fa-linkedin fa-lg"></i> 
-                            LinkedIn : sunnoogo‑caleb‑tapsoba
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </section> -->
     <section id="contact" class="mx-auto max-w-7xl px-6 py-14 border-t border-slate-800/60 ">
         <h2 class="text-2xl md:text-3xl font-bold text-brand-400 mb-2">Contact</h2>
-        <p class="text-slate-400 mb-8">N'hésitez pas à me contacter pour discuter de cybersécurité ou d'opportunités</p>
+        <p class="text-slate-400 mb-8">Feel free to reach out to discuss cybersecurity or potential opportunities.</p>
         
         <div class="mt-4 grid gap-8 md:grid-cols-2">
             <form action="https://formspree.io/f/mblablky" method="POST" class="rounded-2xl border border-slate-800 bg-slate-900/60 p-6 contact-card">
                 <div class="flex items-center gap-2 mb-6">
                     <i class="fas fa-paper-plane text-brand-400"></i>
-                    <h3 class="font-semibold text-lg">Envoyez un message</h3>
+                    <h3 class="font-semibold text-lg">Send a message</h3>
                 </div>
                 
-                <label class="block text-sm text-slate-400">Nom</label>
-                <input name="name" class="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 input-field focus:outline-none focus:ring-2 focus:ring-brand-600" placeholder="Votre nom" />
+                <label class="block text-sm text-slate-400">Name</label>
+                <input name="name" class="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 input-field focus:outline-none focus:ring-2 focus:ring-brand-600" placeholder="Your name" />
 
                 <label class="mt-4 block text-sm text-slate-400">Email</label>
                 <input type="email" name="email" class="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 input-field focus:outline-none focus:ring-2 focus:ring-brand-600" placeholder="vous@mail.com" />
 
                 <label class="mt-4 block text-sm text-slate-400">Message</label>
-                <textarea name="message" class="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 input-field focus:outline-none focus:ring-2 focus:ring-brand-600" rows="5" placeholder="Votre message..."></textarea>
+                <textarea name="message" class="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 input-field focus:outline-none focus:ring-2 focus:ring-brand-600" rows="5" placeholder="Your message..."></textarea>
 
                 <button type="submit" class="mt-6 inline-flex items-center rounded-lg bg-brand-600 px-4 py-2 font-semibold hover:bg-brand-500 transition-colors">
-                    <i class="fas fa-paper-plane mr-2"></i> Envoyer
+                    <i class="fas fa-paper-plane mr-2"></i> Send
                 </button>
             </form>
             
             <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-6 contact-card">
                 <div class="flex items-center gap-2 mt-10 mb-5">
                     <i class="fas fa-share-nodes text-brand-400"></i>
-                    <h1 class="font-semibold text-lg">Réseaux sociaux</h1>
+                    <h1 class="font-semibold text-lg">Social networks</h1>
                 </div>
                 
                 <div class="space-y-4">
@@ -693,7 +817,7 @@
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M453.2 112L523.8 112L369.6 288.2L551 528L409 528L297.7 382.6L170.5 528L99.8 528L264.7 339.5L90.8 112L236.4 112L336.9 244.9L453.2 112zM428.4 485.8L467.5 485.8L215.1 152L173.1 152L428.4 485.8z"/></svg>
                         </div>
                         <div>
-                            <div class="font-medium">X (ex-Twitter)</div>
+                            <div class="font-medium">X (formerly Twitter)</div>
                             <div class="text-sm text-slate-400">@SunnoogoCal</div>
                         </div>
                     </a>
@@ -715,11 +839,123 @@
 
     <footer class="border-t border-slate-800/60">
         <div class="mx-auto max-w-6xl px-6 py-8 text-sm text-slate-400">
-        © <span id="year"></span> PORTFOLIO.  - Tous droits réservés
+        © <span id="year"></span> PORTFOLIO.  - All rights reserved
         </div>
     </footer>
 
-    <!-- DONNÉES PROJETS : modifiez ce JSON pour mettre à jour le site sans toucher au HTML -->
+    <script>
+        (function () {
+            const storageKey = 'sunnoogo-theme';
+            const body = document.body;
+            if (!body) {
+                return;
+            }
+
+            const toggleButton = document.getElementById('theme-toggle');
+            const toggleIcon = toggleButton ? toggleButton.querySelector('i') : null;
+            const toggleLabel = toggleButton ? toggleButton.querySelector('.sr-only') : null;
+            const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+            const prefersDarkQuery = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
+
+            const THEMES = {
+                light: {
+                    className: 'theme-light',
+                    icon: 'fa-sun',
+                    controlLabel: 'Switch to dark mode',
+                    themeColor: '#e8f0f8'
+                },
+                dark: {
+                    className: 'theme-dark',
+                    icon: 'fa-moon',
+                    controlLabel: 'Switch to light mode',
+                    themeColor: '#020617'
+                }
+            };
+
+            const canPersist = storageAvailable();
+            const storedTheme = canPersist ? localStorage.getItem(storageKey) : null;
+            let hasStoredTheme = storedTheme === 'light' || storedTheme === 'dark';
+            const fallbackTheme = prefersDarkQuery ? (prefersDarkQuery.matches ? 'dark' : 'light') : 'dark';
+            let currentTheme = hasStoredTheme ? storedTheme : fallbackTheme;
+
+            applyTheme(currentTheme);
+
+            if (toggleButton) {
+                toggleButton.addEventListener('click', () => {
+                    const nextTheme = currentTheme === 'light' ? 'dark' : 'light';
+                    applyTheme(nextTheme);
+                    if (canPersist) {
+                        try {
+                            localStorage.setItem(storageKey, nextTheme);
+                            hasStoredTheme = true;
+                        } catch (error) {
+                            hasStoredTheme = true;
+                        }
+                    } else {
+                        hasStoredTheme = true;
+                    }
+                });
+            }
+
+            if (prefersDarkQuery) {
+                const mediaListener = (event) => {
+                    if (hasStoredTheme) {
+                        return;
+                    }
+                    applyTheme(event.matches ? 'dark' : 'light');
+                };
+
+                if (typeof prefersDarkQuery.addEventListener === 'function') {
+                    prefersDarkQuery.addEventListener('change', mediaListener);
+                } else if (typeof prefersDarkQuery.addListener === 'function') {
+                    prefersDarkQuery.addListener(mediaListener);
+                }
+            }
+
+            function applyTheme(theme) {
+                currentTheme = theme === 'light' ? 'light' : 'dark';
+                const config = THEMES[currentTheme];
+
+                body.classList.remove('theme-light', 'theme-dark');
+                body.classList.add(config.className);
+
+                document.documentElement.setAttribute('data-theme', currentTheme);
+
+                if (toggleIcon) {
+                    toggleIcon.classList.add('fa-solid', 'theme-toggle-icon');
+                    toggleIcon.classList.remove('fa-sun', 'fa-moon');
+                    toggleIcon.classList.add(config.icon);
+                }
+
+                if (toggleLabel) {
+                    toggleLabel.textContent = config.controlLabel;
+                }
+
+                if (toggleButton) {
+                    toggleButton.setAttribute('aria-pressed', currentTheme === 'dark' ? 'true' : 'false');
+                    toggleButton.setAttribute('aria-label', config.controlLabel);
+                    toggleButton.title = config.controlLabel;
+                }
+
+                if (metaThemeColor) {
+                    metaThemeColor.setAttribute('content', config.themeColor);
+                }
+            }
+
+            function storageAvailable() {
+                try {
+                    const testKey = '__theme_test__';
+                    localStorage.setItem(testKey, '1');
+                    localStorage.removeItem(testKey);
+                    return true;
+                } catch (error) {
+                    return false;
+                }
+            }
+        })();
+    </script>
+
+    <!-- PROJECT DATA: update this JSON to refresh content without editing HTML -->
     <script>
         const projects = [
 
@@ -727,147 +963,147 @@
                 title: "WebHawk",
                 status: "past",
                 tags: ["Python","Scanner","Web","Docker","Education","Blue Team"],
-                desc: "Scanner éducatif de vulnérabilités web (SQLi, XSS, LFI, IDOR, CSRF, SSRF, RCE), rapports JSON, modes CLI/Interactif, conteneurisé.",
+                desc: "Educational web vulnerability scanner (SQLi, XSS, LFI, IDOR, CSRF, SSRF, RCE) with JSON reports, CLI/interactive modes and Docker packaging.",
                 link: "https://github.com/Sunnoogo77/WebHawk"
             },
             {
                 title: "HIDS (Host-Based IDS)",
                 status: "past",
                 tags: ["PowerShell","Windows","HIDS","Blue Team"],
-                desc: "Détection sur hôte en PowerShell : surveille activités et patterns suspects, configuration & artefacts Blue Team.",
+                desc: "Host-based detection in PowerShell: monitors suspicious activity and patterns with Blue Team-oriented configuration and artefacts.",
                 link: "https://github.com/Sunnoogo77/HIDS"
             },
             {
                 title: "ASTSU – Advanced Security Testing & Scanning Utility",
                 status: "past",
-                tags: ["Python","Réseau","Scanner","Docker"],
-                desc: "Scan ports TCP/UDP, fingerprint OS, mode furtif, découverte d’hôtes. Image Docker & alias CLI faciles.",
+                tags: ["Python","Networking","Scanner","Docker"],
+                desc: "Scans TCP/UDP ports, fingerprints OS, stealth mode, host discovery. Provides a Docker image and handy CLI aliases.",
                 link: "https://github.com/Sunnoogo77/ASTSU"
             },
             {
                 title: "VaultRoom",
                 status: "past",
                 tags: ["Flask","Python","TLS","Chat","Web"],
-                desc: "Plateforme de communication sécurisée : auth, discussions privées, TLS/SSL, archi prête pour Socket.IO.",
+                desc: "Secure communication platform: authentication, private discussions, TLS/SSL, architecture ready for Socket.IO.",
                 link: "https://github.com/Sunnoogo77/VaultRoom"
             },
             {
                 title: "MFA – Multi-Factor Authentication",
                 status: "past",
                 tags: ["Node.js","Express","React","2FA","Passport","Speakeasy"],
-                desc: "Système d’authentification multi-facteurs (password + TOTP). Backend Express/Passport, frontend React.",
+                desc: "Multi-factor authentication system (password + TOTP). Express/Passport backend, React frontend.",
                 link: "https://github.com/Sunnoogo77/MFA"
             },
             {
                 title: "Packet Sniffing (Scapy + Supabase)",
                 status: "past",
-                tags: ["Python","Scapy","Supabase","PostgreSQL","Réseau","Monitoring"],
-                desc: "Capture et analyse de paquets en temps réel, stockage cloud Supabase, schémas SQL et API prévus.",
+                tags: ["Python","Scapy","Supabase","PostgreSQL","Networking","Monitoring"],
+                desc: "Real-time packet capture and analysis, Supabase cloud storage, planned SQL schemas and API.",
                 link: "https://github.com/Sunnoogo77/Packet_Sniffing"
             },
             {
                 title: "Mini Cryptographie Web",
                 status: "past",
                 tags: ["Python","Flask","React","Crypto","Web"],
-                desc: "Chiffrement/déchiffrement de textes et fichiers, démo de force brute, backend Flask + frontend React.",
+                desc: "Encrypts/decrypts text and files, includes a brute-force demo, Flask backend and React frontend.",
                 link: "https://github.com/Sunnoogo77/file-text-encryptor"
             },
             {
                 title: "Password Cracking (outil + rapport)",
                 status: "past",
                 tags: ["Python","PyQt5","Passwords","Education"],
-                desc: "Outil de craquage (brute force, dictionnaire, masque, hybride) avec GUI PyQt5 et rapport de sensibilisation.",
+                desc: "Cracking tool (brute-force, dictionary, mask, hybrid) with PyQt5 GUI and awareness report.",
                 link: "https://github.com/Sunnoogo77/Password-Cracking"
             },
             {
-                title: "Cybersécurité vs Sécurité de l’Information",
+                title: "Cybersecurity vs Information Security",
                 status: "past",
-                tags: ["Education","Infosec","Rédaction"],
-                desc: "Comparatif pédagogique avec ressources & supports pour publication LinkedIn.",
+                tags: ["Education","Infosec","Writing"],
+                desc: "Educational comparison with resources and assets for a LinkedIn publication.",
                 link: "https://github.com/Sunnoogo77/Cybersecurity_Infosec"
             },
             {
                 title: "Wazuh x Sysmon – Lab Blue Team",
                 status: "future",
                 tags: ["Wazuh","Sysmon","Windows","Blue Team","Lab"],
-                desc: "Guide de mise en place Sysmon + scénarios de simulation (ransomware behaviors) pour générer des alertes dans Wazuh.",
+                desc: "Guide to deploying Sysmon plus simulation scenarios (ransomware behaviours) to generate alerts in Wazuh.",
                 link: "https://github.com/Sunnoogo77/test-for-wazuh"
             },
             {
-                title: "Architecture réseau sécurisée multisite pour campus",
+                title: "Secure multisite campus network architecture",
                 status: "past",
-                tags: ["réseau", "vlan", "firewall", "blue team", "vpn", "segmentation"],
-                desc: "Architecture réseau pour une école multisite, avec segmentation, DMZ, VPN IPSec et supervision, selon les bonnes pratiques Blue Team",
+                tags: ["Networking", "VLAN", "Firewall", "Blue Team", "VPN", "Segmentation"],
+                desc: "Network architecture for a multisite school with segmentation, DMZ, IPSec VPN and monitoring following Blue Team best practices",
                 link: "https://github.com/Sunnoogo77/secure-network-architecture-campus"
             },
             {
-                title: "Durcissement Debian pour héberger Moodle",
+                title: "Hardening Debian to host Moodle",
                 status: "past",
                 tags: ["Debian", "Hardening", "UFW", "PAM", "Lynis", "Blue Team"],
-                desc: "Durcissement d’un serveur Debian pour Moodle : MAJ auto, UFW/ICMP, services, permissions, SUID/SGID, /tmp en tmpfs, sysctl, PAM et audits",
+                desc: "Hardening a Debian server for Moodle: automatic updates, UFW/ICMP, services, permissions, SUID/SGID, /tmp mounted as tmpfs, sysctl, PAM and audits",
                 link: "https://github.com/Sunnoogo77/debian-hardening-moodle"
             },
             {
                 title: "HIDS-Web",
                 status: "current",
                 tags: ["FastAPI", "Docker", "SQLite", "JWT", "Blue Team", "HIDS"],
-                desc: "Plateforme locale de surveillance des postes : suit fichiers, dossiers et IP, déclenche des alertes et propose des rapports pour aider à détecter et maîtriser les incidents",
+                desc: "Local host monitoring platform: tracks files, folders and IPs, raises alerts and provides reports to help detect and manage incidents",
                 link: "https://github.com/Sunnoogo77/HIDS2.0"
             },
             {
-                title: "Environnement cloud sécurisé sur AWS (SecureCloudLab)",
+                title: "Secure cloud environment on AWS (SecureCloudLab)",
                 status: "future",
                 tags: ["AWS", "VPC", "Cloud Security", "IAM", "Blue Team", "Monitoring"],
-                desc: "Conception d’un système cloud privé et sécurisé sur AWS avec réseau cloisonné, bastion, contrôle IAM, journalisation CloudTrail, monitoring CloudWatch et segmentation fine des services.",
+                desc: "Design of a secure private cloud on AWS with segmented networking, bastion host, IAM control, CloudTrail logging, CloudWatch monitoring and fine-grained service segmentation.",
                 link: "https://github.com/Sunnoogo77/securecloudlab-aws"
             },
             {
-                title: "Infrastructure PKI, IAM et gestion IT intégrée",
+                title: "Integrated PKI, IAM and IT management infrastructure",
                 status: "future",
                 tags: ["PKI", "Keycloak", "GLPI", "LDAP", "Authentification", "Blue Team"],
-                desc: "Mise en place d’une infrastructure PKI complète (CA Root/Sub), intégrée à Active Directory, avec authentification forte via certificats, IAM avec Keycloak, et gestion IT via GLPI connecté à LDAP.",
+                desc: "Deployment of a complete PKI infrastructure (Root/Sub CA) integrated with Active Directory, strong certificate-based authentication, IAM via Keycloak and IT management through GLPI connected to LDAP.",
                 link: "https://github.com/Sunnoogo77/pki-iac-infra-secure"
             },
             {
-                title: "Infrastructure Active Directory d'entreprise",
+                title: "Enterprise Active Directory infrastructure",
                 status: "current",
-                tags: ["Active Directory", "Windows Server", "GPO", "Sécurité AD", "Blue Team"],
-                desc: "Déploiement complet d’une infrastructure Active Directory réaliste avec gestion des utilisateurs, GPO, délégation RBAC, FGPP, audit, réplication et interconnexion cloud hybride.",
+                tags: ["Active Directory", "Windows Server", "GPO", "AD Security", "Blue Team"],
+                desc: "Full deployment of a realistic Active Directory infrastructure with user management, GPOs, RBAC delegation, FGPP, auditing, replication and hybrid cloud connectivity.",
                 link: "https://github.com/Sunnoogo77/enterprise-ad-lab"
             },
             {
-                title: "Surveillance des accès aux secrets AWS",
+                title: "Monitoring access to AWS secrets",
                 status: "future",
                 tags: ["AWS", "CloudTrail", "Secrets Manager", "CloudWatch", "Monitoring", "Blue Team"],
-                desc: "Mise en place d’un système de monitoring en temps réel des accès aux secrets AWS, avec CloudTrail, CloudWatch, SNS, et notifications d’alerte en cas d’accès sensible.",
+                desc: "Real-time monitoring of access to AWS secrets using CloudTrail, CloudWatch, SNS and alert notifications for sensitive access.",
                 link: "https://github.com/Sunnoogo77/aws-secret-access-monitoring"
             },
             {
-                title: "Sécurisation d’Azure Active Directory (AER)",
+                title: "Securing Azure Active Directory (AER)",
                 status: "future",
                 tags: ["Azure", "Active Directory", "IAM", "Hybrid Cloud", "Blue Team", "Microsoft Entra"],
-                desc: "Déploiement et configuration d’un environnement Azure Active Directory sécurisé avec gestion hybride, MFA, groupes, unités d’administration et connecteur Entra ID.",
+                desc: "Deployment and configuration of a secure Azure Active Directory environment with hybrid management, MFA, groups, administrative units and Entra ID connector.",
                 link: "https://github.com/Sunnoogo77/azure-aer-ad-hybrid-security"
             },
             {
-                title: "Déploiement d’un Simulateur de Phishing pour formation interne",
+                title: "Deploying a phishing simulator for internal training",
                 status: "future",
                 tags: ["Phishing", "Cyber Awareness", "Social Engineering", "Blue Team", "Docker", "Security Training"],
-                desc: "Mise en place d’un simulateur de campagnes de phishing interne pour sensibiliser les utilisateurs, analyser les clics, et renforcer les réflexes de cybersécurité dans l’entreprise.",
+                desc: "Deploying an internal phishing campaign simulator to raise awareness, analyse clicks and reinforce cybersecurity reflexes across the company.",
                 link: "https://github.com/Sunnoogo77/phishing-awareness-simulator"
             },
             {
-                title: "Déploiement sécurisé d’un système de ticketing IT",
+                title: "Secure deployment of an IT ticketing system",
                 status: "future",
                 tags: ["GLPI", "ITSM", "Ticketing", "Helpdesk", "Infrastructure", "Blue Team"],
-                desc: "Installation et sécurisation complète de GLPI pour la gestion des incidents et des demandes IT, avec authentification, gestion des droits, sauvegardes et intégration possible à un annuaire LDAP.",
+                desc: "Full installation and hardening of GLPI for IT incident and request management, including authentication, access control, backups and optional LDAP integration.",
                 link: "https://github.com/Sunnoogo77/glpi-secure-ticketing"
             },
             {
-                title: "Déploiement d’un SIEM avec Splunk pour la détection d'incidents",
+                title: "Deploying a SIEM with Splunk for incident detection",
                 status: "future",
                 tags: ["Splunk", "SIEM", "Log Analysis", "Security Monitoring", "Blue Team", "SOC"],
-                desc: "Installation de Splunk dans un lab sécurisé, collecte de logs systèmes et réseau, détection d’incidents via des alertes, tableaux de bord, et cas d’usage Blue Team typiques.",
+                desc: "Install Splunk in a secure lab, collect system and network logs, detect incidents via alerts, dashboards and typical Blue Team use cases.",
                 link: "https://github.com/Sunnoogo77/splunk-blue-team-lab"
             },
 
@@ -877,7 +1113,7 @@
         const grid = document.getElementById('projectsGrid');
         grid.innerHTML = '';
 
-        const statusLabel = { past: 'Passé', current: 'En cours', future: 'Future' };
+        const statusLabel = { past: 'Past', current: 'Current', future: 'Future' };
 
         projects
         .filter(p => p.status === filter)
@@ -896,14 +1132,14 @@
                 ${p.tags.map(t => `<span class='text-xs px-2 py-1 rounded bg-slate-800 border border-slate-700'>${t}</span>`).join('')}
             </div>
             <a class="mt-4 inline-block text-brand-300 hover:underline" href="${p.link}" target="_blank" rel="noreferrer">
-                Voir le projet →
+                View project →
             </a>
             `;
             grid.appendChild(card);
         });
 
         if (!grid.childElementCount) {
-        grid.innerHTML = `<p class="text-slate-400 text-sm">Aucun projet pour ce filtre.</p>`;
+        grid.innerHTML = `<p class="text-slate-400 text-sm">No projects for this filter.</p>`;
         }
     }
 
@@ -912,7 +1148,7 @@
         renderCards(e.target.value);
     });
 
-    // Valeur par défaut et rendu initial
+    // Default value and initial render
     document.getElementById('filter').value = 'past';
     document.getElementById('year').textContent = new Date().getFullYear();
     renderCards('past');
@@ -936,19 +1172,19 @@
         }
     }
 
-    // DONNÉES CERTIFICATIONS : modifiez ce JSON pour mettre à jour le site sans toucher au HTML
+    // CERTIFICATION DATA: update this JSON to refresh content without editing HTML
     const certifications = [
         {
             titre: "Cisco Introduction to Cybersecurity",
             statut: "obtained",
             periode: "2022",
             badge: "img/certifications/cisco.jpg",
-            description: "Introduction aux concepts clés de la cybersécurité, aux menaces et aux bases de la défense des systèmes.",
+            description: "Introduction to key cybersecurity concepts, threats and foundational defensive measures.",
             tags: ["Cybersecurity", "Awareness", "Cisco"],
             details: [
-            "Découverte des menaces actuelles",
-            "Principes de défense de base",
-            "Sensibilisation aux enjeux de sécurité"
+            "Overview of current threats",
+            "Foundational defence principles",
+            "Raising awareness of security issues"
             ],
             lien: "docs/certifs/cisco-intro.pdf"
         },
@@ -957,12 +1193,12 @@
             statut: "obtained",
             periode: "2023",
             badge: "img/certifications/cisco.jpg",
-            description: "Certification sur les fondamentaux de la cybersécurité, architecture réseau et protection des systèmes.",
-            tags: ["Réseau", "Sécurité", "Fundamentals"],
+            description: "Certification covering cybersecurity fundamentals, network architecture and system protection.",
+            tags: ["Networking", "Security", "Fundamentals"],
             details: [
-            "Architecture et principes de sécurité réseau",
-            "Sécurité des systèmes d’exploitation",
-            "Gestion des menaces"
+            "Network architecture and security principles",
+            "Operating system security",
+            "Threat management"
             ],
             lien: "docs/certifs/cisco-essentials.pdf"
         },
@@ -971,12 +1207,12 @@
             statut: "in-progress",
             periode: "2025",
             badge: "img/certifications/az-900.png",
-            description: "Notions fondamentales d’Azure : concepts du cloud, sécurité et conformité.",
+            description: "Azure fundamentals: cloud concepts, security and compliance.",
             tags: ["Azure", "Cloud", "Fundamentals"],
             details: [
-            "Concepts de base du cloud computing",
-            "Sécurité et conformité dans Azure",
-            "Services principaux d’Azure"
+            "Core cloud computing concepts",
+            "Security and compliance in Azure",
+            "Core Azure services"
             ],
             lien: "#"
         },
@@ -985,12 +1221,12 @@
             statut: "in-progress",
             periode: "2025",
             badge: "img/certifications/az-800.jpg",
-            description: "Administration Windows Server hybride, Active Directory et gestion des identités.",
+            description: "Hybrid Windows Server administration, Active Directory and identity management.",
             tags: ["Active Directory", "Windows Server", "Hybrid Cloud"],
             details: [
-            "Gestion des identités et accès",
-            "Services Windows Server hybrides",
-            "Sécurité et monitoring"
+            "Identity and access management",
+            "Hybrid Windows Server services",
+            "Security and monitoring"
             ],
             lien: "#"
         },
@@ -999,12 +1235,12 @@
             statut: "in-progress",
             periode: "2025",
             badge: "img/certifications/sc-900.png",
-            description: "Principes fondamentaux de sécurité, conformité et identité Microsoft.",
+            description: "Fundamental Microsoft security, compliance and identity concepts.",
             tags: ["Security", "Compliance", "Identity"],
             details: [
-            "Concepts de sécurité et conformité",
-            "Gestion des identités dans Microsoft",
-            "Principes Zero Trust"
+            "Security and compliance concepts",
+            "Managing identities in Microsoft",
+            "Zero Trust principles"
             ],
             lien: "#"
         },
@@ -1013,12 +1249,12 @@
             statut: "future",
             periode: "2026",
             badge: "img/certifications/security-plus.png",
-            description: "Certification globale en cybersécurité couvrant menaces, attaques et défenses.",
+            description: "Global cybersecurity certification covering threats, attacks and defences.",
             tags: ["Security", "Network", "Threats"],
             details: [
-            "Cryptographie et sécurité réseau",
-            "Gestion des menaces",
-            "Analyse et réponse aux incidents"
+            "Cryptography and network security",
+            "Threat management",
+            "Incident analysis and response"
             ],
             lien: "#"
         },
@@ -1027,12 +1263,12 @@
             statut: "future",
             periode: "2026",
             badge: "img/certifications/sc-200.png",
-            description: "Spécialisation sur la détection, l’investigation et la réponse aux incidents avec Microsoft Sentinel & Defender.",
+            description: "Specialisation in detection, investigation and incident response with Microsoft Sentinel & Defender.",
             tags: ["SOC", "Sentinel", "Incident Response"],
             details: [
-            "Configuration de Microsoft Sentinel",
-            "Analyse et corrélation de logs",
-            "Réponse aux incidents avancée"
+            "Configuring Microsoft Sentinel",
+            "Log analysis and correlation",
+            "Advanced incident response"
             ],
             lien: "#"
         },
@@ -1042,91 +1278,91 @@
             statutLabel: "Obtenue",
             periode: "2024",
             badge: "img/certifications/toeic.png",
-            description: "Certification internationale validant les compétences en anglais (Listening & Reading).",
+            description: "International certification validating English proficiency (Listening & Reading).",
             tags: ["English", "Listening", "Reading", "ESL"],
             details: [
-                "Listening : 490 / 495",
-                "Reading : 445 / 495",
-                "Total : 935 / 990"
+                "Listening: 490 / 495",
+                "Reading: 445 / 495",
+                "Total: 935 / 990"
             ],
             lien: "docs/certifs/toeic-2024.pdf"
         },
         {
             titre: "Cisco CCNA — Cisco Certified Network Associate",
             statut: "future",
-            statutLabel: "À venir",
+            statutLabel: "Upcoming",
             periode: "2026",
             badge: "img/certifications/ccna.png",
-            description: "Certification reconnue mondialement validant les compétences essentielles en réseaux informatiques.",
+            description: "World-renowned certification validating core networking skills.",
             tags: ["Cisco", "Networking", "Routing", "Switching"],
             details: [
-            "Architecture et modèles réseaux",
-            "Routage et commutation (Switching)",
-            "Sécurité réseau de base",
-            "Services IP"
+            "Network architectures and models",
+            "Routing and switching",
+            "Baseline network security",
+            "IP services"
             ],
             lien: "#"
         },
         {
             titre: "SOC Analyst Level 1 (SAL1)",
             statut: "future",
-            statutLabel: "En préparation",
+            statutLabel: "In progress",
             periode: "2025",
             badge: "img/certifications/sal1.png",
-            description: "Certification orientée Blue Team validant les compétences de base pour un poste de SOC Analyst.",
+            description: "Blue Team oriented certification validating foundational SOC analyst skills.",
             tags: ["SOC", "Blue Team", "Logs", "Detection"],
             details: [
-                "Analyse d'alertes et investigation",
-                "Gestion et corrélation de logs",
-                "Introduction aux outils SIEM",
-                "Notions de Threat Hunting"
+                "Alert analysis and investigation",
+                "Log management and correlation",
+                "Introduction to SIEM tools",
+                "Threat hunting fundamentals"
             ],
             lien: "#"
         },
         {
             titre: "CompTIA Network+",
             statut: "future",
-            statutLabel: "À venir",
+            statutLabel: "Upcoming",
             periode: "2026",
             badge: "img/certifications/network-plus.png",
-            description: "Certification sur les fondamentaux des réseaux : routage, commutation et sécurité de base.",
+            description: "Networking fundamentals certification: routing, switching and baseline security.",
             tags: ["Networking", "TCP/IP", "Routing", "Switching"],
             details: [
-                "Protocoles et topologies réseau",
+                "Network protocols and topologies",
                 "IPv4 / IPv6, TCP/UDP",
-                "Sécurité réseau de base",
-                "Résolution de problèmes réseau"
+                "Baseline network security",
+                "Network troubleshooting"
             ],
             lien: "#"
         },
         {
             titre: "CompTIA Security+",
             statut: "future",
-            statutLabel: "À venir",
+            statutLabel: "Upcoming",
             periode: "2026",
             badge: "img/certifications/security-plus.png",
-            description: "Certification globale en cybersécurité couvrant menaces, attaques et défenses.",
+            description: "Global cybersecurity certification covering threats, attacks and defences.",
             tags: ["Security", "Network", "Threats"],
             details: [
-                "Cryptographie et sécurité réseau",
-                "Gestion des menaces",
-                "Analyse et réponse aux incidents"
+                "Cryptography and network security",
+                "Threat management",
+                "Incident analysis and response"
             ],
             lien: "#"
         },
         {
             titre: "AWS Certified Cloud Practitioner (CLF-C01)",
             statut: "future",
-            statutLabel: "En préparation",
+            statutLabel: "In progress",
             periode: "2025",
             badge: "img/certifications/aws-clf.png",
-            description: "Certification d’entrée de gamme validant la compréhension des concepts cloud et services AWS.",
+            description: "Entry-level certification validating understanding of AWS cloud concepts and services.",
             tags: ["AWS", "Cloud", "Fundamentals"],
             details: [
-                "Concepts de base du cloud AWS",
-                "Architecture et sécurité",
-                "Services principaux (EC2, S3, IAM)",
-                "Facturation et support"
+                "Core AWS cloud concepts",
+                "Architecture and security",
+                "Core services (EC2, S3, IAM)",
+                "Billing and support"
             ],
             lien: "#"
         }
@@ -1135,10 +1371,10 @@
 
 
     
-    // --- Libellés & état ---
+    // --- Labels & state ---
     const CERT_STATUS_LABEL = {
         "obtained": "Obtenue",
-        "in-progress": "En préparation",
+        "in-progress": "In progress",
         "future": "Objectif"
     };
 
@@ -1155,7 +1391,7 @@
 
         if (filtered.length === 0) {
             container.innerHTML = `
-            <p class="text-slate-400 text-sm">Aucune certification pour ce filtre.</p>
+            <p class="text-slate-400 text-sm">No certification matches this filter.</p>
             `;
         } else {
             filtered.forEach((cert, index) => {
@@ -1190,7 +1426,7 @@
 
                 <div id="${detailsId}" class="hidden mt-4 pt-4 border-t border-slate-700 text-slate-300 text-sm">
                     ${(cert.details && cert.details.length)
-                    ? `<h4 class="font-bold text-lg text-white mb-2">Détails</h4>
+                    ? `<h4 class="font-bold text-lg text-white mb-2">Details</h4>
                         <ul class="list-disc list-inside space-y-1">
                         ${cert.details.map(d => `<li>${escapeHtml(d)}</li>`).join("")}
                         </ul>`
@@ -1198,14 +1434,14 @@
                     }
                     ${cert.lien && cert.lien !== "#"
                     ? `<a href="${escapeAttr(cert.lien)}" target="_blank" rel="noreferrer"
-                        class="mt-3 inline-block text-brand-400 hover:text-brand-300 font-semibold">Voir le certificat →</a>`
+                        class="mt-3 inline-block text-brand-400 hover:text-brand-300 font-semibold">View the certificate →</a>`
                     : ""
                     }
                 </div>
 
                 <button onclick="toggleDetails('${detailsId}')"
                         class="mt-4 text-brand-400 font-semibold hover:text-brand-300 transition-colors">
-                    En savoir plus →
+                    Learn more →
                 </button>
                 </article>
             `;
@@ -1238,7 +1474,7 @@
         el.classList.toggle("hidden");
     }
 
-    // --- Sécurité minimale XSS si données dynamiques ---
+    // --- Minimal XSS safety when handling dynamic data ---
     function escapeHtml(str) {
         return String(str)
         .replaceAll("&", "&amp;")
@@ -1253,7 +1489,7 @@
 
     // --- Init ---
     document.addEventListener("DOMContentLoaded", () => {
-    // Par défaut : "Toutes" actif
+    // Default state: "All" active
         renderCertifications();
     });
 
