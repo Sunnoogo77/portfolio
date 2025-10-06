@@ -1121,6 +1121,71 @@
                 desc: "Installation de Splunk dans un lab sécurisé, collecte de logs systèmes et réseau, détection d’incidents via des alertes, tableaux de bord, et cas d’usage Blue Team typiques.",
                 link: "https://github.com/Sunnoogo77/splunk-blue-team-lab"
             },
+            
+            {
+                title: "pfSense – Lab de segmentation & firewall",
+                status: "future",
+                tags: ["pfSense","Réseau","Firewall","VM"],
+                desc: "Topologie VLAN/DMZ/PROD sur pfSense : règles de filtrage, NAT, VPN site-to-site et snapshots pour tests d'attaque.",
+                link: "https://github.com/Sunnoogo77/pfsense-lab"
+            },
+            {
+                title: "Mail Server sécurisé (Postfix + Dovecot + rspamd)",
+                status: "future",
+                tags: ["Mail","Postfix","Dovecot","DKIM","Docker"],
+                desc: "Serveur mail complet avec TLS, SPF/DKIM/DMARC et filtrage anti-spam (rspamd). Scénarios de phishing et validation DMARC.",
+                link: "https://github.com/Sunnoogo77/secure-mail-server"
+            },
+            {
+                title: "Reverse Proxy & TLS (Traefik)",
+                status: "future",
+                tags: ["Traefik","Docker","HTTPS","Reverse Proxy"],
+                desc: "Traefik pour exposer plusieurs apps, certificats automatiques Let's Encrypt, routing dynamique et tests SSL.",
+                link: "https://github.com/Sunnoogo77/traefik-reverse-proxy"
+            },
+            {
+                title: "Proxy filtrant authentifié (Squid + LDAP/AD)",
+                status: "future",
+                tags: ["Proxy","Squid","LDAP","Sécurité"],
+                desc: "Proxy HTTP/HTTPS avec authentification via LDAP/AD, règles de filtrage par groupe et logging centralisé.",
+                link: "https://github.com/Sunnoogo77/squid-proxy-ldap"
+            },
+            {
+                title: "Wazuh – SIEM & agents (centralisation logs)",
+                status: "future",
+                tags: ["Wazuh","SIEM","Logs","Detection"],
+                desc: "Déploiement Wazuh manager + agents sur DC et infra réseau, règles d'alerte custom et dashboards d'investigation.",
+                link: "https://github.com/Sunnoogo77/wazuh-siem-lab"
+            },
+            {
+                title: "Monitoring métriques (Prometheus + Grafana)",
+                status: "future",
+                tags: ["Prometheus","Grafana","Monitoring","Alerting"],
+                desc: "Collecte métriques (node_exporter), dashboards Grafana et alerting (alerte CPU/mémoire/disque) avec playbook d'escalade.",
+                link: "https://github.com/Sunnoogo77/prometheus-grafana-monitoring"
+            },
+            {
+                title: "IDS réseau (Suricata + EveBox)",
+                status: "future",
+                tags: ["Suricata","IDS","NetSec","EveBox"],
+                desc: "Détecter signatures & anomalies réseau via Suricata; corrélation des alerts et gestion des pcap pour preuves.",
+                link: "https://github.com/Sunnoogo77/suricata-ids-lab"
+            },
+            {
+                title: "PKI interne (Root CA / signing)",
+                status: "future",
+                tags: ["PKI","OpenSSL","Certificats","Sécurité"],
+                desc: "Création d'une CA interne, politique de signature, génération et déploiement de certificats pour services internes.",
+                link: "https://github.com/Sunnoogo77/internal-pki"
+            },
+            {
+                title: "Backup & DR (Restic + scripts de restore)",
+                status: "future",
+                tags: ["Backup","Restic","DR","Scripts"],
+                desc: "Stratégie de sauvegarde automatisée avec Restic, tests de restauration, intégrité des snapshots et playbook de reprise d'activité.",
+                link: "https://github.com/Sunnoogo77/restic-backup-dr"
+            }
+
 
         ];
 
