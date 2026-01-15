@@ -94,15 +94,40 @@
         body.theme-light .text-slate-500 { color: #2f4a66; }
         body.theme-light .text-slate-600 { color: #365372; }
 
-        body.theme-light .theme-toggle-button i { color: #0a4164; }
-        body.theme-dark .theme-toggle-button i { color: #f8fafc; }
+        body.theme-light .theme-toggle-button svg { color: #0a4164; }
+        body.theme-dark .theme-toggle-button svg { color: #f8fafc; }
 
         .theme-toggle-icon {
-            transition: transform 0.3s ease, color 0.3s ease;
+            width: 1.25rem;
+            height: 1.25rem;
+            transition: transform 0.3s ease, opacity 0.2s ease;
+            stroke: currentColor;
+            fill: none;
         }
 
         .theme-toggle-button:hover .theme-toggle-icon {
             transform: rotate(-15deg);
+        }
+
+        .theme-icon-sun,
+        .theme-icon-moon {
+            display: none;
+        }
+
+        body.theme-dark .theme-icon-sun {
+            display: inline-block;
+        }
+
+        body.theme-dark .theme-icon-moon {
+            display: none;
+        }
+
+        body.theme-light .theme-icon-sun {
+            display: none;
+        }
+
+        body.theme-light .theme-icon-moon {
+            display: inline-block;
         }
 
         .language-toggle-button {
@@ -286,7 +311,13 @@
                                 </a>
                                 <button id="theme-toggle" type="button" aria-pressed="true" aria-label="Switch to light mode" class="theme-toggle-button relative inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-slate-700/70 bg-slate-900/60 text-slate-200 transition hover:border-brand-400 hover:text-brand-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950">
                                     <span class="sr-only" data-i18n-key="controls.themeToggleLabel">Switch to light mode</span>
-                                    <i class="fa-solid fa-moon theme-toggle-icon text-lg text-brand-400" aria-hidden="true"></i>
+                                    <svg class="theme-toggle-icon theme-icon-sun" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                        <circle cx="12" cy="12" r="5"></circle>
+                                        <path d="M12 3v2m0 14v2M3 12h2m14 0h2M5.64 5.64l1.41 1.41M16.95 16.95l1.41 1.41M5.64 18.36l1.41-1.41M16.95 7.05l1.41-1.41"></path>
+                                    </svg>
+                                    <svg class="theme-toggle-icon theme-icon-moon" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                        <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"></path>
+                                    </svg>
                                 </button>
                             </div>
                         </div>
@@ -844,7 +875,6 @@
             }
 
             const toggleButton = document.getElementById('theme-toggle');
-            const toggleIcon = toggleButton ? toggleButton.querySelector('i') : null;
             const toggleLabel = toggleButton ? toggleButton.querySelector('.sr-only') : null;
             const metaThemeColor = document.querySelector('meta[name="theme-color"]');
             const prefersDarkQuery = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
@@ -852,13 +882,11 @@
             const THEMES = {
                 light: {
                     className: 'theme-light',
-                    icon: 'fa-sun',
                     controlLabel: 'Switch to dark mode',
                     themeColor: '#e8f0f8'
                 },
                 dark: {
                     className: 'theme-dark',
-                    icon: 'fa-moon',
                     controlLabel: 'Switch to light mode',
                     themeColor: '#020617'
                 }
@@ -912,12 +940,6 @@
                 body.classList.add(config.className);
 
                 document.documentElement.setAttribute('data-theme', currentTheme);
-
-                if (toggleIcon) {
-                    toggleIcon.classList.add('fa-solid', 'theme-toggle-icon');
-                    toggleIcon.classList.remove('fa-sun', 'fa-moon');
-                    toggleIcon.classList.add(config.icon);
-                }
 
                 if (toggleLabel) {
                     toggleLabel.textContent = config.controlLabel;
@@ -1076,6 +1098,13 @@
                 tags: ["Azure", "Active Directory", "IAM", "Hybrid Cloud", "Blue Team", "Microsoft Entra"],
                 desc: "Deployment and configuration of a secure Azure Active Directory environment with hybrid management, MFA, groups, administrative units and Entra ID connector.",
                 link: "https://github.com/Sunnoogo77/azure-aer-ad-hybrid-security"
+            },
+            {
+                title: "SecureFlow Platform — Cloud & Secured DevSecOps",
+                status: "past",
+                tags: ["Azure", "Terraform", "DevSecOps", "CI/CD", "SAST", "GitLab", "GitHub Actions"],
+                desc: "Engineered a secure Azure platform with Terraform IaC, segmented networking, and GitLab/GitHub Actions CI/CD pipelines featuring SAST/Trivy/Checkov scans plus DevSecOps hardening and monitoring.",
+                link: "https://gitlab.com/devsecop_project"
             },
             {
                 title: "Deploying a phishing simulator for internal training",
