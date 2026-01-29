@@ -1,11 +1,12 @@
 import { useState, useMemo } from 'react';
-import { ChevronDown, ChevronUp, ExternalLink, Award } from 'lucide-react';
+import { ChevronDown, ChevronUp, ExternalLink } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { certifications, getCertificationCounts, type CertificationStatus } from '@/data/certifications';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import { getAssetPath } from '@/lib/assets';
 
 type FilterType = CertificationStatus | 'all';
 
@@ -86,9 +87,18 @@ export function Certifications() {
                         {t(`status.${cert.status === 'in-progress' ? 'inProgress' : cert.status}`)} • {cert.year}
                       </p>
                     </div>
-                    {/* Badge placeholder */}
-                    <div className="shrink-0 w-12 h-12 rounded-lg bg-muted flex items-center justify-center">
-                      <Award className="h-6 w-6 text-primary" />
+                    {/* Certification badge */}
+                    <div className="shrink-0 w-12 h-12 rounded-lg bg-muted flex items-center justify-center overflow-hidden">
+                      <img
+                        src={getAssetPath(cert.badge)}
+                        alt={cert.title}
+                        className="w-full h-full object-contain p-1"
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          target.style.display = 'none';
+                          target.parentElement!.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 text-primary"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>';
+                        }}
+                      />
                     </div>
                   </div>
 

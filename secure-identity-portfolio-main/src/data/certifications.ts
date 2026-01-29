@@ -24,7 +24,7 @@ export const certifications: Certification[] = [
     title: 'Cisco Introduction to Cybersecurity',
     status: 'obtained',
     year: '2022',
-    badge: '/placeholder.svg',
+    badge: '/img/certifications/cisco-intro.png',
     description: {
       fr: 'Introduction aux concepts clés de la cybersécurité, menaces et mesures défensives fondamentales.',
       en: 'Introduction to key cybersecurity concepts, threats and foundational defensive measures.',
@@ -49,7 +49,7 @@ export const certifications: Certification[] = [
     title: 'Cisco Cybersecurity Essentials',
     status: 'obtained',
     year: '2023',
-    badge: '/placeholder.svg',
+    badge: '/img/certifications/cisco-essentials.png',
     description: {
       fr: 'Certification couvrant les fondamentaux de la cybersécurité, l\'architecture réseau et la protection des systèmes.',
       en: 'Certification covering cybersecurity fundamentals, network architecture and system protection.',
@@ -74,7 +74,7 @@ export const certifications: Certification[] = [
     title: 'TOEIC – Test of English for International Communication',
     status: 'obtained',
     year: '2024',
-    badge: '/placeholder.svg',
+    badge: '/img/certifications/toeic.png',
     description: {
       fr: 'Certification internationale validant le niveau d\'anglais (Listening & Reading).',
       en: 'International certification validating English proficiency (Listening & Reading).',
@@ -99,7 +99,7 @@ export const certifications: Certification[] = [
     title: 'Microsoft AZ-900 — Azure Fundamentals',
     status: 'in-progress',
     year: '2025',
-    badge: '/placeholder.svg',
+    badge: '/img/certifications/az-900.png',
     description: {
       fr: 'Fondamentaux Azure : concepts cloud, sécurité et conformité.',
       en: 'Azure fundamentals: cloud concepts, security and compliance.',
@@ -123,7 +123,7 @@ export const certifications: Certification[] = [
     title: 'Microsoft AZ-800 — Windows Server Hybrid Core',
     status: 'in-progress',
     year: '2025',
-    badge: '/placeholder.svg',
+    badge: '/img/certifications/az-800.jpg',
     description: {
       fr: 'Administration hybride Windows Server, Active Directory et gestion des identités.',
       en: 'Hybrid Windows Server administration, Active Directory and identity management.',
@@ -147,7 +147,7 @@ export const certifications: Certification[] = [
     title: 'Microsoft SC-900 — Security, Compliance & Identity',
     status: 'in-progress',
     year: '2025',
-    badge: '/placeholder.svg',
+    badge: '/img/certifications/sc-900.png',
     description: {
       fr: 'Concepts fondamentaux de sécurité, conformité et identité Microsoft.',
       en: 'Fundamental Microsoft security, compliance and identity concepts.',
@@ -171,7 +171,7 @@ export const certifications: Certification[] = [
     title: 'SOC Analyst Level 1 (SAL1)',
     status: 'future',
     year: '2025',
-    badge: '/placeholder.svg',
+    badge: '/img/certifications/sal1.png',
     description: {
       fr: 'Certification orientée Blue Team validant les compétences fondamentales d\'analyste SOC.',
       en: 'Blue Team oriented certification validating foundational SOC analyst skills.',
@@ -197,7 +197,7 @@ export const certifications: Certification[] = [
     title: 'AWS Certified Cloud Practitioner (CLF-C01)',
     status: 'future',
     year: '2025',
-    badge: '/placeholder.svg',
+    badge: '/img/certifications/aws-clf.png',
     description: {
       fr: 'Certification d\'entrée validant la compréhension des concepts et services cloud AWS.',
       en: 'Entry-level certification validating understanding of AWS cloud concepts and services.',
@@ -223,7 +223,7 @@ export const certifications: Certification[] = [
     title: 'CompTIA Security+',
     status: 'future',
     year: '2026',
-    badge: '/placeholder.svg',
+    badge: '/img/certifications/security-plus.png',
     description: {
       fr: 'Certification cybersécurité globale couvrant menaces, attaques et défenses.',
       en: 'Global cybersecurity certification covering threats, attacks and defences.',
@@ -247,7 +247,7 @@ export const certifications: Certification[] = [
     title: 'CompTIA Network+',
     status: 'future',
     year: '2026',
-    badge: '/placeholder.svg',
+    badge: '/img/certifications/network-plus.png',
     description: {
       fr: 'Certification fondamentaux réseau : routing, switching et sécurité de base.',
       en: 'Networking fundamentals certification: routing, switching and baseline security.',
@@ -273,7 +273,7 @@ export const certifications: Certification[] = [
     title: 'Cisco CCNA — Cisco Certified Network Associate',
     status: 'future',
     year: '2026',
-    badge: '/placeholder.svg',
+    badge: '/img/certifications/ccna.png',
     description: {
       fr: 'Certification mondialement reconnue validant les compétences réseau fondamentales.',
       en: 'World-renowned certification validating core networking skills.',
@@ -299,7 +299,7 @@ export const certifications: Certification[] = [
     title: 'Microsoft SC-200 — Security Operations Analyst',
     status: 'future',
     year: '2026',
-    badge: '/placeholder.svg',
+    badge: '/img/certifications/sc-200.png',
     description: {
       fr: 'Spécialisation en détection, investigation et réponse aux incidents avec Microsoft Sentinel & Defender.',
       en: 'Specialisation in detection, investigation and incident response with Microsoft Sentinel & Defender.',

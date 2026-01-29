@@ -1,6 +1,7 @@
 import { Download, ChevronRight } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
+import { getAssetPath } from '@/lib/assets';
 
 export function Hero() {
   const { language, t } = useLanguage();
@@ -36,7 +37,8 @@ export function Hero() {
             {/* Internship badge */}
             <div className="mt-8 animate-fade-in-up animation-delay-200">
               <a
-                href={language === 'fr' ? '#' : '#'}
+                href={getAssetPath(language === 'fr' ? '/assets/Sunnoogo-Caleb-Resume-fr.pdf' : '/assets/Sunnoogo-Caleb-Resume-en.pdf')}
+                download
                 className="inline-flex items-center gap-3 rounded-full border border-primary/30 bg-primary/10 px-5 py-2 text-primary hover:border-primary hover:bg-primary/20 transition-all duration-300"
               >
                 <span className="h-2 w-2 rounded-full bg-primary animate-pulse" />
@@ -84,11 +86,12 @@ export function Hero() {
 
           {/* Profile Image */}
           <div className="relative animate-fade-in-up animation-delay-200">
-            <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary glow">
-              {/* Placeholder for profile image */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
-                <span className="text-6xl md:text-7xl font-bold text-primary/30">SC</span>
-              </div>
+            <div className="relative w-72 h-72 md:w-96 md:h-96 lg:w-[420px] lg:h-[420px] rounded-full overflow-hidden border-4 border-primary glow">
+              <img
+                src={getAssetPath('/img/CALEB_TAPSOBA.jpg')}
+                alt="Sunnoogo Caleb Tapsoba"
+                className="absolute inset-0 w-full h-full object-cover"
+              />
             </div>
             {/* Decorative rings */}
             <div className="absolute -inset-4 rounded-full border border-primary/20 animate-pulse-glow" />
