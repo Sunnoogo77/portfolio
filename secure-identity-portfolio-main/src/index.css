@@ -1,0 +1,245 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Cybersecurity Portfolio Design System - Sunnoogo Caleb Tapsoba */
+
+@layer base {
+  :root {
+    /* Light mode - Soft slate blue */
+    --background: 210 40% 96%;
+    --foreground: 222 47% 11%;
+
+    --card: 210 40% 98%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 210 40% 98%;
+    --popover-foreground: 222 47% 11%;
+
+    /* Cyan accent for Blue Team / Cyber */
+    --primary: 188 94% 43%;
+    --primary-foreground: 222 47% 11%;
+
+    --secondary: 210 40% 90%;
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 210 40% 90%;
+    --muted-foreground: 215 20% 45%;
+
+    --accent: 188 94% 43%;
+    --accent-foreground: 222 47% 11%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214 32% 85%;
+    --input: 214 32% 85%;
+    --ring: 188 94% 43%;
+
+    --radius: 0.75rem;
+
+    /* Brand colors - Cyan palette */
+    --brand-50: 180 100% 97%;
+    --brand-100: 180 100% 95%;
+    --brand-200: 180 96% 90%;
+    --brand-300: 180 92% 82%;
+    --brand-400: 180 88% 68%;
+    --brand-500: 188 94% 43%;
+    --brand-600: 188 86% 36%;
+    --brand-700: 188 84% 29%;
+    --brand-800: 188 82% 23%;
+    --brand-900: 188 80% 20%;
+
+    --sidebar-background: 210 40% 96%;
+    --sidebar-foreground: 222 47% 11%;
+    --sidebar-primary: 188 94% 43%;
+    --sidebar-primary-foreground: 210 40% 98%;
+    --sidebar-accent: 210 40% 90%;
+    --sidebar-accent-foreground: 222 47% 11%;
+    --sidebar-border: 214 32% 85%;
+    --sidebar-ring: 188 94% 43%;
+  }
+
+  .dark {
+    /* Dark mode - Deep slate */
+    --background: 222 47% 3%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 47% 5%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 5%;
+    --popover-foreground: 210 40% 98%;
+
+    /* Cyan accent */
+    --primary: 188 92% 50%;
+    --primary-foreground: 222 47% 5%;
+
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 188 92% 50%;
+    --accent-foreground: 222 47% 5%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 188 92% 50%;
+
+    --sidebar-background: 222 47% 5%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 188 92% 50%;
+    --sidebar-primary-foreground: 222 47% 5%;
+    --sidebar-accent: 217 33% 17%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 217 33% 17%;
+    --sidebar-ring: 188 92% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+
+  /* Selection color */
+  ::selection {
+    @apply bg-primary/30;
+  }
+}
+
+@layer components {
+  /* Glow effect for buttons and cards */
+  .glow {
+    box-shadow: 0 0 30px hsl(var(--primary) / 0.25);
+  }
+
+  .glow-sm {
+    box-shadow: 0 0 15px hsl(var(--primary) / 0.2);
+  }
+
+  /* Card hover effect */
+  .card-hover {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .card-hover:hover {
+    @apply border-primary shadow-lg;
+    box-shadow: 0 10px 30px hsl(var(--primary) / 0.1);
+    transform: translateY(-2px);
+  }
+
+  /* Custom scrollbar */
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    @apply bg-muted-foreground/30 rounded;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/50;
+  }
+
+  /* Timeline line glow */
+  .timeline-dot {
+    @apply relative;
+  }
+
+  .timeline-dot::before {
+    content: '';
+    @apply absolute inset-0 rounded-full bg-primary animate-pulse;
+    box-shadow: 0 0 15px 4px hsl(var(--primary) / 0.6);
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
+  }
+}
+
+@layer utilities {
+  /* Fade in animation */
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.5s ease-out forwards;
+  }
+
+  .animate-slide-in-left {
+    animation: slideInLeft 0.5s ease-out forwards;
+  }
+
+  .animate-slide-in-right {
+    animation: slideInRight 0.5s ease-out forwards;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  /* Stagger animation delay utilities */
+  .animation-delay-100 { animation-delay: 100ms; }
+  .animation-delay-200 { animation-delay: 200ms; }
+  .animation-delay-300 { animation-delay: 300ms; }
+  .animation-delay-400 { animation-delay: 400ms; }
+  .animation-delay-500 { animation-delay: 500ms; }
+}
