@@ -1,0 +1,7 @@
+# La corbeille est-elle active ?
+Get-ADOptionalFeature -Filter 'name -like "Recycle Bin*"' | Select Name,EnabledScopes
+
+# Retrouver les GPO supprimées
+Get-ADObject -Filter 'isDeleted -eq $true -and objectClass -eq "groupPolicyContainer"' `
+  -IncludeDeletedObjects -Properties displayName,whenChanged,gPCFileSysPath,gPCMachineExtensionNames,lastKnownParent |
+  Select displayName,whenChanged,gPCMachineExtensionNames,lastKnownParent
