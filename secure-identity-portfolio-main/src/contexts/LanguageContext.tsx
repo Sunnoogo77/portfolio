@@ -24,8 +24,8 @@ const translations: Record<Language, Record<string, string>> = {
     // Hero
     'hero.title': 'Portfolio Cybersécurité',
     'hero.subtitle': 'Étudiant en dernière année à l\'EFREI Paris (Cybersécurité & Cloud), orienté Blue Team et sécurité des environnements hybrides.',
-    'hero.badge': 'Objectif : Stage de fin d\'études — à partir de mars 2026',
-    'hero.downloadCV': 'Télécharger le CV',
+    'hero.downloadCV': 'Télécharger le CV, en français',
+    'availability.updatedOn': 'À jour au',
     'hero.cta.projects': 'Explorer les projets',
     'hero.cta.timeline': 'Parcours académique',
     'hero.cta.certifications': 'Licences & Certifications',
@@ -124,8 +124,8 @@ const translations: Record<Language, Record<string, string>> = {
     // Hero
     'hero.title': 'Cybersecurity Portfolio',
     'hero.subtitle': 'Final-year engineering student at EFREI Paris (Cybersecurity & Cloud), focused on Blue Team and securing hybrid environments.',
-    'hero.badge': 'Objective: Final-year internship — from March 2026',
-    'hero.downloadCV': 'Download CV',
+    'hero.downloadCV': 'Download CV, French',
+    'availability.updatedOn': 'Updated on',
     'hero.cta.projects': 'Explore projects',
     'hero.cta.timeline': 'Academic journey',
     'hero.cta.certifications': 'Licenses & Certifications',

@@ -2,6 +2,7 @@ import { Download, ChevronRight } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { getAssetPath } from '@/lib/assets';
+import { availability } from '@/data/availability';
 
 export function Hero() {
   const { language, t } = useLanguage();
@@ -34,17 +35,27 @@ export function Hero() {
               {t('hero.subtitle')}
             </p>
 
-            {/* Internship badge */}
+            {/* Disponibilite */}
             <div className="mt-8 animate-fade-in-up animation-delay-200">
               <a
-                href={getAssetPath(language === 'fr' ? '/assets/Sunnoogo-Caleb-Resume-fr.pdf' : '/assets/Sunnoogo-Caleb-Resume-en.pdf')}
+                href={getAssetPath(availability.resume[language])}
                 download
                 className="inline-flex items-center gap-3 rounded-full border border-primary/30 bg-primary/10 px-5 py-2 text-primary hover:border-primary hover:bg-primary/20 transition-all duration-300"
               >
                 <span className="h-2 w-2 rounded-full bg-primary animate-pulse" />
-                <span className="font-medium">{t('hero.badge')}</span>
+                <span className="font-medium">{t('hero.downloadCV')}</span>
                 <Download className="h-4 w-4" />
               </a>
+              <p className="mt-4 max-w-2xl mx-auto lg:mx-0 text-muted-foreground">
+                {availability.headline[language]}
+              </p>
+              <p className="mt-2 text-xs text-muted-foreground">
+                {t('availability.updatedOn')}{' '}
+                {new Date(availability.updatedOn).toLocaleDateString(
+                  language === 'fr' ? 'fr-FR' : 'en-GB',
+                  { day: 'numeric', month: 'long', year: 'numeric' }
+                )}
+              </p>
             </div>
 
             {/* CTA Buttons */}
