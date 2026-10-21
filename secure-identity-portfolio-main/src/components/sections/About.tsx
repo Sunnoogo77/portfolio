@@ -1,14 +1,20 @@
 import { useLanguage } from '@/contexts/LanguageContext';
+import { useRepli } from '@/hooks/useRepli';
 import { Section } from '@/components/layout/Section';
+import { Depliable, BoutonDeplier } from '@/components/ui/depliable';
 
 /**
- * Trois paragraphes dans la colonne large, le bloc langues dans la colonne de
- * notes. Disparus : les deux cartes au flou pose sur un fond opaque, le
- * text-justify qui produisait des rivieres blanches des 360 pixels, et
- * l'icone qui repetait le mot « Langues » place a cote d'elle.
+ * La presentation se reduit a son premier paragraphe ; les deux suivants se
+ * deplient a la demande. Sur telephone le bloc s'ouvre replie, sur grand ecran
+ * deja deplie : c'est le defilement qui coute, et il ne coute pas la meme
+ * chose des deux cotes.
+ *
+ * Le bloc langues reste dans la colonne de notes, toujours visible : deux
+ * lignes ne meritent pas un bouton.
  */
 export function About() {
   const { t } = useLanguage();
+  const suite = useRepli();
 
   return (
     <Section id="about">
@@ -25,10 +31,24 @@ export function About() {
           </ul>
         </div>
 
-        <div className="mesure space-y-4">
+        <div className="mesure">
           <p>{t('about.p1')}</p>
-          <p>{t('about.p2')}</p>
-          <p>{t('about.p3')}</p>
+
+          <Depliable id={suite.id} ouvert={suite.ouvert}>
+            <div className="space-y-4 pt-4">
+              <p>{t('about.p2')}</p>
+              <p>{t('about.p3')}</p>
+            </div>
+          </Depliable>
+
+          <BoutonDeplier
+            cible={suite.id}
+            ouvert={suite.ouvert}
+            onBascule={suite.basculer}
+            libelle={t('about.more')}
+            libelleFermer={t('deplier.replier')}
+            className="mt-4"
+          />
         </div>
       </div>
     </Section>

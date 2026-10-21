@@ -6,7 +6,9 @@ import {
 } from '@/data/certifications';
 import { publicUrl, type Certification, type Lang } from '@/data/types';
 import { getAssetPath } from '@/lib/assets';
+import { useRepli } from '@/hooks/useRepli';
 import { Section } from '@/components/layout/Section';
+import { Depliable, BoutonDeplier } from '@/components/ui/depliable';
 
 /**
  * Trois groupes clairement distingues, au lieu de quatorze cartes identiques
@@ -16,7 +18,14 @@ import { Section } from '@/components/layout/Section';
  *
  * Les badges sont servis depuis public/img/certifications. Une certification
  * qui n'en a pas s'affiche sans cadre vide.
+ *
+ * Sur telephone, seules les deux premieres obtenues sont donnees et le reste
+ * se deplie : six entrees detaillees d'affilee font trop d'informations a la
+ * fois. Sur grand ecran la liste s'ouvre deja depliee.
  */
+
+/** Nombre d'obtenues montrees avant depliage, sur telephone. */
+const OBTENUES_VISIBLES = 2;
 
 /** 'YYYY-MM' devient « avril 2026 », 'YYYY' reste tel quel. */
 function dateLisible(brute: string, lang: Lang): string {
@@ -120,9 +129,13 @@ function Visee({ cert }: { cert: Certification }) {
 
 export function Certifications() {
   const { t } = useLanguage();
+  const reste = useRepli();
   const obtenues = getCertificationsByStatus('obtained');
   const enCours = getCertificationsByStatus('in-progress');
   const feuilleDeRoute = getCertificationsByStatus('planned');
+
+  const debut = obtenues.slice(0, OBTENUES_VISIBLES);
+  const suite = obtenues.slice(OBTENUES_VISIBLES);
 
   return (
     <Section id="certifications">
@@ -132,10 +145,29 @@ export function Certifications() {
         {t('certifications.filter.obtained')}
       </h3>
       <div className="mt-4 space-y-6">
-        {obtenues.map((cert) => (
+        {debut.map((cert) => (
           <Obtenue key={cert.id} cert={cert} />
         ))}
       </div>
+
+      <Depliable id={reste.id} ouvert={reste.ouvert}>
+        <div className="space-y-6 pt-6">
+          {suite.map((cert) => (
+            <Obtenue key={cert.id} cert={cert} />
+          ))}
+        </div>
+      </Depliable>
+
+      {suite.length > 0 && (
+        <BoutonDeplier
+          cible={reste.id}
+          ouvert={reste.ouvert}
+          onBascule={reste.basculer}
+          libelle={t('certifications.more')}
+          libelleFermer={t('deplier.replier')}
+          className="mt-5"
+        />
+      )}
 
       <div className="mt-12 grid gap-x-12 gap-y-8 lg:grid-cols-2">
         <div>
