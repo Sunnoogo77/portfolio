@@ -70,7 +70,10 @@ export function Certifications() {
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {filteredCerts.map((cert, index) => {
             const date = certificationDate(cert);
-            const certUrl = publicUrl(cert.evidence);
+            const rawUrl = publicUrl(cert.evidence);
+            // Un certificat servi depuis public/ passe par getAssetPath,
+            // une adresse externe est servie telle quelle.
+            const certUrl = rawUrl?.startsWith('/') ? getAssetPath(rawUrl) : rawUrl;
 
             return (
               <Card
@@ -122,7 +125,7 @@ export function Certifications() {
 
                   {certUrl && (
                     <a
-                      href={getAssetPath(certUrl)}
+                      href={certUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline"
