@@ -1,245 +1,252 @@
+/* Systeme de design du portfolio. Les valeurs de couleur viennent de
+   docs/SPEC-DESIGN.md, ou chaque ratio a ete calcule et verifie selon
+   WCAG 2.1. Elles sont reprises telles quelles : aucune n'est ajustee ici.
+
+   Les polices sont hebergees localement, chargees avant Tailwind pour que
+   les @font-face precedent toute regle qui les utilise. */
+@import './polices.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Cybersecurity Portfolio Design System - Sunnoogo Caleb Tapsoba */
-
 @layer base {
+  /* ------------------------------------------------------------------
+     Thème clair
+     ------------------------------------------------------------------ */
   :root {
-    /* Light mode - Soft slate blue */
-    --background: 210 40% 96%;
-    --foreground: 222 47% 11%;
+    --fond: 214 20% 97%;
+    --surface: 0 0% 100%;
+    --surface-2: 214 24% 93%;
+    --bord: 214 20% 85%;
+    --texte: 222 30% 12%;
+    --texte-doux: 218 14% 38%;
+    --accent: 220 60% 38%;
+    --accent-fond: 220 68% 42%;
+    --sur-accent: 0 0% 100%;
+    --statut-livre: 152 54% 26%;
+    --statut-encours: 32 84% 30%;
+    --statut-prevu: 218 10% 40%;
 
-    --card: 210 40% 98%;
-    --card-foreground: 222 47% 11%;
+    /* Un seul rayon, aligne sur les cartes. */
+    --radius: 6px;
 
-    --popover: 210 40% 98%;
-    --popover-foreground: 222 47% 11%;
-
-    /* Cyan accent for Blue Team / Cyber */
-    --primary: 188 94% 43%;
-    --primary-foreground: 222 47% 11%;
-
-    --secondary: 210 40% 90%;
-    --secondary-foreground: 222 47% 11%;
-
-    --muted: 210 40% 90%;
-    --muted-foreground: 215 20% 45%;
-
-    --accent: 188 94% 43%;
-    --accent-foreground: 222 47% 11%;
-
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214 32% 85%;
-    --input: 214 32% 85%;
-    --ring: 188 94% 43%;
-
-    --radius: 0.75rem;
-
-    /* Brand colors - Cyan palette */
-    --brand-50: 180 100% 97%;
-    --brand-100: 180 100% 95%;
-    --brand-200: 180 96% 90%;
-    --brand-300: 180 92% 82%;
-    --brand-400: 180 88% 68%;
-    --brand-500: 188 94% 43%;
-    --brand-600: 188 86% 36%;
-    --brand-700: 188 84% 29%;
-    --brand-800: 188 82% 23%;
-    --brand-900: 188 80% 20%;
-
-    --sidebar-background: 210 40% 96%;
-    --sidebar-foreground: 222 47% 11%;
-    --sidebar-primary: 188 94% 43%;
-    --sidebar-primary-foreground: 210 40% 98%;
-    --sidebar-accent: 210 40% 90%;
-    --sidebar-accent-foreground: 222 47% 11%;
-    --sidebar-border: 214 32% 85%;
-    --sidebar-ring: 188 94% 43%;
+    /* Marge du conteneur, fluide de 360 a 1400 pixels. */
+    --marge: clamp(1rem, 4vw, 3rem);
   }
 
+  /* ------------------------------------------------------------------
+     Thème sombre, thème par défaut
+     ------------------------------------------------------------------ */
   .dark {
-    /* Dark mode - Deep slate */
-    --background: 222 47% 3%;
-    --foreground: 210 40% 98%;
-
-    --card: 222 47% 5%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222 47% 5%;
-    --popover-foreground: 210 40% 98%;
-
-    /* Cyan accent */
-    --primary: 188 92% 50%;
-    --primary-foreground: 222 47% 5%;
-
-    --secondary: 217 33% 17%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217 33% 17%;
-    --muted-foreground: 215 20% 65%;
-
-    --accent: 188 92% 50%;
-    --accent-foreground: 222 47% 5%;
-
-    --destructive: 0 63% 31%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217 33% 17%;
-    --input: 217 33% 17%;
-    --ring: 188 92% 50%;
-
-    --sidebar-background: 222 47% 5%;
-    --sidebar-foreground: 210 40% 98%;
-    --sidebar-primary: 188 92% 50%;
-    --sidebar-primary-foreground: 222 47% 5%;
-    --sidebar-accent: 217 33% 17%;
-    --sidebar-accent-foreground: 210 40% 98%;
-    --sidebar-border: 217 33% 17%;
-    --sidebar-ring: 188 92% 50%;
+    --fond: 222 24% 8%;
+    --surface: 222 20% 11%;
+    --surface-2: 222 18% 15%;
+    --bord: 220 14% 22%;
+    --texte: 213 18% 94%;
+    --texte-doux: 215 14% 68%;
+    --accent: 218 60% 68%;
+    --accent-fond: 220 68% 46%;
+    --sur-accent: 0 0% 100%;
+    --statut-livre: 152 42% 56%;
+    --statut-encours: 38 78% 62%;
+    --statut-prevu: 220 10% 58%;
   }
 }
 
 @layer base {
   * {
-    @apply border-border;
+    border-color: hsl(var(--bord));
   }
 
   html {
     scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
   }
 
   body {
-    @apply bg-background text-foreground antialiased;
+    background-color: hsl(var(--fond));
+    color: hsl(var(--texte));
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    /* Le l a empattement et le a a etage : c'est ce qui distingue ce rendu
+       de l'Inter par defaut. */
+    font-feature-settings: 'cv05' 1, 'ss03' 1;
+    font-size: clamp(0.95rem, 0.92rem + 0.2vw, 1.05rem);
+    font-weight: 400;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Selection color */
+  h1 {
+    font-size: clamp(2rem, 1.25rem + 2.9vw, 3.5rem);
+    font-weight: 600;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  h2 {
+    font-size: clamp(1.5rem, 1.2rem + 1.1vw, 2rem);
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+
+  h3 {
+    font-size: clamp(1.05rem, 1rem + 0.3vw, 1.2rem);
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  /* Alignement a gauche partout, cesure autorisee : le texte justifie sans
+     cesure produisait des rivieres blanches des 360 pixels. */
+  p,
+  li {
+    text-align: left;
+    hyphens: auto;
+  }
+
   ::selection {
-    @apply bg-primary/30;
+    background-color: hsl(var(--accent) / 0.25);
+  }
+
+  /* Focus clavier visible sur tout element interactif, bouton du logo
+     compris : le contour natif d'un pixel ne suffisait pas. */
+  :focus-visible {
+    outline: 2px solid hsl(var(--accent));
+    outline-offset: 2px;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
   }
 }
 
 @layer components {
-  /* Glow effect for buttons and cards */
-  .glow {
-    box-shadow: 0 0 30px hsl(var(--primary) / 0.25);
+  /* Conteneur unique. Remplace le conteneur de Tailwind, dont le reglage
+     container.screens supprimait toute largeur maximale en dessous de
+     1536 pixels. */
+  .conteneur {
+    width: min(100% - 2 * var(--marge), 72rem);
+    margin-inline: auto;
   }
 
-  .glow-sm {
-    box-shadow: 0 0 15px hsl(var(--primary) / 0.2);
+  /* Rythme vertical fluide, au lieu de sept py-20 identiques. */
+  .section {
+    padding-block: clamp(3rem, 6vw, 6rem);
   }
 
-  /* Card hover effect */
-  .card-hover {
-    @apply transition-all duration-300 ease-out;
+  /* Separateur : un filet d'un pixel, jamais une bande pleine. */
+  .filet {
+    border-top: 1px solid hsl(var(--bord));
   }
 
-  .card-hover:hover {
-    @apply border-primary shadow-lg;
-    box-shadow: 0 10px 30px hsl(var(--primary) / 0.1);
-    transform: translateY(-2px);
+  /* Mesure de lecture bridee sur tout bloc de texte suivi. */
+  .mesure {
+    max-width: 68ch;
   }
 
-  /* Custom scrollbar */
-  .scrollbar-thin::-webkit-scrollbar {
-    width: 5px;
+  /* Donnees techniques : periodes, annees, versions, noms de depot,
+     chiffres de resultat. */
+  .donnee {
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+    font-size: 0.8125rem;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    font-variant-numeric: tabular-nums;
+    line-height: 1.5;
   }
 
-  .scrollbar-thin::-webkit-scrollbar-track {
-    background: transparent;
+  /* Grille editoriale a colonnes asymetriques. La colonne de notes precede
+     le corps dans le flux, donc elle passe naturellement au-dessus de lui
+     en dessous de 768 pixels. */
+  .grille-notes {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 0.75rem;
   }
 
-  .scrollbar-thin::-webkit-scrollbar-thumb {
-    @apply bg-muted-foreground/30 rounded;
+  @media (min-width: 768px) {
+    .grille-notes {
+      grid-template-columns: 11rem minmax(0, 1fr);
+      column-gap: clamp(1.5rem, 3vw, 3rem);
+      row-gap: 0;
+    }
   }
 
-  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
-    @apply bg-muted-foreground/50;
+  /* Carte : bordure d'un pixel, rayon de six pixels, aucune ombre, aucun
+     flou. Au survol, seule la couleur de la bordure change. */
+  .carte {
+    border: 1px solid hsl(var(--bord));
+    border-radius: var(--radius);
+    background-color: hsl(var(--surface));
+    transition: border-color 150ms ease-out;
   }
 
-  /* Timeline line glow */
-  .timeline-dot {
-    @apply relative;
+  .carte:hover {
+    border-color: hsl(var(--accent));
   }
 
-  .timeline-dot::before {
-    content: '';
-    @apply absolute inset-0 rounded-full bg-primary animate-pulse;
-    box-shadow: 0 0 15px 4px hsl(var(--primary) / 0.6);
+  /* Un lien se reconnait sans survol. */
+  .lien {
+    color: hsl(var(--accent));
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
   }
 
-  /* Gradient text */
-  .gradient-text {
-    @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
+  /* Statut : texte sur fond transparent avec un filet, jamais une pastille
+     pleine. */
+  .statut {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid currentColor;
+    border-radius: var(--radius);
+    padding: 0.05rem 0.4rem;
+  }
+
+  /* Etiquette d'outil : texte sur le fond secondaire, sans pastille ronde. */
+  .etiquette {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid hsl(var(--bord));
+    border-radius: var(--radius);
+    background-color: hsl(var(--surface-2));
+    color: hsl(var(--texte));
+    padding: 0.1rem 0.4rem;
   }
 }
 
 @layer utilities {
-  /* Fade in animation */
-  .animate-fade-in {
-    animation: fadeIn 0.5s ease-out forwards;
+  /* La seule animation de la page : une apparition en opacite de deux cents
+     millisecondes, declenchee par IntersectionObserver quand l'element entre
+     reellement dans le champ. Aucun delai, aucune cascade, aucune boucle. */
+  .apparition {
+    opacity: 0;
+    transition: opacity 200ms ease-out;
   }
 
-  .animate-fade-in-up {
-    animation: fadeInUp 0.5s ease-out forwards;
+  .apparition-visible {
+    opacity: 1;
+  }
+}
+
+/* Garde obligatoire. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 
-  .animate-slide-in-left {
-    animation: slideInLeft 0.5s ease-out forwards;
+  html {
+    scroll-behavior: auto;
   }
 
-  .animate-slide-in-right {
-    animation: slideInRight 0.5s ease-out forwards;
+  .apparition {
+    opacity: 1;
   }
-
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  @keyframes slideInLeft {
-    from {
-      opacity: 0;
-      transform: translateX(-20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-
-  @keyframes slideInRight {
-    from {
-      opacity: 0;
-      transform: translateX(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-
-  /* Stagger animation delay utilities */
-  .animation-delay-100 { animation-delay: 100ms; }
-  .animation-delay-200 { animation-delay: 200ms; }
-  .animation-delay-300 { animation-delay: 300ms; }
-  .animation-delay-400 { animation-delay: 400ms; }
-  .animation-delay-500 { animation-delay: 500ms; }
 }

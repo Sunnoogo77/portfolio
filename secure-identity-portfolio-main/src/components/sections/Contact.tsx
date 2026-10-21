@@ -51,7 +51,6 @@ export function Contact() {
       toast({
         title: t('contact.form.error'),
         description: '',
-        variant: 'destructive',
       });
     } finally {
       setIsSubmitting(false);
