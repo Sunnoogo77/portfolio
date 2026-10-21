@@ -20,35 +20,29 @@ const translations: Record<Language, Record<string, string>> = {
     'nav.timeline': 'Parcours',
     'nav.certifications': 'Certifications',
     'nav.contact': 'Contact',
+    'nav.toggleMenu': 'Ouvrir ou fermer le menu',
     
     // Hero
     'hero.title': 'Portfolio Cybersécurité',
-    'hero.subtitle': 'Étudiant en dernière année à l\'EFREI Paris (Cybersécurité & Cloud), orienté Blue Team et sécurité des environnements hybrides.',
+    'hero.subtitle': 'Ingénieur sécurité et cloud, orienté sécurité Azure. Diplôme d\'ingénieur EFREI Paris en systèmes, réseaux, cloud et cybersécurité, cursus achevé en 2026, jury de délibération en novembre.',
     'hero.downloadCV': 'Télécharger le CV, en français',
     'availability.updatedOn': 'À jour au',
     'hero.cta.projects': 'Explorer les projets',
-    'hero.cta.timeline': 'Parcours académique',
+    'hero.cta.timeline': 'Parcours',
     'hero.cta.certifications': 'Licences & Certifications',
     'hero.cta.contact': 'Me contacter',
     
     // About
     'about.title': 'À propos',
-    'about.expand': 'Voir plus',
-    'about.collapse': 'Réduire',
-    'about.p1': 'Étudiant ingénieur en dernière année à l\'EFREI Paris, spécialisé en Cybersécurité & Cloud, je me prépare à devenir ingénieur sécurité cloud et systèmes d\'information capable de concevoir, sécuriser et défendre des environnements hybrides complexes.',
-    'about.p2': 'Passionné par la technologie et la rigueur de la Blue Team, je m\'intéresse particulièrement à la sécurité des infrastructures cloud (Azure), à l\'intégration DevSecOps et au déploiement d\'architectures résilientes. Je développe progressivement une expertise en monitoring (SIEM/EDR), gestion des identités (IAM, Entra ID, PKI) et automatisation de la sécurité avec des outils cloud et open-source.',
-    'about.p3': 'Mon parcours académique et professionnel est international : originaire du Burkina Faso, j\'ai étudié en Côte d\'Ivoire, en France et en Angleterre, et j\'ai effectué un stage en cybersécurité bancaire au Ghana. Ces expériences m\'ont apporté une vision globale des enjeux de sécurité numérique, une maîtrise du français et de l\'anglais, et une forte adaptabilité à des environnements variés.',
-    'about.p4': 'Curieux et proactif, je développe mes compétences à travers des projets pratiques : infrastructure Active Directory & PKI, SIEM (Wazuh, Sentinel), HIDS/EDR, chiffrement et authentification multi-facteurs, et déploiements sécurisés sur Azure via DevOps et Kubernetes. Mon objectif est de combiner défense, cloud et automatisation pour construire des solutions fiables et intelligentes.',
-    'about.p5': 'Au-delà du domaine technique, je m\'épanouis à travers le basketball (esprit d\'équipe, réactivité) et le piano (discipline, créativité), deux activités qui renforcent ma persévérance et ma concentration.',
-    'about.p6': 'Mon ambition est de devenir un expert en cybersécurité cloud à la croisée de la défense des systèmes et de l\'ingénierie cloud, contribuant à la sécurité, à la résilience et à l\'innovation des infrastructures numériques.',
-    
-    // Objectives
-    'objectives.title': 'Objectifs 2025–2026',
-    'objectives.internship.title': 'Stage de fin d\'études',
-    'objectives.internship.desc': 'Objectif principal : compléter le stage de fin d\'études à partir de mars 2026, conformément à mon programme.',
-    'objectives.consolidation.title': 'Renforcer les fondamentaux',
-    'objectives.consolidation.desc': 'Approfondir le réseau, Active Directory, Linux/Bash, scripting (Python), SIEM/EDR et investigations (logs/malware/forensics). Automatiser la détection et réponse (SOAR) et construire des pipelines CI/CD pour les règles SIEM.',
-    
+    'about.p1': "Ingénieur sécurité et cloud, je suis diplômé de l'EFREI Paris en systèmes, réseaux, cloud et cybersécurité, cursus achevé en 2026 et jury de délibération en novembre. Je dirige aujourd'hui Impulsera, startup née de mon projet de fin d'études et incubée à l'EFREI, dont j'assure la responsabilité technique.",
+    'about.p2': "En 2026, à Ouagadougou, j'ai mené une mission de consultant sécurité chez l'opérateur minier Soleil Resources, depuis SAFIR Consulting : déploiement d'une plateforme Wazuh, dix-sept règles de détection écrites dont treize validées par test réel sur les contrôleurs de domaine, et durcissement de l'annuaire avec l'équipe interne. Auparavant, chez Ecobank Ghana, j'ai travaillé la sécurité du poste de travail sous Intune et Defender et la surveillance de journaux sous Microsoft Sentinel.",
+    'about.p3': "Mon parcours est international : classes préparatoires MPSI puis MP* à l'INP-HB en Côte d'Ivoire, semestre d'échange à l'University of Staffordshire au Royaume-Uni, stage en cybersécurité bancaire à Accra et mission de 2026 à Ouagadougou. Je m'oriente vers la sécurité du cloud Azure, que je prépare par les certifications AZ-104 et SC-500.",
+
+    // Langues
+    'languages.title': 'Langues',
+    'languages.fr': 'Français — langue maternelle',
+    'languages.en': 'Anglais — C1, TOEIC 935 sur 990',
+
     // Skills
     'skills.title': 'Compétences',
     'skills.usedIn': 'Mis en œuvre sur :',
@@ -65,7 +59,9 @@ const translations: Record<Language, Record<string, string>> = {
     'projects.status.planned': 'En préparation',
     'projects.evidence.private': 'dépôt privé',
     'projects.evidence.none': 'projet en préparation',
-    'projects.viewProject': 'Voir le projet →',
+    'projects.planned.title': 'Projets en préparation',
+    'projects.planned.intro': "Aucun travail n'est engagé sur ces projets à ce jour.",
+    'projects.viewProject': 'Voir le projet',
     'projects.noProjects': 'Aucun projet pour ce filtre.',
     'projects.showMore': 'Voir plus',
     'projects.showLess': 'Voir moins',
@@ -89,7 +85,7 @@ const translations: Record<Language, Record<string, string>> = {
     
     // Contact
     'contact.title': 'Contact',
-    'contact.subtitle': 'N\'hésitez pas à me contacter pour toute opportunité ou question.',
+    'contact.subtitle': 'Pour un CDI ou un CDD en cybersécurité, ou une alternance à partir de septembre 2027.',
     'contact.form.name': 'Nom',
     'contact.form.email': 'Email',
     'contact.form.message': 'Message',
@@ -100,17 +96,13 @@ const translations: Record<Language, Record<string, string>> = {
     
     // Footer
     'footer.rights': 'Tous droits réservés.',
+    'footer.github': 'Profil GitHub',
+    'footer.linkedin': 'Profil LinkedIn',
     
     // Theme
     'theme.light': 'Activer le mode clair',
     'theme.dark': 'Activer le mode sombre',
     
-    // Status labels
-    'status.past': 'Passé',
-    'status.current': 'En cours',
-    'status.future': 'À venir',
-    'status.obtained': 'Obtenue',
-    'status.inProgress': 'En cours',
   },
   en: {
     // Navigation
@@ -120,35 +112,29 @@ const translations: Record<Language, Record<string, string>> = {
     'nav.timeline': 'Journey',
     'nav.certifications': 'Certifications',
     'nav.contact': 'Contact',
+    'nav.toggleMenu': 'Open or close the menu',
     
     // Hero
     'hero.title': 'Cybersecurity Portfolio',
-    'hero.subtitle': 'Final-year engineering student at EFREI Paris (Cybersecurity & Cloud), focused on Blue Team and securing hybrid environments.',
+    'hero.subtitle': 'Security and cloud engineer, focused on Azure security. Diplôme d\'ingénieur from EFREI Paris in systems, networks, cloud and cybersecurity, the French five-year engineering degree awarded at master\'s level, course completed in 2026, degree subject to the November board of examiners.',
     'hero.downloadCV': 'Download CV, French',
     'availability.updatedOn': 'Updated on',
     'hero.cta.projects': 'Explore projects',
-    'hero.cta.timeline': 'Academic journey',
+    'hero.cta.timeline': 'Journey',
     'hero.cta.certifications': 'Licenses & Certifications',
     'hero.cta.contact': 'Contact me',
     
     // About
     'about.title': 'About',
-    'about.expand': 'See more',
-    'about.collapse': 'Collapse',
-    'about.p1': 'Final-year engineering student at EFREI Paris, specialising in Cybersecurity & Cloud, preparing to become a cloud and information systems security engineer able to design, secure and defend complex hybrid environments.',
-    'about.p2': 'Driven by technology and the rigour of the Blue Team, I am particularly interested in cloud infrastructure security (Azure), DevSecOps integration and deploying resilient architectures. I am building solid expertise across monitoring (SIEM/EDR), identity management (IAM, Entra ID, PKI) and security automation using cloud and open-source tooling.',
-    'about.p3': 'My academic and professional path is international: originally from Burkina Faso, I studied in Côte d\'Ivoire, France and England, and completed a banking cybersecurity internship in Ghana. These experiences gave me a global view of digital security challenges, fluency in French and English, and strong adaptability to diverse environments.',
-    'about.p4': 'Curious and proactive, I develop my skills through hands-on projects: Active Directory & PKI infrastructure, SIEM (Wazuh, Sentinel), HIDS/EDR, encryption and multi-factor authentication, and secure deployments on Azure via DevOps and Kubernetes. My goal is to combine defence, cloud and automation to build reliable, intelligent solutions.',
-    'about.p5': 'Beyond the technical field, I thrive through basketball (team spirit, responsiveness) and piano (discipline, creativity), two activities that strengthen my perseverance and focus.',
-    'about.p6': 'My ambition is to become a cloud cybersecurity expert at the crossroads of systems defence and cloud engineering, contributing to the security, resilience and innovation of digital infrastructures.',
-    
-    // Objectives
-    'objectives.title': 'Goals 2025–2026',
-    'objectives.internship.title': 'Final-year internship',
-    'objectives.internship.desc': 'Primary objective: complete the final-year internship starting March 2026, in line with my programme.',
-    'objectives.consolidation.title': 'Strengthen the fundamentals',
-    'objectives.consolidation.desc': 'Deepen networking, Active Directory, Linux/Bash, scripting (Python), SIEM/EDR and investigations (logs/malware/forensics). Automate detection & response (SOAR) and build CI/CD pipelines for SIEM rules.',
-    
+    'about.p1': "A security and cloud engineer, I hold the Diplôme d'ingénieur from EFREI Paris in systems, networks, cloud and cybersecurity, course completed in 2026 with the board of examiners sitting in November. I now run Impulsera, a startup born out of my final-year project and incubated at EFREI, where I am the technical lead.",
+    'about.p2': "In 2026, in Ouagadougou, I carried out a security consulting assignment at the mining operator Soleil Resources, from SAFIR Consulting: deployment of a Wazuh platform, seventeen detection rules written, thirteen of them validated by live testing on the domain controllers, and directory hardening with the internal team. Before that, at Ecobank Ghana, I worked on endpoint security with Intune and Defender and on log monitoring in Microsoft Sentinel.",
+    'about.p3': "My path is international: MPSI then MP* preparatory classes at INP-HB in Côte d'Ivoire, an exchange semester at the University of Staffordshire in the United Kingdom, a banking cybersecurity internship in Accra and the 2026 assignment in Ouagadougou. I am moving towards Azure cloud security, which I am preparing through the AZ-104 and SC-500 certifications.",
+
+    // Languages
+    'languages.title': 'Languages',
+    'languages.fr': 'French — native speaker',
+    'languages.en': 'English — C1, TOEIC 935 out of 990',
+
     // Skills
     'skills.title': 'Skills',
     'skills.usedIn': 'Put to work on:',
@@ -165,7 +151,9 @@ const translations: Record<Language, Record<string, string>> = {
     'projects.status.planned': 'In preparation',
     'projects.evidence.private': 'private repository',
     'projects.evidence.none': 'project in preparation',
-    'projects.viewProject': 'View project →',
+    'projects.planned.title': 'Projects in preparation',
+    'projects.planned.intro': 'No work has been started on these projects to date.',
+    'projects.viewProject': 'View project',
     'projects.noProjects': 'No projects for this filter.',
     'projects.showMore': 'Show more',
     'projects.showLess': 'Show less',
@@ -189,7 +177,7 @@ const translations: Record<Language, Record<string, string>> = {
     
     // Contact
     'contact.title': 'Contact',
-    'contact.subtitle': 'Feel free to reach out for any opportunity or question.',
+    'contact.subtitle': 'For a permanent or fixed-term cybersecurity role, or an apprenticeship from September 2027.',
     'contact.form.name': 'Name',
     'contact.form.email': 'Email',
     'contact.form.message': 'Message',
@@ -200,17 +188,13 @@ const translations: Record<Language, Record<string, string>> = {
     
     // Footer
     'footer.rights': 'All rights reserved.',
+    'footer.github': 'GitHub profile',
+    'footer.linkedin': 'LinkedIn profile',
     
     // Theme
     'theme.light': 'Switch to light mode',
     'theme.dark': 'Switch to dark mode',
     
-    // Status labels
-    'status.past': 'Past',
-    'status.current': 'Current',
-    'status.future': 'Future',
-    'status.obtained': 'Obtained',
-    'status.inProgress': 'In Progress',
   },
 };
 
@@ -218,25 +202,27 @@ interface LanguageProviderProps {
   children: ReactNode;
 }
 
+/**
+ * Langue par defaut : celle du navigateur, puis le choix memorise du visiteur.
+ *
+ * La detection avait deja lieu, mais apres le premier rendu : la page
+ * s'affichait brievement en anglais avant de basculer. Elle est desormais
+ * faite au premier rendu.
+ */
+function detectLanguage(): Language {
+  try {
+    const stored = localStorage.getItem('portfolio-language');
+    if (stored === 'fr' || stored === 'en') return stored;
+  } catch {
+    // Stockage indisponible : on retombe sur la langue du navigateur.
+  }
+  const browserLang =
+    typeof navigator !== 'undefined' ? navigator.language.toLowerCase() : '';
+  return browserLang.startsWith('fr') ? 'fr' : 'en';
+}
+
 export function LanguageProvider({ children }: LanguageProviderProps) {
-  const [language, setLanguageState] = useState<Language>('en');
-
-  useEffect(() => {
-    // Check localStorage first
-    const stored = localStorage.getItem('portfolio-language') as Language | null;
-    if (stored && (stored === 'fr' || stored === 'en')) {
-      setLanguageState(stored);
-      return;
-    }
-
-    // Auto-detect from browser
-    const browserLang = navigator.language.toLowerCase();
-    if (browserLang.startsWith('fr')) {
-      setLanguageState('fr');
-    } else {
-      setLanguageState('en');
-    }
-  }, []);
+  const [language, setLanguageState] = useState<Language>(detectLanguage);
 
   // Tient l'attribut lang du document aligne sur la langue affichee.
   useEffect(() => {
@@ -245,7 +231,11 @@ export function LanguageProvider({ children }: LanguageProviderProps) {
 
   const setLanguage = (lang: Language) => {
     setLanguageState(lang);
-    localStorage.setItem('portfolio-language', lang);
+    try {
+      localStorage.setItem('portfolio-language', lang);
+    } catch {
+      // Le choix ne sera pas memorise, l'affichage reste correct.
+    }
   };
 
   const t = (key: string): string => {

@@ -20,7 +20,7 @@ export function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors"
-              aria-label="GitHub"
+              aria-label={t('footer.github')}
             >
               GitHub
             </a>
@@ -29,7 +29,7 @@ export function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors"
-              aria-label="LinkedIn"
+              aria-label={t('footer.linkedin')}
             >
               LinkedIn
             </a>

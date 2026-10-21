@@ -70,6 +70,10 @@ export function Projects() {
           </div>
         </div>
 
+        {filter === 'planned' && (
+          <p className="mb-8 text-muted-foreground">{t('projects.planned.intro')}</p>
+        )}
+
         {/* Projects Grid */}
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {displayedProjects.map((project, index) => (

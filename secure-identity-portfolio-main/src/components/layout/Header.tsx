@@ -91,7 +91,7 @@ export function Header() {
               size="icon"
               className="lg:hidden rounded-full"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              aria-label="Toggle menu"
+              aria-label={t('nav.toggleMenu')}
             >
               {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </Button>
