@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { socialLinks, contactInfo } from '@/data/social';
+import { availability } from '@/data/availability';
 import { Section } from '@/components/layout/Section';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -14,7 +15,7 @@ import { useToast } from '@/hooks/use-toast';
  * « Contact » place a cote d'elle.
  */
 export function Contact() {
-  const { t } = useLanguage();
+  const { language, t } = useLanguage();
   const { toast } = useToast();
   const [envoiEnCours, setEnvoiEnCours] = useState(false);
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
@@ -53,7 +54,9 @@ export function Contact() {
   return (
     <Section id="contact">
       <h2>{t('contact.title')}</h2>
-      <p className="mesure mt-3 text-muted-foreground">{t('contact.subtitle')}</p>
+      <p className="mesure mt-3 text-muted-foreground">
+        {availability.headline[language]}
+      </p>
 
       <div className="grille-notes mt-8">
         <ul className="space-y-3">

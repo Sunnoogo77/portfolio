@@ -20,7 +20,7 @@ import { Section } from '@/components/layout/Section';
  */
 export function Timeline() {
   const { language, t } = useLanguage();
-  const [ouvert, setOuvert] = useState<string | null>(null);
+  const [ouverts, setOuverts] = useState<string[]>([]);
 
   return (
     <Section id="timeline">
@@ -29,7 +29,7 @@ export function Timeline() {
       <div className="mt-8 space-y-8">
         {timelineEntries.map((entry) => {
           const periode = formatPeriod(entry.period, language);
-          const estOuvert = ouvert === entry.id;
+          const estOuvert = ouverts.includes(entry.id);
           const points = entry.highlights[language];
           const resultats = entry.outcomes ?? [];
           const aDesDetails = points.length > 0 || resultats.length > 0;
@@ -146,7 +146,13 @@ export function Timeline() {
                 {aDesDetails && (
                   <button
                     type="button"
-                    onClick={() => setOuvert(estOuvert ? null : entry.id)}
+                    onClick={() =>
+                      setOuverts((liste) =>
+                        estOuvert
+                          ? liste.filter((id) => id !== entry.id)
+                          : [...liste, entry.id]
+                      )
+                    }
                     aria-expanded={estOuvert}
                     className="lien mt-4 inline-flex items-center gap-1 text-sm"
                   >

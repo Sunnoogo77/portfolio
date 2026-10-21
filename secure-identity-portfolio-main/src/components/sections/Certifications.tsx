@@ -7,8 +7,6 @@ import {
 import { publicUrl, type Certification, type Lang } from '@/data/types';
 import { getAssetPath } from '@/lib/assets';
 import { Section } from '@/components/layout/Section';
-import { classeStatut } from './statut';
-import { cn } from '@/lib/utils';
 
 /**
  * Trois groupes clairement distingues, au lieu de quatorze cartes identiques
@@ -73,15 +71,9 @@ function Obtenue({ cert }: { cert: Certification }) {
       <div className="donnee space-y-2 text-muted-foreground">
         {brute && <p>{dateLisible(brute, language)}</p>}
         <p>{cert.issuer}</p>
-        <p>
-          <span className={cn('statut', classeStatut[cert.status])}>
-            {t(`certifications.status.${cert.status}`)}
-          </span>
-        </p>
       </div>
 
-      <div className="flex items-start gap-4">
-        <Badge cert={cert} />
+      <div className="flex items-start justify-between gap-4">
         <div className="min-w-0">
           <h4 className="text-base font-semibold">{cert.title}</h4>
           <p className="mesure mt-2 text-sm text-muted-foreground">
@@ -99,6 +91,7 @@ function Obtenue({ cert }: { cert: Certification }) {
             </a>
           )}
         </div>
+        <Badge cert={cert} />
       </div>
     </article>
   );
@@ -109,8 +102,7 @@ function Visee({ cert }: { cert: Certification }) {
   const echeance = certificationDate(cert);
 
   return (
-    <li className="flex items-start gap-3 border-t border-border py-4">
-      <Badge cert={cert} />
+    <li className="flex items-start justify-between gap-3 border-t border-border py-4">
       <div className="min-w-0">
         <p className="font-semibold">{cert.title}</p>
         <p className="donnee mt-1 text-muted-foreground">
@@ -121,6 +113,7 @@ function Visee({ cert }: { cert: Certification }) {
           {cert.description[language]}
         </p>
       </div>
+      <Badge cert={cert} />
     </li>
   );
 }

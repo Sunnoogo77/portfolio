@@ -207,6 +207,7 @@
   .statut {
     display: inline-flex;
     align-items: center;
+    white-space: nowrap;
     border: 1px solid currentColor;
     border-radius: var(--radius);
     padding: 0.05rem 0.4rem;

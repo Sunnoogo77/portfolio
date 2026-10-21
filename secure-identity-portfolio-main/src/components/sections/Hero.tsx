@@ -18,16 +18,28 @@ export function Hero() {
   const { language, t } = useLanguage();
 
   return (
-    <section id="accueil" className="pb-[clamp(2rem,5vw,4rem)] pt-[clamp(5.5rem,8vw,7rem)]">
+    <section id="accueil" className="pb-[clamp(2rem,5vw,4rem)] pt-[clamp(5rem,7vw,6.5rem)]">
       <div className="conteneur">
-        <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between sm:gap-10">
+        <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between sm:gap-10">
           <div className="min-w-0 flex-1">
-            <h1>Sunnoogo Caleb Tapsoba</h1>
+            {/* En dessous de 640 pixels la photo tient a cote du nom : posee
+                au-dessus, elle poussait le bandeau a cent vingt et un pour
+                cent de la hauteur de la fenetre. */}
+            <div className="flex items-center gap-4 sm:block">
+              <img
+                src={getAssetPath('/img/sunnoogo-caleb-tapsoba.jpg')}
+                alt="Sunnoogo Caleb Tapsoba"
+                width={320}
+                height={422}
+                className="w-20 shrink-0 rounded-[var(--radius)] border border-border sm:hidden"
+              />
+              <h1>Sunnoogo Caleb Tapsoba</h1>
+            </div>
 
             <p className="mesure mt-4 text-muted-foreground">{t('hero.subtitle')}</p>
 
             <p className="mesure mt-3 text-muted-foreground">
-              {availability.headline[language]}
+              {t('contact.subtitle')}
             </p>
 
             <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
@@ -53,10 +65,10 @@ export function Hero() {
 
           <img
             src={getAssetPath('/img/sunnoogo-caleb-tapsoba.jpg')}
-            alt="Sunnoogo Caleb Tapsoba"
+            alt=""
             width={320}
             height={422}
-            className="order-first w-24 shrink-0 rounded-[var(--radius)] border border-border object-cover sm:order-none sm:w-32 lg:w-40"
+            className="hidden w-32 shrink-0 rounded-[var(--radius)] border border-border sm:block lg:w-40"
           />
         </div>
       </div>
