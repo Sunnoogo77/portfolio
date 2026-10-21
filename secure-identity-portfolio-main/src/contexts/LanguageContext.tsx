@@ -51,10 +51,7 @@ const translations: Record<Language, Record<string, string>> = {
     
     // Skills
     'skills.title': 'Compétences',
-    'skills.siem': 'SIEM & Monitoring',
-    'skills.network': 'Réseau & Firewall',
-    'skills.cloud': 'Cloud & IAM',
-    'skills.dev': 'Développement Sécurisé',
+    'skills.usedIn': 'Mis en œuvre sur :',
     
     // Projects
     'projects.title': 'Projets',
@@ -154,10 +151,7 @@ const translations: Record<Language, Record<string, string>> = {
     
     // Skills
     'skills.title': 'Skills',
-    'skills.siem': 'SIEM & Monitoring',
-    'skills.network': 'Network & Firewall',
-    'skills.cloud': 'Cloud & IAM',
-    'skills.dev': 'Secure Development',
+    'skills.usedIn': 'Put to work on:',
     
     // Projects
     'projects.title': 'Projects',

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Github, Linkedin, Twitter, Instagram, Send, Mail } from 'lucide-react';
+import { Github, Linkedin, Twitter, Send, Mail } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { socialLinks, contactInfo } from '@/data/social';
 import { Card, CardContent } from '@/components/ui/card';
@@ -13,7 +13,6 @@ const iconMap: Record<string, React.ElementType> = {
   Github,
   Linkedin,
   Twitter,
-  Instagram,
 };
 
 export function Contact() {

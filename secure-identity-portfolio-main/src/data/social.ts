@@ -17,7 +17,7 @@ export const socialLinks: SocialLink[] = [
   {
     id: 'linkedin',
     name: 'LinkedIn',
-    url: 'https://www.linkedin.com/in/sunnoogo-caleb-tapsoba/',
+    url: 'https://www.linkedin.com/in/sunnoogo-caleb-tapsoba-130584292/',
     icon: 'Linkedin',
     username: 'sunnoogo-caleb-tapsoba',
   },
@@ -27,13 +27,6 @@ export const socialLinks: SocialLink[] = [
     url: 'https://x.com/SunnoogoCal',
     icon: 'Twitter',
     username: '@SunnoogoCal',
-  },
-  {
-    id: 'instagram',
-    name: 'Instagram',
-    url: 'https://www.instagram.com/sunnoogo_caleb/',
-    icon: 'Instagram',
-    username: '@sunnoogo_caleb',
   },
 ];
 

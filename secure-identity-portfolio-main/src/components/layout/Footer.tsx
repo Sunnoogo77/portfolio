@@ -25,7 +25,7 @@ export function Footer() {
               GitHub
             </a>
             <a
-              href="https://www.linkedin.com/in/sunnoogo-caleb-tapsoba/"
+              href="https://www.linkedin.com/in/sunnoogo-caleb-tapsoba-130584292/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors"
