@@ -162,7 +162,7 @@ describe('competences', () => {
 });
 
 describe('disponibilite', () => {
-  it('sert un CV qui existe pour chaque langue', () => {
+  it('sert un CV qui existe pour chaque type de contrat', () => {
     const manquants = Object.values(availability.resume).filter(
       (p) => !existsSync(path.join(publicDir, p))
     );

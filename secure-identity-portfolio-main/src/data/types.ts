@@ -159,8 +159,16 @@ export interface Availability {
   startFrom?: PartialDate;
   /** Date ISO. Affichee « a jour au ... » : rend la peremption visible. */
   updatedOn: string;
-  /** Chemin du CV servi, par langue. */
-  resume: Record<Lang, string>;
+  /**
+   * Chemin du CV servi, par type de contrat et non par langue : il existe un
+   * document pour le CDI ou le CDD et un autre pour l'alternance, et les deux
+   * sont en francais. La cle de langue precedente laissait croire a une
+   * version anglaise qui n'a jamais existe.
+   */
+  resume: {
+    cdi: string;
+    alternance: string;
+  };
 }
 
 /**

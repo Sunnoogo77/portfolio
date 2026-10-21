@@ -321,6 +321,72 @@
     overflow: hidden;
     min-height: 0;
   }
+  /* ------------------------------------------------------------------
+     Blocs replies
+     ------------------------------------------------------------------ */
+
+  /* Ouverture en hauteur par une grille a une ligne : aucune hauteur n'est
+     mesuree en JavaScript, donc rien ne se desynchronise quand le contenu
+     change. La regle prefers-reduced-motion la ramene a l'instantane. */
+  .depliable {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 240ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .depliable-ouvert {
+    grid-template-rows: 1fr;
+  }
+
+  .depliable-contenu {
+    overflow: hidden;
+    min-height: 0;
+  }
+
+  .bouton-deplier {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    border-radius: var(--radius);
+    font-size: 0.875rem;
+    color: hsl(var(--accent));
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+    transition: color 150ms ease-out;
+  }
+
+  .chevron {
+    transition: transform 240ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .chevron-ouvert {
+    transform: rotate(180deg);
+  }
+
+  /* ------------------------------------------------------------------
+     Bandeau d'accueil
+     ------------------------------------------------------------------ */
+
+  /* Phrase d'accroche : c'est elle qui porte la hierarchie typographique
+     entre le nom et le corps du texte. */
+  .accroche {
+    font-size: clamp(1.05rem, 0.95rem + 0.55vw, 1.45rem);
+    font-weight: 400;
+    line-height: 1.4;
+    letter-spacing: -0.01em;
+    color: hsl(var(--texte));
+    text-wrap: pretty;
+  }
+
+  .portrait {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 320 / 422;
+    object-fit: cover;
+    border: 1px solid hsl(var(--bord));
+    border-radius: calc(var(--radius) * 2);
+  }
 }
 
 @layer utilities {

@@ -8,10 +8,12 @@ import type { Availability } from './types';
  * suite echoue, pour que la peremption du contenu arrete la chaine plutot que
  * de passer inapercue.
  *
- * Il n'existe pas de version anglaise a jour du CV. Le bouton anglais sert
- * donc le CV francais, et son libelle le dit.
+ * Deux CV distincts, un par type de contrat, et non un par langue : les deux
+ * documents sont en francais, il n'existe aucune version anglaise. Le libelle
+ * anglais des boutons le dit.
  */
-const RESUME_FR = '/assets/CV-Sunnoogo-Caleb-Tapsoba-fr-2026-10-16.pdf';
+const RESUME_CDI = '/assets/CV-Sunnoogo-Caleb-Tapsoba-CDI-CDD-fr.pdf';
+const RESUME_ALTERNANCE = '/assets/CV-Sunnoogo-Caleb-Tapsoba-alternance-fr.pdf';
 
 export const availability: Availability = {
   headline: {
@@ -22,9 +24,7 @@ export const availability: Availability = {
   startFrom: '2027-09',
   updatedOn: '2026-10-21',
   resume: {
-    fr: RESUME_FR,
-    // Aucune version anglaise n'existe : le CV francais est servi, et le
-    // libelle du bouton anglais l'annonce.
-    en: RESUME_FR,
+    cdi: RESUME_CDI,
+    alternance: RESUME_ALTERNANCE,
   },
 };

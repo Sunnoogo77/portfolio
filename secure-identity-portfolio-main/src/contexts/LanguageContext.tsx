@@ -26,6 +26,8 @@ const translations: Record<Language, Record<string, string>> = {
     'hero.title': 'Portfolio Cybersécurité',
     'hero.subtitle': 'Ingénieur sécurité et cloud, orienté sécurité Azure. Diplôme d\'ingénieur EFREI Paris en systèmes, réseaux, cloud et cybersécurité, cursus achevé en 2026, jury de délibération en novembre.',
     'hero.downloadCV': 'Télécharger le CV, en français',
+    'hero.cv.cdi': 'CV — CDI ou CDD',
+    'hero.cv.alternance': 'CV — alternance, septembre 2027',
     'availability.updatedOn': 'À jour au',
     'hero.cta.projects': 'Explorer les projets',
     'hero.cta.timeline': 'Parcours',
@@ -118,6 +120,11 @@ const translations: Record<Language, Record<string, string>> = {
     'hero.title': 'Cybersecurity Portfolio',
     'hero.subtitle': 'Security and cloud engineer, focused on Azure security. Diplôme d\'ingénieur from EFREI Paris in systems, networks, cloud and cybersecurity, the French five-year engineering degree awarded at master\'s level, course completed in 2026, degree subject to the November board of examiners.',
     'hero.downloadCV': 'Download CV, French',
+    // Les deux CV sont en francais et il n'en existe aucune version anglaise :
+    // le libelle anglais le dit, au lieu de laisser le visiteur le decouvrir
+    // apres le telechargement.
+    'hero.cv.cdi': 'CV in French — permanent or fixed-term',
+    'hero.cv.alternance': 'CV in French — apprenticeship, September 2027',
     'availability.updatedOn': 'Updated on',
     'hero.cta.projects': 'Explore projects',
     'hero.cta.timeline': 'Journey',
