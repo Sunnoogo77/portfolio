@@ -29,10 +29,17 @@ export interface Period {
 /**
  * - `planned`     : decide, rien n'est engage
  * - `in-progress` : travail reellement en cours, verifiable
+ * - `paused`      : commence puis suspendu, et le dire vaut mieux que
+ *                   laisser croire a un travail qui avance
  * - `delivered`   : livre, mis en service ou soutenu
  * - `obtained`    : titre effectivement obtenu, exige une date
  */
-export type Status = 'planned' | 'in-progress' | 'delivered' | 'obtained';
+export type Status =
+  | 'planned'
+  | 'in-progress'
+  | 'paused'
+  | 'delivered'
+  | 'obtained';
 
 /**
  * Visibilite reelle de la preuve.

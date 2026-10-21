@@ -38,7 +38,7 @@ export const timelineEntries: TimelineEntry[] = [
       en: 'Student-Entrepreneur Diploma',
     },
     location: { fr: 'Paris', en: 'Paris' },
-    flag: '/img/flags/fr.png',
+    flag: '/img/flags/fr.svg',
     summary: {
       fr: 'Inscription en cours de finalisation.',
       en: 'Registration being finalised.',
@@ -55,7 +55,7 @@ export const timelineEntries: TimelineEntry[] = [
       en: 'Founder and technical lead',
     },
     location: { fr: 'Paris', en: 'Paris' },
-    flag: '/img/flags/fr.png',
+    flag: '/img/flags/fr.svg',
     summary: {
       fr: "Startup née de mon projet de fin d'études, incubée à l'EFREI.",
       en: 'Startup born out of my final-year project, incubated at EFREI.',
@@ -143,7 +143,7 @@ export const timelineEntries: TimelineEntry[] = [
       en: "Diplôme d'ingénieur in systems, networks, cloud and cybersecurity",
     },
     location: { fr: 'Villejuif, France', en: 'Villejuif, France' },
-    flag: '/img/flags/fr.png',
+    flag: '/img/flags/fr.svg',
     logo: '/img/logos/efrei.png',
     summary: {
       fr: 'Cursus achevé, jury de délibération en novembre 2026. Bachelor of Engineering Science obtenu.',
@@ -158,7 +158,7 @@ export const timelineEntries: TimelineEntry[] = [
     organisation: 'Ecobank Ghana PLC, entité eProcess',
     role: { fr: 'Stagiaire cybersécurité', en: 'Cybersecurity intern' },
     location: { fr: 'Accra, Ghana', en: 'Accra, Ghana' },
-    flag: '/img/flags/gh.png',
+    flag: '/img/flags/gh.svg',
     logo: '/img/logos/ecobank1.png',
     summary: {
       fr: 'Environnement Microsoft 365 et Azure.',
@@ -190,7 +190,7 @@ export const timelineEntries: TimelineEntry[] = [
       fr: 'Stoke-on-Trent, Royaume-Uni',
       en: 'Stoke-on-Trent, United Kingdom',
     },
-    flag: '/img/flags/england.png',
+    flag: '/img/flags/gb.svg',
     logo: '/img/logos/Staffordshire_University_Logo.svg.png',
     summary: {
       fr: "Semestre en Angleterre : cours en anglais, vie étudiante, projet web encadré, exposition culturelle et basketball.",
@@ -220,7 +220,7 @@ export const timelineEntries: TimelineEntry[] = [
       fr: "Yamoussoukro, Côte d'Ivoire",
       en: "Yamoussoukro, Côte d'Ivoire",
     },
-    flag: '/img/flags/ci.png',
+    flag: '/img/flags/ci.svg',
     logo: '/img/logos/inphb.png',
     summary: {
       fr: 'Deux années intensives en mathématiques, physique et informatique avec préparation rigoureuse aux concours nationaux.',

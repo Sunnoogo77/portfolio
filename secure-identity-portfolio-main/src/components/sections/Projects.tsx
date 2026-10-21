@@ -1,160 +1,181 @@
-import { useState, useMemo } from 'react';
-import { ExternalLink, ChevronDown, ChevronUp } from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { projects, getProjectCounts } from '@/data/projects';
-import { publicUrl, type Status, type Tier } from '@/data/types';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
+import { getProjectsByTier } from '@/data/projects';
+import { formatPeriod } from '@/data/timeline';
+import { publicUrl, type Evidence, type Project } from '@/data/types';
+import { Section } from '@/components/layout/Section';
+import { classeStatut } from './statut';
 import { cn } from '@/lib/utils';
 
-type FilterType = Tier | 'all';
+/**
+ * Trois niveaux d'affichage, deja portes par le champ `tier` des donnees :
+ * `featured` en pleine largeur avec colonne de notes, `delivered` en grille,
+ * `planned` en liste sobre et compacte, sans carte et sans lien.
+ *
+ * Les quatre boutons de filtre ont disparu : la hierarchie est maintenant
+ * dans la mise en page, et les trente-trois projets se lisent d'un seul
+ * parcours.
+ */
 
-export function Projects() {
-  const { language, t } = useLanguage();
-  const [filter, setFilter] = useState<FilterType>('featured');
-  const [showAll, setShowAll] = useState(false);
-  const counts = getProjectCounts();
+/**
+ * Point non negociable : une balise de lien n'est produite que si
+ * `publicUrl` retourne une adresse. Sinon, un libelle non cliquable en texte
+ * adouci. Aucun lien mort ne peut apparaitre.
+ */
+function Preuve({ evidence }: { evidence: Evidence }) {
+  const { t } = useLanguage();
+  const url = publicUrl(evidence);
 
-  const filteredProjects = useMemo(() => {
-    if (filter === 'all') return projects;
-    return projects.filter((p) => p.tier === filter);
-  }, [filter]);
-
-  const displayedProjects = showAll ? filteredProjects : filteredProjects.slice(0, 6);
-
-  const filters: { key: FilterType; labelKey: string }[] = [
-    { key: 'featured', labelKey: 'projects.filter.featured' },
-    { key: 'delivered', labelKey: 'projects.filter.delivered' },
-    { key: 'planned', labelKey: 'projects.filter.planned' },
-    { key: 'all', labelKey: 'projects.filter.all' },
-  ];
-
-  const getStatusColor = (status: Status) => {
-    switch (status) {
-      case 'delivered':
-      case 'obtained':
-        return 'bg-green-500/10 text-green-500 border-green-500/20';
-      case 'in-progress':
-        return 'bg-yellow-500/10 text-yellow-500 border-yellow-500/20';
-      case 'planned':
-        return 'bg-blue-500/10 text-blue-500 border-blue-500/20';
-    }
-  };
+  if (!url) {
+    return (
+      <span className="text-sm text-muted-foreground">
+        {t(`projects.evidence.${evidence.visibility}`)}
+      </span>
+    );
+  }
 
   return (
-    <section id="projects" className="py-20 border-t border-border">
-      <div className="container mx-auto px-4">
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8">
-          <h2 className="text-3xl md:text-4xl font-bold">{t('projects.title')}</h2>
-          
-          {/* Filter buttons */}
-          <div className="flex flex-wrap gap-2">
-            {filters.map(({ key, labelKey }) => (
-              <Button
-                key={key}
-                variant={filter === key ? 'default' : 'outline'}
-                size="sm"
-                onClick={() => {
-                  setFilter(key);
-                  setShowAll(false);
-                }}
-                className={cn(
-                  'rounded-full',
-                  filter === key && 'glow-sm'
-                )}
-              >
-                {t(labelKey)} ({counts[key]})
-              </Button>
-            ))}
-          </div>
-        </div>
+    <a
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="lien inline-flex items-center gap-1.5 text-sm"
+    >
+      {t('projects.viewProject')}
+      <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
+    </a>
+  );
+}
 
-        {filter === 'planned' && (
-          <p className="mb-8 text-muted-foreground">{t('projects.planned.intro')}</p>
-        )}
+function Etiquettes({ stack }: { stack: string[] }) {
+  return (
+    <ul className="mt-4 flex flex-wrap gap-1.5">
+      {stack.map((outil) => (
+        <li key={outil} className="etiquette donnee">
+          {outil}
+        </li>
+      ))}
+    </ul>
+  );
+}
 
-        {/* Projects Grid */}
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {displayedProjects.map((project, index) => (
-            <Card
-              key={project.id}
-              className="card-hover border-border bg-card/60 backdrop-blur-sm animate-fade-in-up"
-              style={{ animationDelay: `${index * 50}ms` }}
-            >
-              <CardHeader className="pb-3">
-                <div className="flex items-start justify-between gap-3">
-                  <CardTitle className="text-lg leading-tight">{project.title}</CardTitle>
-                  <Badge
-                    variant="outline"
-                    className={cn('shrink-0 text-xs', getStatusColor(project.status))}
-                  >
-                    {t(`projects.status.${project.status}`)}
-                  </Badge>
-                </div>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <p className="text-sm text-muted-foreground line-clamp-3">
-                  {project.summary[language]}
-                </p>
-                
-                <div className="flex flex-wrap gap-1.5">
-                  {project.stack.slice(0, 5).map((tag) => (
-                    <Badge
-                      key={tag}
-                      variant="secondary"
-                      className="text-xs bg-secondary/50"
-                    >
-                      {tag}
-                    </Badge>
-                  ))}
-                  {project.stack.length > 5 && (
-                    <Badge variant="secondary" className="text-xs bg-secondary/50">
-                      +{project.stack.length - 5}
-                    </Badge>
-                  )}
-                </div>
+function Statut({ project }: { project: Project }) {
+  const { t } = useLanguage();
+  return (
+    <span className={cn('statut donnee', classeStatut[project.status])}>
+      {t(`projects.status.${project.status}`)}
+    </span>
+  );
+}
 
-                {publicUrl(project.evidence) ? (
-                  <a
-                    href={publicUrl(project.evidence)!}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline"
-                  >
-                    {t('projects.viewProject')}
-                    <ExternalLink className="h-3.5 w-3.5" />
-                  </a>
-                ) : (
-                  <span className="inline-flex items-center gap-2 text-sm text-muted-foreground">
-                    {t(`projects.evidence.${project.evidence.visibility}`)}
-                  </span>
-                )}
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+/** Niveau 1 : pleine largeur, colonne de notes. */
+function ProjetEnAvant({ project }: { project: Project }) {
+  const { language } = useLanguage();
+  const periode = formatPeriod(project.period, language);
 
-        {/* Show more/less */}
-        {filteredProjects.length > 6 && (
-          <div className="mt-8 text-center">
-            <Button
-              variant="outline"
-              onClick={() => setShowAll(!showAll)}
-              className="rounded-xl"
-            >
-              {showAll ? t('projects.showLess') : t('projects.showMore')}
-              {showAll ? <ChevronUp className="ml-2 h-4 w-4" /> : <ChevronDown className="ml-2 h-4 w-4" />}
-            </Button>
-          </div>
-        )}
+  return (
+    <article className="grille-notes border-t border-border pt-6">
+      <div className="donnee space-y-2 text-muted-foreground">
+        {periode && <p>{periode}</p>}
+        <p>
+          <Statut project={project} />
+        </p>
+        {project.role && <p>{project.role[language]}</p>}
+      </div>
 
-        {filteredProjects.length === 0 && (
-          <p className="text-center text-muted-foreground py-12">
-            {t('projects.noProjects')}
+      <div>
+        <h3>{project.title}</h3>
+        {project.context && (
+          <p className="mt-1 text-sm text-muted-foreground">
+            {project.context[language]}
           </p>
         )}
+
+        <p className="mesure mt-3">{project.summary[language]}</p>
+
+        {project.outcomes.length > 0 && (
+          <ul className="mesure mt-4 space-y-1">
+            {project.outcomes.map((outcome) => (
+              <li key={outcome.unit.fr} className="text-sm">
+                <span className="donnee text-foreground">{outcome.value}</span>{' '}
+                <span className="text-muted-foreground">
+                  {outcome.unit[language]}
+                  {outcome.qualifier ? `, ${outcome.qualifier[language]}` : ''}
+                </span>
+              </li>
+            ))}
+          </ul>
+        )}
+
+        <Etiquettes stack={project.stack} />
+
+        <div className="mt-4">
+          <Preuve evidence={project.evidence} />
+        </div>
       </div>
-    </section>
+    </article>
+  );
+}
+
+/** Niveau 2 : grille des travaux realises. */
+function ProjetRealise({ project }: { project: Project }) {
+  const { language } = useLanguage();
+
+  return (
+    <article className="carte flex flex-col p-5">
+      <div className="flex items-start justify-between gap-3">
+        <h3 className="min-w-0">{project.title}</h3>
+        <Statut project={project} />
+      </div>
+
+      <p className="mt-3 flex-1 text-sm text-muted-foreground">
+        {project.summary[language]}
+      </p>
+
+      <Etiquettes stack={project.stack} />
+
+      <div className="mt-4">
+        <Preuve evidence={project.evidence} />
+      </div>
+    </article>
+  );
+}
+
+export function Projects() {
+  const { t } = useLanguage();
+  const enAvant = getProjectsByTier('featured');
+  const realises = getProjectsByTier('delivered');
+  const prepares = getProjectsByTier('planned');
+
+  return (
+    <Section id="projects">
+      <h2>{t('projects.title')}</h2>
+
+      <div className="mt-8 space-y-10">
+        {enAvant.map((project) => (
+          <ProjetEnAvant key={project.id} project={project} />
+        ))}
+      </div>
+
+      <div className="mt-12 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+        {realises.map((project) => (
+          <ProjetRealise key={project.id} project={project} />
+        ))}
+      </div>
+
+      <div className="mt-12 border-t border-border pt-6">
+        <h3>{t('projects.planned.title')}</h3>
+        <p className="mesure mt-2 text-sm text-muted-foreground">
+          {t('projects.planned.intro')}
+        </p>
+        <ul className="mt-4 grid gap-x-8 gap-y-1.5 sm:grid-cols-2 xl:grid-cols-3">
+          {prepares.map((project) => (
+            <li key={project.id} className="text-sm text-muted-foreground">
+              {project.title}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </Section>
   );
 }

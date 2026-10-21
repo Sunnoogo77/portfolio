@@ -1,175 +1,157 @@
 import { useState } from 'react';
-import { ChevronDown, ChevronUp, MapPin } from 'lucide-react';
+import { ChevronDown, ChevronUp } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { timelineEntries, formatPeriod } from '@/data/timeline';
-import { isCurrent } from '@/data/types';
+import { publicUrl } from '@/data/types';
 import { getAssetPath } from '@/lib/assets';
-import { Card, CardContent } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { cn } from '@/lib/utils';
+import { Section } from '@/components/layout/Section';
 
+/**
+ * Colonne de notes a gauche, en police monospace : periode, lieu, drapeau.
+ * Le corps occupe la colonne large. En dessous de 768 pixels, la colonne de
+ * notes passe au-dessus du corps.
+ *
+ * Disparus : le filet central et ses pastilles, l'animation infinie et le
+ * halo qui clignotaient sur l'entree en cours, les cartes au flou, et les
+ * delais en cascade de cent millisecondes par entree.
+ *
+ * Les vrais logos et les vraies images de drapeaux sont servis. Une entree
+ * qui n'en a pas s'affiche sans cadre vide.
+ */
 export function Timeline() {
   const { language, t } = useLanguage();
-  const [expandedId, setExpandedId] = useState<string | null>(null);
-
-  const toggleExpand = (id: string) => {
-    setExpandedId(expandedId === id ? null : id);
-  };
+  const [ouvert, setOuvert] = useState<string | null>(null);
 
   return (
-    <section id="timeline" className="py-20 border-t border-border">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold mb-12">{t('timeline.title')}</h2>
+    <Section id="timeline">
+      <h2>{t('timeline.title')}</h2>
 
-        <div className="relative max-w-4xl mx-auto">
-          {/* Timeline line */}
-          <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-border md:-translate-x-1/2" />
+      <div className="mt-8 space-y-8">
+        {timelineEntries.map((entry) => {
+          const periode = formatPeriod(entry.period, language);
+          const estOuvert = ouvert === entry.id;
+          const points = entry.highlights[language];
+          const resultats = entry.outcomes ?? [];
+          const aDesDetails = points.length > 0 || resultats.length > 0;
+          const url = publicUrl(entry.evidence);
 
-          {timelineEntries.map((entry, index) => {
-            const isExpanded = expandedId === entry.id;
-            const isEven = index % 2 === 0;
-            const current = isCurrent(entry);
-            const period = formatPeriod(entry.period, language);
-
-            return (
-              <div
-                key={entry.id}
-                className={cn(
-                  'relative grid gap-8 mb-12 md:grid-cols-2',
-                  'animate-fade-in-up'
+          return (
+            <article
+              key={entry.id}
+              className="grille-notes border-t border-border pt-6"
+            >
+              <div className="donnee space-y-2 text-muted-foreground">
+                {periode && <p>{periode}</p>}
+                <p>{entry.location[language]}</p>
+                {entry.flag && (
+                  <img
+                    src={getAssetPath(entry.flag)}
+                    alt=""
+                    width={24}
+                    height={16}
+                    loading="lazy"
+                    className="h-4 w-6 rounded-sm border border-border object-cover"
+                  />
                 )}
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                {/* Timeline dot */}
-                <div className="absolute left-0 md:left-1/2 top-8 -translate-x-1/2 z-10">
-                  <div className="relative">
-                    <div className={cn(
-                      'h-4 w-4 rounded-full bg-primary',
-                      current && 'animate-pulse-glow'
-                    )} />
-                    {current && (
-                      <div className="absolute inset-0 rounded-full bg-primary animate-ping opacity-50" />
+              </div>
+
+              <div>
+                <div className="flex items-start justify-between gap-4">
+                  <div className="min-w-0">
+                    <h3>{entry.organisation}</h3>
+                    <p className="mt-1 text-sm text-muted-foreground">
+                      {entry.role[language]}
+                    </p>
+                    {entry.via && (
+                      <p className="mt-1 text-sm text-muted-foreground">
+                        {entry.via}
+                      </p>
                     )}
                   </div>
+                  {entry.logo && (
+                    <img
+                      src={getAssetPath(entry.logo)}
+                      alt={entry.organisation}
+                      width={96}
+                      height={32}
+                      loading="lazy"
+                      className="h-8 w-24 shrink-0 object-contain object-right"
+                    />
+                  )}
                 </div>
 
-                {/* Period - Left side on desktop */}
-                <div className={cn(
-                  'hidden md:flex items-start justify-end pr-12',
-                  !isEven && 'order-2 justify-start pl-12 pr-0'
-                )}>
-                  <div className="text-right">
-                    <span className="text-lg font-semibold text-primary">{period}</span>
-                    <div className="flex items-center gap-2 mt-1 text-sm text-muted-foreground">
-                      <MapPin className="h-3.5 w-3.5" />
-                      <span>{entry.location[language]}</span>
-                      {entry.flag && (
-                        <img
-                          src={getAssetPath(entry.flag)}
-                          alt=""
-                          className="h-3.5 w-5 rounded-sm object-cover"
-                        />
-                      )}
-                    </div>
+                <p className="mesure mt-3">{entry.summary[language]}</p>
+
+                {url && (
+                  <p className="mt-3">
+                    <a
+                      href={url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="lien donnee"
+                    >
+                      {url.replace(/^https?:\/\//, '')}
+                    </a>
+                  </p>
+                )}
+
+                {aDesDetails && estOuvert && (
+                  <div className="mt-4 border-t border-border pt-4">
+                    {points.length > 0 && (
+                      <>
+                        <h4 className="donnee uppercase text-muted-foreground">
+                          {t('timeline.highlights')}
+                        </h4>
+                        <ul className="mesure mt-2 space-y-3">
+                          {points.map((point) => (
+                            <li key={point} className="text-sm text-muted-foreground">
+                              {point}
+                            </li>
+                          ))}
+                        </ul>
+                      </>
+                    )}
+
+                    {resultats.length > 0 && (
+                      <ul className="mesure mt-4 space-y-1">
+                        {resultats.map((outcome) => (
+                          <li key={outcome.unit.fr} className="text-sm">
+                            <span className="donnee text-foreground">
+                              {outcome.value}
+                            </span>{' '}
+                            <span className="text-muted-foreground">
+                              {outcome.unit[language]}
+                              {outcome.qualifier
+                                ? `, ${outcome.qualifier[language]}`
+                                : ''}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
                   </div>
-                </div>
+                )}
 
-                {/* Card */}
-                <div className={cn(
-                  'ml-8 md:ml-0',
-                  isEven ? 'md:pl-12' : 'md:pr-12 order-1'
-                )}>
-                  {/* Mobile period */}
-                  <div className="md:hidden mb-3">
-                    <span className="text-lg font-semibold text-primary">{period}</span>
-                    <div className="flex items-center gap-2 mt-1 text-sm text-muted-foreground">
-                      <MapPin className="h-3.5 w-3.5" />
-                      <span>{entry.location[language]}</span>
-                      {entry.flag && (
-                        <img
-                          src={getAssetPath(entry.flag)}
-                          alt=""
-                          className="h-3.5 w-5 rounded-sm object-cover"
-                        />
-                      )}
-                    </div>
-                  </div>
-
-                  <Card className={cn(
-                    'card-hover border-border bg-card/60 backdrop-blur-sm',
-                    current && 'border-primary/30'
-                  )}>
-                    <CardContent className="p-6">
-                      <div className="flex items-start justify-between gap-4">
-                        <div className="flex-1">
-                          <h3 className="text-lg font-bold">{entry.organisation}</h3>
-                          <Badge variant="secondary" className="mt-2 text-xs">
-                            {entry.role[language]}
-                          </Badge>
-                          {entry.via && (
-                            <p className="mt-2 text-xs text-muted-foreground">{entry.via}</p>
-                          )}
-                        </div>
-                        {entry.logo && (
-                          <div className="shrink-0 w-12 h-12 rounded-lg bg-muted flex items-center justify-center overflow-hidden">
-                            <img
-                              src={getAssetPath(entry.logo)}
-                              alt={entry.organisation}
-                              className="w-full h-full object-contain p-1"
-                            />
-                          </div>
-                        )}
-                      </div>
-
-                      <p className="mt-4 text-sm text-muted-foreground">
-                        {entry.summary[language]}
-                      </p>
-
-                      {isExpanded && (
-                        <div className="mt-4 pt-4 border-t border-border animate-fade-in">
-                          <h4 className="font-semibold mb-2">{t('timeline.highlights')}</h4>
-                          <ul className="space-y-1 text-sm text-muted-foreground">
-                            {entry.highlights[language].map((highlight, i) => (
-                              <li key={i} className="flex items-start gap-2">
-                                <span className="text-primary mt-1">•</span>
-                                <span>{highlight}</span>
-                              </li>
-                            ))}
-                          </ul>
-
-                          {entry.outcomes && entry.outcomes.length > 0 && (
-                            <ul className="mt-4 space-y-1 text-sm text-muted-foreground">
-                              {entry.outcomes.map((outcome, i) => (
-                                <li key={i}>
-                                  <span className="font-semibold text-foreground">{outcome.value}</span>{' '}
-                                  {outcome.unit[language]}
-                                  {outcome.qualifier ? `, ${outcome.qualifier[language]}` : ''}
-                                </li>
-                              ))}
-                            </ul>
-                          )}
-                        </div>
-                      )}
-
-                      <button
-                        onClick={() => toggleExpand(entry.id)}
-                        className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"
-                      >
-                        {t('timeline.learnMore')}
-                        {isExpanded ? (
-                          <ChevronUp className="h-3.5 w-3.5" />
-                        ) : (
-                          <ChevronDown className="h-3.5 w-3.5" />
-                        )}
-                      </button>
-                    </CardContent>
-                  </Card>
-                </div>
+                {aDesDetails && (
+                  <button
+                    type="button"
+                    onClick={() => setOuvert(estOuvert ? null : entry.id)}
+                    aria-expanded={estOuvert}
+                    className="lien mt-4 inline-flex items-center gap-1 text-sm"
+                  >
+                    {estOuvert ? t('projects.showLess') : t('timeline.learnMore')}
+                    {estOuvert ? (
+                      <ChevronUp className="h-3.5 w-3.5" aria-hidden="true" />
+                    ) : (
+                      <ChevronDown className="h-3.5 w-3.5" aria-hidden="true" />
+                    )}
+                  </button>
+                )}
               </div>
-            );
-          })}
-        </div>
+            </article>
+          );
+        })}
       </div>
-    </section>
+    </Section>
   );
 }

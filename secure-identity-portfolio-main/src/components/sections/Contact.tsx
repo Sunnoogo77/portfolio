@@ -1,182 +1,119 @@
 import { useState } from 'react';
-import { Github, Linkedin, Twitter, Send, Mail } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { socialLinks, contactInfo } from '@/data/social';
-import { Card, CardContent } from '@/components/ui/card';
+import { Section } from '@/components/layout/Section';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
 
-const iconMap: Record<string, React.ElementType> = {
-  Github,
-  Linkedin,
-  Twitter,
-};
-
+/**
+ * Disparus : les cartes au flou pose sur un fond opaque, la lueur du bouton
+ * d'envoi, les pastilles d'icones, et l'icone de courriel qui repetait le mot
+ * « Contact » place a cote d'elle.
+ */
 export function Contact() {
   const { t } = useLanguage();
   const { toast } = useToast();
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
-  });
+  const [envoiEnCours, setEnvoiEnCours] = useState(false);
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
+    setEnvoiEnCours(true);
 
     try {
-      const response = await fetch(`https://formspree.io/f/${contactInfo.formspreeId}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        `https://formspree.io/f/${contactInfo.formspreeId}`,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData),
+        }
+      );
 
-      if (response.ok) {
-        toast({
-          title: t('contact.form.success'),
-          description: '',
-        });
-        setFormData({ name: '', email: '', message: '' });
-      } else {
-        throw new Error('Failed to send');
-      }
+      if (!response.ok) throw new Error('Failed to send');
+
+      toast({ title: t('contact.form.success'), description: '' });
+      setFormData({ name: '', email: '', message: '' });
     } catch {
-      toast({
-        title: t('contact.form.error'),
-        description: '',
-      });
+      toast({ title: t('contact.form.error'), description: '' });
     } finally {
-      setIsSubmitting(false);
+      setEnvoiEnCours(false);
     }
   };
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    setFormData((prev) => ({
-      ...prev,
-      [e.target.name]: e.target.value,
-    }));
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   return (
-    <section id="contact" className="py-20 border-t border-border">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold">{t('contact.title')}</h2>
-          <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
-            {t('contact.subtitle')}
-          </p>
-        </div>
+    <Section id="contact">
+      <h2>{t('contact.title')}</h2>
+      <p className="mesure mt-3 text-muted-foreground">{t('contact.subtitle')}</p>
 
-        <div className="grid gap-8 lg:grid-cols-2 max-w-5xl mx-auto">
-          {/* Contact Form */}
-          <Card className="card-hover border-border bg-card/60 backdrop-blur-sm">
-            <CardContent className="p-6">
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="space-y-2">
-                  <Label htmlFor="name">{t('contact.form.name')}</Label>
-                  <Input
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    className="bg-background/50"
-                  />
-                </div>
-                
-                <div className="space-y-2">
-                  <Label htmlFor="email">{t('contact.form.email')}</Label>
-                  <Input
-                    id="email"
-                    name="email"
-                    type="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="bg-background/50"
-                  />
-                </div>
-                
-                <div className="space-y-2">
-                  <Label htmlFor="message">{t('contact.form.message')}</Label>
-                  <Textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    rows={5}
-                    className="bg-background/50 resize-none"
-                  />
-                </div>
+      <div className="grille-notes mt-8">
+        <ul className="space-y-3">
+          {socialLinks.map((social) => (
+            <li key={social.id}>
+              <a
+                href={social.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="lien text-sm"
+              >
+                {social.name}
+              </a>
+              <p className="donnee text-muted-foreground">{social.username}</p>
+            </li>
+          ))}
+        </ul>
 
-                <Button
-                  type="submit"
-                  className="w-full glow"
-                  disabled={isSubmitting}
-                >
-                  {isSubmitting ? (
-                    t('contact.form.sending')
-                  ) : (
-                    <>
-                      {t('contact.form.send')}
-                      <Send className="ml-2 h-4 w-4" />
-                    </>
-                  )}
-                </Button>
-              </form>
-            </CardContent>
-          </Card>
-
-          {/* Social Links */}
-          <div className="space-y-4">
-            <div className="flex items-center gap-3 mb-6">
-              <Mail className="h-5 w-5 text-primary" />
-              <span className="text-lg font-medium">
-                {t('contact.title')}
-              </span>
-            </div>
-
-            <div className="grid gap-4 sm:grid-cols-2">
-              {socialLinks.map((social) => {
-                const Icon = iconMap[social.icon] || Github;
-                return (
-                  <a
-                    key={social.id}
-                    href={social.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group"
-                  >
-                    <Card className="card-hover border-border bg-card/60 backdrop-blur-sm h-full">
-                      <CardContent className="p-4 flex items-center gap-4">
-                        <div className="p-3 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-colors">
-                          <Icon className="h-6 w-6 text-primary" />
-                        </div>
-                        <div>
-                          <p className="font-medium">{social.name}</p>
-                          <p className="text-sm text-muted-foreground">
-                            {social.username}
-                          </p>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </a>
-                );
-              })}
-            </div>
+        <form onSubmit={handleSubmit} className="max-w-xl space-y-5">
+          <div className="space-y-1.5">
+            <Label htmlFor="name">{t('contact.form.name')}</Label>
+            <Input
+              id="name"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+            />
           </div>
-        </div>
+
+          <div className="space-y-1.5">
+            <Label htmlFor="email">{t('contact.form.email')}</Label>
+            <Input
+              id="email"
+              name="email"
+              type="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className="space-y-1.5">
+            <Label htmlFor="message">{t('contact.form.message')}</Label>
+            <Textarea
+              id="message"
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+              required
+              rows={5}
+              className="resize-y"
+            />
+          </div>
+
+          <Button type="submit" disabled={envoiEnCours}>
+            {envoiEnCours ? t('contact.form.sending') : t('contact.form.send')}
+          </Button>
+        </form>
       </div>
-    </section>
+    </Section>
   );
 }

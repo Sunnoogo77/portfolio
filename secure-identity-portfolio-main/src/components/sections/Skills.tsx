@@ -1,47 +1,57 @@
 import { useLanguage } from '@/contexts/LanguageContext';
 import { skillRows, skillsIntro, usedInLabel } from '@/data/skills';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
+import { Section } from '@/components/layout/Section';
 
+/**
+ * Tableau a trois colonnes du point 10 de docs/SPEC-CONTENU.md : domaine,
+ * outils, et ou cela a servi. Le mur de quarante-cinq etiquettes sans niveau,
+ * sans date et sans contexte a disparu.
+ *
+ * Le domaine est l'en-tete de sa ligne, il n'y a donc pas d'en-tete de
+ * colonne : aucune traduction n'existe pour « Domaine » et « Outils », et ce
+ * n'est pas a la mise en page d'en inventer.
+ *
+ * En dessous de 768 pixels, chaque ligne devient un bloc : trois colonnes ne
+ * tiennent pas dans 360 pixels sans debordement horizontal.
+ */
 export function Skills() {
   const { language, t } = useLanguage();
 
   return (
-    <section id="skills" className="py-20 border-t border-border">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('skills.title')}</h2>
-        <p className="mb-12 text-muted-foreground">{skillsIntro[language]}</p>
+    <Section id="skills">
+      <h2>{t('skills.title')}</h2>
+      <p className="mesure mt-3 text-muted-foreground">{skillsIntro[language]}</p>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <table className="mt-8 w-full border-collapse text-left">
+        <tbody className="block md:table-row-group">
           {skillRows.map((row) => (
-            <Card
+            <tr
               key={row.domain.fr}
-              className="card-hover border-border bg-card/60 backdrop-blur-sm"
+              className="block border-t border-border py-5 md:table-row md:py-0"
             >
-              <CardHeader className="pb-3">
-                <CardTitle className="text-lg">{row.domain[language]}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-wrap gap-2">
+              <th
+                scope="row"
+                className="block pr-6 align-baseline text-base font-semibold md:table-cell md:w-[22%] md:py-5"
+              >
+                {row.domain[language]}
+              </th>
+              <td className="block pt-2 align-baseline md:table-cell md:w-[40%] md:py-5 md:pr-6 md:pt-5">
+                <ul className="flex flex-wrap gap-1.5">
                   {row.tools.map((tool) => (
-                    <Badge
-                      key={tool}
-                      variant="secondary"
-                      className="bg-secondary/50 hover:bg-secondary transition-colors"
-                    >
+                    <li key={tool} className="etiquette donnee">
                       {tool}
-                    </Badge>
+                    </li>
                   ))}
-                </div>
-                <p className="mt-4 text-sm text-muted-foreground">
-                  {t('skills.usedIn')}{' '}
-                  {row.usedIn.map((id) => usedInLabel(id, language)).join(' · ')}
-                </p>
-              </CardContent>
-            </Card>
+                </ul>
+              </td>
+              <td className="block pt-2 align-baseline text-sm text-muted-foreground md:table-cell md:py-5 md:pt-5">
+                <span className="md:hidden">{t('skills.usedIn')} </span>
+                {row.usedIn.map((id) => usedInLabel(id, language)).join(' · ')}
+              </td>
+            </tr>
           ))}
-        </div>
-      </div>
-    </section>
+        </tbody>
+      </table>
+    </Section>
   );
 }

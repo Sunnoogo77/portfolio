@@ -1,151 +1,150 @@
-import { useState, useMemo } from 'react';
 import { ExternalLink } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { certifications, getCertificationCounts, certificationDate } from '@/data/certifications';
-import { publicUrl, type Certification, type Status } from '@/data/types';
-import { Card, CardContent } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import { cn } from '@/lib/utils';
+import {
+  getCertificationsByStatus,
+  certificationDate,
+} from '@/data/certifications';
+import { publicUrl, type Certification, type Lang } from '@/data/types';
 import { getAssetPath } from '@/lib/assets';
+import { Section } from '@/components/layout/Section';
+import { classeStatut } from './statut';
+import { cn } from '@/lib/utils';
 
-type CertStatus = Certification['status'];
-type FilterType = CertStatus | 'all';
+/**
+ * Trois groupes clairement distingues, au lieu de quatorze cartes identiques
+ * derriere quatre boutons de filtre : les obtenues, qui portent leur date et
+ * leur certificat quand il existe, celles en preparation, et la feuille de
+ * route.
+ *
+ * Les badges sont servis depuis public/img/certifications. Une certification
+ * qui n'en a pas s'affiche sans cadre vide.
+ */
 
-export function Certifications() {
+/** 'YYYY-MM' devient « avril 2026 », 'YYYY' reste tel quel. */
+function dateLisible(brute: string, lang: Lang): string {
+  const mois = /^(\d{4})-(\d{2})$/.exec(brute);
+  if (!mois) return brute;
+  return new Date(Number(mois[1]), Number(mois[2]) - 1, 1).toLocaleDateString(
+    lang === 'fr' ? 'fr-FR' : 'en-GB',
+    { month: 'long', year: 'numeric' }
+  );
+}
+
+function Badge({ cert }: { cert: Certification }) {
+  if (!cert.badge) return null;
+  return (
+    <img
+      src={getAssetPath(cert.badge)}
+      alt=""
+      width={48}
+      height={48}
+      loading="lazy"
+      className="h-12 w-12 shrink-0 object-contain"
+    />
+  );
+}
+
+function Obtenue({ cert }: { cert: Certification }) {
   const { language, t } = useLanguage();
-  const [filter, setFilter] = useState<FilterType>('obtained');
-  const counts = getCertificationCounts();
-
-  const filteredCerts = useMemo(() => {
-    if (filter === 'all') return certifications;
-    return certifications.filter((c) => c.status === filter);
-  }, [filter]);
-
-  const filters: { key: FilterType; labelKey: string }[] = [
-    { key: 'obtained', labelKey: 'certifications.filter.obtained' },
-    { key: 'in-progress', labelKey: 'certifications.filter.inProgress' },
-    { key: 'planned', labelKey: 'certifications.filter.planned' },
-    { key: 'all', labelKey: 'certifications.filter.all' },
-  ];
-
-  const getStatusStyles = (status: Status) => {
-    switch (status) {
-      case 'obtained':
-      case 'delivered':
-        return 'bg-green-500/10 text-green-500 border-green-500/20';
-      case 'in-progress':
-        return 'bg-yellow-500/10 text-yellow-500 border-yellow-500/20';
-      case 'planned':
-        return 'bg-blue-500/10 text-blue-500 border-blue-500/20';
-    }
-  };
+  const brute = certificationDate(cert);
+  const url = publicUrl(cert.evidence);
+  const lien = url?.startsWith('/') ? getAssetPath(url) : url;
 
   return (
-    <section id="certifications" className="py-20 border-t border-border">
-      <div className="container mx-auto px-4">
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8">
-          <h2 className="text-3xl md:text-4xl font-bold">{t('certifications.title')}</h2>
-          
-          {/* Filter buttons */}
-          <div className="flex flex-wrap gap-2">
-            {filters.map(({ key, labelKey }) => (
-              <Button
-                key={key}
-                variant={filter === key ? 'default' : 'outline'}
-                size="sm"
-                onClick={() => setFilter(key)}
-                className={cn(
-                  'rounded-full',
-                  filter === key && 'glow-sm'
-                )}
-              >
-                {t(labelKey)} ({counts[key]})
-              </Button>
-            ))}
-          </div>
-        </div>
-
-        {/* Certifications Grid */}
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {filteredCerts.map((cert, index) => {
-            const date = certificationDate(cert);
-            const rawUrl = publicUrl(cert.evidence);
-            // Un certificat servi depuis public/ passe par getAssetPath,
-            // une adresse externe est servie telle quelle.
-            const certUrl = rawUrl?.startsWith('/') ? getAssetPath(rawUrl) : rawUrl;
-
-            return (
-              <Card
-                key={cert.id}
-                className="card-hover border-border bg-card/60 backdrop-blur-sm animate-fade-in-up"
-                style={{ animationDelay: `${index * 50}ms` }}
-              >
-                <CardContent className="p-6">
-                  <div className="flex items-start justify-between gap-4">
-                    <div className="flex-1">
-                      <h3 className="font-bold leading-tight">{cert.title}</h3>
-                      <p className="mt-1 text-xs text-muted-foreground">
-                        {t(`certifications.status.${cert.status}`)}
-                        {date ? ` • ${date}` : ''} • {cert.issuer}
-                      </p>
-                    </div>
-                    {/* Certification badge */}
-                    {cert.badge && (
-                    <div className="shrink-0 w-12 h-12 rounded-lg bg-muted flex items-center justify-center overflow-hidden">
-                      <img
-                        src={getAssetPath(cert.badge)}
-                        alt={cert.title}
-                        className="w-full h-full object-contain p-1"
-                        onError={(e) => {
-                          const target = e.target as HTMLImageElement;
-                          target.style.display = 'none';
-                          target.parentElement!.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 text-primary"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>';
-                        }}
-                      />
-                    </div>
-                    )}
-                  </div>
-
-                  <p className="mt-4 text-sm text-muted-foreground">
-                    {cert.description[language]}
-                  </p>
-
-                  <div className="mt-3 flex flex-wrap gap-1.5">
-                    {cert.tags.map((tag) => (
-                      <Badge
-                        key={tag}
-                        variant="secondary"
-                        className="text-xs bg-secondary/50"
-                      >
-                        {tag}
-                      </Badge>
-                    ))}
-                  </div>
-
-                  {certUrl && (
-                    <a
-                      href={certUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline"
-                    >
-                      {t('certifications.viewCert')}
-                      <ExternalLink className="h-3.5 w-3.5" />
-                    </a>
-                  )}
-                </CardContent>
-              </Card>
-            );
-          })}
-        </div>
-
-        {filteredCerts.length === 0 && (
-          <p className="text-center text-muted-foreground py-12">
-            {t('certifications.noCerts')}
-          </p>
-        )}
+    <article className="grille-notes border-t border-border pt-6">
+      <div className="donnee space-y-2 text-muted-foreground">
+        {brute && <p>{dateLisible(brute, language)}</p>}
+        <p>{cert.issuer}</p>
+        <p>
+          <span className={cn('statut', classeStatut[cert.status])}>
+            {t(`certifications.status.${cert.status}`)}
+          </span>
+        </p>
       </div>
-    </section>
+
+      <div className="flex items-start gap-4">
+        <Badge cert={cert} />
+        <div className="min-w-0">
+          <h4 className="text-base font-semibold">{cert.title}</h4>
+          <p className="mesure mt-2 text-sm text-muted-foreground">
+            {cert.description[language]}
+          </p>
+          {lien && (
+            <a
+              href={lien}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="lien mt-3 inline-flex items-center gap-1.5 text-sm"
+            >
+              {t('certifications.viewCert')}
+              <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
+            </a>
+          )}
+        </div>
+      </div>
+    </article>
+  );
+}
+
+function Visee({ cert }: { cert: Certification }) {
+  const { language } = useLanguage();
+
+  return (
+    <li className="flex items-start gap-3 border-t border-border py-4">
+      <Badge cert={cert} />
+      <div className="min-w-0">
+        <p className="font-semibold">{cert.title}</p>
+        <p className="donnee mt-1 text-muted-foreground">{cert.issuer}</p>
+        <p className="mesure mt-1 text-sm text-muted-foreground">
+          {cert.description[language]}
+        </p>
+      </div>
+    </li>
+  );
+}
+
+export function Certifications() {
+  const { t } = useLanguage();
+  const obtenues = getCertificationsByStatus('obtained');
+  const enCours = getCertificationsByStatus('in-progress');
+  const feuilleDeRoute = getCertificationsByStatus('planned');
+
+  return (
+    <Section id="certifications">
+      <h2>{t('certifications.title')}</h2>
+
+      <h3 className="donnee mt-8 uppercase text-muted-foreground">
+        {t('certifications.filter.obtained')}
+      </h3>
+      <div className="mt-4 space-y-6">
+        {obtenues.map((cert) => (
+          <Obtenue key={cert.id} cert={cert} />
+        ))}
+      </div>
+
+      <div className="mt-12 grid gap-x-12 gap-y-8 lg:grid-cols-2">
+        <div>
+          <h3 className="donnee uppercase text-muted-foreground">
+            {t('certifications.filter.inProgress')}
+          </h3>
+          <ul className="mt-2">
+            {enCours.map((cert) => (
+              <Visee key={cert.id} cert={cert} />
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <h3 className="donnee uppercase text-muted-foreground">
+            {t('certifications.filter.planned')}
+          </h3>
+          <ul className="mt-2">
+            {feuilleDeRoute.map((cert) => (
+              <Visee key={cert.id} cert={cert} />
+            ))}
+          </ul>
+        </div>
+      </div>
+    </Section>
   );
 }

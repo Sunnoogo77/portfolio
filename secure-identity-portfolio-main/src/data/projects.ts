@@ -109,7 +109,7 @@ export const projects: Project[] = [
   {
     id: 'secureflow',
     title: 'SecureFlow Platform — Cloud & Secured DevSecOps',
-    tier: 'featured',
+    tier: 'delivered',
     status: 'delivered',
     period: { start: null, end: null },
     summary: {
@@ -164,7 +164,7 @@ export const projects: Project[] = [
     id: 'enterprise-ad',
     title: 'Infrastructure Active Directory Entreprise',
     tier: 'delivered',
-    status: 'in-progress',
+    status: 'paused',
     period: { start: null, end: null },
     summary: {
       fr: "Déploiement complet d'une infrastructure AD réaliste avec gestion des utilisateurs, GPOs, délégation RBAC, FGPP, audit, réplication et connectivité cloud hybride.",
@@ -181,8 +181,8 @@ export const projects: Project[] = [
   {
     id: 'hids-web',
     title: 'HIDS-Web',
-    tier: 'delivered',
-    status: 'in-progress',
+    tier: 'featured',
+    status: 'delivered',
     period: { start: null, end: null },
     summary: {
       fr: "Plateforme de surveillance d'hôte locale : surveille fichiers, dossiers et IPs, génère alertes et rapports pour détecter et gérer les incidents.",
