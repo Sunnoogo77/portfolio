@@ -11,8 +11,8 @@ import { Section } from '@/components/layout/Section';
  * colonne : aucune traduction n'existe pour « Domaine » et « Outils », et ce
  * n'est pas a la mise en page d'en inventer.
  *
- * En dessous de 768 pixels, chaque ligne devient un bloc : trois colonnes ne
- * tiennent pas dans 360 pixels sans debordement horizontal.
+ * En dessous de 1024 pixels, chaque ligne devient un bloc : trois colonnes ne
+ * tiennent pas sans ecraser la premiere, mesure faite a 768 pixels.
  */
 export function Skills() {
   const { language, t } = useLanguage();
@@ -23,19 +23,19 @@ export function Skills() {
       <p className="mesure mt-3 text-muted-foreground">{skillsIntro[language]}</p>
 
       <table className="mt-8 w-full border-collapse text-left">
-        <tbody className="block md:table-row-group">
+        <tbody className="block lg:table-row-group">
           {skillRows.map((row) => (
             <tr
               key={row.domain.fr}
-              className="block border-t border-border py-5 md:table-row md:py-0"
+              className="block border-t border-border py-5 lg:table-row lg:py-0"
             >
               <th
                 scope="row"
-                className="block pr-6 align-baseline text-base font-semibold md:table-cell md:w-[22%] md:py-5"
+                className="block pr-6 align-baseline text-base font-semibold lg:table-cell lg:w-[22%] lg:py-5"
               >
                 {row.domain[language]}
               </th>
-              <td className="block pt-2 align-baseline md:table-cell md:w-[40%] md:py-5 md:pr-6 md:pt-5">
+              <td className="block pt-2 align-baseline lg:table-cell lg:w-[40%] lg:py-5 lg:pr-6 lg:pt-5">
                 <ul className="flex flex-wrap gap-1.5">
                   {row.tools.map((tool) => (
                     <li key={tool} className="etiquette donnee">
@@ -44,8 +44,8 @@ export function Skills() {
                   ))}
                 </ul>
               </td>
-              <td className="block pt-2 align-baseline text-sm text-muted-foreground md:table-cell md:py-5 md:pt-5">
-                <span className="md:hidden">{t('skills.usedIn')} </span>
+              <td className="block pt-2 align-baseline text-sm text-muted-foreground lg:table-cell lg:py-5 lg:pt-5">
+                <span className="lg:hidden">{t('skills.usedIn')} </span>
                 {row.usedIn.map((id) => usedInLabel(id, language)).join(' · ')}
               </td>
             </tr>
