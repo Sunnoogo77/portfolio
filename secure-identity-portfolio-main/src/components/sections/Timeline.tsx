@@ -5,6 +5,7 @@ import { publicUrl, type TimelineEntry } from '@/data/types';
 import { getAssetPath } from '@/lib/assets';
 import { Section } from '@/components/layout/Section';
 import { Depliable, BoutonDeplier } from '@/components/ui/depliable';
+import { Logo } from '@/components/ui/logo';
 
 /**
  * Colonne de notes a gauche, en police monospace : periode, lieu, drapeau.
@@ -40,10 +41,10 @@ function Entree({ entry }: { entry: TimelineEntry }) {
           <img
             src={getAssetPath(entry.flag)}
             alt=""
-            width={24}
-            height={16}
+            width={30}
+            height={20}
             loading="lazy"
-            className="h-4 w-auto rounded-sm border border-border"
+            className="h-5 w-auto rounded-sm border border-border"
           />
         )}
       </div>
@@ -59,21 +60,7 @@ function Entree({ entry }: { entry: TimelineEntry }) {
               <p className="mt-1 text-sm text-muted-foreground">{entry.via}</p>
             )}
           </div>
-          {/* Plaque neutre provisoire : cinq de ces logos portent une encre
-              sombre sur fond transparent. Le traitement fichier par fichier
-              arrive au lot 5. */}
-          {entry.logo && (
-            <span className="shrink-0 rounded-[var(--radius)] border border-border bg-[hsl(var(--sur-accent))] p-1.5">
-              <img
-                src={getAssetPath(entry.logo)}
-                alt={entry.organisation}
-                width={88}
-                height={28}
-                loading="lazy"
-                className="h-7 w-[5.5rem] object-contain"
-              />
-            </span>
-          )}
+          <Logo chemin={entry.logo} nom={entry.organisation} />
         </div>
 
         <p className="mesure mt-3">{entry.summary[language]}</p>

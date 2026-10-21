@@ -38,24 +38,23 @@ function dateLisible(brute: string, lang: Lang): string {
 }
 
 /**
- * Les badges portent leur propre fond : ils sont poses sur la meme plaque
- * neutre que les logos du parcours, pour que les deux themes les rendent de
- * la meme facon. Une certification sans badge n'affiche ni trou ni cadre
- * vide.
+ * Les treize badges ont ete rendus sur les deux fonds : chacun porte son
+ * propre fond et reste lisible des deux cotes. La plaque blanche qui les
+ * entourait a donc disparu, et ils passent de 40 a 56 pixels. Un coin arrondi
+ * commun suffit a les tenir ensemble. Une certification sans badge n'affiche
+ * ni trou ni cadre vide.
  */
 function Badge({ cert }: { cert: Certification }) {
   if (!cert.badge) return null;
   return (
-    <span className="shrink-0 rounded-[var(--radius)] border border-border bg-[hsl(var(--sur-accent))] p-1">
-      <img
-        src={getAssetPath(cert.badge)}
-        alt=""
-        width={40}
-        height={40}
-        loading="lazy"
-        className="h-10 w-10 object-contain"
-      />
-    </span>
+    <img
+      src={getAssetPath(cert.badge)}
+      alt=""
+      width={56}
+      height={56}
+      loading="lazy"
+      className="badge-certif"
+    />
   );
 }
 

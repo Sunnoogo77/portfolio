@@ -379,6 +379,59 @@
   }
 
   /* ------------------------------------------------------------------
+     Logos d'etablissement
+     ------------------------------------------------------------------ */
+
+  /* Plus grands qu'avant, et sans plaque : 28 pixels de haut sur une plaque
+     blanche de 88 de large sont devenus 32 a 44 pixels, sur rien du tout. */
+  .logo-cadre {
+    flex-shrink: 0;
+  }
+
+  .logo {
+    display: block;
+    height: clamp(2rem, 3.5vw, 2.75rem);
+    width: auto;
+    max-width: clamp(6.5rem, 14vw, 10rem);
+    object-fit: contain;
+    object-position: right center;
+  }
+
+  /* Encre sombre sur fond transparent : illisible sur le theme sombre, posee
+     telle quelle sur le theme clair. L'inversion et la desaturation en font
+     une marque blanche nette, au lieu d'une plaque blanche sous un logo. */
+  .dark .logo-encre {
+    filter: invert(1) grayscale(1) brightness(1.35);
+  }
+
+  /* Variante dessinee pour le fond sombre : le choix se fait en CSS, donc
+     sans clignotement au chargement. */
+  .logo-sombre {
+    display: none;
+  }
+
+  .dark .logo-clair {
+    display: none;
+  }
+
+  .dark .logo-sombre {
+    display: block;
+  }
+
+  /* Les badges de certification portent chacun leur propre fond et restent
+     lisibles sur les deux themes : ils n'ont pas besoin de plaque non plus,
+     seulement d'un coin arrondi commun pour que les treize se tiennent. */
+  .badge-certif {
+    display: block;
+    height: clamp(2.75rem, 5vw, 3.5rem);
+    width: clamp(2.75rem, 5vw, 3.5rem);
+    flex-shrink: 0;
+    object-fit: contain;
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+
+  /* ------------------------------------------------------------------
      Visuels de projet
      ------------------------------------------------------------------ */
 
