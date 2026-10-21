@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { ChevronDown, ChevronUp, MapPin } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { timelineEntries } from '@/data/timeline';
+import { timelineEntries, formatPeriod } from '@/data/timeline';
+import { isCurrent } from '@/data/types';
+import { getAssetPath } from '@/lib/assets';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
@@ -26,6 +28,8 @@ export function Timeline() {
           {timelineEntries.map((entry, index) => {
             const isExpanded = expandedId === entry.id;
             const isEven = index % 2 === 0;
+            const current = isCurrent(entry);
+            const period = formatPeriod(entry.period, language);
 
             return (
               <div
@@ -41,9 +45,9 @@ export function Timeline() {
                   <div className="relative">
                     <div className={cn(
                       'h-4 w-4 rounded-full bg-primary',
-                      entry.isCurrent && 'animate-pulse-glow'
+                      current && 'animate-pulse-glow'
                     )} />
-                    {entry.isCurrent && (
+                    {current && (
                       <div className="absolute inset-0 rounded-full bg-primary animate-ping opacity-50" />
                     )}
                   </div>
@@ -55,11 +59,17 @@ export function Timeline() {
                   !isEven && 'order-2 justify-start pl-12 pr-0'
                 )}>
                   <div className="text-right">
-                    <span className="text-lg font-semibold text-primary">{entry.period}</span>
+                    <span className="text-lg font-semibold text-primary">{period}</span>
                     <div className="flex items-center gap-2 mt-1 text-sm text-muted-foreground">
                       <MapPin className="h-3.5 w-3.5" />
-                      <span>{entry.location}</span>
-                      <span className="text-lg">{entry.flag}</span>
+                      <span>{entry.location[language]}</span>
+                      {entry.flag && (
+                        <img
+                          src={getAssetPath(entry.flag)}
+                          alt=""
+                          className="h-3.5 w-5 rounded-sm object-cover"
+                        />
+                      )}
                     </div>
                   </div>
                 </div>
@@ -71,41 +81,53 @@ export function Timeline() {
                 )}>
                   {/* Mobile period */}
                   <div className="md:hidden mb-3">
-                    <span className="text-lg font-semibold text-primary">{entry.period}</span>
+                    <span className="text-lg font-semibold text-primary">{period}</span>
                     <div className="flex items-center gap-2 mt-1 text-sm text-muted-foreground">
                       <MapPin className="h-3.5 w-3.5" />
-                      <span>{entry.location}</span>
-                      <span className="text-lg">{entry.flag}</span>
+                      <span>{entry.location[language]}</span>
+                      {entry.flag && (
+                        <img
+                          src={getAssetPath(entry.flag)}
+                          alt=""
+                          className="h-3.5 w-5 rounded-sm object-cover"
+                        />
+                      )}
                     </div>
                   </div>
 
                   <Card className={cn(
                     'card-hover border-border bg-card/60 backdrop-blur-sm',
-                    entry.isCurrent && 'border-primary/30'
+                    current && 'border-primary/30'
                   )}>
                     <CardContent className="p-6">
                       <div className="flex items-start justify-between gap-4">
                         <div className="flex-1">
-                          <h3 className="text-lg font-bold">{entry.title[language]}</h3>
+                          <h3 className="text-lg font-bold">{entry.organisation}</h3>
                           <Badge variant="secondary" className="mt-2 text-xs">
-                            {entry.subtitle[language]}
+                            {entry.role[language]}
                           </Badge>
+                          {entry.via && (
+                            <p className="mt-2 text-xs text-muted-foreground">{entry.via}</p>
+                          )}
                         </div>
-                        {/* Logo placeholder */}
-                        <div className="shrink-0 w-12 h-12 rounded-lg bg-muted flex items-center justify-center">
-                          <span className="text-2xl">{entry.flag}</span>
-                        </div>
+                        {entry.logo && (
+                          <div className="shrink-0 w-12 h-12 rounded-lg bg-muted flex items-center justify-center overflow-hidden">
+                            <img
+                              src={getAssetPath(entry.logo)}
+                              alt={entry.organisation}
+                              className="w-full h-full object-contain p-1"
+                            />
+                          </div>
+                        )}
                       </div>
 
                       <p className="mt-4 text-sm text-muted-foreground">
-                        {entry.description[language]}
+                        {entry.summary[language]}
                       </p>
 
                       {isExpanded && (
                         <div className="mt-4 pt-4 border-t border-border animate-fade-in">
-                          <h4 className="font-semibold mb-2">
-                            {language === 'fr' ? 'Points clés' : 'Highlights'}
-                          </h4>
+                          <h4 className="font-semibold mb-2">{t('timeline.highlights')}</h4>
                           <ul className="space-y-1 text-sm text-muted-foreground">
                             {entry.highlights[language].map((highlight, i) => (
                               <li key={i} className="flex items-start gap-2">
@@ -114,6 +136,18 @@ export function Timeline() {
                               </li>
                             ))}
                           </ul>
+
+                          {entry.outcomes && entry.outcomes.length > 0 && (
+                            <ul className="mt-4 space-y-1 text-sm text-muted-foreground">
+                              {entry.outcomes.map((outcome, i) => (
+                                <li key={i}>
+                                  <span className="font-semibold text-foreground">{outcome.value}</span>{' '}
+                                  {outcome.unit[language]}
+                                  {outcome.qualifier ? `, ${outcome.qualifier[language]}` : ''}
+                                </li>
+                              ))}
+                            </ul>
+                          )}
                         </div>
                       )}
 

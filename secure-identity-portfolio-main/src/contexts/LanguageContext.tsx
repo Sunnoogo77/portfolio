@@ -74,8 +74,9 @@ const translations: Record<Language, Record<string, string>> = {
     'projects.showLess': 'Voir moins',
     
     // Timeline
-    'timeline.title': 'Parcours académique',
-    'timeline.learnMore': 'En savoir plus →',
+    'timeline.title': 'Parcours',
+    'timeline.learnMore': 'En savoir plus',
+    'timeline.highlights': 'Points clés',
     
     // Certifications
     'certifications.title': 'Licences & Certifications',
@@ -175,8 +176,9 @@ const translations: Record<Language, Record<string, string>> = {
     'projects.showLess': 'Show less',
     
     // Timeline
-    'timeline.title': 'Academic Journey',
-    'timeline.learnMore': 'Learn more →',
+    'timeline.title': 'Journey',
+    'timeline.learnMore': 'Learn more',
+    'timeline.highlights': 'Highlights',
     
     // Certifications
     'certifications.title': 'Licenses & Certifications',
