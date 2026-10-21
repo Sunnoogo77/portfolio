@@ -354,6 +354,13 @@
     grid-template-rows: 1fr;
   }
 
+  /* Le bloc recoit le focus a l'ouverture au clavier, mais il n'est pas un
+     element interactif : pas de contour sur lui, le contour revient a ce que
+     la tabulation atteint ensuite. */
+  .depliable:focus {
+    outline: none;
+  }
+
   .depliable-contenu {
     overflow: hidden;
     min-height: 0;

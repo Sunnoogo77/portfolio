@@ -252,3 +252,54 @@ vingt millisecondes. Elle est declenchee par le visiteur, jamais par la page.
 Le point 8 est precise, non amende : les logos d'etablissement ne sont plus
 poses sur une plaque blanche. Le traitement est decide fichier par fichier dans
 `src/lib/logos.ts`, et chacun est verifie sur les deux themes.
+
+## 11. Verification mesuree du 21 octobre 2026
+
+Mesures faites sur le site CONSTRUIT, servi sous `/portfolio/`, pilote par
+Playwright installe sans etre versionne. Six largeurs, 360, 390, 768, 1024,
+1280 et 1920, deux themes, deux langues, les deux pages, dans les deux etats
+« tout replie » et « tout deplie » : **96 configurations, zero echec**.
+
+Ce qui est verifie a chaque configuration :
+
+- debordement horizontal du document et de chaque element ;
+- texte tronque : tout element dont le contenu deborde d'une boite qui le
+  rogne ;
+- chevauchement de deux blocs de texte ;
+- contraste reel de chaque texte sur son fond effectif, alphas composes de
+  haut en bas ;
+- contraste des libelles de l'ile, mesure sur l'image et non dans le document,
+  puisque son fond depend du contenu qui passe dessous, flou compris. La
+  methode : une capture de l'ile, textes rendus transparents, puis lecture des
+  pixels sous chaque libelle ;
+- erreurs de console, erreurs de page et reponses HTTP en echec ;
+- images effectivement chargees, en distinguant une image en chargement
+  differe d'une image en echec ;
+- contenu reellement rendu, et non seulement une reponse 200.
+
+Resultats :
+
+```
+contraste minimum, document          5,44  theme sombre
+                                     5,64  theme clair
+contraste minimum, sous l'ile        5,13  theme clair, 1024 px
+debordements                            0
+textes tronques                         0
+chevauchements                          0
+erreurs de console                      0
+requetes en echec                       0
+```
+
+Verifications de comportement, separees :
+
+- l'ile mesure 240 pixels sur une fenetre de 390 et 704 sur 1280 : jamais
+  toute la largeur ;
+- en descendant, elle se retracte de 58 a 46 pixels puis s'efface ; en
+  remontant, elle revient ;
+- sous `prefers-reduced-motion`, elle reste a 58 pixels, visible, sans
+  transformation, et les blocs replies s'ouvrent quand meme ;
+- un bloc replie ne contient aucun element atteignable au clavier et porte
+  `aria-hidden` ; ouvert, il perd `aria-hidden`, et l'ouverture au clavier pose
+  le focus dessus pour que la tabulation entre dans son contenu ;
+- les six blocs a apparition sont tous visibles apres un defilement complet,
+  sur les quatre largeurs testees et sur les deux pages.

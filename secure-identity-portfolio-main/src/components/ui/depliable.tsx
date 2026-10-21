@@ -1,4 +1,4 @@
-import { useEffect, useState, type ReactNode } from 'react';
+import { useEffect, useState, type MouseEvent, type ReactNode } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -50,6 +50,9 @@ export function Depliable({
   return (
     <div
       id={id}
+      // Le bloc est atteignable au clavier une fois ouvert : le bouton y
+      // envoie le focus, et la tabulation continue ensuite dans son contenu.
+      tabIndex={ouvert ? -1 : undefined}
       className={cn('depliable', deploye && 'depliable-ouvert', className)}
       aria-hidden={ouvert ? undefined : true}
     >
@@ -62,6 +65,13 @@ export function Depliable({
  * Bouton qui commande un `Depliable`. Il porte toujours `aria-expanded` et
  * `aria-controls` : c'est ce couple qui fait annoncer l'etat du bloc, et son
  * absence est la premiere facon de rendre un depliage inutilisable au clavier.
+ *
+ * Le bloc commande precede le bouton dans le document, parce que le bouton se
+ * lit sous le contenu qu'il prolonge. La tabulation vers l'avant passerait
+ * donc a cote de ce qui vient de s'ouvrir. A l'ouverture au clavier, et
+ * seulement au clavier, le focus est donc pose sur le bloc : la tabulation
+ * entre ensuite naturellement dans son contenu. A la souris, rien ne bouge,
+ * un deplacement de focus non demande etant lui-meme une gene.
  */
 export function BoutonDeplier({
   cible,
@@ -78,10 +88,21 @@ export function BoutonDeplier({
   libelleFermer: string;
   className?: string;
 }) {
+  const surClic = (e: MouseEvent<HTMLButtonElement>) => {
+    // `detail` vaut zero quand l'activation vient d'Entree ou d'Espace.
+    const auClavier = e.detail === 0;
+    onBascule();
+    if (!ouvert && auClavier) {
+      requestAnimationFrame(() => {
+        document.getElementById(cible)?.focus({ preventScroll: true });
+      });
+    }
+  };
+
   return (
     <button
       type="button"
-      onClick={onBascule}
+      onClick={surClic}
       aria-expanded={ouvert}
       aria-controls={cible}
       className={cn('bouton-deplier', className)}
