@@ -24,8 +24,8 @@ export const timelineEntries: TimelineEntry[] = [
     location: { fr: 'À distance', en: 'Remote' },
     logo: '/img/logos/hec.png',
     summary: {
-      fr: 'Programme en ligne. Certificat visé en avril 2027.',
-      en: 'Online programme. Certificate targeted for April 2027.',
+      fr: "Finance d'entreprise appliquée, pour porter les décisions d'investissement et de financement d'une jeune entreprise. Certificat visé en avril 2027.",
+      en: 'Applied corporate finance, to carry the investment and financing decisions of an early-stage company. Certificate targeted for April 2027.',
     },
     highlights: { fr: [], en: [] },
   },
@@ -42,8 +42,8 @@ export const timelineEntries: TimelineEntry[] = [
     logo: '/img/logos/uspn.png',
     flag: '/img/flags/fr.svg',
     summary: {
-      fr: 'Inscription en cours de finalisation.',
-      en: 'Registration being finalised.',
+      fr: "Admis au statut national d'étudiant-entrepreneur, qui accompagne la création d'entreprise pendant les études. Formalités administratives en cours.",
+      en: 'Admitted to the French national student-entrepreneur status, which supports founding a company alongside one\'s studies. Administrative formalities under way.',
     },
     highlights: { fr: [], en: [] },
   },
@@ -71,12 +71,15 @@ export const timelineEntries: TimelineEntry[] = [
     },
   },
   {
-    id: 'soleil-resources',
+    id: 'safir-consulting',
     kind: 'experience',
-    period: { start: '2026-06', end: '2026-07' },
-    organisation: 'Soleil Resources',
-    via: 'Mission réalisée depuis SAFIR Consulting',
-    role: { fr: 'Consultant sécurité', en: 'Security consultant' },
+    period: { start: '2026-07', end: '2026-09' },
+    organisation: 'SAFIR Consulting SARL',
+    via: 'Cabinet de conseil, intégrateur SAP partenaire',
+    role: {
+      fr: 'Stagiaire ingénieur, académie SAP',
+      en: 'Engineering intern, SAP academy',
+    },
     location: {
       fr: 'Ouagadougou, Burkina Faso',
       en: 'Ouagadougou, Burkina Faso',
@@ -84,20 +87,49 @@ export const timelineEntries: TimelineEntry[] = [
     flag: '/img/flags/bf.svg',
     logo: '/img/logos/safir.png',
     summary: {
-      fr: "Mission chez un opérateur minier : supervision Wazuh, règles de détection et durcissement de l'annuaire.",
-      en: 'Assignment at a mining operator: Wazuh monitoring, detection rules and directory hardening.',
+      fr: "Académie SAP encadrée par une PMO et un Product Owner : comprendre les processus métier d'une entreprise et leur traduction dans son système d'information.",
+      en: 'SAP academy led by a PMO and a Product Owner: understanding a company\'s business processes and how they translate into its information system.',
     },
     highlights: {
       fr: [
-        "Déploiement d'une plateforme Wazuh tout-en-un sur une machine dédiée, réunissant serveur, indexeur et tableau de bord, après une étude comparative et un dimensionnement initial sur trois machines. Montée de la version 4.12 à la 4.14.6, dans un réseau virtuel d'administration isolé.",
-        "Dix-sept règles de détection écrites, dont treize validées par test réel sur les contrôleurs de domaine. Collecte Sysmon, PowerShell et journaux Windows, surveillance d'intégrité sur quatre chemins et cinq clés de registre, alerte par courriel authentifié avec seuil de gravité. Les règles non testées ont été signalées comme telles, et la documentation d'exploitation remise à l'équipe.",
-        "Durcissement de l'annuaire avec l'équipe interne : signature LDAP et liaison de canal, NTLM restreint par exceptions, SMBv1 désactivé, protection du processus d'authentification, LAPS, extinction de LLMNR et de PowerShell v2. Audit des certificats et de l'autorité interne, remédiation du Kerberoasting.",
+        "Formation, études de cas et travaux pratiques sur les processus métier de bout en bout d'une entreprise.",
+        "Cycle de vie d'un projet d'implémentation SAP suivi de bout en bout, de l'expression du besoin client jusqu'au démarrage en production et à la phase de stabilisation.",
+        'Liens établis entre processus financiers, achats, logistique et opérations, et leur traduction dans le système d\'information, dans un contexte de projet réel.',
+      ],
+      en: [
+        'Training, case studies and hands-on work on a company\'s end-to-end business processes.',
+        'Followed the full life cycle of an SAP implementation project, from gathering the client requirement through to go-live and the stabilisation phase that follows.',
+        'Connected financial, procurement, logistics and operations processes to the way they are expressed in the information system, within a real project.',
+      ],
+    },
+  },
+  {
+    id: 'soleil-resources',
+    kind: 'experience',
+    period: { start: '2026-06', end: '2026-07' },
+    organisation: 'Soleil Resources',
+    via: 'Mission obtenue par SAFIR Consulting',
+    role: { fr: 'Consultant sécurité', en: 'Security consultant' },
+    location: {
+      fr: 'Ouagadougou, Burkina Faso',
+      en: 'Ouagadougou, Burkina Faso',
+    },
+    flag: '/img/flags/bf.svg',
+    summary: {
+      fr: "Mise en place d'un centre opérationnel de sécurité chez un opérateur minier, de l'étude au transfert à l'équipe interne.",
+      en: 'Built a security operations centre at a mining operator, from the initial study through to handover to the internal team.',
+    },
+    highlights: {
+      fr: [
+        "Choix et mise en place de la plateforme de supervision après une étude comparative et un dimensionnement, puis exploitation dans un réseau d'administration isolé.",
+        "Dix-sept règles de détection écrites, dont treize validées par test réel. Les règles non testées ont été signalées comme telles, et la documentation d'exploitation remise à l'équipe interne.",
+        "Travaux de durcissement de l'annuaire conduits avec l'équipe interne, puis transfert de compétences pour qu'elle en garde la maîtrise.",
         'En parallèle, accompagnement des équipes métier au démarrage en production de SAP S/4HANA Cloud.',
       ],
       en: [
-        'Deployed an all-in-one Wazuh platform on a dedicated host, bringing together the server, the indexer and the dashboard, after a comparative study and an initial sizing across three machines. Upgraded from version 4.12 to 4.14.6, inside an isolated management virtual network.',
-        'Seventeen detection rules written, thirteen of them validated by live testing on the domain controllers. Sysmon, PowerShell and Windows event log collection, integrity monitoring on four paths and five registry keys, authenticated email alerting with a severity threshold. The untested rules were flagged as such, and the operating documentation was handed over to the team.',
-        'Directory hardening with the internal team: LDAP signing and channel binding, NTLM restricted through exceptions, SMBv1 disabled, protection of the authentication process, LAPS, LLMNR and PowerShell v2 switched off. Audit of the certificates and of the internal certificate authority, Kerberoasting remediation.',
+        'Selected and set up the monitoring platform after a comparative study and a sizing exercise, then ran it inside an isolated management network.',
+        'Seventeen detection rules written, thirteen of them validated by live testing. The untested rules were flagged as such, and the operating documentation was handed over to the internal team.',
+        'Directory hardening carried out together with the internal team, followed by a handover so that the team retains full ownership.',
         'In parallel, supported the business teams through the SAP S/4HANA Cloud go-live.',
       ],
     },
@@ -114,10 +146,6 @@ export const timelineEntries: TimelineEntry[] = [
         unit: {
           fr: 'règles validées par test réel',
           en: 'rules validated by live testing',
-        },
-        qualifier: {
-          fr: 'sur les contrôleurs de domaine',
-          en: 'on the domain controllers',
         },
       },
     ],

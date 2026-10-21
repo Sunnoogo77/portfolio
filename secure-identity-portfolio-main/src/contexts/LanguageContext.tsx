@@ -35,7 +35,7 @@ const translations: Record<Language, Record<string, string>> = {
     // About
     'about.title': 'À propos',
     'about.p1': "Ingénieur sécurité et cloud, je suis diplômé de l'EFREI Paris en systèmes, réseaux, cloud et cybersécurité, cursus achevé en 2026 et jury de délibération en novembre. Je dirige aujourd'hui Impulsera, startup née de mon projet de fin d'études et incubée à l'EFREI, dont j'assure la responsabilité technique.",
-    'about.p2': "En 2026, à Ouagadougou, j'ai mené une mission de consultant sécurité chez l'opérateur minier Soleil Resources, depuis SAFIR Consulting : déploiement d'une plateforme Wazuh, dix-sept règles de détection écrites dont treize validées par test réel sur les contrôleurs de domaine, et durcissement de l'annuaire avec l'équipe interne. Auparavant, chez Ecobank Ghana, j'ai travaillé la sécurité du poste de travail sous Intune et Defender et la surveillance de journaux sous Microsoft Sentinel.",
+    'about.p2': "En 2026, à Ouagadougou, j'ai mis en place un centre opérationnel de sécurité chez l'opérateur minier Soleil Resources, de l'étude au transfert à l'équipe interne : dix-sept règles de détection écrites, dont treize validées par test réel. Auparavant, chez Ecobank Ghana, j'ai travaillé la sécurité du poste de travail sous Intune et Defender et la surveillance de journaux sous Microsoft Sentinel.",
     'about.p3': "Mon parcours est international : classes préparatoires MPSI puis MP* à l'INP-HB en Côte d'Ivoire, semestre d'échange à l'University of Staffordshire au Royaume-Uni, stage en cybersécurité bancaire à Accra et mission de 2026 à Ouagadougou. Je m'oriente vers la sécurité du cloud Azure, que je prépare par les certifications AZ-104 et SC-500.",
 
     // Langues
@@ -127,7 +127,7 @@ const translations: Record<Language, Record<string, string>> = {
     // About
     'about.title': 'About',
     'about.p1': "A security and cloud engineer, I hold the Diplôme d'ingénieur from EFREI Paris in systems, networks, cloud and cybersecurity, course completed in 2026 with the board of examiners sitting in November. I now run Impulsera, a startup born out of my final-year project and incubated at EFREI, where I am the technical lead.",
-    'about.p2': "In 2026, in Ouagadougou, I carried out a security consulting assignment at the mining operator Soleil Resources, from SAFIR Consulting: deployment of a Wazuh platform, seventeen detection rules written, thirteen of them validated by live testing on the domain controllers, and directory hardening with the internal team. Before that, at Ecobank Ghana, I worked on endpoint security with Intune and Defender and on log monitoring in Microsoft Sentinel.",
+    'about.p2': "In 2026, in Ouagadougou, I built a security operations centre at the mining operator Soleil Resources, from the initial study through to handover to the internal team: seventeen detection rules written, thirteen of them validated by live testing. Before that, at Ecobank Ghana, I worked on endpoint security with Intune and Defender and on log monitoring in Microsoft Sentinel.",
     'about.p3': "My path is international: MPSI then MP* preparatory classes at INP-HB in Côte d'Ivoire, an exchange semester at the University of Staffordshire in the United Kingdom, a banking cybersecurity internship in Accra and the 2026 assignment in Ouagadougou. I am moving towards Azure cloud security, which I am preparing through the AZ-104 and SC-500 certifications.",
 
     // Languages

@@ -34,7 +34,7 @@ export const skillRows: SkillRow[] = [
       fr: 'Annuaire, identités et accès',
       en: 'Directory, identity and access',
     },
-    tools: ['Active Directory', 'GPO', 'FGPP', 'LAPS', 'MFA', 'TOTP'],
+    tools: ['Active Directory', 'GPO', 'FGPP', 'MFA', 'TOTP'],
     usedIn: ['enterprise-ad', 'soleil-resources', 'ecobank', 'mfa'],
   },
   {
