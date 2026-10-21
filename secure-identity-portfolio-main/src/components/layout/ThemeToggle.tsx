@@ -34,8 +34,9 @@ export function ThemeToggle() {
 
   return (
     <Button
-      variant="outline"
+      variant="ghost"
       size="icon"
+      className="h-9 w-9 rounded-full"
       onClick={toggleTheme}
       aria-label={theme === 'dark' ? t('theme.light') : t('theme.dark')}
     >

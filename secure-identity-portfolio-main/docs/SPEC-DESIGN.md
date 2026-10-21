@@ -222,3 +222,33 @@ Cinq faits, pas davantage, et sans occuper toute la hauteur de la fenêtre :
 Le bandeau d'accueil occupe aujourd'hui un plein écran pour afficher ces cinq
 informations, entourées de quatre couches décoratives. Il doit tenir en deux
 tiers de hauteur au maximum, sans `min-h-screen`.
+
+## 10. Amendements du 21 octobre 2026, deuxieme passe
+
+La premiere passe a produit une page juste mais plate. Le proprietaire demande
+de la hierarchie et du mouvement, sans revenir sur la sobriete. Les interdits
+du point 2 restent entiers : aucune lueur, aucun degrade, aucune ombre portee,
+aucune animation infinie, aucune cascade de delais.
+
+Trois points du document sont amendes, et seulement ces trois.
+
+**a. Le flou de la barre du haut.** Le point 2 interdit `backdrop-blur` « sur
+un fond opaque, c'est-a-dire partout ici ». La barre devient une ile flottante
+posee au-dessus du contenu : il y a desormais reellement quelque chose derriere
+elle, et le flou y est autorise, a cet endroit et nulle part ailleurs. Le fond
+reste translucide a 0,88, valeur calculee et non choisie : dans le pire des cas
+composes, le texte de l'ile reste au-dessus de 4,5 dans les deux themes.
+
+**b. L'apparition des blocs.** Le point 7 n'autorisait qu'une variation
+d'opacite. L'apparition conserve ses deux cents millisecondes, sans delai et
+sans cascade, mais s'accompagne d'une translation de six pixels. C'est un
+deplacement, pas un effet, et il s'arrete entierement sous
+`prefers-reduced-motion`.
+
+**c. Les dependances des dossiers deplies.** Le point 7 parlait d'une seule
+animation. S'y ajoute l'ouverture des blocs replies, en hauteur, sur deux cent
+vingt millisecondes. Elle est declenchee par le visiteur, jamais par la page.
+
+Le point 8 est precise, non amende : les logos d'etablissement ne sont plus
+poses sur une plaque blanche. Le traitement est decide fichier par fichier dans
+`src/lib/logos.ts`, et chacun est verifie sur les deux themes.

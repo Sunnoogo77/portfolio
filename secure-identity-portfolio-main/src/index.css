@@ -123,10 +123,10 @@
     height: auto;
   }
 
-  /* L'en-tete fixe ne doit pas recouvrir le titre d'une section atteinte
-     par un lien d'ancre. */
+  /* L'ile flottante ne doit pas recouvrir le titre d'une section atteinte
+     par un lien d'ancre. Hauteur de l'ile deployee plus sa marge haute. */
   section[id] {
-    scroll-margin-top: 5rem;
+    scroll-margin-top: 6rem;
   }
 }
 
@@ -222,6 +222,104 @@
     background-color: hsl(var(--surface-2));
     color: hsl(var(--texte));
     padding: 0.1rem 0.4rem;
+  }
+}
+
+@layer components {
+  /* ------------------------------------------------------------------
+     Barre du haut : une ile flottante, jamais une bande pleine largeur.
+     ------------------------------------------------------------------ */
+
+  /* La zone est pleine largeur et transparente aux clics ; seule l'ile qu'elle
+     centre recoit les evenements. C'est ce qui permet de la detacher des bords
+     sans bloquer le contenu qui passe dessous. */
+  .barre-zone {
+    position: fixed;
+    inset-inline: 0;
+    top: 0;
+    z-index: 50;
+    display: flex;
+    justify-content: center;
+    padding: calc(env(safe-area-inset-top, 0px) + 0.5rem) var(--marge) 0;
+    pointer-events: none;
+  }
+
+  .barre {
+    pointer-events: auto;
+    /* Largeur calee sur le contenu, jamais sur la fenetre. */
+    width: max-content;
+    max-width: 100%;
+    border: 1px solid hsl(var(--bord));
+    border-radius: 1.25rem;
+    /* Le seul flou du site, et le seul fond translucide : il y a reellement
+       du contenu qui passe dessous. L'alpha est calcule, voir Header.tsx. */
+    background-color: hsl(var(--fond) / 0.88);
+    -webkit-backdrop-filter: blur(18px);
+    backdrop-filter: blur(18px);
+    transition:
+      transform 280ms cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 180ms ease-out,
+      border-radius 220ms ease-out;
+  }
+
+  .barre-rangee {
+    display: flex;
+    height: 3.5rem;
+    align-items: center;
+    gap: clamp(0.75rem, 2vw, 2rem);
+    padding-inline: 0.75rem;
+    transition: height 220ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  /* Ile compacte : la barre se retracte des que la page quitte le haut. */
+  .barre-compacte {
+    border-radius: 1.75rem;
+  }
+
+  .barre-compacte .barre-rangee {
+    height: 2.75rem;
+  }
+
+  /* Effacee en descendant, de retour des qu'on remonte. */
+  .barre-effacee {
+    transform: translateY(calc(-100% - 1rem));
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .barre-onglet {
+    border-radius: 999px;
+    padding: 0.4rem 0.7rem;
+    font-size: 0.875rem;
+    color: hsl(var(--texte-doux));
+    transition: color 150ms ease-out, background-color 150ms ease-out;
+  }
+
+  .barre-onglet:hover {
+    color: hsl(var(--texte));
+  }
+
+  .barre-onglet-actif,
+  .barre-onglet-actif:hover {
+    color: hsl(var(--accent));
+    background-color: hsl(var(--accent) / 0.12);
+  }
+
+  /* Le menu du telephone deploie l'ile vers le bas : c'est le meme objet qui
+     change de taille, pas un panneau separe. */
+  .barre-menu {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 220ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .barre-menu-ouvert {
+    grid-template-rows: 1fr;
+  }
+
+  .barre-menu-contenu {
+    overflow: hidden;
+    min-height: 0;
   }
 }
 

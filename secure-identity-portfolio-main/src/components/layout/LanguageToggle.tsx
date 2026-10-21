@@ -10,10 +10,10 @@ export function LanguageToggle() {
 
   return (
     <Button
-      variant="outline"
+      variant="ghost"
       size="sm"
       onClick={toggleLanguage}
-      className="px-3 uppercase tracking-wide"
+      className="h-9 rounded-full px-3 text-xs uppercase tracking-wide"
       aria-label={language === 'fr' ? 'Switch to English' : 'Passer en français'}
     >
       {language === 'fr' ? 'EN' : 'FR'}
