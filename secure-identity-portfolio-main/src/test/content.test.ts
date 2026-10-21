@@ -5,9 +5,9 @@ import { describe, it, expect } from 'vitest';
 import { projects } from '@/data/projects';
 import { timelineEntries } from '@/data/timeline';
 import { certifications } from '@/data/certifications';
-import { skillRows } from '@/data/skills';
+import { skillRows, usedInLabel } from '@/data/skills';
 import { availability } from '@/data/availability';
-import { isCurrent, type Evidence } from '@/data/types';
+import { isCurrent, texte, type Evidence, type Lang } from '@/data/types';
 
 const publicDir = path.resolve(__dirname, '../../public');
 
@@ -181,5 +181,44 @@ describe('disponibilite', () => {
         `l'ancien badge annoncer un stage neuf mois apres coup. Relisez le texte, ` +
         `le CV servi et les dates, puis remettez availability.updatedOn a jour.`
     ).toBeLessThanOrEqual(90);
+  });
+});
+
+/**
+ * Le typage du projet est permissif : `strict` est a false et `tsc` laisse
+ * donc passer un objet la ou une chaine est attendue. Le defaut ne se voit
+ * qu'a l'ecran, sous la forme d'un « [object Object] ». Ces deux tests le
+ * rattrapent a la place du compilateur.
+ */
+describe('les titres', () => {
+  const langues: Lang[] = ['fr', 'en'];
+
+  it('ont une version non vide dans les deux langues quand ils sont bilingues', () => {
+    const fautifs = projects
+      .filter((p) => typeof p.title !== 'string')
+      .filter((p) => langues.some((l) => !texte(p.title, l).trim()))
+      .map((p) => p.id);
+
+    expect(fautifs, `Titres bilingues incomplets : ${fautifs.join(', ')}`).toEqual([]);
+  });
+
+  it('se resolvent toujours en chaine dans la colonne de rattachement', () => {
+    const fautifs: string[] = [];
+    for (const ligne of skillRows) {
+      for (const id of ligne.usedIn) {
+        for (const l of langues) {
+          const valeur = usedInLabel(id, l);
+          if (typeof valeur !== 'string' || !valeur.trim()) {
+            fautifs.push(`${id} (${l})`);
+          }
+        }
+      }
+    }
+
+    expect(
+      fautifs,
+      `Rattachements qui ne produisent pas de texte : ${fautifs.join(', ')}. ` +
+        `Un titre bilingue doit etre resolu par texte() avant d'etre affiche.`
+    ).toEqual([]);
   });
 });

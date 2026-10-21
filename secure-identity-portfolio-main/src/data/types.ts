@@ -74,7 +74,13 @@ export type Tier = 'featured' | 'delivered' | 'planned';
 
 export interface Project {
   id: string;
-  title: string;
+  /**
+   * Chaine simple pour un nom propre, qui ne se traduit pas : WebHawk,
+   * VaultRoom, Impulsera. Paire bilingue pour une formulation descriptive,
+   * sans quoi la version anglaise affiche un titre francais au-dessus d'une
+   * description traduite.
+   */
+  title: string | I18n;
   tier: Tier;
   status: Status;
   period: Period;
@@ -171,5 +177,9 @@ export const isCurrent = (e: { period: Period }): boolean =>
  * preuve n'est pas publique, ce qui force le rendu a afficher un libelle
  * non cliquable au lieu d'un lien mort.
  */
+/** Resout une valeur qui peut etre monolingue ou bilingue. */
+export const texte = (v: string | I18n, lang: Lang): string =>
+  typeof v === 'string' ? v : v[lang];
+
 export const publicUrl = (e?: Evidence): string | null =>
   e && e.visibility === 'public' && e.url ? e.url : null;

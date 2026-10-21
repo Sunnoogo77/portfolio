@@ -122,7 +122,7 @@ export const projects: Project[] = [
   },
   {
     id: 'secure-network',
-    title: 'Architecture réseau sécurisée multi-sites',
+    title: { fr: 'Architecture réseau sécurisée multi-sites', en: 'Secure multi-site network architecture' },
     tier: 'featured',
     status: 'delivered',
     period: { start: null, end: null },
@@ -162,7 +162,7 @@ export const projects: Project[] = [
   // ------------------------------------------------------------------
   {
     id: 'enterprise-ad',
-    title: 'Infrastructure Active Directory Entreprise',
+    title: { fr: 'Infrastructure Active Directory Entreprise', en: 'Enterprise Active Directory infrastructure' },
     tier: 'delivered',
     status: 'paused',
     period: { start: null, end: null },
@@ -216,7 +216,7 @@ export const projects: Project[] = [
   },
   {
     id: 'debian-hardening',
-    title: 'Hardening Debian pour Moodle',
+    title: { fr: 'Hardening Debian pour Moodle', en: 'Debian hardening for a Moodle server' },
     tier: 'delivered',
     status: 'delivered',
     period: { start: null, end: null },
@@ -306,7 +306,7 @@ export const projects: Project[] = [
   },
   {
     id: 'crypto-web',
-    title: 'Mini Cryptographie Web',
+    title: { fr: 'Mini Cryptographie Web', en: 'Web cryptography mini-project' },
     tier: 'delivered',
     status: 'delivered',
     period: { start: null, end: null },
@@ -324,7 +324,7 @@ export const projects: Project[] = [
   },
   {
     id: 'password-cracking',
-    title: 'Password Cracking (outil + rapport)',
+    title: { fr: 'Password Cracking (outil + rapport)', en: 'Password cracking: tool and report' },
     tier: 'delivered',
     status: 'delivered',
     period: { start: null, end: null },
@@ -382,7 +382,7 @@ export const projects: Project[] = [
   },
   {
     id: 'securecloudlab',
-    title: 'Environnement cloud sécurisé sur AWS (SecureCloudLab)',
+    title: { fr: 'Environnement cloud sécurisé sur AWS (SecureCloudLab)', en: 'Secure AWS cloud environment (SecureCloudLab)' },
     tier: 'planned',
     status: 'planned',
     period: { start: null, end: null },
@@ -396,7 +396,7 @@ export const projects: Project[] = [
   },
   {
     id: 'pki-iac',
-    title: 'Infrastructure PKI, IAM et gestion IT intégrée',
+    title: { fr: 'Infrastructure PKI, IAM et gestion IT intégrée', en: 'PKI, IAM and integrated IT management' },
     tier: 'planned',
     status: 'planned',
     period: { start: null, end: null },
@@ -410,7 +410,7 @@ export const projects: Project[] = [
   },
   {
     id: 'aws-secrets',
-    title: 'Monitoring des accès aux secrets AWS',
+    title: { fr: 'Monitoring des accès aux secrets AWS', en: 'Monitoring access to AWS secrets' },
     tier: 'planned',
     status: 'planned',
     period: { start: null, end: null },
@@ -424,7 +424,7 @@ export const projects: Project[] = [
   },
   {
     id: 'azure-aer',
-    title: 'Sécurisation Azure Active Directory (AER)',
+    title: { fr: 'Sécurisation Azure Active Directory (AER)', en: 'Securing Azure Active Directory (AER)' },
     tier: 'planned',
     status: 'planned',
     period: { start: null, end: null },
@@ -438,7 +438,7 @@ export const projects: Project[] = [
   },
   {
     id: 'phishing-sim',
-    title: "Déploiement d'un simulateur de phishing pour formation interne",
+    title: { fr: "Déploiement d'un simulateur de phishing pour formation interne", en: 'Phishing simulator for internal awareness training' },
     tier: 'planned',
     status: 'planned',
     period: { start: null, end: null },
@@ -459,7 +459,7 @@ export const projects: Project[] = [
   },
   {
     id: 'glpi-ticketing',
-    title: "Déploiement sécurisé d'un système de ticketing IT",
+    title: { fr: "Déploiement sécurisé d'un système de ticketing IT", en: 'Secure deployment of an IT ticketing system' },
     tier: 'planned',
     status: 'planned',
     period: { start: null, end: null },
@@ -543,7 +543,7 @@ export const projects: Project[] = [
   },
   {
     id: 'splunk-siem',
-    title: "Déploiement d'un SIEM avec Splunk pour détection d'incidents",
+    title: { fr: "Déploiement d'un SIEM avec Splunk pour détection d'incidents", en: 'SIEM deployment with Splunk for incident detection' },
     tier: 'planned',
     status: 'planned',
     period: { start: null, end: null },

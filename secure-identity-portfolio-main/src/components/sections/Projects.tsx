@@ -2,7 +2,7 @@ import { ExternalLink } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { getProjectsByTier } from '@/data/projects';
 import { formatPeriod } from '@/data/timeline';
-import { publicUrl, type Evidence, type Project } from '@/data/types';
+import { publicUrl, texte, type Evidence, type Project } from '@/data/types';
 import { Section } from '@/components/layout/Section';
 import { classeStatut, libelleStatut } from './statut';
 import { cn } from '@/lib/utils';
@@ -84,7 +84,7 @@ function ProjetEnAvant({ project }: { project: Project }) {
       </div>
 
       <div>
-        <h3>{project.title}</h3>
+        <h3>{texte(project.title, language)}</h3>
         {project.context && (
           <p className="mt-1 text-sm text-muted-foreground">
             {project.context[language]}
@@ -124,7 +124,7 @@ function ProjetRealise({ project }: { project: Project }) {
   return (
     <article className="carte flex flex-col p-5">
       <div className="flex items-start justify-between gap-3">
-        <h3 className="min-w-0">{project.title}</h3>
+        <h3 className="min-w-0">{texte(project.title, language)}</h3>
         <Statut project={project} />
       </div>
 
@@ -171,7 +171,7 @@ export function Projects() {
         <ul className="mt-4 grid gap-x-8 gap-y-1.5 sm:grid-cols-2 xl:grid-cols-3">
           {prepares.map((project) => (
             <li key={project.id} className="text-sm text-muted-foreground">
-              {project.title}
+              {texte(project.title, language)}
             </li>
           ))}
         </ul>

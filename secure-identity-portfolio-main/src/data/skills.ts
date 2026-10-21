@@ -1,3 +1,4 @@
+import { texte } from './types';
 import type { I18n, Lang, SkillRow } from './types';
 import { projects } from './projects';
 import { timelineEntries } from './timeline';
@@ -124,7 +125,7 @@ export const skillRows: SkillRow[] = [
  */
 export function usedInLabel(id: string, lang: Lang): string {
   const project = projects.find((p) => p.id === id);
-  if (project) return project.title;
+  if (project) return texte(project.title, lang);
   const entry = timelineEntries.find((e) => e.id === id);
   if (entry) return entry.organisation;
   return id;
