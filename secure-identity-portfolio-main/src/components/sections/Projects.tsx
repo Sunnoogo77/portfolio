@@ -4,7 +4,7 @@ import { getProjectsByTier } from '@/data/projects';
 import { formatPeriod } from '@/data/timeline';
 import { publicUrl, type Evidence, type Project } from '@/data/types';
 import { Section } from '@/components/layout/Section';
-import { classeStatut } from './statut';
+import { classeStatut, libelleStatut } from './statut';
 import { cn } from '@/lib/utils';
 
 /**
@@ -60,10 +60,10 @@ function Etiquettes({ stack }: { stack: string[] }) {
 }
 
 function Statut({ project }: { project: Project }) {
-  const { t } = useLanguage();
+  const { language, t } = useLanguage();
   return (
     <span className={cn('statut donnee', classeStatut[project.status])}>
-      {t(`projects.status.${project.status}`)}
+      {libelleStatut(project.status, language, t)}
     </span>
   );
 }

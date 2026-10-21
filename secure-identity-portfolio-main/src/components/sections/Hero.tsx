@@ -54,8 +54,8 @@ export function Hero() {
           <img
             src={getAssetPath('/img/sunnoogo-caleb-tapsoba.jpg')}
             alt="Sunnoogo Caleb Tapsoba"
-            width={682}
-            height={900}
+            width={320}
+            height={422}
             className="order-first w-24 shrink-0 rounded-[var(--radius)] border border-border object-cover sm:order-none sm:w-32 lg:w-40"
           />
         </div>

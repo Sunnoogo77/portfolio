@@ -43,6 +43,9 @@ export function Timeline() {
               <div className="donnee space-y-2 text-muted-foreground">
                 {periode && <p>{periode}</p>}
                 <p>{entry.location[language]}</p>
+                {/* Les cinq drapeaux n'ont pas les memes proportions, 3:2
+                    pour quatre d'entre eux et 2:1 pour le Royaume-Uni : la
+                    hauteur est fixee et la largeur suit, sans deformation. */}
                 {entry.flag && (
                   <img
                     src={getAssetPath(entry.flag)}
@@ -50,7 +53,7 @@ export function Timeline() {
                     width={24}
                     height={16}
                     loading="lazy"
-                    className="h-4 w-6 rounded-sm border border-border object-cover"
+                    className="h-4 w-auto rounded-sm border border-border"
                   />
                 )}
               </div>
@@ -68,15 +71,23 @@ export function Timeline() {
                       </p>
                     )}
                   </div>
+                  {/* Les logos sont des fichiers etrangers au systeme : cinq
+                      d'entre eux portent une encre sombre sur fond
+                      transparent et deviennent illisibles sur le theme
+                      sombre, un autre porte deja son propre fond blanc. Ils
+                      sont donc tous poses sur la meme plaque neutre, dans
+                      les deux themes. */}
                   {entry.logo && (
-                    <img
-                      src={getAssetPath(entry.logo)}
-                      alt={entry.organisation}
-                      width={96}
-                      height={32}
-                      loading="lazy"
-                      className="h-8 w-24 shrink-0 object-contain object-right"
-                    />
+                    <span className="shrink-0 rounded-[var(--radius)] border border-border bg-[hsl(var(--sur-accent))] p-1.5">
+                      <img
+                        src={getAssetPath(entry.logo)}
+                        alt={entry.organisation}
+                        width={88}
+                        height={28}
+                        loading="lazy"
+                        className="h-7 w-[5.5rem] object-contain"
+                      />
+                    </span>
                   )}
                 </div>
 

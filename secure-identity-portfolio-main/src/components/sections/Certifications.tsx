@@ -30,19 +30,37 @@ function dateLisible(brute: string, lang: Lang): string {
   );
 }
 
+/**
+ * Les badges portent leur propre fond : ils sont poses sur la meme plaque
+ * neutre que les logos du parcours, pour que les deux themes les rendent de
+ * la meme facon. Une certification sans badge n'affiche ni trou ni cadre
+ * vide.
+ */
 function Badge({ cert }: { cert: Certification }) {
   if (!cert.badge) return null;
   return (
-    <img
-      src={getAssetPath(cert.badge)}
-      alt=""
-      width={48}
-      height={48}
-      loading="lazy"
-      className="h-12 w-12 shrink-0 object-contain"
-    />
+    <span className="shrink-0 rounded-[var(--radius)] border border-border bg-[hsl(var(--sur-accent))] p-1">
+      <img
+        src={getAssetPath(cert.badge)}
+        alt=""
+        width={40}
+        height={40}
+        loading="lazy"
+        className="h-10 w-10 object-contain"
+      />
+    </span>
   );
 }
+
+/**
+ * Une echeance est une cible, pas une inscription confirmee : le libelle le
+ * dit. Il n'existe pas de cle de traduction pour cette phrase et
+ * LanguageContext est fige, le libelle est donc porte ici.
+ */
+const ECHEANCE: Record<Lang, (date: string) => string> = {
+  fr: (date) => `Échéance visée : ${date}`,
+  en: (date) => `Targeted for ${date}`,
+};
 
 function Obtenue({ cert }: { cert: Certification }) {
   const { language, t } = useLanguage();
@@ -88,13 +106,17 @@ function Obtenue({ cert }: { cert: Certification }) {
 
 function Visee({ cert }: { cert: Certification }) {
   const { language } = useLanguage();
+  const echeance = certificationDate(cert);
 
   return (
     <li className="flex items-start gap-3 border-t border-border py-4">
       <Badge cert={cert} />
       <div className="min-w-0">
         <p className="font-semibold">{cert.title}</p>
-        <p className="donnee mt-1 text-muted-foreground">{cert.issuer}</p>
+        <p className="donnee mt-1 text-muted-foreground">
+          {cert.issuer}
+          {echeance ? ` · ${ECHEANCE[language](dateLisible(echeance, language))}` : ''}
+        </p>
         <p className="mesure mt-1 text-sm text-muted-foreground">
           {cert.description[language]}
         </p>
