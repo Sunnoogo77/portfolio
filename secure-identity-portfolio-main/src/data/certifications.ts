@@ -117,7 +117,7 @@ export const certifications: Certification[] = [
     title: 'Microsoft AZ-104 — Azure Administrator Associate',
     issuer: 'Microsoft',
     status: 'in-progress',
-    targetOn: null,
+    targetOn: '2026-10',
     description: {
       fr: "Certification Microsoft d'administrateur Azure.",
       en: 'Microsoft certification for Azure administrators.',
@@ -129,7 +129,7 @@ export const certifications: Certification[] = [
     title: 'Microsoft SC-500 — Cloud and AI Security Engineer Associate',
     issuer: 'Microsoft',
     status: 'in-progress',
-    targetOn: null,
+    targetOn: '2026-12',
     description: {
       fr: "Certification Microsoft d'ingénieur sécurité du cloud et de l'intelligence artificielle.",
       en: 'Microsoft certification for cloud and AI security engineers.',
@@ -141,7 +141,7 @@ export const certifications: Certification[] = [
     title: 'Microsoft AZ-900 — Azure Fundamentals',
     issuer: 'Microsoft',
     status: 'in-progress',
-    targetOn: null,
+    targetOn: '2026-10',
     description: {
       fr: 'Fondamentaux Azure : concepts cloud, sécurité et conformité.',
       en: 'Azure fundamentals: cloud concepts, security and compliance.',
@@ -154,7 +154,7 @@ export const certifications: Certification[] = [
     title: 'Microsoft SC-900 — Security, Compliance & Identity',
     issuer: 'Microsoft',
     status: 'in-progress',
-    targetOn: null,
+    targetOn: '2026-10',
     description: {
       fr: 'Concepts fondamentaux de sécurité, conformité et identité Microsoft.',
       en: 'Fundamental Microsoft security, compliance and identity concepts.',
@@ -169,7 +169,7 @@ export const certifications: Certification[] = [
     title: 'Microsoft SC-300 — Identity and Access Administrator',
     issuer: 'Microsoft',
     status: 'planned',
-    targetOn: null,
+    targetOn: '2027-01',
     description: {
       fr: "Certification Microsoft d'administrateur des identités et des accès.",
       en: 'Microsoft certification for identity and access administrators.',
@@ -181,7 +181,7 @@ export const certifications: Certification[] = [
     title: 'Microsoft SC-200 — Security Operations Analyst',
     issuer: 'Microsoft',
     status: 'planned',
-    targetOn: null,
+    targetOn: '2027-02',
     description: {
       fr: "Spécialisation en détection, investigation et réponse aux incidents avec Microsoft Sentinel & Defender.",
       en: 'Specialisation in detection, investigation and incident response with Microsoft Sentinel & Defender.',
@@ -194,7 +194,7 @@ export const certifications: Certification[] = [
     title: 'Microsoft SC-100 — Cybersecurity Architect',
     issuer: 'Microsoft',
     status: 'planned',
-    targetOn: null,
+    targetOn: '2027-03',
     description: {
       fr: "Certification Microsoft d'architecte cybersécurité.",
       en: 'Microsoft certification for cybersecurity architects.',
@@ -206,7 +206,7 @@ export const certifications: Certification[] = [
     title: 'Microsoft AZ-802 — Windows Server Administrator',
     issuer: 'Microsoft',
     status: 'planned',
-    targetOn: null,
+    targetOn: '2027',
     description: {
       fr: "Certification Microsoft d'administration de Windows Server.",
       en: 'Microsoft certification for Windows Server administration.',

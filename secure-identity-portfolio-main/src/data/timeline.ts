@@ -22,6 +22,7 @@ export const timelineEntries: TimelineEntry[] = [
       en: 'International Certificate in Corporate Finance',
     },
     location: { fr: 'À distance', en: 'Remote' },
+    logo: '/img/logos/hec.png',
     summary: {
       fr: 'Programme en ligne. Certificat visé en avril 2027.',
       en: 'Online programme. Certificate targeted for April 2027.',
@@ -38,6 +39,7 @@ export const timelineEntries: TimelineEntry[] = [
       en: 'Student-Entrepreneur Diploma',
     },
     location: { fr: 'Paris', en: 'Paris' },
+    logo: '/img/logos/uspn.png',
     flag: '/img/flags/fr.svg',
     summary: {
       fr: 'Inscription en cours de finalisation.',
@@ -55,6 +57,7 @@ export const timelineEntries: TimelineEntry[] = [
       en: 'Founder and technical lead',
     },
     location: { fr: 'Paris', en: 'Paris' },
+    logo: '/img/logos/impulsera.svg',
     flag: '/img/flags/fr.svg',
     summary: {
       fr: "Startup née de mon projet de fin d'études, incubée à l'EFREI.",
@@ -78,6 +81,8 @@ export const timelineEntries: TimelineEntry[] = [
       fr: 'Ouagadougou, Burkina Faso',
       en: 'Ouagadougou, Burkina Faso',
     },
+    flag: '/img/flags/bf.svg',
+    logo: '/img/logos/safir.png',
     summary: {
       fr: "Mission chez un opérateur minier : supervision Wazuh, règles de détection et durcissement de l'annuaire.",
       en: 'Assignment at a mining operator: Wazuh monitoring, detection rules and directory hardening.',
@@ -127,6 +132,7 @@ export const timelineEntries: TimelineEntry[] = [
       en: 'SAP Young Professionals Program',
     },
     location: { fr: 'À distance', en: 'Remote' },
+    logo: '/img/logos/sap.png',
     summary: {
       fr: 'Programme sélectif, quatre mois à temps plein.',
       en: 'Selective programme, four months full time.',
