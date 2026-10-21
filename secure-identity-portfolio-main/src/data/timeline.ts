@@ -21,7 +21,9 @@ export const timelineEntries: TimelineEntry[] = [
       fr: 'International Certificate in Corporate Finance',
       en: 'International Certificate in Corporate Finance',
     },
-    location: { fr: 'À distance', en: 'Remote' },
+    // Le format a distance ne dit rien de la formation : la ligne reste vide
+    // plutot que de donner ce detail le premier.
+    location: { fr: '', en: '' },
     logo: '/img/logos/hec.png',
     summary: {
       fr: "Finance d'entreprise appliquée, pour porter les décisions d'investissement et de financement d'une jeune entreprise. Certificat visé en avril 2027.",

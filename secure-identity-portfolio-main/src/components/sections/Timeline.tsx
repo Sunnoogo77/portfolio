@@ -33,7 +33,10 @@ function Entree({ entry }: { entry: TimelineEntry }) {
     <article className="grille-notes border-t border-border pt-6">
       <div className="donnee space-y-2 text-muted-foreground">
         {periode && <p>{periode}</p>}
-        <p>{entry.location[language]}</p>
+        {/* Un lieu vide n'est pas affiche : pour une formation a distance, le
+            mot « distance » occupait la place d'une information utile sans en
+            etre une. Rien n'est invente a la place, la ligne disparait. */}
+        {entry.location[language] && <p>{entry.location[language]}</p>}
         {/* Les cinq drapeaux n'ont pas les memes proportions, 3:2 pour quatre
             d'entre eux et 2:1 pour le Royaume-Uni : la hauteur est fixee et la
             largeur suit, sans deformation. */}
