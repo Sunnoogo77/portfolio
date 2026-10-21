@@ -8,7 +8,19 @@
     <meta name="author" content="Sunnoogo Caleb Tapsoba" />
     <meta name="keywords" content="cybersecurity, blue team, cloud security, SOC analyst, EFREI Paris, portfolio, Azure, Active Directory, SIEM" />
 
-    <meta name="theme-color" content="#0891b2" />
+    <!-- Couleur de la barre du navigateur : la valeur du jeton --fond de chaque
+         theme, et non plus le cyan qui a disparu du systeme. -->
+    <meta name="theme-color" content="#f6f7f9" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#101219" media="(prefers-color-scheme: dark)" />
+
+    <!-- Polices hebergees localement. Seuls les deux sous-ensembles latin sont
+         precharges : ils couvrent la totalite du texte affiche. Les deux
+         sous-ensembles latin etendu restent charges a la demande par le
+         navigateur, selon les unicode-range de src/polices.css.
+         Vite prefixe ces chemins absolus du chemin de base, donc
+         /portfolio/fonts/... en production. -->
+    <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/jetbrains-mono-latin.woff2" as="font" type="font/woff2" crossorigin />
 
     <!-- Theme applique avant la premiere peinture, pour supprimer l'eclair de theme.
          Reprend exactement la logique de src/components/layout/ThemeToggle.tsx. -->

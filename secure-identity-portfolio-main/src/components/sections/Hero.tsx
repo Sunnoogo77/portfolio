@@ -1,113 +1,63 @@
-import { Download, ChevronRight } from 'lucide-react';
+import { Download } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { getAssetPath } from '@/lib/assets';
 import { availability } from '@/data/availability';
 
+/**
+ * Cinq faits, pas davantage : le nom, l'intitule avec le diplome et son etat
+ * reel, la disponibilite, et le lien de telechargement du CV avec sa date de
+ * mise a jour visible.
+ *
+ * Disparus : le min-h-screen, le degrade de fond, le motif de grille, les
+ * deux anneaux decoratifs dont l'un debordait de trente-deux pixels a
+ * 360 pixels de large, la lueur, la pastille clignotante et les quatre
+ * boutons de grande taille qui occupaient 224 pixels de hauteur sur mobile.
+ */
 export function Hero() {
   const { language, t } = useLanguage();
 
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
-    <section className="relative min-h-screen flex items-center pt-16 overflow-hidden">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-background to-background" />
-      
-      {/* Subtle grid pattern */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.03)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:50px_50px]" />
+    <section id="accueil" className="pb-[clamp(2rem,5vw,4rem)] pt-[clamp(5.5rem,8vw,7rem)]">
+      <div className="conteneur">
+        <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between sm:gap-10">
+          <div className="min-w-0 flex-1">
+            <h1>Sunnoogo Caleb Tapsoba</h1>
 
-      <div className="container relative mx-auto px-4 py-20">
-        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
-          {/* Content */}
-          <div className="flex-1 text-center lg:text-left">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight animate-fade-in-up">
-              <span className="text-primary">Sunnoogo</span>
-              <span className="text-foreground"> — {t('hero.title')}</span>
-            </h1>
-            
-            <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto lg:mx-0 animate-fade-in-up animation-delay-100">
-              {t('hero.subtitle')}
+            <p className="mesure mt-4 text-muted-foreground">{t('hero.subtitle')}</p>
+
+            <p className="mesure mt-3 text-muted-foreground">
+              {availability.headline[language]}
             </p>
 
-            {/* Disponibilite */}
-            <div className="mt-8 animate-fade-in-up animation-delay-200">
-              <a
-                href={getAssetPath(availability.resume[language])}
-                download
-                className="inline-flex items-center gap-3 rounded-full border border-primary/30 bg-primary/10 px-5 py-2 text-primary hover:border-primary hover:bg-primary/20 transition-all duration-300"
-              >
-                <span className="h-2 w-2 rounded-full bg-primary animate-pulse" />
-                <span className="font-medium">{t('hero.downloadCV')}</span>
-                <Download className="h-4 w-4" />
-              </a>
-              <p className="mt-4 max-w-2xl mx-auto lg:mx-0 text-muted-foreground">
-                {availability.headline[language]}
-              </p>
-              <p className="mt-2 text-xs text-muted-foreground">
-                {t('availability.updatedOn')}{' '}
-                {new Date(availability.updatedOn).toLocaleDateString(
-                  language === 'fr' ? 'fr-FR' : 'en-GB',
-                  { day: 'numeric', month: 'long', year: 'numeric' }
-                )}
-              </p>
-            </div>
-
-            {/* CTA Buttons */}
-            <div className="mt-10 flex flex-wrap justify-center lg:justify-start gap-4 animate-fade-in-up animation-delay-300">
-              <Button
-                size="lg"
-                className="glow rounded-xl font-semibold"
-                onClick={() => scrollToSection('projects')}
-              >
+            <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
+              <Button asChild>
+                <a href={getAssetPath(availability.resume[language])} download>
+                  {t('hero.downloadCV')}
+                  <Download aria-hidden="true" />
+                </a>
+              </Button>
+              <a href="#projects" className="lien text-sm">
                 {t('hero.cta.projects')}
-                <ChevronRight className="ml-2 h-4 w-4" />
-              </Button>
-              <Button
-                variant="outline"
-                size="lg"
-                className="rounded-xl font-semibold"
-                onClick={() => scrollToSection('timeline')}
-              >
-                {t('hero.cta.timeline')}
-              </Button>
-              <Button
-                variant="outline"
-                size="lg"
-                className="rounded-xl font-semibold"
-                onClick={() => scrollToSection('certifications')}
-              >
-                {t('hero.cta.certifications')}
-              </Button>
-              <Button
-                variant="outline"
-                size="lg"
-                className="rounded-xl font-semibold"
-                onClick={() => scrollToSection('contact')}
-              >
-                {t('hero.cta.contact')}
-              </Button>
+              </a>
             </div>
+
+            <p className="donnee mt-3 text-muted-foreground">
+              {t('availability.updatedOn')}{' '}
+              {new Date(availability.updatedOn).toLocaleDateString(
+                language === 'fr' ? 'fr-FR' : 'en-GB',
+                { day: 'numeric', month: 'long', year: 'numeric' }
+              )}
+            </p>
           </div>
 
-          {/* Profile Image */}
-          <div className="relative animate-fade-in-up animation-delay-200">
-            <div className="relative w-72 h-72 md:w-96 md:h-96 lg:w-[420px] lg:h-[420px] rounded-full overflow-hidden border-4 border-primary glow">
-              <img
-                src={getAssetPath('/img/sunnoogo-caleb-tapsoba.jpg')}
-                alt="Sunnoogo Caleb Tapsoba"
-                className="absolute inset-0 w-full h-full object-cover"
-              />
-            </div>
-            {/* Decorative rings */}
-            <div className="absolute -inset-4 rounded-full border border-primary/20 animate-pulse-glow" />
-            <div className="absolute -inset-8 rounded-full border border-primary/10" />
-          </div>
+          <img
+            src={getAssetPath('/img/sunnoogo-caleb-tapsoba.jpg')}
+            alt="Sunnoogo Caleb Tapsoba"
+            width={682}
+            height={900}
+            className="order-first w-24 shrink-0 rounded-[var(--radius)] border border-border object-cover sm:order-none sm:w-32 lg:w-40"
+          />
         </div>
       </div>
     </section>

@@ -122,6 +122,12 @@
     max-width: 100%;
     height: auto;
   }
+
+  /* L'en-tete fixe ne doit pas recouvrir le titre d'une section atteinte
+     par un lien d'ancre. */
+  section[id] {
+    scroll-margin-top: 5rem;
+  }
 }
 
 @layer components {

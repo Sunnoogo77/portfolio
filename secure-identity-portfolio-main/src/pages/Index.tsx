@@ -12,19 +12,17 @@ import { Contact } from '@/components/sections/Contact';
 const Index = () => {
   return (
     <LanguageProvider>
-      <div className="min-h-screen bg-background text-foreground">
-        <Header />
-        <main>
-          <Hero />
-          <About />
-          <Skills />
-          <Projects />
-          <Timeline />
-          <Certifications />
-          <Contact />
-        </main>
-        <Footer />
-      </div>
+      <Header />
+      <main>
+        <Hero />
+        <About />
+        <Skills />
+        <Projects />
+        <Timeline />
+        <Certifications />
+        <Contact />
+      </main>
+      <Footer />
     </LanguageProvider>
   );
 };

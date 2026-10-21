@@ -13,7 +13,7 @@ export function LanguageToggle() {
       variant="outline"
       size="sm"
       onClick={toggleLanguage}
-      className="rounded-full border-border bg-card/60 backdrop-blur-sm px-4 font-semibold uppercase tracking-wider hover:border-primary hover:text-primary transition-all duration-300"
+      className="px-3 uppercase tracking-wide"
       aria-label={language === 'fr' ? 'Switch to English' : 'Passer en français'}
     >
       {language === 'fr' ? 'EN' : 'FR'}
