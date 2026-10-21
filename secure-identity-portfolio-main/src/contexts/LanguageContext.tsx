@@ -230,6 +230,11 @@ export function LanguageProvider({ children }: LanguageProviderProps) {
     }
   }, []);
 
+  // Tient l'attribut lang du document aligne sur la langue affichee.
+  useEffect(() => {
+    document.documentElement.lang = language;
+  }, [language]);
+
   const setLanguage = (lang: Language) => {
     setLanguageState(lang);
     localStorage.setItem('portfolio-language', lang);
