@@ -1,41 +1,43 @@
 import { useState, useMemo } from 'react';
 import { ExternalLink, ChevronDown, ChevronUp } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { projects, getProjectCounts, type ProjectStatus } from '@/data/projects';
+import { projects, getProjectCounts } from '@/data/projects';
+import { publicUrl, type Status, type Tier } from '@/data/types';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
-type FilterType = ProjectStatus | 'all';
+type FilterType = Tier | 'all';
 
 export function Projects() {
   const { language, t } = useLanguage();
-  const [filter, setFilter] = useState<FilterType>('past');
+  const [filter, setFilter] = useState<FilterType>('featured');
   const [showAll, setShowAll] = useState(false);
   const counts = getProjectCounts();
 
   const filteredProjects = useMemo(() => {
     if (filter === 'all') return projects;
-    return projects.filter((p) => p.status === filter);
+    return projects.filter((p) => p.tier === filter);
   }, [filter]);
 
   const displayedProjects = showAll ? filteredProjects : filteredProjects.slice(0, 6);
 
   const filters: { key: FilterType; labelKey: string }[] = [
-    { key: 'past', labelKey: 'projects.filter.past' },
-    { key: 'current', labelKey: 'projects.filter.current' },
-    { key: 'future', labelKey: 'projects.filter.future' },
+    { key: 'featured', labelKey: 'projects.filter.featured' },
+    { key: 'delivered', labelKey: 'projects.filter.delivered' },
+    { key: 'planned', labelKey: 'projects.filter.planned' },
     { key: 'all', labelKey: 'projects.filter.all' },
   ];
 
-  const getStatusColor = (status: ProjectStatus) => {
+  const getStatusColor = (status: Status) => {
     switch (status) {
-      case 'past':
+      case 'delivered':
+      case 'obtained':
         return 'bg-green-500/10 text-green-500 border-green-500/20';
-      case 'current':
+      case 'in-progress':
         return 'bg-yellow-500/10 text-yellow-500 border-yellow-500/20';
-      case 'future':
+      case 'planned':
         return 'bg-blue-500/10 text-blue-500 border-blue-500/20';
     }
   };
@@ -83,17 +85,17 @@ export function Projects() {
                     variant="outline"
                     className={cn('shrink-0 text-xs', getStatusColor(project.status))}
                   >
-                    {t(`status.${project.status}`)}
+                    {t(`projects.status.${project.status}`)}
                   </Badge>
                 </div>
               </CardHeader>
               <CardContent className="space-y-4">
                 <p className="text-sm text-muted-foreground line-clamp-3">
-                  {project.description[language]}
+                  {project.summary[language]}
                 </p>
                 
                 <div className="flex flex-wrap gap-1.5">
-                  {project.tags.slice(0, 5).map((tag) => (
+                  {project.stack.slice(0, 5).map((tag) => (
                     <Badge
                       key={tag}
                       variant="secondary"
@@ -102,22 +104,28 @@ export function Projects() {
                       {tag}
                     </Badge>
                   ))}
-                  {project.tags.length > 5 && (
+                  {project.stack.length > 5 && (
                     <Badge variant="secondary" className="text-xs bg-secondary/50">
-                      +{project.tags.length - 5}
+                      +{project.stack.length - 5}
                     </Badge>
                   )}
                 </div>
 
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline"
-                >
-                  {t('projects.viewProject')}
-                  <ExternalLink className="h-3.5 w-3.5" />
-                </a>
+                {publicUrl(project.evidence) ? (
+                  <a
+                    href={publicUrl(project.evidence)!}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline"
+                  >
+                    {t('projects.viewProject')}
+                    <ExternalLink className="h-3.5 w-3.5" />
+                  </a>
+                ) : (
+                  <span className="inline-flex items-center gap-2 text-sm text-muted-foreground">
+                    {t(`projects.evidence.${project.evidence.visibility}`)}
+                  </span>
+                )}
               </CardContent>
             </Card>
           ))}
