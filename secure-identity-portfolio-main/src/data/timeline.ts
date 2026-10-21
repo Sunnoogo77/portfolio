@@ -161,7 +161,9 @@ export const timelineEntries: TimelineEntry[] = [
       fr: 'SAP Young Professionals Program',
       en: 'SAP Young Professionals Program',
     },
-    location: { fr: 'À distance', en: 'Remote' },
+    // Meme regle que pour HEC : le format ne dit rien du programme, qui est
+    // selectif et a temps plein. La ligne reste vide.
+    location: { fr: '', en: '' },
     logo: '/img/logos/sap.png',
     summary: {
       fr: 'Programme sélectif, quatre mois à temps plein.',
