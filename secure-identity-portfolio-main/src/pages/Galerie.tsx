@@ -3,7 +3,9 @@ import { ArrowLeft } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { projects } from '@/data/projects';
 import type { Tier } from '@/data/types';
+import { useApparition } from '@/hooks/useApparition';
 import { CarteProjet } from '@/components/sections/projet';
+import { cn } from '@/lib/utils';
 
 type Filtre = Tier | 'all';
 
@@ -29,13 +31,20 @@ const FILTRES: Array<{ valeur: Filtre; cle: string }> = [
 export function Galerie() {
   const { t } = useLanguage();
   const [filtre, setFiltre] = useState<Filtre>('all');
+  const entree = useApparition<HTMLDivElement>();
 
   const visibles =
     filtre === 'all' ? projects : projects.filter((p) => p.tier === filtre);
 
   return (
     <main className="section pt-[clamp(5.5rem,8vw,7rem)]">
-      <div className="conteneur">
+      <div
+        ref={entree.ref}
+        className={cn(
+          'conteneur apparition',
+          entree.visible && 'apparition-visible'
+        )}
+      >
         <a href="#/" className="lien inline-flex items-center gap-1.5 text-sm">
           <ArrowLeft className="h-3.5 w-3.5" aria-hidden="true" />
           {t('projects.gallery.back')}

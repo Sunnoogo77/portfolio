@@ -200,6 +200,11 @@
     color: hsl(var(--accent));
     text-decoration: underline;
     text-underline-offset: 0.2em;
+    transition: text-underline-offset 150ms ease-out, opacity 150ms ease-out;
+  }
+
+  .lien:hover {
+    text-underline-offset: 0.3em;
   }
 
   /* Statut : texte sur fond transparent avec un filet, jamais une pastille
@@ -222,6 +227,12 @@
     background-color: hsl(var(--surface-2));
     color: hsl(var(--texte));
     padding: 0.1rem 0.4rem;
+    transition: border-color 150ms ease-out;
+  }
+
+  .carte:hover .etiquette,
+  .projet-avant:hover .etiquette {
+    border-color: hsl(var(--bord));
   }
 }
 
@@ -299,10 +310,15 @@
     color: hsl(var(--texte));
   }
 
+  /* L'entree active est marquee par la couleur et un filet, jamais par une
+     pastille pleine : un fond a douze pour cent d'accent fait tomber le
+     contraste du libelle a 4,18 dans le pire cas compose du theme sombre,
+     sous les 4,5 requis. Sans ce fond, il reste a 5,10. */
   .barre-onglet-actif,
   .barre-onglet-actif:hover {
     color: hsl(var(--accent));
-    background-color: hsl(var(--accent) / 0.12);
+    box-shadow: inset 0 -2px 0 0 hsl(var(--accent));
+    border-radius: var(--radius);
   }
 
   /* Le menu du telephone deploie l'ile vers le bas : c'est le meme objet qui
@@ -352,7 +368,11 @@
     color: hsl(var(--accent));
     text-decoration: underline;
     text-underline-offset: 0.2em;
-    transition: color 150ms ease-out;
+    transition: text-underline-offset 150ms ease-out, color 150ms ease-out;
+  }
+
+  .bouton-deplier:hover {
+    text-underline-offset: 0.3em;
   }
 
   .chevron {
@@ -558,13 +578,19 @@
   /* La seule animation de la page : une apparition en opacite de deux cents
      millisecondes, declenchee par IntersectionObserver quand l'element entre
      reellement dans le champ. Aucun delai, aucune cascade, aucune boucle. */
+  /* Une apparition de deux cents millisecondes en opacite, accompagnee de six
+     pixels de translation. Declenchee par IntersectionObserver quand le bloc
+     entre reellement dans le champ. Aucun delai, aucune cascade, aucune
+     boucle. */
   .apparition {
     opacity: 0;
-    transition: opacity 200ms ease-out;
+    transform: translateY(6px);
+    transition: opacity 200ms ease-out, transform 240ms cubic-bezier(0.22, 1, 0.36, 1);
   }
 
   .apparition-visible {
     opacity: 1;
+    transform: none;
   }
 }
 
@@ -582,7 +608,11 @@
     scroll-behavior: auto;
   }
 
+  /* Aucun mouvement ne subsiste : ni l'apparition, ni la translation, ni le
+     comportement de la barre, coupe par useMouvementReduit, ni l'ouverture
+     des blocs replies, ramenee a l'instantane par la regle ci-dessus. */
   .apparition {
     opacity: 1;
+    transform: none;
   }
 }
