@@ -81,12 +81,13 @@ const translations: Record<Language, Record<string, string>> = {
     // Certifications
     'certifications.title': 'Licences & Certifications',
     'certifications.filter.obtained': 'Obtenues',
-    'certifications.filter.inProgress': 'En cours',
-    'certifications.filter.future': 'Objectifs',
+    'certifications.filter.inProgress': 'En préparation',
+    'certifications.filter.planned': 'Feuille de route',
     'certifications.filter.all': 'Toutes',
-    'certifications.learnMore': 'En savoir plus →',
-    'certifications.viewCert': 'Voir le certificat →',
-    'certifications.details': 'Détails',
+    'certifications.status.obtained': 'Obtenue',
+    'certifications.status.in-progress': 'En préparation',
+    'certifications.status.planned': 'Feuille de route',
+    'certifications.viewCert': 'Voir le certificat',
     'certifications.noCerts': 'Aucune certification pour ce filtre.',
     
     // Contact
@@ -183,12 +184,13 @@ const translations: Record<Language, Record<string, string>> = {
     // Certifications
     'certifications.title': 'Licenses & Certifications',
     'certifications.filter.obtained': 'Obtained',
-    'certifications.filter.inProgress': 'In Progress',
-    'certifications.filter.future': 'Objectives',
+    'certifications.filter.inProgress': 'In preparation',
+    'certifications.filter.planned': 'Roadmap',
     'certifications.filter.all': 'All',
-    'certifications.learnMore': 'Learn more →',
-    'certifications.viewCert': 'View certificate →',
-    'certifications.details': 'Details',
+    'certifications.status.obtained': 'Obtained',
+    'certifications.status.in-progress': 'In preparation',
+    'certifications.status.planned': 'Roadmap',
+    'certifications.viewCert': 'View certificate',
     'certifications.noCerts': 'No certifications for this filter.',
     
     // Contact

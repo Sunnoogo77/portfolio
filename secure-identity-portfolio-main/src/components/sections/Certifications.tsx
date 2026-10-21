@@ -1,19 +1,20 @@
 import { useState, useMemo } from 'react';
-import { ChevronDown, ChevronUp, ExternalLink } from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { certifications, getCertificationCounts, type CertificationStatus } from '@/data/certifications';
+import { certifications, getCertificationCounts, certificationDate } from '@/data/certifications';
+import { publicUrl, type Certification, type Status } from '@/data/types';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { getAssetPath } from '@/lib/assets';
 
-type FilterType = CertificationStatus | 'all';
+type CertStatus = Certification['status'];
+type FilterType = CertStatus | 'all';
 
 export function Certifications() {
   const { language, t } = useLanguage();
   const [filter, setFilter] = useState<FilterType>('obtained');
-  const [expandedId, setExpandedId] = useState<string | null>(null);
   const counts = getCertificationCounts();
 
   const filteredCerts = useMemo(() => {
@@ -21,24 +22,21 @@ export function Certifications() {
     return certifications.filter((c) => c.status === filter);
   }, [filter]);
 
-  const toggleExpand = (id: string) => {
-    setExpandedId(expandedId === id ? null : id);
-  };
-
   const filters: { key: FilterType; labelKey: string }[] = [
     { key: 'obtained', labelKey: 'certifications.filter.obtained' },
     { key: 'in-progress', labelKey: 'certifications.filter.inProgress' },
-    { key: 'future', labelKey: 'certifications.filter.future' },
+    { key: 'planned', labelKey: 'certifications.filter.planned' },
     { key: 'all', labelKey: 'certifications.filter.all' },
   ];
 
-  const getStatusStyles = (status: CertificationStatus) => {
+  const getStatusStyles = (status: Status) => {
     switch (status) {
       case 'obtained':
+      case 'delivered':
         return 'bg-green-500/10 text-green-500 border-green-500/20';
       case 'in-progress':
         return 'bg-yellow-500/10 text-yellow-500 border-yellow-500/20';
-      case 'future':
+      case 'planned':
         return 'bg-blue-500/10 text-blue-500 border-blue-500/20';
     }
   };
@@ -71,7 +69,8 @@ export function Certifications() {
         {/* Certifications Grid */}
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {filteredCerts.map((cert, index) => {
-            const isExpanded = expandedId === cert.id;
+            const date = certificationDate(cert);
+            const certUrl = publicUrl(cert.evidence);
 
             return (
               <Card
@@ -84,10 +83,12 @@ export function Certifications() {
                     <div className="flex-1">
                       <h3 className="font-bold leading-tight">{cert.title}</h3>
                       <p className="mt-1 text-xs text-muted-foreground">
-                        {t(`status.${cert.status === 'in-progress' ? 'inProgress' : cert.status}`)} • {cert.year}
+                        {t(`certifications.status.${cert.status}`)}
+                        {date ? ` • ${date}` : ''} • {cert.issuer}
                       </p>
                     </div>
                     {/* Certification badge */}
+                    {cert.badge && (
                     <div className="shrink-0 w-12 h-12 rounded-lg bg-muted flex items-center justify-center overflow-hidden">
                       <img
                         src={getAssetPath(cert.badge)}
@@ -100,6 +101,7 @@ export function Certifications() {
                         }}
                       />
                     </div>
+                    )}
                   </div>
 
                   <p className="mt-4 text-sm text-muted-foreground">
@@ -118,43 +120,17 @@ export function Certifications() {
                     ))}
                   </div>
 
-                  {isExpanded && (
-                    <div className="mt-4 pt-4 border-t border-border animate-fade-in">
-                      <h4 className="font-semibold text-sm mb-2">{t('certifications.details')}</h4>
-                      <ul className="space-y-1 text-sm text-muted-foreground">
-                        {cert.details[language].map((detail, i) => (
-                          <li key={i} className="flex items-start gap-2">
-                            <span className="text-primary mt-1">•</span>
-                            <span>{detail}</span>
-                          </li>
-                        ))}
-                      </ul>
-                      
-                      {cert.link && cert.link !== '#' && (
-                        <a
-                          href={cert.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="mt-3 inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline"
-                        >
-                          {t('certifications.viewCert')}
-                          <ExternalLink className="h-3.5 w-3.5" />
-                        </a>
-                      )}
-                    </div>
+                  {certUrl && (
+                    <a
+                      href={getAssetPath(certUrl)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline"
+                    >
+                      {t('certifications.viewCert')}
+                      <ExternalLink className="h-3.5 w-3.5" />
+                    </a>
                   )}
-
-                  <button
-                    onClick={() => toggleExpand(cert.id)}
-                    className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"
-                  >
-                    {t('certifications.learnMore')}
-                    {isExpanded ? (
-                      <ChevronUp className="h-3.5 w-3.5" />
-                    ) : (
-                      <ChevronDown className="h-3.5 w-3.5" />
-                    )}
-                  </button>
                 </CardContent>
               </Card>
             );

@@ -1,334 +1,234 @@
-export type CertificationStatus = 'obtained' | 'in-progress' | 'future';
+import type { Certification } from './types';
 
-export interface Certification {
-  id: string;
-  title: string;
-  status: CertificationStatus;
-  year: string;
-  badge: string; // placeholder path
-  description: {
-    fr: string;
-    en: string;
-  };
-  tags: string[];
-  details: {
-    fr: string[];
-    en: string[];
-  };
-  link?: string;
-}
+type CertStatus = Certification['status'];
 
+/**
+ * Rebatie entierement depuis le CV : six certifications obtenues, quatre en
+ * preparation, quatre en feuille de route.
+ *
+ * Les cinq certifications affichees sans source (SOC Analyst Level 1, AWS
+ * Cloud Practitioner, CompTIA Security+, CompTIA Network+, Cisco CCNA) ont ete
+ * retirees, ainsi qu'AZ-800, absente du CV.
+ *
+ * Les trois PDF presents dans public/assets/certificats sont rattaches. Les
+ * deux certificats Cisco portent leur date d'obtention reelle, lue sur le
+ * certificat lui-meme : 31 mars 2024 et 30 avril 2024.
+ */
 export const certifications: Certification[] = [
+  // ----------------------------- Obtenues -----------------------------
+  {
+    id: 'sap-e2e-business-suite',
+    title:
+      'SAP Certified — Implementation Consultant, End-to-End Business Processes for SAP Business Suite',
+    issuer: 'SAP',
+    status: 'obtained',
+    obtainedOn: '2026-04',
+    description: {
+      fr: "Certification SAP de consultant en implémentation, portant sur les processus de bout en bout de SAP Business Suite.",
+      en: 'SAP certification for implementation consultants, covering end-to-end business processes for SAP Business Suite.',
+    },
+    tags: ['SAP', 'Business Suite'],
+    evidence: { kind: 'none', visibility: 'none' },
+  },
+  {
+    id: 'sap-build-developer',
+    title: 'SAP Certified — SAP Build Developer',
+    issuer: 'SAP',
+    status: 'obtained',
+    obtainedOn: '2026-04',
+    description: {
+      fr: 'Certification SAP de développeur SAP Build.',
+      en: 'SAP certification for SAP Build developers.',
+    },
+    tags: ['SAP', 'SAP Build'],
+    evidence: { kind: 'none', visibility: 'none' },
+  },
+  {
+    id: 'cisco-networking-basics',
+    title: 'Networking Basics',
+    issuer: 'Cisco NetAcad',
+    status: 'obtained',
+    obtainedOn: '2026',
+    description: {
+      fr: 'Parcours Cisco Networking Academy consacré aux fondamentaux des réseaux.',
+      en: 'Cisco Networking Academy course covering networking fundamentals.',
+    },
+    tags: ['Networking', 'Cisco'],
+    evidence: { kind: 'none', visibility: 'none' },
+  },
+  {
+    id: 'cisco-essentials',
+    title: 'Cybersecurity Essentials',
+    issuer: 'Cisco NetAcad',
+    status: 'obtained',
+    obtainedOn: '2024-04',
+    description: {
+      fr: "Certification couvrant les fondamentaux de la cybersécurité, l'architecture réseau et la protection des systèmes.",
+      en: 'Certification covering cybersecurity fundamentals, network architecture and system protection.',
+    },
+    tags: ['Networking', 'Security', 'Fundamentals'],
+    badge: '/img/certifications/cisco-essentials.png',
+    evidence: {
+      kind: 'certificate',
+      visibility: 'public',
+      url: '/assets/certificats/cisco-essentials.pdf',
+    },
+  },
   {
     id: 'cisco-intro',
-    title: 'Cisco Introduction to Cybersecurity',
+    title: 'Introduction to Cybersecurity',
+    issuer: 'Cisco NetAcad',
     status: 'obtained',
-    year: '2022',
-    badge: '/img/certifications/cisco-intro.png',
+    obtainedOn: '2024-03',
     description: {
       fr: 'Introduction aux concepts clés de la cybersécurité, menaces et mesures défensives fondamentales.',
       en: 'Introduction to key cybersecurity concepts, threats and foundational defensive measures.',
     },
     tags: ['Cybersecurity', 'Awareness', 'Cisco'],
-    details: {
-      fr: [
-        'Aperçu des menaces actuelles',
-        'Principes fondamentaux de défense',
-        'Sensibilisation aux enjeux de sécurité',
-      ],
-      en: [
-        'Overview of current threats',
-        'Foundational defence principles',
-        'Raising awareness of security issues',
-      ],
+    badge: '/img/certifications/cisco-intro.png',
+    evidence: {
+      kind: 'certificate',
+      visibility: 'public',
+      url: '/assets/certificats/cisco-intro.pdf',
     },
-    link: '#',
-  },
-  {
-    id: 'cisco-essentials',
-    title: 'Cisco Cybersecurity Essentials',
-    status: 'obtained',
-    year: '2023',
-    badge: '/img/certifications/cisco-essentials.png',
-    description: {
-      fr: 'Certification couvrant les fondamentaux de la cybersécurité, l\'architecture réseau et la protection des systèmes.',
-      en: 'Certification covering cybersecurity fundamentals, network architecture and system protection.',
-    },
-    tags: ['Networking', 'Security', 'Fundamentals'],
-    details: {
-      fr: [
-        'Architecture réseau et principes de sécurité',
-        'Sécurité des systèmes d\'exploitation',
-        'Gestion des menaces',
-      ],
-      en: [
-        'Network architecture and security principles',
-        'Operating system security',
-        'Threat management',
-      ],
-    },
-    link: '#',
   },
   {
     id: 'toeic',
-    title: 'TOEIC – Test of English for International Communication',
+    title: 'TOEIC, 935 sur 990',
+    issuer: 'ETS',
     status: 'obtained',
-    year: '2024',
-    badge: '/img/certifications/toeic.png',
+    obtainedOn: '2024',
     description: {
-      fr: 'Certification internationale validant le niveau d\'anglais (Listening & Reading).',
-      en: 'International certification validating English proficiency (Listening & Reading).',
+      fr: "Certification internationale validant le niveau d'anglais. Listening 490 sur 495, Reading 445 sur 495, total 935 sur 990.",
+      en: 'International certification validating English proficiency. Listening 490 out of 495, Reading 445 out of 495, total 935 out of 990.',
     },
-    tags: ['English', 'Listening', 'Reading', 'ESL'],
-    details: {
-      fr: [
-        'Listening: 490 / 495',
-        'Reading: 445 / 495',
-        'Total: 935 / 990',
-      ],
-      en: [
-        'Listening: 490 / 495',
-        'Reading: 445 / 495',
-        'Total: 935 / 990',
-      ],
+    tags: ['English', 'Listening', 'Reading'],
+    badge: '/img/certifications/toeic.png',
+    evidence: {
+      kind: 'certificate',
+      visibility: 'public',
+      url: '/assets/certificats/toeic-2024.pdf',
     },
-    link: '#',
+  },
+
+  // --------------------------- En préparation ---------------------------
+  {
+    id: 'az-104',
+    title: 'Microsoft AZ-104 — Azure Administrator Associate',
+    issuer: 'Microsoft',
+    status: 'in-progress',
+    targetOn: null,
+    description: {
+      fr: "Certification Microsoft d'administrateur Azure.",
+      en: 'Microsoft certification for Azure administrators.',
+    },
+    tags: ['Azure', 'Administration'],
+  },
+  {
+    id: 'sc-500',
+    title: 'Microsoft SC-500 — Cloud and AI Security Engineer Associate',
+    issuer: 'Microsoft',
+    status: 'in-progress',
+    targetOn: null,
+    description: {
+      fr: "Certification Microsoft d'ingénieur sécurité du cloud et de l'intelligence artificielle.",
+      en: 'Microsoft certification for cloud and AI security engineers.',
+    },
+    tags: ['Azure', 'Security'],
   },
   {
     id: 'az-900',
     title: 'Microsoft AZ-900 — Azure Fundamentals',
+    issuer: 'Microsoft',
     status: 'in-progress',
-    year: '2025',
-    badge: '/img/certifications/az-900.png',
+    targetOn: null,
     description: {
       fr: 'Fondamentaux Azure : concepts cloud, sécurité et conformité.',
       en: 'Azure fundamentals: cloud concepts, security and compliance.',
     },
     tags: ['Azure', 'Cloud', 'Fundamentals'],
-    details: {
-      fr: [
-        'Concepts fondamentaux du cloud computing',
-        'Sécurité et conformité dans Azure',
-        'Services Azure principaux',
-      ],
-      en: [
-        'Core cloud computing concepts',
-        'Security and compliance in Azure',
-        'Core Azure services',
-      ],
-    },
-  },
-  {
-    id: 'az-800',
-    title: 'Microsoft AZ-800 — Windows Server Hybrid Core',
-    status: 'in-progress',
-    year: '2025',
-    badge: '/img/certifications/az-800.jpg',
-    description: {
-      fr: 'Administration hybride Windows Server, Active Directory et gestion des identités.',
-      en: 'Hybrid Windows Server administration, Active Directory and identity management.',
-    },
-    tags: ['Active Directory', 'Windows Server', 'Hybrid Cloud'],
-    details: {
-      fr: [
-        'Gestion des identités et des accès',
-        'Services Windows Server hybrides',
-        'Sécurité et monitoring',
-      ],
-      en: [
-        'Identity and access management',
-        'Hybrid Windows Server services',
-        'Security and monitoring',
-      ],
-    },
+    badge: '/img/certifications/az-900.png',
   },
   {
     id: 'sc-900',
     title: 'Microsoft SC-900 — Security, Compliance & Identity',
+    issuer: 'Microsoft',
     status: 'in-progress',
-    year: '2025',
-    badge: '/img/certifications/sc-900.png',
+    targetOn: null,
     description: {
       fr: 'Concepts fondamentaux de sécurité, conformité et identité Microsoft.',
       en: 'Fundamental Microsoft security, compliance and identity concepts.',
     },
     tags: ['Security', 'Compliance', 'Identity'],
-    details: {
-      fr: [
-        'Concepts de sécurité et conformité',
-        'Gestion des identités Microsoft',
-        'Principes Zero Trust',
-      ],
-      en: [
-        'Security and compliance concepts',
-        'Managing identities in Microsoft',
-        'Zero Trust principles',
-      ],
-    },
+    badge: '/img/certifications/sc-900.png',
   },
+
+  // --------------------------- Feuille de route ---------------------------
   {
-    id: 'sal1',
-    title: 'SOC Analyst Level 1 (SAL1)',
-    status: 'future',
-    year: '2025',
-    badge: '/img/certifications/sal1.png',
+    id: 'sc-300',
+    title: 'Microsoft SC-300 — Identity and Access Administrator',
+    issuer: 'Microsoft',
+    status: 'planned',
+    targetOn: null,
     description: {
-      fr: 'Certification orientée Blue Team validant les compétences fondamentales d\'analyste SOC.',
-      en: 'Blue Team oriented certification validating foundational SOC analyst skills.',
+      fr: "Certification Microsoft d'administrateur des identités et des accès.",
+      en: 'Microsoft certification for identity and access administrators.',
     },
-    tags: ['SOC', 'Blue Team', 'Logs', 'Detection'],
-    details: {
-      fr: [
-        'Analyse et investigation des alertes',
-        'Gestion et corrélation des logs',
-        'Introduction aux outils SIEM',
-        'Fondamentaux du threat hunting',
-      ],
-      en: [
-        'Alert analysis and investigation',
-        'Log management and correlation',
-        'Introduction to SIEM tools',
-        'Threat hunting fundamentals',
-      ],
-    },
-  },
-  {
-    id: 'aws-clf',
-    title: 'AWS Certified Cloud Practitioner (CLF-C01)',
-    status: 'future',
-    year: '2025',
-    badge: '/img/certifications/aws-clf.png',
-    description: {
-      fr: 'Certification d\'entrée validant la compréhension des concepts et services cloud AWS.',
-      en: 'Entry-level certification validating understanding of AWS cloud concepts and services.',
-    },
-    tags: ['AWS', 'Cloud', 'Fundamentals'],
-    details: {
-      fr: [
-        'Concepts fondamentaux du cloud AWS',
-        'Architecture et sécurité',
-        'Services principaux (EC2, S3, IAM)',
-        'Facturation et support',
-      ],
-      en: [
-        'Core AWS cloud concepts',
-        'Architecture and security',
-        'Core services (EC2, S3, IAM)',
-        'Billing and support',
-      ],
-    },
-  },
-  {
-    id: 'security-plus',
-    title: 'CompTIA Security+',
-    status: 'future',
-    year: '2026',
-    badge: '/img/certifications/security-plus.png',
-    description: {
-      fr: 'Certification cybersécurité globale couvrant menaces, attaques et défenses.',
-      en: 'Global cybersecurity certification covering threats, attacks and defences.',
-    },
-    tags: ['Security', 'Network', 'Threats'],
-    details: {
-      fr: [
-        'Cryptographie et sécurité réseau',
-        'Gestion des menaces',
-        'Analyse et réponse aux incidents',
-      ],
-      en: [
-        'Cryptography and network security',
-        'Threat management',
-        'Incident analysis and response',
-      ],
-    },
-  },
-  {
-    id: 'network-plus',
-    title: 'CompTIA Network+',
-    status: 'future',
-    year: '2026',
-    badge: '/img/certifications/network-plus.png',
-    description: {
-      fr: 'Certification fondamentaux réseau : routing, switching et sécurité de base.',
-      en: 'Networking fundamentals certification: routing, switching and baseline security.',
-    },
-    tags: ['Networking', 'TCP/IP', 'Routing', 'Switching'],
-    details: {
-      fr: [
-        'Protocoles et topologies réseau',
-        'IPv4 / IPv6, TCP/UDP',
-        'Sécurité réseau de base',
-        'Dépannage réseau',
-      ],
-      en: [
-        'Network protocols and topologies',
-        'IPv4 / IPv6, TCP/UDP',
-        'Baseline network security',
-        'Network troubleshooting',
-      ],
-    },
-  },
-  {
-    id: 'ccna',
-    title: 'Cisco CCNA — Cisco Certified Network Associate',
-    status: 'future',
-    year: '2026',
-    badge: '/img/certifications/ccna.png',
-    description: {
-      fr: 'Certification mondialement reconnue validant les compétences réseau fondamentales.',
-      en: 'World-renowned certification validating core networking skills.',
-    },
-    tags: ['Cisco', 'Networking', 'Routing', 'Switching'],
-    details: {
-      fr: [
-        'Architectures et modèles réseau',
-        'Routing et switching',
-        'Sécurité réseau de base',
-        'Services IP',
-      ],
-      en: [
-        'Network architectures and models',
-        'Routing and switching',
-        'Baseline network security',
-        'IP services',
-      ],
-    },
+    tags: ['Identity', 'Access'],
   },
   {
     id: 'sc-200',
     title: 'Microsoft SC-200 — Security Operations Analyst',
-    status: 'future',
-    year: '2026',
-    badge: '/img/certifications/sc-200.png',
+    issuer: 'Microsoft',
+    status: 'planned',
+    targetOn: null,
     description: {
-      fr: 'Spécialisation en détection, investigation et réponse aux incidents avec Microsoft Sentinel & Defender.',
+      fr: "Spécialisation en détection, investigation et réponse aux incidents avec Microsoft Sentinel & Defender.",
       en: 'Specialisation in detection, investigation and incident response with Microsoft Sentinel & Defender.',
     },
     tags: ['SOC', 'Sentinel', 'Incident Response'],
-    details: {
-      fr: [
-        'Configuration de Microsoft Sentinel',
-        'Analyse et corrélation des logs',
-        'Réponse aux incidents avancée',
-      ],
-      en: [
-        'Configuring Microsoft Sentinel',
-        'Log analysis and correlation',
-        'Advanced incident response',
-      ],
+    badge: '/img/certifications/sc-200.png',
+  },
+  {
+    id: 'sc-100',
+    title: 'Microsoft SC-100 — Cybersecurity Architect',
+    issuer: 'Microsoft',
+    status: 'planned',
+    targetOn: null,
+    description: {
+      fr: "Certification Microsoft d'architecte cybersécurité.",
+      en: 'Microsoft certification for cybersecurity architects.',
     },
+    tags: ['Architecture', 'Security'],
+  },
+  {
+    id: 'az-802',
+    title: 'Microsoft AZ-802 — Windows Server Administrator',
+    issuer: 'Microsoft',
+    status: 'planned',
+    targetOn: null,
+    description: {
+      fr: "Certification Microsoft d'administration de Windows Server.",
+      en: 'Microsoft certification for Windows Server administration.',
+    },
+    tags: ['Windows Server', 'Administration'],
   },
 ];
 
-export function getCertificationsByStatus(status: CertificationStatus): Certification[] {
-  return certifications.filter(c => c.status === status);
+export function getCertificationsByStatus(status: CertStatus): Certification[] {
+  return certifications.filter((c) => c.status === status);
 }
 
-export function getCertificationCounts(): Record<CertificationStatus | 'all', number> {
+export function getCertificationCounts(): Record<CertStatus | 'all', number> {
   return {
-    obtained: certifications.filter(c => c.status === 'obtained').length,
-    'in-progress': certifications.filter(c => c.status === 'in-progress').length,
-    future: certifications.filter(c => c.status === 'future').length,
+    obtained: getCertificationsByStatus('obtained').length,
+    'in-progress': getCertificationsByStatus('in-progress').length,
+    planned: getCertificationsByStatus('planned').length,
     all: certifications.length,
   };
+}
+
+/** Date affichee : obtention pour une certification obtenue, echeance sinon. */
+export function certificationDate(cert: Certification): string | null {
+  return cert.status === 'obtained' ? cert.obtainedOn : cert.targetOn;
 }
