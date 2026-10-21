@@ -1,9 +1,14 @@
 name: Deploy portfolio (Vite)
 
+# La branche dev porte la refonte et se publie sur le meme site Pages, afin de
+# pouvoir juger le rendu avant de fusionner. Pendant la revue, ne pousser que
+# sur dev : le dernier envoi publie gagne.
 on:
   push:
     branches:
       - main
+      - dev
+  workflow_dispatch:
 
 permissions:
   contents: read

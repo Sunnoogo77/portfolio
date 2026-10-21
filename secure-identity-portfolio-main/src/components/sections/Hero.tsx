@@ -88,7 +88,7 @@ export function Hero() {
           <div className="relative animate-fade-in-up animation-delay-200">
             <div className="relative w-72 h-72 md:w-96 md:h-96 lg:w-[420px] lg:h-[420px] rounded-full overflow-hidden border-4 border-primary glow">
               <img
-                src={getAssetPath('/img/CALEB_TAPSOBA.jpg')}
+                src={getAssetPath('/img/sunnoogo-caleb-tapsoba.jpg')}
                 alt="Sunnoogo Caleb Tapsoba"
                 className="absolute inset-0 w-full h-full object-cover"
               />
