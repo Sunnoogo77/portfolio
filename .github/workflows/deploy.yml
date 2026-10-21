@@ -42,6 +42,10 @@ jobs:
         working-directory: secure-identity-portfolio-main
         run: npm run lint
 
+      - name: Typecheck
+        working-directory: secure-identity-portfolio-main
+        run: npm run typecheck
+
       - name: Test
         working-directory: secure-identity-portfolio-main
         run: npm run test

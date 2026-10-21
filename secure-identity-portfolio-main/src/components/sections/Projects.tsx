@@ -142,7 +142,7 @@ function ProjetRealise({ project }: { project: Project }) {
 }
 
 export function Projects() {
-  const { t } = useLanguage();
+  const { language, t } = useLanguage();
   const enAvant = getProjectsByTier('featured');
   const realises = getProjectsByTier('delivered');
   const prepares = getProjectsByTier('planned');
