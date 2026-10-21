@@ -42,10 +42,12 @@ const sectionIds = navItems.map((item) => item.id);
  * `prefers-reduced-motion`, rien de tout cela : la barre reste simplement
  * visible et deployee.
  */
-export function Header() {
+export function Header({ surGalerie = false }: { surGalerie?: boolean }) {
   const { t } = useLanguage();
   const [menuOuvert, setMenuOuvert] = useState(false);
-  const activeSection = useScrollSpy(sectionIds, 140);
+  // Sur la galerie, aucune de ces sections n'existe : l'observation ne doit
+  // pas chercher a surligner une entree.
+  const activeSection = useScrollSpy(surGalerie ? [] : sectionIds, 140);
   const mouvementReduit = useMouvementReduit();
   const { compacte, cachee } = useDefilement(!mouvementReduit);
 
@@ -53,11 +55,25 @@ export function Header() {
   // visiteur, qui est justement en train de s'en servir.
   const effacee = cachee && !menuOuvert;
 
-  const allerA = (id: string) => {
+  const defiler = (id: string) => {
     document.getElementById(id)?.scrollIntoView({
       behavior: mouvementReduit ? 'auto' : 'smooth',
     });
+  };
+
+  /**
+   * Depuis la galerie, une entree de navigation ramene d'abord a la page
+   * d'accueil, puis rejoint la section : sans ce detour, le clic ne trouvait
+   * aucune section et ne faisait rien.
+   */
+  const allerA = (id: string) => {
     setMenuOuvert(false);
+    if (!surGalerie) {
+      defiler(id);
+      return;
+    }
+    window.location.hash = '#/';
+    requestAnimationFrame(() => requestAnimationFrame(() => defiler(id)));
   };
 
   return (
@@ -73,11 +89,15 @@ export function Header() {
           <button
             type="button"
             onClick={() => {
+              setMenuOuvert(false);
+              if (surGalerie) {
+                window.location.hash = '#/';
+                return;
+              }
               window.scrollTo({
                 top: 0,
                 behavior: mouvementReduit ? 'auto' : 'smooth',
               });
-              setMenuOuvert(false);
             }}
             className="rounded-md text-base font-semibold text-foreground"
           >

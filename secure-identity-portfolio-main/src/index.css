@@ -378,6 +378,118 @@
     text-wrap: pretty;
   }
 
+  /* ------------------------------------------------------------------
+     Visuels de projet
+     ------------------------------------------------------------------ */
+
+  .visuel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    overflow: hidden;
+    border: 1px solid hsl(var(--bord));
+    border-radius: var(--radius);
+    background-color: hsl(var(--surface-2));
+    color: hsl(var(--texte-doux));
+    transition: color 180ms ease-out, border-color 180ms ease-out;
+  }
+
+  /* Une hauteur fluide plutot qu'un rapport d'aspect : a 900 pixels de large,
+     un rapport de 5 sur 2 donnait une banniere de 360 pixels de haut pour
+     quatre icones, soit un grand vide. */
+  .visuel-banniere {
+    height: clamp(6.5rem, 15vw, 10rem);
+  }
+
+  .visuel-carte {
+    height: clamp(5.5rem, 13vw, 7rem);
+  }
+
+  /* Au survol de la carte ou de l'article, les icones prennent l'accent.
+     Aucune ombre, aucune lueur, aucun deplacement : seule la couleur bouge. */
+  .carte:hover .visuel,
+  .projet-avant:hover .visuel {
+    color: hsl(var(--accent));
+    border-color: hsl(var(--accent));
+  }
+
+  /* Les icones de technologie sont monochromes. Elles sont posees en masque
+     et remplies de la couleur courante : elles restent donc lisibles sur les
+     deux themes, quelle que soit la couleur d'encre du fichier. */
+  .icone-tech {
+    display: block;
+    width: clamp(1.75rem, 5vw, 2.5rem);
+    height: clamp(1.75rem, 5vw, 2.5rem);
+    background-color: currentColor;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+  }
+
+  .visuel-banniere .icone-tech {
+    width: clamp(2.25rem, 6.5vw, 3.75rem);
+    height: clamp(2.25rem, 6.5vw, 3.75rem);
+  }
+
+  /* ------------------------------------------------------------------
+     Projets
+     ------------------------------------------------------------------ */
+
+  /* Un projet mis en avant n'est pas une carte : pas de fond, pas de cadre,
+     un filet en tete et la colonne de notes. C'est la mise en page qui porte
+     la hierarchie, et elle ne coute aucun effet. */
+  .projet-avant {
+    border-top: 1px solid hsl(var(--bord));
+    padding-top: clamp(1.5rem, 3vw, 2.25rem);
+  }
+
+  /* Les projets en preparation : une liste sobre, en bas de section, qui
+     n'occupe plus la premiere vue. */
+  .liste-prevus {
+    display: grid;
+    gap: 0.25rem 2rem;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  @media (min-width: 640px) {
+    .liste-prevus {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .liste-prevus {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  /* Filtres de la galerie : des onglets sobres, un seul actif. */
+  .filtre {
+    border: 1px solid hsl(var(--bord));
+    border-radius: 999px;
+    padding: 0.3rem 0.85rem;
+    font-size: 0.875rem;
+    color: hsl(var(--texte-doux));
+    transition: color 150ms ease-out, border-color 150ms ease-out,
+      background-color 150ms ease-out;
+  }
+
+  .filtre:hover {
+    color: hsl(var(--texte));
+    border-color: hsl(var(--accent));
+  }
+
+  .filtre-actif,
+  .filtre-actif:hover {
+    color: hsl(var(--sur-accent));
+    background-color: hsl(var(--accent-fond));
+    border-color: hsl(var(--accent-fond));
+  }
+
   .portrait {
     display: block;
     width: 100%;
