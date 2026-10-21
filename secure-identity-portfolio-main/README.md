@@ -1,73 +1,83 @@
-# Welcome to your Lovable project
+# Portfolio Sunnoogo Caleb Tapsoba
 
-## Project info
+Portfolio personnel en cybersécurité et cloud, publié sur GitHub Pages à
+l'adresse <https://sunnoogo77.github.io/portfolio/>.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+Il s'agit d'une page unique bilingue (français et anglais), sans routeur et
+sans service distant : tout est construit à la compilation et servi en
+fichiers statiques.
 
-## How can I edit this code?
+## Pile technique
 
-There are several ways of editing your application.
+- **Vite 5** pour la compilation et le serveur de développement
+- **React 18** et **TypeScript** pour l'interface
+- **Tailwind CSS 3** pour la mise en forme
+- Trois primitives **Radix UI** seulement (label, slot, toast), enveloppées
+  dans `src/components/ui/`
+- **Vitest** pour les tests, **ESLint** pour l'analyse statique
 
-**Use Lovable**
+## Lancer le projet en local
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+Node.js 20 et npm sont requis.
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+cd secure-identity-portfolio-main
+npm ci
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+Le serveur de développement écoute sur <http://localhost:8080>.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Scripts disponibles
 
-**Use GitHub Codespaces**
+| Commande         | Effet                                                  |
+| ---------------- | ------------------------------------------------------ |
+| `npm run dev`    | Serveur de développement avec rechargement à chaud     |
+| `npm run build`  | Construction de production dans `dist/`                |
+| `npm run preview`| Sert localement le contenu de `dist/`                  |
+| `npm run lint`   | Analyse statique ESLint                                |
+| `npm run test`   | Tests Vitest en une passe                              |
+| `npm run test:watch` | Tests Vitest en continu                            |
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Le contrôle de types se fait avec `npx tsc --noEmit`.
 
-## What technologies are used for this project?
+## Déploiement
 
-This project is built with:
+Le déploiement est automatique. À chaque poussée sur la branche `main`, le
+workflow `.github/workflows/deploy.yml` installe les dépendances avec
+`npm ci`, exécute l'analyse statique et les tests, construit le site puis
+publie le dossier `secure-identity-portfolio-main/dist` sur GitHub Pages.
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+Le site étant servi depuis un sous-chemin, `vite.config.ts` fixe
+`base: "/portfolio/"` en production. Tout chemin de ressource écrit à la main
+doit donc passer par l'utilitaire `getAssetPath()` de `src/lib/assets.ts`,
+sans quoi il se cassera en production.
 
-## How can I deploy this project?
+## Où vit le contenu éditorial
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+Aucun texte n'est écrit en dur dans les composants. Pour modifier le contenu,
+il faut toucher à deux endroits et à eux seuls.
 
-## Can I connect a custom domain to my Lovable project?
+- `src/data/` contient les données structurées, un fichier par rubrique :
+  - `projects.ts` — les projets
+  - `timeline.ts` — le parcours
+  - `certifications.ts` — les certifications
+  - `skills.ts` — les compétences
+  - `social.ts` — les liens vers les réseaux
+- `src/contexts/LanguageContext.tsx` contient les chaînes d'interface
+  traduites (titres de section, libellés de boutons, formulaire de contact).
 
-Yes, you can!
+Chaque entrée de `src/data/` porte ses deux variantes `fr` et `en` : une
+rubrique ajoutée dans une langue doit l'être dans l'autre.
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+Les ressources binaires (photo, logos, images de certifications, CV en PDF,
+certificats) vivent dans `public/` et sont recopiées telles quelles dans
+`dist/` à la construction.
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+## Organisation du dépôt
+
+```
+secure-identity-portfolio-main/   l'application servie aujourd'hui
+_archive/site-statique-2025/      l'ancien site HTML statique, conservé mais plus servi
+.github/workflows/deploy.yml      la chaîne de construction et de publication
+```
